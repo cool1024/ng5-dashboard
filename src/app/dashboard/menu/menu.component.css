@@ -1,0 +1,48 @@
+.icon-up {
+    animation: icon-up 0.5s ease-out forwards;
+}
+
+.icon-down {
+    animation: icon-down 0.5s ease-out forwards;
+}
+
+.menu-block {
+    overflow-y: hidden;
+    font-size: 14px;
+}
+
+p {
+    font-size: 15px;
+}
+
+.child-close {
+    max-height: 0px;
+    opacity: 0.5;
+    transform-origin: 50% 0%;
+    transition: all 0.5s linear;
+}
+
+.child-open {
+    max-height: 400px;
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transition: all 1.5s linear;
+}
+
+@keyframes icon-up {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes icon-down {
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

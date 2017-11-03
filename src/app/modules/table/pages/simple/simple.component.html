@@ -1,0 +1,59 @@
+<div class="m-2">
+    <div class="card rounded-0">
+        <div class="card-header"><i class="fa fa-sort-amount-asc fa-fw" aria-hidden="true"></i>条件筛选</div>
+        <div class="card-body">
+            <div class="input-group">
+                <span class="input-group-addon bg-white">名称</span>
+                <input type="text" class="form-control" placeholder="请输入查询名称的关键词">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon bg-white">质量</span>
+                <input type="text" class="form-control" placeholder="筛选的最小质量">
+                <span class="input-group-addon  bg-white">到</span>
+                <input type="text" class="form-control" placeholder="筛选的最大质量">
+                <span class="input-group-addon bg-white">克</span>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group">
+                        <span class="input-group-addon bg-white">共查询到</span>
+                        <input type="text" class="form-control text-center bg-white" readonly placeholder="0">
+                        <span class="input-group-addon bg-white">条/结果</span>
+                    </div>
+                </div>
+                <div class="col-6 text-right">
+                    <button class="btn btn-secondary"><i class="fa fa-refresh fa-fw"></i></button>
+                    <button class="btn btn-secondary"><i class="fa fa-search fa-fw"></i>搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card rounded-0">
+        <div class="card-body">
+            <table class="table bg-white mb-0">
+                <thead class="text-muted">
+                    <tr>
+                        <th class="border-0">ID</th>
+                        <th class="border-0">名称</th>
+                        <th class="border-0">描述</th>
+                        <th class="border-0">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="mat-cell">
+                        <td>1</td>
+                        <td>Name</td>
+                        <td>Description</td>
+                        <td>
+                            <button class="btn btn-info btn-sm"><i class="fa fa-info fa-fw"></i>详情</button>
+                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>删除 </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,24 @@
+.pointer {
+    cursor: pointer;
+}
+
 .shadow-b {
-    box-shadow: 1px 0px 2px #cccccc;
+    box-shadow: 0px 1px 2px #cccccc;
+}
+
+.shadow-r {
+    box-shadow: 1px -0px 2px #cccccc;
 }
 
 .shadow-br {
     box-shadow: 1px 1px 2px #cccccc;
 }
 
+.border-l-3 {
+    border-left: 3px solid transparent;
+}
+
 * {
-    font-family: Helvetica Neue For Number,  Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
-    ;
+    font-family: Helvetica Neue For Number, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
