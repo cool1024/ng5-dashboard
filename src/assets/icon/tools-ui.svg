@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="tools-ui.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="479.40116"
+     inkscape:cy="39.014307"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1858"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-197)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4487"
+       style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion4489"><rect
+           id="rect4491"
+           width="26.263966"
+           height="47.477169"
+           x="122.22845"
+           y="170.87149" /></flowRegion><flowPara
+         id="flowPara4493" /></flowRoot>    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:5.5;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:0"
+       id="rect4485"
+       width="90"
+       height="90"
+       x="5"
+       y="202"
+       ry="18.843754"
+       onclick="" />
+    <g
+       id="g4520"
+       transform="matrix(0.8949765,0,0,0.87780451,0.41656999,32.956238)"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2.80025172;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <rect
+         transform="matrix(0.59929707,-0.80052671,0.8532148,0.52155969,0,0)"
+         ry="0"
+         y="160.94429"
+         x="-164.32365"
+         height="53.609188"
+         width="7.2283545"
+         id="rect4501"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2.80644608;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <rect
+         transform="matrix(0.83972543,0.54301124,-0.46564805,0.88497,0,0)"
+         ry="0"
+         y="155.38226"
+         x="159.58679"
+         height="55.168007"
+         width="7.5565758"
+         id="rect4501-2"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2.80589151;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+    </g>
+  </g>
+</svg>
