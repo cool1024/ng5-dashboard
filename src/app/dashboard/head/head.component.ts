@@ -10,6 +10,7 @@ export class HeadComponent implements OnInit {
   // 头部样式配置参数
   headConfigs = {
     zIndex: 1040,
+    titleWidth: '170px',
   };
 
   constructor() { }

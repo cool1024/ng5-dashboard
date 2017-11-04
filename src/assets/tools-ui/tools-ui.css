@@ -65,6 +65,10 @@ a:visited {
     box-shadow: 1px 1px 2px #cccccc;
 }
 
+.shadow-0 {
+    box-shadow: none !important;
+}
+
 .border-l-3 {
     border-left: 3px solid transparent;
 }
