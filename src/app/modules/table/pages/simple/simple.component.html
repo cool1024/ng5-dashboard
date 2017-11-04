@@ -1,7 +1,7 @@
 <div class="m-2">
     <div class="card rounded-0">
-        <div class="card-header">
-            <i class="fa fa-sort-amount-asc fa-fw" aria-hidden="true"></i>条件筛选</div>
+        <div class="card-header bg-white">
+            <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
         <div class="card-body">
             <div class="input-group">
                 <span class="input-group-addon bg-white">名称</span>
@@ -27,9 +27,12 @@
                 <div class="col-6 text-right">
                     <button (click)="resetSearch()" class="btn btn-white">
                         <i class="fa fa-refresh fa-fw"></i>
+                        <span>重置</span>
                     </button>
                     <button (click)="doSearch()" class="btn btn-white">
-                        <i class="fa fa-search fa-fw"></i>搜索</button>
+                        <i class="fa fa-search fa-fw"></i>
+                        <span>搜索</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -53,10 +56,26 @@
                         <td>{{item.weight}}</td>
                         <td>{{item.symbol}}</td>
                         <td>
+                            <div class="btn-group" ts-dropdown>
+
+                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle">
+                                    <i class="fa fa-eye fa-fw"></i>审核</button>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item"></button>
+                                    <button class="dropdown-item">Another action</button>
+                                    <button class="dropdown-item">Something else here</button>
+                                    <div class="dropdown-divider"></div>
+                                    <button class="dropdown-item">Separated link</button>
+                                </div>
+                            </div>
                             <button class="btn btn-info btn-sm">
-                                <i class="fa fa-info fa-fw"></i>详情</button>
+                                <!-- <i class="fa fa-info fa-fw"></i> -->
+                                详情
+                            </button>
                             <button class="btn btn-danger btn-sm">
-                                <i class="fa fa-trash fa-fw"></i>删除 </button>
+                                <!-- <i class="fa fa-trash fa-fw"></i> -->
+                                删除
+                            </button>
                         </td>
                     </tr>
                 </tbody>

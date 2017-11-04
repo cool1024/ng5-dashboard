@@ -93,3 +93,7 @@ a:visited {
 .btn-white:active {
     background-color: rgb(230, 230, 230) !important;
 }
+
+.btn-sm span {
+    font-size: 12.5px !important;
+}
