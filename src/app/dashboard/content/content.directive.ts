@@ -10,6 +10,7 @@ export class ContentDirective {
     dom.style.paddingLeft = '220px';
     dom.style.paddingTop = '60px';
     dom.style.display = 'block';
+    dom.style.minWidth = '600px';
   }
 
 }

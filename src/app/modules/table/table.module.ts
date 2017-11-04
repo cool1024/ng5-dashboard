@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+/*tool-ui*/
+import { TSPaginationModule, TSLoadingModule, TSDropdownModule } from './../../tools-ui';
 
 /*路由模块*/
 import { TableRoutingModule } from './table.routing';
@@ -9,7 +12,10 @@ import { SimpleComponent } from './pages/simple/simple.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    FormsModule,
+    TSPaginationModule,
+    TSDropdownModule,
+    TSLoadingModule,
     TableRoutingModule,
   ],
   declarations: [

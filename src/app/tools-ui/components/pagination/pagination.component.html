@@ -1,0 +1,9 @@
+<div class="btn-group mr-2" role="group">
+    <button type="button" class="btn {{theme.start}}" *ngIf="!!startTitle" [class.disabled]="!pagination.hasPrev()" [disabled]="!pagination.hasPrev()" (click)="pagination.page=1;sendChange()">{{startTitle}}</button>
+    <button type="button" class="btn {{theme.prev}}" *ngIf="!!prevTitle" [class.disabled]="!pagination.hasPrev()" [disabled]="!pagination.hasPrev()" (click)="pagination.page=pagination.page-1;sendChange()">{{prevTitle}}</button>
+    <ng-template ngFor let-item [ngForOf]="pages" let-i="index">
+        <button [ngClass]="{'active':item == pagination.page}" type="button" class="btn {{theme.page}}" (click)="pagination.page=item;sendChange()">{{item}}</button>
+    </ng-template>
+    <button type="button" class="btn {{theme.next}}" *ngIf="!!nextTitle" [class.disabled]="!pagination.hasNext()" [disabled]="!pagination.hasNext()" (click)="pagination.page=pagination.page+1;sendChange()">{{nextTitle}}</button>
+    <button type="button" class="btn {{theme.end}}" *ngIf="!!endTitle" [class.disabled]="!pagination.hasNext()" [disabled]="!pagination.hasNext()" (click)="pagination.page=pagination.maxPage;sendChange()">{{endTitle}}</button>
+</div>

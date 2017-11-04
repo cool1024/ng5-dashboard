@@ -1,3 +1,54 @@
+/*bootstrap4 样式调整*/
+
+* {
+    font-family: Helvetica Neue For Number, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+a,
+button,
+input,
+select {
+    outline: 0 none !important;
+    text-decoration: none !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.btn:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+}
+
+
+/*bootstrap4 样式拓展*/
+
 .pointer {
     cursor: pointer;
 }
@@ -18,7 +69,23 @@
     border-left: 3px solid transparent;
 }
 
-* {
-    font-family: Helvetica Neue For Number, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+.border-muted {
+    border-color: #efefef !important;
+}
+
+.border-default {
+    border-color: #ced4da !important;
+}
+
+.btn-white {
+    background-color: white;
+    border-color: #ced4da !important;
+}
+
+.btn-white:hover {
+    background-color: rgb(240, 240, 240) !important;
+}
+
+.btn-white:active {
+    background-color: rgb(230, 230, 230) !important;
 }

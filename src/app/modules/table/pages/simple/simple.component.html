@@ -1,17 +1,18 @@
 <div class="m-2">
     <div class="card rounded-0">
-        <div class="card-header"><i class="fa fa-sort-amount-asc fa-fw" aria-hidden="true"></i>条件筛选</div>
+        <div class="card-header">
+            <i class="fa fa-sort-amount-asc fa-fw" aria-hidden="true"></i>条件筛选</div>
         <div class="card-body">
             <div class="input-group">
                 <span class="input-group-addon bg-white">名称</span>
-                <input type="text" class="form-control" placeholder="请输入查询名称的关键词">
+                <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon bg-white">质量</span>
-                <input type="text" class="form-control" placeholder="筛选的最小质量">
+                <input [(ngModel)]="this.search.params.start" type="text" class="form-control" placeholder="筛选的最小质量">
                 <span class="input-group-addon  bg-white">到</span>
-                <input type="text" class="form-control" placeholder="筛选的最大质量">
+                <input [(ngModel)]="this.search.params.end" type="text" class="form-control" placeholder="筛选的最大质量">
                 <span class="input-group-addon bg-white">克</span>
             </div>
             <br>
@@ -19,13 +20,16 @@
                 <div class="col-6">
                     <div class="input-group">
                         <span class="input-group-addon bg-white">共查询到</span>
-                        <input type="text" class="form-control text-center bg-white" readonly placeholder="0">
+                        <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
                         <span class="input-group-addon bg-white">条/结果</span>
                     </div>
                 </div>
                 <div class="col-6 text-right">
-                    <button class="btn btn-secondary"><i class="fa fa-refresh fa-fw"></i></button>
-                    <button class="btn btn-secondary"><i class="fa fa-search fa-fw"></i>搜索</button>
+                    <button (click)="resetSearch()" class="btn btn-white">
+                        <i class="fa fa-refresh fa-fw"></i>
+                    </button>
+                    <button (click)="doSearch()" class="btn btn-white">
+                        <i class="fa fa-search fa-fw"></i>搜索</button>
                 </div>
             </div>
         </div>
@@ -33,27 +37,37 @@
     <br>
     <div class="card rounded-0">
         <div class="card-body">
-            <table class="table bg-white mb-0">
-                <thead class="text-muted">
+            <table class="table bg-white mb-0 text-center">
+                <thead class="text-dark">
                     <tr>
-                        <th class="border-0">ID</th>
-                        <th class="border-0">名称</th>
-                        <th class="border-0">描述</th>
-                        <th class="border-0">操作</th>
+                        <th *ngFor="let th of theads" class="border-0">{{th}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="mat-cell">
-                        <td>1</td>
-                        <td>Name</td>
-                        <td>Description</td>
+                    <tr *ngFor="let item of list" class="mat-cell">
+                        <td>{{item.position}}</td>
                         <td>
-                            <button class="btn btn-info btn-sm"><i class="fa fa-info fa-fw"></i>详情</button>
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>删除 </button>
+                            <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" src="{{item.thumb}}">
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.weight}}</td>
+                        <td>{{item.symbol}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">
+                                <i class="fa fa-info fa-fw"></i>详情</button>
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash fa-fw"></i>删除 </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="text-right">
+                <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+                    [(value)]="this.pagination.limit" (valueChange)="pageChanged()" btnClass="btn-outline-info border-muted"
+                    [dropup]="true"></ts-dropdown>
+                <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+                    colors="btn-outline-info border-muted"></ts-pagination>
+            </div>
         </div>
     </div>
 </div>
