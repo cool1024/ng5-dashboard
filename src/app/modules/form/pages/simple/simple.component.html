@@ -1,0 +1,74 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        基本信息
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label>商品标题</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.title">
+            <small class="form-text text-muted">商品标题将会作为主要文字显示，一般为商品的名称即可.</small>
+        </div>
+        <div class="form-group">
+            <label>商品附加信息</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>商品价格</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label>商品库存</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>标签</label><br>
+            <ts-checkbox defaultColor="muted" activeColor="info" label="热销商品"></ts-checkbox>
+            <ts-checkbox defaultColor="muted" activeColor="info" label="平台推荐"></ts-checkbox>
+            <ts-checkbox defaultColor="muted" activeColor="info" label="最新品"></ts-checkbox>
+            <ts-checkbox defaultColor="muted" activeColor="info" label="海外精品"></ts-checkbox>
+            <ts-checkbox defaultColor="muted" activeColor="info" label="百年品牌"></ts-checkbox>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        详细信息
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label>相关规格</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>商品描述</label>
+            <textarea type="text" class="form-control" [(ngModel)]="formData.description"></textarea>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        图片展示
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>默认图（一张）</label>
+                <ts-image openTitle="选择图片" [src]="formData.thumb" openBtnClassName="btn btn-white" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"></ts-image>
+            </div>
+            <div class="form-group col-md-8">
+                <label>详情图（多张）</label>
+                <ts-images openTitle="选择图片" [src]="formData.images" openBtnClassName="btn btn-white" resetBtnClassName="btn btn-white"></ts-images>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="button" class="btn btn-white">取消/返回</button>
+            <button type="button" (click)="preview()" class="btn btn-info"><i class="fa fa-fw fa-eye"></i>预览效果</button>
+            <button type="button" (click)="submit(btn)" ts-loading #btn="tsLoading" class="btn btn-success" title="确认提交"></button>
+        </div>
+    </div>
+
+</div>

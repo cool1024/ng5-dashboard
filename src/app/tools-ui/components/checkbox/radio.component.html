@@ -1,0 +1,9 @@
+<span *ngIf="type==='circle'" (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}"> 
+    <i *ngIf="!checked" class="fa fa-circle-o fa-fw fa-lg text-{{defaultColor||'dark'}}"></i>
+    <i *ngIf="checked" class="fa fa-circle fa-fw fa-lg text-{{activeColor||'dark'}}"></i>
+</span>
+<span *ngIf="type==='dot'" (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}"> 
+    <i *ngIf="!checked" class="fa fa-circle-o fa-fw fa-lg text-{{defaultColor||'dark'}}"></i>
+    <i *ngIf="checked" class="fa fa-dot-circle-o fa-fw fa-lg text-{{activeColor||'dark'}}"></i>
+</span>
+<span (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}">{{label||''}}</span>

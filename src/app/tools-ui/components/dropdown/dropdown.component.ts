@@ -16,7 +16,7 @@ export class DropdownComponent {
   @Input() useNumber: number;
   @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
-
+  @Input() btnStyle: { [key: string]: string };
 
   @ViewChild('DropdownToggle') dropdownToggle: ElementRef;
   @ViewChild('DropdownMenu') dropdownMenu: ElementRef;
@@ -29,6 +29,7 @@ export class DropdownComponent {
     this.select = false;
     this.dropup = false;
     this.useNumber = -1;
+    this.btnStyle = {};
   }
 
   openDropdown() {

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HeadComponent } from './head/head.component';
-import { MenuComponent } from './menu/menu.component';
-import { ContentDirective } from './content/content.directive';
+import { HeadComponent } from './components/head/head.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ContentDirective } from './components/content/content.directive';
 
 @NgModule({
   imports: [

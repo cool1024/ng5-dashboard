@@ -1,4 +1,4 @@
-<div class="bg-light shadow-r fixed-top h-100" [ngStyle]="{'width':menuConfigs.width,'margin-top':menuConfigs.marginTop}">
+<div class="bg-white shadow-r fixed-top h-100" [ngStyle]="{'width':menuConfigs.width,'margin-top':menuConfigs.marginTop}">
     <div class="media pl-3 pt-3" [ngStyle]="{'padding-left':menuConfigs.titleIconWidth}">
         <img class="rounded-circle mt-2" width="40" src="/assets/image/avatar/6.jpg" alt="avatar">
         <div class="media-body pl-2">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="menu-child-block" [ngClass]="{'child-open': isCollopseArray[i],'child-close':!isCollopseArray[i]}" [ngStyle]="{'line-height':menuConfigs.childMenuHeight}">
-            <div class="menu-child-item" *ngFor="let child of main.chidren;index as j">
+            <div class="menu-child-item" *ngFor="let child of main.children;index as j">
                 <div class="d-table w-100 pointer" [routerLinkActive]="menuConfigs.childMenuActiveClass" routerLink="{{child.url}}">
                     <div class="d-table-cell" [ngStyle]="{'width':menuConfigs.titleIconWidth}"></div>
                     <div class="d-table-cell">

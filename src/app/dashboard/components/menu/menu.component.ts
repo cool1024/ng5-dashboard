@@ -25,16 +25,25 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa fa-table fa-fw',
       title: '功能表格',
-      chidren: [
+      children: [
         { title: '标准表格', url: '/table/simple' },
         { title: '复杂表格', url: '/table/full' },
         { title: '自定义表格', url: '/table/diy' },
       ]
     },
     {
+      icon: 'fa fa-list-alt fa-fw',
+      title: '表单',
+      children: [
+        { title: '基本表单', url: '/form/simple' },
+        { title: '多选/单选', url: '/form/checkbox' },
+        { title: '下拉选择', url: '/form/select' },
+      ]
+    },
+    {
       icon: 'fa fa-folder-open-o fa-fw',
       title: '文件上传',
-      chidren: [
+      children: [
         { title: '单图上传', url: '/' },
         { title: '多图上传', url: '/' },
         { title: '视频上传', url: '/' },
@@ -44,7 +53,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa fa-pencil-square-o fa-fw',
       title: '编辑器',
-      chidren: [
+      children: [
         { title: 'Markdown编辑器', url: '/' },
         { title: '富文本', url: '/' },
         { title: '在线聊天', url: '/' },

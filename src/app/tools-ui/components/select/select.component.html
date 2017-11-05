@@ -1,0 +1,11 @@
+<div class="btn-group" [class.show]="open" (click)="open?closeDropdown():openDropdown()">
+    <div #DropdownToggle class="input-group border border-default rounded">
+        <input #inputDom type="text" (blur)="trycloseDropdown($event)" class="form-control border-0 shadow-0" value="{{realTitle}}" placeholder="{{placeholder}}" (keyup)="setSearchKey($event)">
+        <span class="input-group-addon bg-white border-0">
+            <i class="fa fa-fw fa-caret-down"></i>
+        </span>
+    </div>
+    <div #DropdownMenu class="dropdown-menu" [class.show]="open" x-placement="bottom-start" style="position: absolute; top: 0px; left: 0px; will-change: transform;max-height: 300px;overflow-y: auto;">
+        <button *ngFor="let item of itemsList" [class.active]="item.value==value" class="dropdown-item" (click)="setValue(item)">{{item.text}}</button>
+    </div>
+</div>

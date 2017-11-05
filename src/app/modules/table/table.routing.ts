@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { SimpleComponent } from './pages/simple/simple.component';
-
+import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 
 const routes: Routes = [
-  { path: 'simple', component: SimpleComponent },
+  { path: 'simple', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['表格', 'table'], ['标准', 'tablet']]) } },
   { path: 'full', component: SimpleComponent },
   { path: 'diy', component: SimpleComponent },
 ];
@@ -17,4 +18,8 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class TableRoutingModule { }
+export class TableRoutingModule {
+  constructor(breadcrumbService: BreadcrumbService) {
+    breadcrumbService.append('table', routes);
+  }
+}

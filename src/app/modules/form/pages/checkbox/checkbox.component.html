@@ -1,0 +1,83 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        复选框
+    </div>
+    <div class="card-body">
+        <ts-checkbox-group [(values)]="checkboxValue">
+            <ts-checkbox [value]="1" label="Apple"></ts-checkbox>
+            <ts-checkbox [value]="2" label="Banana"></ts-checkbox>
+            <ts-checkbox [value]="3" label="Carota"></ts-checkbox>
+        </ts-checkbox-group>
+        <span class="ml-3">values : {{checkboxValue}}</span>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        单选框
+    </div>
+    <div class="card-body">
+        <ts-radio-group value="Right" [(value)]="radioValue">
+            <ts-radio [value]="1" label="先生" color="info"></ts-radio>
+            <ts-radio [value]="2" label="女士" color="danger"></ts-radio>
+            <ts-radio [value]="3" label="保密" color="secondary"></ts-radio>
+        </ts-radio-group>
+        <span class="ml-3">values : {{radioValue}}</span>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        自定义
+    </div>
+    <div class="card-body">
+        <ts-radio-group value="Right" [(value)]="radioValue">
+            <div class="p-2 bg-info text-white d-inline-block">
+                <ts-radio [value]="1" label="先生" color="white"></ts-radio>
+            </div>
+            <div class="p-2 bg-danger text-white d-inline-block">
+                <ts-radio [value]="2" label="女士" color="white"></ts-radio>
+            </div>
+            <div class="p-2 bg-secondary text-white d-inline-block">
+                <ts-radio [value]="3" label="保密" color="white"></ts-radio>
+            </div>
+        </ts-radio-group>
+        <span class="ml-3">values : {{radioValue}}</span>
+        <br><br>
+        <ts-checkbox-group [(values)]="checkboxValue">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <ts-checkbox [value]="1" label="Apple"></ts-checkbox>
+                            </h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <ts-checkbox [value]="2" label="Banana"></ts-checkbox>
+                            </h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <ts-checkbox [value]="3" label="Carota"></ts-checkbox>
+                            </h4>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ts-checkbox-group>
+        <span class="ml-3">values : {{radioValue}}</span>
+    </div>
+</div>

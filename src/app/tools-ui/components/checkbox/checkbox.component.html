@@ -1,0 +1,9 @@
+<span *ngIf="type==='square'" (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}"> 
+    <i *ngIf="!checked" class="fa fa-square-o fa-fw fa-lg text-{{defaultColor||'dark'}}"></i>
+    <i *ngIf="checked" class="fa fa-square fa-fw fa-lg text-{{activeColor||'dark'}}"></i>
+</span>
+<span *ngIf="type==='check'" (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}"> 
+    <i *ngIf="!checked" class="fa fa-square-o fa-fw fa-lg text-{{defaultColor||'dark'}}"></i>
+    <i *ngIf="checked" class="fa fa-check-square fa-fw fa-lg text-{{activeColor||'dark'}}"></i>
+</span>
+<span (click)="changeStatus()" [ngStyle]="{'cursor':'pointer'}" class="text-{{checked?activeColor:defaultColor||'dark'}}">{{label||''}}</span>

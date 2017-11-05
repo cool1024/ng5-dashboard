@@ -7,18 +7,21 @@
             <h4 class="m-0">ToolsUI</h4>
         </div>
         <div class="d-table-cell align-middle p-3 t-breadcrumb">
-            <span>
+            <span routerLink="/" class="pointer">
                 <i class="fa fa-fw fa-home"></i>
                 首页
             </span>
-            <span>
-                <i class="fa fa-fw fa-table"></i>
-                表格
-            </span>
-            <span>
-                <i class="fa fa-fw fa-tablet"></i>
-                标准
-            </span>
+            <ng-template ngFor let-item [ngForOf]="breadcrumbs">
+                <span *ngIf="item.json.url!==null" routerLink="{{item.json.url}}" class="pointer">
+                    <i class="{{item.json.icon}}"></i>{{item.json.title}}
+                </span>
+                <span *ngIf="item.json.url===null">
+                    <i class="{{item.json.icon}}"></i>{{item.json.title}}
+                </span>
+            </ng-template>
+            <!-- <span *ngFor="let breadcrumb of breadcrumbs">
+                <i class="{{breadcrumb.json.icon}}"></i>{{breadcrumb.json.title}}
+            </span> -->
         </div>
         <div class="d-table-cell align-middle pr-2">
             <form class="form-inline pull-right">
