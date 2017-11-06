@@ -22,3 +22,13 @@
 .t-breadcrumb span:last-child::after {
     content: '';
 }
+
+.head-icon {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.head-icon-group {
+    width: 110px;
+}

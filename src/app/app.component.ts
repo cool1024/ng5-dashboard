@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  loginStatus = false;
+  loginStatus = true;
 
   menuCanLoad(): boolean {
     return this.loginStatus;

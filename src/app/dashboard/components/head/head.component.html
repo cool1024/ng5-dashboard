@@ -19,19 +19,24 @@
                     <i class="{{item.json.icon}}"></i>{{item.json.title}}
                 </span>
             </ng-template>
-            <!-- <span *ngFor="let breadcrumb of breadcrumbs">
-                <i class="{{breadcrumb.json.icon}}"></i>{{breadcrumb.json.title}}
-            </span> -->
         </div>
         <div class="d-table-cell align-middle pr-2">
-            <form class="form-inline pull-right">
-                <div class="input-group">
-                    <input type="text" class="form-control border-0 shadow-0" placeholder="关键词...">
-                    <span class="input-group-addon bg-white border-0">
-                        <i class="fa fa-fw fa-search"></i>
-                    </span>
+            <div class="d-table w-100">
+                <div class="d-table-cell">
+                    <form class="form-inline pull-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 shadow-0" placeholder="关键词...">
+                            <span class="input-group-addon bg-white border-0">
+                                <i class="fa fa-fw fa-search"></i>
+                            </span>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div class="d-table-cell align-middle text-right head-icon-group">
+                    <a class="fa fa-fw fa-sign-out head-icon" title="退出登入"></a>
+                    <a class="fa fa-fw fa-cog head-icon" title="系统设置"></a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
