@@ -1,0 +1,29 @@
+.left-icon {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    color: white;
+    border-radius: 5px;
+    font-size: 30px;
+    margin-top: -40px;
+    box-shadow: 1px 2px 3px #d8d8d8;
+}
+
+.icon-item {
+    padding-left: 100px;
+}
+
+.bg-warning {
+    background-color: #f0ad4e !important;
+}
+
+.text-warning {
+    color: #f0ad4e !important;
+}
+
+.row {
+    margin: 0px;
+}
