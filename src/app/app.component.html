@@ -1,7 +1,8 @@
-<dashboard-head></dashboard-head>
-<dashboard-menu></dashboard-menu>
-<dashboard-content>
+<dashboard-head *ngIf="headCanLoad()"></dashboard-head>
+<dashboard-menu *ngIf="menuCanLoad()"></dashboard-menu>
+<dashboard-content *ngIf="contentCanLoad()">
     <div class="m-2">
         <router-outlet></router-outlet>
     </div>
 </dashboard-content>
+<dashboard-login *ngIf="!loginStatus"></dashboard-login>

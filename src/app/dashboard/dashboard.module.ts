@@ -6,6 +6,7 @@ import { DashboardRoutingModule } from './dashboard.routing';
 import { HeadComponent } from './components/head/head.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ContentDirective } from './components/content/content.directive';
+import { LoginComponent } from './components/login/login.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -19,6 +20,7 @@ import { ErrorComponent } from './pages/error/error.component';
   declarations: [
     HeadComponent,
     MenuComponent,
+    LoginComponent,
     ContentDirective,
     ErrorComponent,
     HomeComponent,
@@ -26,6 +28,7 @@ import { ErrorComponent } from './pages/error/error.component';
   exports: [
     HeadComponent,
     MenuComponent,
+    LoginComponent,
     ContentDirective,
   ]
 })

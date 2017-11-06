@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  loginStatus = false;
+
+  menuCanLoad(): boolean {
+    return this.loginStatus;
+  }
+
+  headCanLoad(): boolean {
+    return this.loginStatus;
+  }
+
+  contentCanLoad(): boolean {
+    return this.loginStatus;
+  }
 }
