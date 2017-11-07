@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pagination, SearchParams } from './../../../../tools-ui';
 
 const datas = [
@@ -31,6 +31,8 @@ const datas = [
 })
 export class SimpleComponent implements OnInit {
 
+  @ViewChild('loading') flash: any;
+
   // 分页参数
   pagination = new Pagination();
 
@@ -57,7 +59,14 @@ export class SimpleComponent implements OnInit {
 
   // 换页事件(特别的更改每页数据量也会触发此事件)
   pageChanged() {
-    this.list = datas.slice(this.pagination.offset, this.pagination.offset + this.pagination.limit);
+    this.flash.loading();
+
+    // 模拟数据加载过程
+    setTimeout(() => {
+      this.list = datas.slice(this.pagination.offset, this.pagination.offset + this.pagination.limit);
+      this.flash.complete();
+    }, 1000);
+
   }
 
   // 搜索方法

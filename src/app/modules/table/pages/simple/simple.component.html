@@ -45,7 +45,7 @@
                     <th *ngFor="let th of theads" class="border-0">{{th}}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
                 <tr *ngFor="let item of list" class="mat-cell">
                     <td>{{item.position}}</td>
                     <td>
@@ -74,7 +74,8 @@
             </tbody>
         </table>
         <div class="text-right">
-            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true" [(value)]="this.pagination.limit" (valueChange)="pageChanged()" btnClass="btn-outline-info border-muted" [dropup]="true"></ts-dropdown>
+            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true" [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+                [dropup]="true"></ts-dropdown>
             <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页" colors="btn-outline-info border-muted"></ts-pagination>
         </div>
     </div>

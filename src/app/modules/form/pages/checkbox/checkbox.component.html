@@ -4,9 +4,7 @@
     </div>
     <div class="card-body">
         <ts-checkbox-group [(values)]="checkboxValue">
-            <ts-checkbox [value]="1" label="Apple"></ts-checkbox>
-            <ts-checkbox [value]="2" label="Banana"></ts-checkbox>
-            <ts-checkbox [value]="3" label="Carota"></ts-checkbox>
+            <ts-checkbox *ngFor="let checkbox of checkboxs" [value]="checkbox.value" [label]="checkbox.text"></ts-checkbox>
         </ts-checkbox-group>
         <span class="ml-3">values : {{checkboxValue}}</span>
     </div>
@@ -79,5 +77,34 @@
             </div>
         </ts-checkbox-group>
         <span class="ml-3">values : {{radioValue}}</span>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        资料卡片（选择结果）
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">属性</th>
+                    <th scope="col">文本</th>
+                    <th scope="col">值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>性别</td>
+                    <td>{{radioValue}}</td>
+                    <td>{{radioValue}}</td>
+                </tr>
+                <tr>
+                    <td>喜欢的食物</td>
+                    <td>{{checkboxValue}}</td>
+                    <td>{{checkboxValue}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

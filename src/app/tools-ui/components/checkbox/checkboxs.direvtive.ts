@@ -20,7 +20,6 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (!simpleChanges.values.isFirstChange() && !!simpleChanges.values) {
-      this.values = simpleChanges.values.currentValue;
       this.replyValue();
     }
   }
@@ -28,15 +27,17 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
   replyValue() {
     const defaultValues = this.getDefaultValues();
     const checkboxList = this.checkboxList.toArray();
-    checkboxList.forEach((_, i) => {
-      checkboxList[i].checked = false;
-    });
-    this.values.forEach(value => {
+    setTimeout(() => {
+      checkboxList.forEach((_, i) => {
+        checkboxList[i].checked = false;
+      });
+      this.values.forEach(value => {
 
-      const i = defaultValues.indexOf(value);
-      if (i >= 0) {
-        checkboxList[i].checked = true;
-      }
+        const i = defaultValues.indexOf(value);
+        if (i >= 0) {
+          checkboxList[i].checked = true;
+        }
+      });
     });
   }
 

@@ -27,8 +27,6 @@ export class MenuComponent implements OnInit {
       title: '功能表格',
       children: [
         { title: '标准表格', url: '/table/simple' },
-        { title: '复杂表格', url: '/table/full' },
-        { title: '自定义表格', url: '/table/diy' },
       ]
     },
     {

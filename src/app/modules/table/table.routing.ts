@@ -6,8 +6,6 @@ import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service
 
 const routes: Routes = [
   { path: 'simple', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['表格', 'table'], ['标准', 'tablet']]) } },
-  { path: 'full', component: SimpleComponent },
-  { path: 'diy', component: SimpleComponent },
 ];
 
 @NgModule({

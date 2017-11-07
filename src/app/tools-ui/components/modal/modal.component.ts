@@ -8,43 +8,43 @@ import { ModalDirective } from './modal.directive';
 })
 export class ModalComponent {
 
-  @ViewChild('pad') pad: any
+  @ViewChild('pad') pad: any;
   @ViewChild(ModalDirective) modalHost: ModalDirective;
 
-  show: boolean
+  show: boolean;
 
-  size: string
+  size: string;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
-    this.show = false
-    this.size = ''
+    this.show = false;
+    this.size = '';
   }
 
   loadComponent(content: any): ComponentRef<any> {
 
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(content)
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(content);
 
-    const viewContainerRef = this.modalHost.viewContainerRef
+    const viewContainerRef = this.modalHost.viewContainerRef;
 
-    viewContainerRef.clear()
+    viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent(componentFactory)
+    const componentRef = viewContainerRef.createComponent(componentFactory);
 
-    return componentRef
+    return componentRef;
 
   }
 
   open() {
-    this.show = true
+    this.show = true;
   }
 
   close() {
-    this.show = false
+    this.show = false;
   }
 
   tryClose(event) {
     if (event.target === this.pad.nativeElement) {
-      this.close()
+      this.close();
     }
   }
 
