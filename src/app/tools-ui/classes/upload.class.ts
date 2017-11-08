@@ -1,4 +1,4 @@
-import { UploadingProgress, UploadResult } from './../interfaces/upload-result.interface'
+import { UploadingProgress, UploadResult } from './../interfaces/upload-result.interface';
 import { SafeResourceUrl } from '@angular/platform-browser';
 
 export class TSUploadResult implements UploadResult {

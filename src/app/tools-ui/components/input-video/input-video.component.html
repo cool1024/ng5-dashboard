@@ -1,0 +1,11 @@
+<input #input_file type="file" [hidden]="true" accept="video/*" (change)="changeFile($event.target.files)">
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn {{btnClass||'btn-dark'}}" (click)="input_file.click()"><i class="fa fa-folder-open-o fa-fw fa-lg" aria-hidden="true"></i>{{title||'OpenFile'}}</button>
+    <button *ngIf="useUploader&&!autoUpload" type="button" class="btn {{btnClass||'btn-dark'}}" (click)="tryUpload()"><i class="fa fa-upload fa-fw fa-lg" aria-hidden="true"></i>{{uploaderTitle}}</button>
+    <button type="button" class="btn {{btnClass||'btn-dark'}}" (click)="cleanInput()"><i class="fa fa-remove fa-fw" aria-hidden="true"></i></button>
+</div>
+<br>
+<video class="p-1 mt-1 rounded-0 border border-muted" [ngStyle]="videoStyle||{'width':'300px','height':'200px'}" [src]="src" *ngIf="showVideo&&!showLoading" controls="true"></video>
+<div class="p-1 mt-1 rounded-0 border border-muted text-center" [ngStyle]="videoStyle||{'width':'300px','height':'200px','line-height':'200px'}" *ngIf="showLoading">
+    {{loaded}}
+</div>

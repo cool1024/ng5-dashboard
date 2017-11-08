@@ -43,6 +43,7 @@ export class MenuComponent implements OnInit {
       title: '文件上传',
       children: [
         { title: '图片上传', url: '/upload/simple' },
+        { title: '视频上传', url: '/upload/video' },
       ]
     },
     {

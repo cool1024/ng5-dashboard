@@ -10,12 +10,14 @@ export { ModalModule as TSModalModule } from './modules/modal.module';
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
 export { UploadResult, UploadingProgress } from './interfaces/upload-result.interface';
+export { VideoConfig } from './interfaces/video-config.interface';
 
 /*tool interfaces*/
 
 /*tool classes*/
 export { Pagination } from './classes/pagination.class';
 export { SearchParams } from './classes/search.class';
+export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
 
 /*tool services*/
 export { ModalService as TSModalService } from './components/modal/modal.service';

@@ -8,12 +8,16 @@ import { UploadRoutingModule } from './upload.routing';
 
 /*页面组件*/
 import { SimpleComponent } from './pages/simple/simple.component';
+import { VideoComponent } from './pages/video/video.component';
 
 @NgModule({
   imports: [
     TSFileModule,
     UploadRoutingModule,
   ],
-  declarations: [SimpleComponent]
+  declarations: [
+    SimpleComponent,
+    VideoComponent,
+  ]
 })
 export class UploadModule { }

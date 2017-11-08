@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ImageConfig, UploadingProgress, UploadResult } from './../../../../tools-ui';
 import { Observable } from 'rxjs/Observable';
 @Component({
-  selector: 'app-simple',
   templateUrl: './simple.component.html',
   styleUrls: ['./simple.component.css']
 })
