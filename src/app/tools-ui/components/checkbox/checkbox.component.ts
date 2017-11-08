@@ -1,10 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ts-checkbox',
   templateUrl: './checkbox.component.html',
 })
-export class CheckboxComponent implements OnChanges {
+export class CheckboxComponent implements OnInit {
 
   @Input() label: string;
   @Input() value: any;
@@ -20,14 +20,9 @@ export class CheckboxComponent implements OnChanges {
     this.checked = false;
   }
 
-  ngOnChanges(simpleChanges: SimpleChanges) {
-
-    if (!!simpleChanges.checked && !simpleChanges.checked.isFirstChange()) {
-      this.checked = simpleChanges.checked.currentValue;
-    }
-
-    if (!!simpleChanges.color && !simpleChanges.color.isFirstChange()) {
-      this.activeColor = this.defaultColor = this.color = simpleChanges.color.currentValue;
+  ngOnInit() {
+    if (this.color) {
+      this.activeColor = this.defaultColor = this.color;
     }
   }
 

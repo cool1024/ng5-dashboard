@@ -12,6 +12,10 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
   @Output() valuesChange = new EventEmitter<any>();
   @ContentChildren(forwardRef(() => CheckboxComponent)) checkboxList: QueryList<CheckboxComponent>;
 
+  // 内部变化
+  isInsideChange = false;
+
+
   constructor() { }
 
   ngAfterContentInit() {
@@ -19,8 +23,11 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    if (!simpleChanges.values.isFirstChange() && !!simpleChanges.values) {
-      this.replyValue();
+    if (simpleChanges.values && !simpleChanges.values.isFirstChange()) {
+      if (!this.isInsideChange) {
+        this.replyValue();
+      }
+      this.isInsideChange = false;
     }
   }
 
@@ -28,20 +35,18 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
     const defaultValues = this.getDefaultValues();
     const checkboxList = this.checkboxList.toArray();
     setTimeout(() => {
-      checkboxList.forEach((_, i) => {
-        checkboxList[i].checked = false;
-      });
-      this.values.forEach(value => {
-
-        const i = defaultValues.indexOf(value);
-        if (i >= 0) {
-          checkboxList[i].checked = true;
+      for (const checkbox of checkboxList) {
+        if (defaultValues.indexOf(checkbox.value) >= 0) {
+          checkbox.checked = true;
+        } else {
+          checkbox.checked = false;
         }
-      });
+      }
     });
   }
 
   getGroupValue() {
+    this.isInsideChange = true;
     this.values = [];
     this.checkboxList.forEach(checkbox => {
       if (checkbox.checked === true) {
