@@ -8,6 +8,8 @@ export { FileModule as TSFileModule } from './modules/file.module';
 export { ModalModule as TSModalModule } from './modules/modal.module';
 
 /*const configs*/
+export { ImageConfig } from './interfaces/image-config.interface';
+export { UploadResult, UploadingProgress } from './interfaces/upload-result.interface';
 
 /*tool interfaces*/
 

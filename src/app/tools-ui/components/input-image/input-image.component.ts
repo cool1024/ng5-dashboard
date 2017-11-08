@@ -59,7 +59,7 @@ export class InputImageComponent implements OnChanges {
     this.isLoading = false;
     this.hasUpload = true;
     input.value = '';
-    this.src = this.default;
+    this.src = this.default || '';
     this.onChange.emit({ file: null, image: this.src });
   }
 

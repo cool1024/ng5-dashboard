@@ -33,7 +33,7 @@ export class InputImagesComponent implements OnInit {
   changeFile(files: File[]) {
     for (let i = 0; i < files.length; i++) {
       const url = window.URL.createObjectURL(files[i]);
-      this.images.push({ type: 'file', file: files[i], url, uploading: false })
+      this.images.push({ type: 'file', file: files[i], url, uploading: false });
       this.onChange.emit(this.images);
     }
   }

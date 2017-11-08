@@ -42,10 +42,7 @@ export class MenuComponent implements OnInit {
       icon: 'fa fa-folder-open-o fa-fw',
       title: '文件上传',
       children: [
-        { title: '单图上传', url: '/' },
-        { title: '多图上传', url: '/' },
-        { title: '视频上传', url: '/' },
-        { title: '简单文件', url: '/' },
+        { title: '图片上传', url: '/upload/simple' },
       ]
     },
     {
