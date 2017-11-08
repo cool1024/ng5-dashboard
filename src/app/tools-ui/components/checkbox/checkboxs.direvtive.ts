@@ -12,9 +12,7 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
   @Output() valuesChange = new EventEmitter<any>();
   @ContentChildren(forwardRef(() => CheckboxComponent)) checkboxList: QueryList<CheckboxComponent>;
 
-  // 内部变化
-  isInsideChange = false;
-
+  private isInsideChange = false;
 
   constructor() { }
 
@@ -32,11 +30,10 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
   }
 
   replyValue() {
-    const defaultValues = this.getDefaultValues();
     const checkboxList = this.checkboxList.toArray();
     setTimeout(() => {
       for (const checkbox of checkboxList) {
-        if (defaultValues.indexOf(checkbox.value) >= 0) {
+        if (this.values.indexOf(checkbox.value) >= 0) {
           checkbox.checked = true;
         } else {
           checkbox.checked = false;
@@ -54,13 +51,5 @@ export class CheckboxsDirective implements AfterContentInit, OnChanges {
       }
     });
     this.valuesChange.emit(this.values);
-  }
-
-  getDefaultValues(): Array<any> {
-    const values = new Array<any>();
-    this.checkboxList.forEach(checkbox => {
-      values.push(checkbox.value);
-    });
-    return values;
   }
 }

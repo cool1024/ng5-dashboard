@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckboxComponent implements OnInit {
 
-  checkboxValue = [1, 2, 3];
+  checkboxValue = [1, 3];
   radioValue = 1;
 
   checkboxs = [{ text: 'Apple', value: 1 }, { text: 'Banana', value: 2 }, { text: 'Carota', value: 3 }];
@@ -24,5 +24,14 @@ export class CheckboxComponent implements OnInit {
   // 清空
   cancelAllCheckbox() {
     this.checkboxValue = [];
+  }
+
+  // 文本
+  checkboxLables(): string {
+    const lables = new Array<string>();
+    this.checkboxValue.forEach(value => {
+      lables.push(this.checkboxs[value - 1].text);
+    });
+    return lables.join();
   }
 }

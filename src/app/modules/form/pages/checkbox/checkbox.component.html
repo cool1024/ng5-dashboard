@@ -26,11 +26,11 @@
             <ts-radio [value]="3" label="保密" color="secondary"></ts-radio>
         </ts-radio-group>
 
-        <span class="ml-3">values : {{radioValue}}</span>
+        <!-- <span class="ml-3">values : {{radioValue}}</span> -->
     </div>
 </div>
 <br>
-<!-- <div class="card rounded-0">
+<div class="card rounded-0">
     <div class="card-header bg-white">
         自定义
     </div>
@@ -46,7 +46,7 @@
                 <ts-radio [value]="3" label="保密" color="white"></ts-radio>
             </div>
         </ts-radio-group>
-        <span class="ml-3">values : {{radioValue}}</span>
+        <!-- <span class="ml-3">values : {{radioValue}}</span> -->
         <br><br>
         <ts-checkbox-group [(values)]="checkboxValue">
             <div class="row">
@@ -82,9 +82,9 @@
                 </div>
             </div>
         </ts-checkbox-group>
-        <span class="ml-3">values : {{radioValue}}</span>
+        <!-- <span class="ml-3">values : {{radioValue}}</span> -->
     </div>
-</div> -->
+</div>
 <br>
 <div class="card rounded-0">
     <div class="card-header bg-white">
@@ -102,12 +102,12 @@
             <tbody>
                 <tr>
                     <td>性别</td>
-                    <td>{{radioValue}}</td>
+                    <td>{{radios[radioValue-1].text}}</td>
                     <td>{{radioValue}}</td>
                 </tr>
                 <tr>
                     <td>喜欢的食物</td>
-                    <td>{{checkboxValue}}</td>
+                    <td>{{checkboxLables()}}</td>
                     <td>{{checkboxValue}}</td>
                 </tr>
             </tbody>
