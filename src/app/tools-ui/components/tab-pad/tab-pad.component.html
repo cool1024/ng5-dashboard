@@ -1,0 +1,5 @@
+<ul class="nav nav-{{type||'tabs'}}" [ngClass]="{'justify-content-center': position==='center','justify-content-end':position==='right'||position==='end'}">
+    <li class="nav-item" *ngFor="let tab of tabs">
+        <span class="nav-link {{isActive(tab)?activeClass+' '+getBgColor():''}}" [ngClass]="{'active' :isActive(tab)}" (click)="changeTab(tab)">{{tab}}</span>
+    </li>
+</ul>

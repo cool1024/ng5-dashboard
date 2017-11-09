@@ -48,11 +48,9 @@ export class MenuComponent implements OnInit {
     },
     {
       icon: 'fa fa-pencil-square-o fa-fw',
-      title: '编辑器',
+      title: '面板切换',
       children: [
-        { title: 'Markdown编辑器', url: '/' },
-        { title: '富文本', url: '/' },
-        { title: '在线聊天', url: '/' },
+        { title: 'tab切换', url: '/pad/tab' },
       ]
     },
   ];

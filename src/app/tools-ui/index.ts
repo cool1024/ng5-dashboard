@@ -6,6 +6,7 @@ export { SelectModule as TSSelectModule } from './modules/select.module';
 export { CheckboxModule as TSCheckboxModule } from './modules/checkbox.module';
 export { FileModule as TSFileModule } from './modules/file.module';
 export { ModalModule as TSModalModule } from './modules/modal.module';
+export { TabModule as TSTabModule } from './modules/tab.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';

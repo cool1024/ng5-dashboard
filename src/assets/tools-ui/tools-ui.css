@@ -77,6 +77,14 @@ a:visited {
     border-left: 3px solid transparent;
 }
 
+.tab-border-primary {
+    border-top: 3px solid #007bff !important;
+}
+
+.tab-border-info {
+    border-top: 3px solid #17a2b8 !important;
+}
+
 .border-muted {
     border-color: #efefef !important;
 }

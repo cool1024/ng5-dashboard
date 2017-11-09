@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'table', loadChildren: 'app/modules/table/table.module#TableModule' },
   { path: 'form', loadChildren: 'app/modules/form/form.module#FormModule' },
   { path: 'upload', loadChildren: 'app/modules/upload/upload.module#UploadModule' },
+  { path: 'pad', loadChildren: 'app/modules/pad/pad.module#PadModule' },
 ];
 
 @NgModule({
