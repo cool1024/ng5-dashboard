@@ -1,127 +1,384 @@
-<div class="card rounded-0">
-  <div class="card-header bg-white">集中折叠</div>
-  <div class="card-body">
-    <ts-collapses [auto]="true">
-      <div class="card">
-        <div class="card-header pointer" ts-triggle>
-          Collapse
+<div class="row">
+    <div class="col-md-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-white">集中折叠</div>
+            <div class="card-body">
+                <ts-collapses [auto]="true">
+                    <div class="card bg-info text-white rounded-0">
+                        <div class="card-header pointer" ts-triggle>
+                            1.点我展开>>
+                        </div>
+                        <div ts-collapse [open]="true">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-primary text-white rounded-0">
+                        <div class="card-header pointer" ts-triggle>
+                            2.点我展开>>
+                        </div>
+                        <div ts-collapse>
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-warning rounded-0">
+                        <div class="card-header pointer" ts-triggle>
+                            3.点我展开>>
+                        </div>
+                        <div ts-collapse>
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </ts-collapses>
+            </div>
         </div>
-        <div ts-collapse>
-          <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-            non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-            labore sustainable VHS.
-          </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-white">独立折叠</div>
+            <div class="card-body">
+                <div class="card bg-dark text-white rounded-0">
+                    <div class="card-header pointer" (click)="collapse1.triggle()">
+                        1.点我展开>>
+                    </div>
+                    <div ts-collapse #collapse1="tsCollapse" [open]="true">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-secondary text-white rounded-0">
+                    <div class="card-header pointer" (click)="collapse2.triggle()">
+                        2.点我展开>>
+                    </div>
+                    <div ts-collapse #collapse2="tsCollapse" [open]="false">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="card rounded-0">
+                    <div class="card-header pointer" (click)="collapse3.triggle()">
+                        3.点我展开>>
+                    </div>
+                    <div ts-collapse #collapse3="tsCollapse" [open]="false">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header pointer" ts-triggle>
-          Collapse
-        </div>
-        <div ts-collapse>
-          <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-            non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-            labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-    </ts-collapses>
-  </div>
+    </div>
 </div>
 <br>
 <div class="card rounded-0">
-  <div class="card-header bg-white">独立折叠</div>
-  <div class="card-body">
-    <div class="card">
-      <div class="card-header pointer" (click)="collapse1.triggle()">
-        Collapse
-      </div>
-      <div ts-collapse #collapse1="tsCollapse" [open]="false">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-          non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-          aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
+    <div class="card-header bg-white">个性化</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-3 col-lg-6">
+                <ul>
+                    <li>
+                        <span class="pointer" ts-triggle [clickTriggle]="ulOne" [class.text-primary]="ulOne.open">Lorem ipsum dolor sit amet</span>
+                        <ul ts-collapse #ulOne="tsCollapse" [open]="true">
+                            <li>Phasellus iaculis neque</li>
+                            <li>Purus sodales ultricies</li>
+                            <li>Vestibulum laoreet porttitor sem</li>
+                            <li>Ac tristique libero volutpat at</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="pointer" ts-triggle [clickTriggle]="ulTwo" [class.text-danger]="ulTwo.open">Lorem ipsum dolor sit amet</span>
+                        <ul ts-collapse #ulTwo="tsCollapse" [open]="false">
+                            <li>Phasellus iaculis neque</li>
+                            <li>Purus sodales ultricies</li>
+                            <li>Vestibulum laoreet porttitor sem</li>
+                            <li>Ac tristique libero volutpat at</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <ts-collapses [auto]="true">
+                    <ul>
+                        <li>
+                            <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+                            <ul ts-collapse>
+                                <li>Phasellus iaculis neque</li>
+                                <li>Purus sodales ultricies</li>
+                                <li>Vestibulum laoreet porttitor sem</li>
+                                <li>Ac tristique libero volutpat at</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+                            <ul ts-collapse>
+                                <li>Phasellus iaculis neque</li>
+                                <li>Purus sodales ultricies</li>
+                                <li>Vestibulum laoreet porttitor sem</li>
+                                <li>Ac tristique libero volutpat at</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+                            <ul ts-collapse>
+                                <li>Phasellus iaculis neque</li>
+                                <li>Purus sodales ultricies</li>
+                                <li>Vestibulum laoreet porttitor sem</li>
+                                <li>Ac tristique libero volutpat at</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+                            <ul ts-collapse [open]="true">
+                                <li>Phasellus iaculis neque</li>
+                                <li>Purus sodales ultricies</li>
+                                <li>Vestibulum laoreet porttitor sem</li>
+                                <li>Ac tristique libero volutpat at</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ts-collapses>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <ts-collapses [auto]="true">
+                    <ul class="list-group">
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>我的好友</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">22</span>
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/1.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/2.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/3.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>朋友</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">18</span>
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/1.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/2.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/3.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>同事</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">1</span>  
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/4.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/5.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/6.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </ts-collapses>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <ts-collapses [auto]="false">
+                    <ul class="list-group">
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>我的好友</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">22</span>
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/1.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/2.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/3.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>朋友</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">18</span>
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/1.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/2.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/3.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rounded-0">
+                            <div ts-triggle class="d-flex justify-content-between align-items-center pointer">
+                                <span>同事</span>
+                                <label>
+                                  <span class="badge badge-info badge-pill">1</span>  
+                                  <i class="fa fa-angle-right"></i>
+                                </label>
+                            </div>
+                            <div ts-collapse>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/4.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">拉封丹</p>
+                                        <p class="m-0"><small>若不团结，任何力量都是弱小的。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/5.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">左伊默</p>
+                                        <p class="m-0"><small>谁要是蔑视周围的人，谁就永远不会是伟大的人。</small></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="/assets/image/avatar/6.jpg" height="40" alt="avatar">
+                                    <div class="media-body">
+                                        <p class="m-0">韦伯斯特</p>
+                                        <p class="m-0"><small>人们在一起可以做出单独一个人所不能做出的事业；智慧、双手、力量结合在一起，几乎是万能的。</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </ts-collapses>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="card">
-      <div class="card-header pointer" (click)="collapse2.triggle()">
-        Collapse
-      </div>
-      <div ts-collapse #collapse2="tsCollapse" [open]="false">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-          non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-          aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<div class="card rounded-0">
-  <div class="card-header bg-white">个性化</div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6">
-        <ul>
-          <li>
-            <span class="pointer" ts-triggle [clickTriggle]="ulOne" [class.text-primary]="ulOne.open">Lorem ipsum dolor sit amet</span>
-            <ul ts-collapse #ulOne="tsCollapse" [open]="true">
-              <li>Phasellus iaculis neque</li>
-              <li>Purus sodales ultricies</li>
-              <li>Vestibulum laoreet porttitor sem</li>
-              <li>Ac tristique libero volutpat at</li>
-            </ul>
-          </li>
-          <li>
-            <span class="pointer" ts-triggle [clickTriggle]="ulTwo" [class.text-danger]="ulTwo.open">Lorem ipsum dolor sit amet</span>
-            <ul ts-collapse #ulTwo="tsCollapse" [open]="false">
-              <li>Phasellus iaculis neque</li>
-              <li>Purus sodales ultricies</li>
-              <li>Vestibulum laoreet porttitor sem</li>
-              <li>Ac tristique libero volutpat at</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <ts-collapses [auto]="true">
-          <ul>
-            <li>
-              <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
-              <ul ts-collapse>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
-              </ul>
-            </li>
-            <li>
-              <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
-              <ul ts-collapse [open]="true">
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
-              </ul>
-            </li>
-          </ul>
-        </ts-collapses>
-      </div>
-    </div>
-  </div>
 </div>

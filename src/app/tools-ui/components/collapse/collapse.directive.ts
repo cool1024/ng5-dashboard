@@ -1,4 +1,5 @@
 import { Directive, ElementRef, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { HtmlDomService } from './../../services/htmldom.services';
 
 @Directive({
   selector: '[ts-collapse]',
@@ -6,13 +7,15 @@ import { Directive, ElementRef, AfterViewInit, Input, Output, EventEmitter } fro
 })
 export class CollapseDirective implements AfterViewInit {
 
-  @Input() open = false;
+  @Input() open: boolean;
 
   @Output() stateChange = new EventEmitter<boolean>();
 
   private pad: HTMLElement;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private htmlDomService: HtmlDomService) {
+    this.open = false;
+  }
 
   ngAfterViewInit() {
     this.pad = this.elementRef.nativeElement;
@@ -23,18 +26,19 @@ export class CollapseDirective implements AfterViewInit {
 
   collapseClose() {
     this.open = false;
-    this.pad.style.height = '0px';
+    const height = this.htmlDomService.getExpHeight(this.pad);
+    this.pad.style.height = height + 'px';
+    setTimeout(() => { this.pad.style.height = '0px'; }, 100);
     this.stateChange.emit(this.open);
   }
 
   collapseOpen() {
     this.open = true;
     this.pad.style.height = '';
-    this.pad.style.visibility = 'hidden';
-    const height = this.pad.clientHeight;
+    const height = this.htmlDomService.getExpHeight(this.pad);
     this.pad.style.height = '0px';
-    this.pad.style.visibility = '';
     setTimeout(() => { this.pad.style.height = height + 'px'; });
+    setTimeout(() => { this.pad.style.height = ''; }, 350);
     this.stateChange.emit(this.open);
   }
 
