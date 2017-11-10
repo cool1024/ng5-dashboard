@@ -51,6 +51,7 @@ export class MenuComponent implements OnInit {
       title: '面板切换',
       children: [
         { title: 'tab切换', url: '/pad/tab' },
+        { title: 'collapse折叠', url: '/pad/collapse'},
       ]
     },
   ];

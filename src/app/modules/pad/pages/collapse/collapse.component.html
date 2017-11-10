@@ -1,0 +1,127 @@
+<div class="card rounded-0">
+  <div class="card-header bg-white">集中折叠</div>
+  <div class="card-body">
+    <ts-collapses [auto]="true">
+      <div class="card">
+        <div class="card-header pointer" ts-triggle>
+          Collapse
+        </div>
+        <div ts-collapse>
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+            non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+            labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header pointer" ts-triggle>
+          Collapse
+        </div>
+        <div ts-collapse>
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+            non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+            labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </ts-collapses>
+  </div>
+</div>
+<br>
+<div class="card rounded-0">
+  <div class="card-header bg-white">独立折叠</div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header pointer" (click)="collapse1.triggle()">
+        Collapse
+      </div>
+      <div ts-collapse #collapse1="tsCollapse" [open]="false">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+          non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+          aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+          labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header pointer" (click)="collapse2.triggle()">
+        Collapse
+      </div>
+      <div ts-collapse #collapse2="tsCollapse" [open]="false">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+          non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+          aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+          labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card rounded-0">
+  <div class="card-header bg-white">个性化</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li>
+            <span class="pointer" ts-triggle [clickTriggle]="ulOne" [class.text-primary]="ulOne.open">Lorem ipsum dolor sit amet</span>
+            <ul ts-collapse #ulOne="tsCollapse" [open]="true">
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
+            </ul>
+          </li>
+          <li>
+            <span class="pointer" ts-triggle [clickTriggle]="ulTwo" [class.text-danger]="ulTwo.open">Lorem ipsum dolor sit amet</span>
+            <ul ts-collapse #ulTwo="tsCollapse" [open]="false">
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ts-collapses [auto]="true">
+          <ul>
+            <li>
+              <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+              <ul ts-collapse>
+                <li>Phasellus iaculis neque</li>
+                <li>Purus sodales ultricies</li>
+                <li>Vestibulum laoreet porttitor sem</li>
+                <li>Ac tristique libero volutpat at</li>
+              </ul>
+            </li>
+            <li>
+              <span class="pointer" ts-triggle>Lorem ipsum dolor sit amet</span>
+              <ul ts-collapse [open]="true">
+                <li>Phasellus iaculis neque</li>
+                <li>Purus sodales ultricies</li>
+                <li>Vestibulum laoreet porttitor sem</li>
+                <li>Ac tristique libero volutpat at</li>
+              </ul>
+            </li>
+          </ul>
+        </ts-collapses>
+      </div>
+    </div>
+  </div>
+</div>

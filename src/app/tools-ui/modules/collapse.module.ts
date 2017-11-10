@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CollapsePadComponent } from './../components/collapse/collapse.component';
+import { TriggleModule } from './triggle.module';
+import { CollapseDirective } from './../components/collapse/collapse.directive';
+import { CollapsesDirective } from './../components/collapse/collapses.directive';
 
 @NgModule({
   imports: [
-    CommonModule
+    TriggleModule
   ],
   declarations: [
-    CollapsePadComponent
+    CollapseDirective,
+    CollapsesDirective,
   ],
   exports: [
-    CommonModule,
-    CollapsePadComponent,
+    TriggleModule,
+    CollapseDirective,
+    CollapsesDirective,
   ]
 })
 export class CollapseModule { }
