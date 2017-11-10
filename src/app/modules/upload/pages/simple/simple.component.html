@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-6 col-lg-3">
         <p>个性化设置</p>
-        <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"></ts-image><br>
+        <ts-image (onChange)="testFunction($event)" openBtnClassName="btn btn-white" openTitle="选择图片" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"></ts-image><br>
         <ts-image openTitle="选择图片"></ts-image><br>
         <ts-image openBtnClassName="btn btn-dark" openTitle="选择图片" resetBtnClassName="btn btn-dark" removeBtnClassName="btn btn-dark"></ts-image><br>
         <ts-image openBtnClassName="btn btn-info" openTitle="选择图片" resetBtnClassName="btn btn-info" removeBtnClassName="btn btn-info"></ts-image>

@@ -22,8 +22,6 @@ export class InputImageComponent implements OnChanges {
 
   @Output() onChange = new EventEmitter<{ file: File, image: string | SafeResourceUrl }>();
 
-  @ViewChildren('img_pad') img_pad: HTMLImageElement;
-
   showImage = false;
   isLoading = false;
   hasUpload = true;
@@ -41,7 +39,7 @@ export class InputImageComponent implements OnChanges {
     if (changes.src && changes.src.firstChange) { this.default = changes.src.currentValue; }
   }
 
-  changeFile(img: HTMLImageElement, files: File[]) {
+  changeFile(files: File[]) {
     this.hasUpload = false;
     this.isLoading = false;
     if (files.length > 0) {

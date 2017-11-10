@@ -43,8 +43,12 @@ export class SimpleComponent implements OnInit {
     auto: true
   };
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() { }
+
+  testFunction($event) {
+    console.log($event);
+  }
 
 }

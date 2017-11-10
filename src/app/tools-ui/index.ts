@@ -7,6 +7,7 @@ export { CheckboxModule as TSCheckboxModule } from './modules/checkbox.module';
 export { FileModule as TSFileModule } from './modules/file.module';
 export { ModalModule as TSModalModule } from './modules/modal.module';
 export { TabModule as TSTabModule } from './modules/tab.module';
+export { CollapseModule as TSCollapseModule } from './modules/collapse.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';

@@ -1,4 +1,4 @@
-<input #input_file type="file" [hidden]="true" accept="image/*" (change)="changeFile(img_pad,$event.target.files)">
+<input #input_file type="file" [hidden]="true" accept="image/*" (change)="changeFile($event.target.files)">
 <div class="btn-group" role="group">
     <button type="button" [ngClass]="openBtnClassName||'btn btn-secondary'" (click)="input_file.click()"><i class="fa fa-file-image-o fa-fw" aria-hidden="true"></i>{{openTitle||'Open File'}}</button>
     <button *ngIf="useUploader&&!autoUpload" type="button" [ngClass]="uploadBtnClassName||'btn btn-primary'" (click)="uploadImage()"><i class="fa fa-upload fa-fw" aria-hidden="true"></i>{{uploaderTitle}}</button>
