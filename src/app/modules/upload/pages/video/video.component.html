@@ -1,15 +1,26 @@
-<div class="card rounded-0">
-    <div class="card-header bg-white">视频上传</div>
-    <div class="card-body">
-        <div class="d-table w-100">
-            <div class="d-table-cell">
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="defaultConfig"></ts-video>
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-white">视频上传</div>
+            <div class="card-body">
+                <div class="row w-100">
+                    <div class="col-xl-6">
+                        <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="defaultConfig"></ts-video>
+                    </div>
+                    <div class="col-xl-6">
+                        <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
+                    </div>
+                </div>
             </div>
-            <div class="d-table-cell">
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
-            </div>
-            <div class="d-table-cell">
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-white">自定义文件上传</div>
+            <div class="card-body">
+                <input type="file" ts-file #file="tsFile">
+                <button (click)="file.openFileDialog()" class="btn btn-danger" type="button">
+                    <i class="fa fa-folder-o fa-fw"></i>选择文件</button>
             </div>
         </div>
     </div>
