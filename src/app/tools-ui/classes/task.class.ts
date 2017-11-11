@@ -48,3 +48,24 @@ export class TaskQuery {
     }
     ready(doFunc: Function) { this._ready = doFunc; }
 }
+
+export class TaskRunner {
+    private _ready = new Function;
+    private taskCx = 0;
+    private taskQuery = new Array<Task>();
+    private params = new Array<any>();
+    push(task) { this.taskQuery.push(task); }
+    run() {
+        this.taskCx = 0;
+        for (let i = 0; i < this.taskQuery.length; i++) {
+            this.taskQuery[i].next(param => {
+                this.params[i] = param;
+                this.taskCx++;
+                if (this.taskCx === this.taskQuery.length) {
+                    this._ready(this.params);
+                }
+            });
+        }
+    }
+    ready(doFunc: Function) { this._ready = doFunc; }
+}
