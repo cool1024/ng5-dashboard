@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { BreadcrumbService } from './../../services/breadcrumb.service';
+import { AuthService } from './../../services/auth.service';
 import { Breadcrumb } from './../../classes/breadcrumb.class';
 
 @Component({
@@ -21,7 +22,12 @@ export class HeadComponent implements OnInit {
   // 当前的面包屑导航
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router, private breadcrumbService: BreadcrumbService) { }
+  constructor(private router: Router, private breadcrumbService: BreadcrumbService, private authService: AuthService) { }
+
+  // 登入状态
+  get loginStatus(): boolean {
+    return this.authService.isLoggedIn;
+  }
 
   ngOnInit() {
 
@@ -31,6 +37,11 @@ export class HeadComponent implements OnInit {
       this.breadcrumbs = activeBreadcrumb.breadcrumbs;
     });
 
+  }
+
+  // 退出登入
+  signOut() {
+    this.authService.setOut();
   }
 
 }

@@ -9,6 +9,9 @@ export { ModalModule as TSModalModule } from './modules/modal.module';
 export { TabModule as TSTabModule } from './modules/tab.module';
 export { TriggleModule as TSTriggleModule } from './modules/triggle.module';
 export { CollapseModule as TSCollapseModule } from './modules/collapse.module';
+export { ProgressModule as TSProgressModule } from './modules/progress.module';
+export { ToastModule as TSToastModule } from './modules/toast.module';
+export { ConfirmModule as TSConfirmModule } from './modules/confirm.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
@@ -24,3 +27,5 @@ export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
 
 /*tool services*/
 export { ModalService as TSModalService } from './components/modal/modal.service';
+export { ConfirmService as TSConfirmService } from './components/confirm/confirm.service';
+export { ToastService as TSToastService } from './components/toast/toast.service';

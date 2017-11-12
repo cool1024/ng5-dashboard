@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './dashboard/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  loginStatus = true;
+  constructor(private authService: AuthService) { }
+
+  get loginStatus(): boolean {
+    return this.authService.isLoggedIn;
+  }
 
   menuCanLoad(): boolean {
     return this.loginStatus;

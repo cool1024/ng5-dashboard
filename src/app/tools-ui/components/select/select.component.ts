@@ -41,6 +41,7 @@ export class SelectComponent {
   closeDropdown() {
     if (this.open === false) { return; }
     this.open = false;
+    this.searchKey = '';
   }
 
   trycloseDropdown($event) {
@@ -54,7 +55,7 @@ export class SelectComponent {
   setValue(item: { value: any, text: string }) {
     this.value = item.value;
     this.title = item.text;
-    this.searchKey = '';
+    // this.searchKey = '';a
     this.inputDom.nativeElement.value = this.title;
     this.valueChange.emit(item.value);
   }
@@ -82,7 +83,7 @@ export class SelectComponent {
   }
 
   get realTitle(): string {
-    if (this.searchKey) {
+    if (this.searchKey || this.open === true) {
       return this.searchKey;
     }
     return (this.value !== undefined && this.value != null) ? function (that: any) {

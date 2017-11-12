@@ -1,0 +1,7 @@
+<button (click)="confirm.danger('警告消息', '您正在进行危险的操作，请确认要这么做！', { okTitle: '确认', cancelTitle: '取消' });
+" type="button" class="btn btn-danger">危险操作</button>
+<button (click)="confirm.primary('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+" type="button" class="btn btn-primary">主要操作</button>
+<button (click)="confirm.light('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+" type="button" class="btn btn-light">主要操作</button>
+<button class="btn btn-dark" (click)="toast.dark('提示消息','操作成功~')">提示消息</button>

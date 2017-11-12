@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 /*tool-ui*/
-import { TSFileModule, } from './../../tools-ui';
+import { TSFileModule, TSProgressModule } from './../../tools-ui';
 
 /*路由模块*/
 import { UploadRoutingModule } from './upload.routing';
@@ -14,6 +14,7 @@ import { VideoComponent } from './pages/video/video.component';
   imports: [
     TSFileModule,
     UploadRoutingModule,
+    TSProgressModule,
   ],
   declarations: [
     SimpleComponent,

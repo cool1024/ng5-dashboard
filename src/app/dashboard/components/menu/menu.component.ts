@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
       title: '文件上传',
       children: [
         { title: '图片上传', url: '/upload/simple' },
-        { title: '视频上传', url: '/upload/video' },
+        { title: '其他上传', url: '/upload/video' },
       ]
     },
     {
@@ -51,7 +51,14 @@ export class MenuComponent implements OnInit {
       title: '面板切换',
       children: [
         { title: 'tab切换', url: '/pad/tab' },
-        { title: 'collapse折叠', url: '/pad/collapse'},
+        { title: 'collapse折叠', url: '/pad/collapse' },
+      ]
+    },
+    {
+      icon: 'fa fa-comments-o fa-fw',
+      title: '消息提示',
+      children: [
+        { title: '简单示例', url: '/message/simple' },
       ]
     },
   ];

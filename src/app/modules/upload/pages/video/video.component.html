@@ -1,26 +1,45 @@
-<div class="row">
-    <div class="col-xl-6">
-        <div class="card rounded-0">
+<div class="d-table">
+    <div class="d-table-cell">
+        <div class="card rounded-0 ml-3 mb-2" style="width:24rem">
             <div class="card-header bg-white">视频上传</div>
             <div class="card-body">
-                <div class="row w-100">
-                    <div class="col-xl-6">
-                        <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="defaultConfig"></ts-video>
-                    </div>
-                    <div class="col-xl-6">
-                        <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
-                    </div>
-                </div>
+                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="defaultConfig"></ts-video>
+                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
             </div>
         </div>
     </div>
-    <div class="col-xl-6">
-        <div class="card rounded-0">
+    <div class="d-table-cell">
+        <div class="card rounded-0 ml-3" style="width:24rem;">
             <div class="card-header bg-white">自定义文件上传</div>
             <div class="card-body">
-                <input type="file" ts-file #file="tsFile">
-                <button (click)="file.openFileDialog()" class="btn btn-danger" type="button">
-                    <i class="fa fa-folder-o fa-fw"></i>选择文件</button>
+                <input type="file" ts-file #fileObj="tsFile" (fileChange)="file=$event">
+                <button (click)="fileObj.openFileDialog()" class="btn btn-white" type="button"><i class="fa fa-folder-o fa-fw"></i>选择文件</button>
+                <div class="btn-group ml-3" role="group">
+                    <button (click)="fileObj.openFileDialog()" class="btn btn-white" type="button"><i class="fa fa-folder-o fa-fw"></i>选择文件</button>
+                    <button (click)="fileObj.removeFile()" class="btn btn-white"><i class="fa fa-remove fa-fw"></i></button>
+                </div>
+                <br>
+                <pre *ngIf="!!file" class="text-info pt-2">
+FileName : {{file.name}}
+FileSize : {{file.size}}
+FileType : {{file.type||'未知类型'}}
+FileDate : {{file.lastModifiedDate}}
+            </pre>
+            </div>
+        </div>
+    </div>
+    <div class="d-table-cell">
+        <div class="card rounded-0 ml-3" style="width:24rem;">
+            <div class="card-header bg-white">进度条</div>
+            <div class="card-body">
+                <ts-progress bgColor="bg-info" [useLable]="true" [striped]="true" [animated]="true" [value]="87"></ts-progress>
+                <br>
+                <ts-progress bgColor="bg-primary" [useLable]="true" [striped]="true" [animated]="true" [value]="80"></ts-progress>
+                <br>
+                <ts-progress bgColor="bg-danger" [useLable]="true" [striped]="true" [animated]="true" [value]="90"></ts-progress>
+                <br>
+                <ts-progress bgColor="bg-dark" [useLable]="true" [striped]="true" [animated]="true" [value]="100"></ts-progress>
+                <br>
             </div>
         </div>
     </div>
