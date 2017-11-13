@@ -12,7 +12,7 @@ import {
     <div *ngIf="show" class="{{positionClass}} position-fixed alert {{bgClass}} m-2" role="alert" style="width:20rem;z-index:9999" [@toastAnimate] >
       <h6 class="alert-heading">{{title}}
         <button (click)="show = false" type="button" class="close pull-right {{closeClass}}" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          &times;
         </button>
       </h6>
       <hr class="mb-2">

@@ -90,8 +90,14 @@ export class ConfirmService {
         cancelTitle?: string
         cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-warning text-white'; }
-        return this.create(title, message, options);
+        return this.create(title, message, {
+            bgColor: options.bgColor || 'rgba(0,0,0,0.2)',
+            cardClass: 'bg-warning',
+            closeClass: 'text-dark',
+            btnClass: 'text-dark',
+            cancelTitle: options.cancelTitle,
+            okTitle: options.okTitle
+        });
     }
     info(title: string, message: string, options?: {
         bgColor?: string,

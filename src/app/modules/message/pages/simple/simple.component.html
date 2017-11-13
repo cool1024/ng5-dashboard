@@ -1,7 +1,48 @@
-<button (click)="confirm.danger('警告消息', '您正在进行危险的操作，请确认要这么做！', { okTitle: '确认', cancelTitle: '取消' });
+<!-- <button (click)="confirm.danger('警告消息', '您正在进行危险的操作，请确认要这么做！', { okTitle: '确认', cancelTitle: '取消' });
 " type="button" class="btn btn-danger">危险操作</button>
 <button (click)="confirm.primary('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
 " type="button" class="btn btn-primary">主要操作</button>
 <button (click)="confirm.light('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
 " type="button" class="btn btn-light">主要操作</button>
-<button class="btn btn-dark" (click)="toast.dark('提示消息','操作成功~')">提示消息</button>
+<button class="btn btn-dark" (click)="toast.dark('提示消息','操作成功~')">提示消息</button> -->
+<div class="card rounded-0">
+    <div class="card-header bg-white">确认对话框</div>
+    <div class="card-body">
+        <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-danger">危险操作</button>
+        <button (click)="confirm.primary('提示', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-primary">重要操作</button>
+        <button (click)="confirm.info('信息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-info">一般操作</button>
+        <button (click)="confirm.warning('警告', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-warning">警告操作</button>
+        <button (click)="confirm.dark('Dark', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-dark">Dark</button>
+        <button (click)="confirm.light('Light', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-light">Light</button>
+        <button (click)="confirm.secondary('Secondary', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        " type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">提示消息</div>
+    <div class="card-body">
+        <button (click)="toast.danger('危险', '这是一条提示消息~');
+        " type="button" class="btn btn-danger">危险消息</button>
+        <button (click)="toast.primary('提示', '这是一条提示消息~');
+        " type="button" class="btn btn-primary">重要消息</button>
+        <button (click)="toast.info('信息', '这是一条提示消息~');
+        " type="button" class="btn btn-info">一般消息</button>
+        <button (click)="toast.warning('警告', '这是一条提示消息~');
+        " type="button" class="btn btn-warning">警告消息</button>
+        <button (click)="toast.dark('Dark', '这是一条提示消息~');
+        " type="button" class="btn btn-dark">Dark</button>
+        <button (click)="toast.light('Light', '这是一条提示消息~');
+        " type="button" class="btn btn-light">Light</button>
+        <button (click)="toast.secondary('Secondary', '这是一条提示消息~');
+        " type="button" class="btn btn-secondary">Secondary</button>
+        <button (click)="toast.create('自定义消息', '5秒后消失，背景颜色为 bg-info', { bgClass: 'bg-info text-white',  timeOut:5000, closeClass:'text-white' });
+        " type="button" class="btn btn-outline-info">自定义</button>
+    </div>
+</div>
