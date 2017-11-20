@@ -25,7 +25,7 @@
                 <div class="d-table-cell">
                     <form class="form-inline pull-right">
                         <div class="input-group">
-                            <input type="text" class="form-control border-0 shadow-0" placeholder="关键词...">
+                            <input (blur)="showSearchPad=false" (click)="showSearchPad=true" type="text" class="form-control border-0 shadow-0" placeholder="关键词...">
                             <span class="input-group-addon bg-white border-0">
                                 <i class="fa fa-fw fa-search"></i>
                             </span>
@@ -37,6 +37,23 @@
                     <a class="fa fa-fw fa-cog head-icon" title="系统设置"></a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div *ngIf="showSearchPad" class="position-absolute w-100 bg-light text-dark search-pad shadow-b text-center">
+        <!-- <h6 *ngIf="searchResults.length<=0" class="text-center search-empty">\(O=O)/ 没有查询到匹配的项目！</h6> -->
+        <div class="search-list container">
+            <button class="btn btn-link text-primary">
+                <span class="badge badge-primary">D</span> 订单列表
+            </button>
+            <button class="btn btn-link text-success">
+                <span class="badge badge-success">S</span> 商品列表
+            </button>
+            <button class="btn btn-link text-success">
+                <span class="badge badge-success">S</span> 添加商品
+            </button>
+            <button class="btn btn-link text-success">
+                <span class="badge badge-success">S</span> 商品分类
+            </button>
         </div>
     </div>
 </nav>

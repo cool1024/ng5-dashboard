@@ -1,4 +1,4 @@
-<div class="bg-white shadow-r fixed-top h-100" [ngStyle]="{'width':menuConfigs.width,'padding-top':menuConfigs.marginTop,'overflow-y':'auto'}">
+<div class="{{menuConfigs.baseClass}} shadow-r fixed-top h-100" [ngStyle]="{'width':menuConfigs.width,'padding-top':menuConfigs.marginTop,'overflow-y':'auto'}">
     <div class="media pl-3 pt-3" [ngStyle]="{'padding-left':menuConfigs.titleIconWidth}">
         <img class="rounded-circle mt-2" width="40" src="/assets/image/avatar/6.jpg" alt="avatar">
         <div class="media-body pl-2">
@@ -7,10 +7,9 @@
         </div>
     </div>
     <hr class="m-0">
-    <!-- <p class="pl-3 m-0 text-muted" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">功能菜单</p> -->
-    <div class="menu-block pl-2 border-l-3" [ngClass]="{'border-info': isCollopseArray[i]}" *ngFor="let main of menus;index as i">
+    <div class="menu-block pl-2 border-l-3 {{isCollopseArray[i]?menuConfigs.borderActiveClass:''}}" *ngFor="let main of menus;index as i">
         <div (click)="triggerMenu(i)" class="menu-main pointer">
-            <div class="d-table w-100 {{isCollopseArray[i]?menuConfigs.mainMenuActiveClass:mainMenuClass}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">
+            <div class="d-table w-100 {{isCollopseArray[i]?menuConfigs.mainMenuActiveClass:''}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">
                 <div class="d-table-cell text-center" [ngStyle]="{'width':menuConfigs.titleIconWidth}">
                     <i class="{{main.icon}}" aria-hidden="true"></i>
                 </div>

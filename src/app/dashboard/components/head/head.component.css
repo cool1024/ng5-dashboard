@@ -32,3 +32,15 @@
 .head-icon-group {
     width: 110px;
 }
+
+.search-pad {
+    left: 0;
+}
+
+.search-empty {
+    line-height: 50px;
+}
+
+.search-list {
+    line-height: 50px;
+}

@@ -49,13 +49,18 @@ export class ToastComponent {
 
   show = true;
 
+  private timer: any;
+
   constructor() {
     this.positionClass = 'right-0';
   }
 
   play() {
     this.show = true;
-    setTimeout(_ => this.show = false, this.timeOut);
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(_ => this.show = false, this.timeOut);
   }
 
 }

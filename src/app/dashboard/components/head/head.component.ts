@@ -22,6 +22,12 @@ export class HeadComponent implements OnInit {
   // 当前的面包屑导航
   breadcrumbs: Breadcrumb[] = [];
 
+  // 是否查询面板
+  showSearchPad = false;
+
+  // 查询结果
+  searchResults = new Array<any>();
+
   constructor(private router: Router, private breadcrumbService: BreadcrumbService, private authService: AuthService) { }
 
   // 登入状态

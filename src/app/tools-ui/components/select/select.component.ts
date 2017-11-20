@@ -11,6 +11,7 @@ export class SelectComponent {
   @Input() items: Array<string | number | { value: any, text: string }>;
   @Input() placeholder: string;
   @Input() value: any;
+  @Input() width: string;
   @Output() valueChange = new EventEmitter<any>();
   @ViewChild('DropdownToggle') dropdownToggle: ElementRef;
   @ViewChild('DropdownMenu') dropdownMenu: ElementRef;
@@ -24,6 +25,7 @@ export class SelectComponent {
     this.title = '';
     this.items = [];
     this.searchKey = '';
+    this.width = 'auto';
   }
 
   openDropdown() {
@@ -55,7 +57,6 @@ export class SelectComponent {
   setValue(item: { value: any, text: string }) {
     this.value = item.value;
     this.title = item.text;
-    // this.searchKey = '';a
     this.inputDom.nativeElement.value = this.title;
     this.valueChange.emit(item.value);
   }
@@ -111,7 +112,7 @@ export class SelectComponent {
   }
 
   isOtherOp(code: number): boolean {
-    return code === 8;
+    return code === 8 || code === 32;
   }
 
 }

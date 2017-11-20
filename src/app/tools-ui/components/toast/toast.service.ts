@@ -51,35 +51,51 @@ export class ToastService {
     }
 
     primary(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-primary', closeClass: 'text-primary', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-primary text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     secondary(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-secondary', closeClass: 'text-secondary', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-secondary text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     success(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-success', closeClass: 'text-success', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-success text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     danger(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-danger', closeClass: 'text-danger', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-danger text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     warning(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-warning', closeClass: 'text-warning', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-warning text-dark', closeClass: 'text-dark', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     info(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-info', closeClass: 'text-info', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-info text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     light(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-light', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-light text-dark', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
     dark(title: string, message: string, options: { positionClass?: string } = {}) {
-        this.create(title, message, { bgClass: 'alert-dark', positionClass: options.positionClass || this.defaultPosition });
+        this.create(title, message, {
+            bgClass: 'bg-dark text-white', positionClass: options.positionClass || this.defaultPosition
+        });
     }
 
 }

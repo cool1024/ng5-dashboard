@@ -45,94 +45,88 @@ export class ConfirmService {
     }
 
     primary(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-primary text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-primary text-white';
         return this.create(title, message, options);
     }
 
     secondary(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-secondary text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-secondary text-white';
         return this.create(title, message, options);
     }
 
     success(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-success text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-success text-white';
         return this.create(title, message, options);
     }
 
     danger(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-danger text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-danger text-white';
         return this.create(title, message, options);
     }
 
     warning(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        return this.create(title, message, {
-            bgColor: options.bgColor || 'rgba(0,0,0,0.2)',
-            cardClass: 'bg-warning',
-            closeClass: 'text-dark',
-            btnClass: 'text-dark',
-            cancelTitle: options.cancelTitle,
-            okTitle: options.okTitle
-        });
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-warning text-dark';
+        config.btnClass = 'text-dark';
+        config.closeClass = 'text-dark';
+        return this.create(title, message, options);
     }
+
     info(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-info text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-info text-white';
         return this.create(title, message, options);
     }
 
     light(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        return this.create(title, message, {
-            bgColor: options.bgColor || 'rgba(0,0,0,0.2)',
-            cardClass: 'bg-light',
-            closeClass: 'text-dark',
-            btnClass: 'text-dark',
-            cancelTitle: options.cancelTitle,
-            okTitle: options.okTitle
-        });
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-light text-dark';
+        config.btnClass = 'text-dark';
+        config.closeClass = 'text-dark';
+        return this.create(title, message, options);
     }
 
     dark(title: string, message: string, options?: {
-        bgColor?: string,
         okTitle?: string,
         cancelTitle?: string
-        cardClass?: string
     }): Task {
-        if (!options.cardClass) { options.cardClass = 'bg-dark text-white'; }
+        options = options || {};
+        const config: { [key: string]: string } = options;
+        config.cardClass = 'bg-dark text-white';
         return this.create(title, message, options);
     }
+
 
 }

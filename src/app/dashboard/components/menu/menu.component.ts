@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Theme } from '../../../config/theme.config';
 
 @Component({
   selector: 'dashboard-menu',
@@ -8,17 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   // 菜单样式配置参数
-  menuConfigs = {
-    angleIconWidth: '30px',
-    titleIconWidth: '30px',
-    mainMenuHeight: '40px',
-    mainMenuClass: 'text-dark',
-    mainMenuActiveClass: 'text-info',
-    childMenuHeight: '37px',
-    childMenuActiveClass: 'text-info',
-    width: '220px',
-    marginTop: '60px',
-  };
+  menuConfigs = Theme.menu;
 
   // 系统菜单列表
   menus = [

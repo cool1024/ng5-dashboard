@@ -1,14 +1,7 @@
-<!-- <button (click)="confirm.danger('警告消息', '您正在进行危险的操作，请确认要这么做！', { okTitle: '确认', cancelTitle: '取消' });
-" type="button" class="btn btn-danger">危险操作</button>
-<button (click)="confirm.primary('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
-" type="button" class="btn btn-primary">主要操作</button>
-<button (click)="confirm.light('提示消息', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
-" type="button" class="btn btn-light">主要操作</button>
-<button class="btn btn-dark" (click)="toast.dark('提示消息','操作成功~')">提示消息</button> -->
 <div class="card rounded-0">
     <div class="card-header bg-white">确认对话框</div>
     <div class="card-body">
-        <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
+        <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？');
         " type="button" class="btn btn-danger">危险操作</button>
         <button (click)="confirm.primary('提示', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
         " type="button" class="btn btn-primary">重要操作</button>
@@ -42,7 +35,7 @@
         " type="button" class="btn btn-light">Light</button>
         <button (click)="toast.secondary('Secondary', '这是一条提示消息~');
         " type="button" class="btn btn-secondary">Secondary</button>
-        <button (click)="toast.create('自定义消息', '5秒后消失，背景颜色为 bg-info', { bgClass: 'bg-info text-white',  timeOut:5000, closeClass:'text-white' });
-        " type="button" class="btn btn-outline-info">自定义</button>
+        <!-- <button (click)="toast.create('自定义消息', '5秒后消失，背景颜色为 bg-info', { bgClass: 'bg-info text-white',  timeOut:5000, closeClass:'text-white' });
+        " type="button" class="btn btn-outline-info">自定义</button> -->
     </div>
 </div>
