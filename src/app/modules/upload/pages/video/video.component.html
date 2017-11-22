@@ -12,7 +12,7 @@
         <div class="card rounded-0 ml-3" style="width:24rem;">
             <div class="card-header bg-white">自定义文件上传</div>
             <div class="card-body">
-                <input type="file" ts-file #fileObj="tsFile" (fileChange)="file=$event">
+                <input type="file" ts-file #fileObj="tsFile" (fileChange)="file=$event;testExcel($event)">
                 <button (click)="fileObj.openFileDialog()" class="btn btn-white" type="button"><i class="fa fa-folder-o fa-fw"></i>选择文件</button>
                 <div class="btn-group ml-3" role="group">
                     <button (click)="fileObj.openFileDialog()" class="btn btn-white" type="button"><i class="fa fa-folder-o fa-fw"></i>选择文件</button>

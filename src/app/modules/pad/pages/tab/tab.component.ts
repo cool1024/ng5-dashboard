@@ -10,5 +10,4 @@ export class TabComponent {
   tabChange(activeTabTitle) {
     console.log(`active tab :${activeTabTitle}`);
   }
-
 }

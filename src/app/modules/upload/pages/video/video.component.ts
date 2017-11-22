@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VideoConfig, TSUploadingProgress, TSUploadResult } from './../../../../tools-ui';
 import { Observable } from 'rxjs/Observable';
+declare const XLSX: any;
 
 @Component({
   templateUrl: './video.component.html',
@@ -46,4 +47,21 @@ export class VideoComponent {
   };
 
   file: File;
+
+  testExcel(file: File) {
+    const reader = new FileReader();
+    reader.addEventListener('load', event => {
+      console.log(event);
+      const data = new Uint8Array(reader.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const result = {};
+      workbook.SheetNames.forEach(function (sheetName) {
+        const roa = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+        if (roa.length) { result[sheetName] = roa; }
+      });
+      const jsonString = JSON.stringify(result);
+      console.log(jsonString);
+    });
+    reader.readAsArrayBuffer(file);
+  }
 }
