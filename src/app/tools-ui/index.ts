@@ -8,6 +8,7 @@ export { FileModule as TSFileModule } from './modules/file.module';
 export { ModalModule as TSModalModule } from './modules/modal.module';
 export { TabModule as TSTabModule } from './modules/tab.module';
 export { TriggleModule as TSTriggleModule } from './modules/triggle.module';
+export { ToggleModule as TSToggleModule } from './modules/toggle.module';
 export { CollapseModule as TSCollapseModule } from './modules/collapse.module';
 export { ProgressModule as TSProgressModule } from './modules/progress.module';
 export { ToastModule as TSToastModule } from './modules/toast.module';
@@ -18,6 +19,7 @@ export { DatePickerModule as TSDatePickerModule } from './modules/datepicker.mod
 export { ImageConfig } from './interfaces/image-config.interface';
 export { UploadResult, UploadingProgress } from './interfaces/upload-result.interface';
 export { VideoConfig } from './interfaces/video-config.interface';
+export { ToggleComponent } from './interfaces/toggle-component.interface';
 
 /*tool interfaces*/
 

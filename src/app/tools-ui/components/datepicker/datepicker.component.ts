@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
+import { ToggleComponent } from './../../interfaces/toggle-component.interface';
+import { HtmlDomService } from './../../services/htmldom.services';
 
 const WEEK_DAY_NUM = 7;
 const MIN_YEAR = 1000;
@@ -11,7 +13,7 @@ const MAX_MONTH = 12;
   styleUrls: ['./datepicker.component.css'],
   exportAs: 'datePicker'
 })
-export class DatepickerComponent implements OnInit {
+export class DatepickerComponent implements OnInit, ToggleComponent {
 
 
   @Input() weekTitles: string[];
@@ -35,6 +37,10 @@ export class DatepickerComponent implements OnInit {
   day: number;
 
   show: boolean;
+
+  toggleDom: HTMLElement;
+
+  datepickerStyle = { top: '0', left: '0' };
 
   get days(): number[] {
     let date = new Date(this.year, this.month, 0);
@@ -73,7 +79,7 @@ export class DatepickerComponent implements OnInit {
     return years;
   }
 
-  constructor() {
+  constructor(private htmlDomService: HtmlDomService) {
 
     // labels
     this.weekTitles = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
@@ -147,6 +153,28 @@ export class DatepickerComponent implements OnInit {
 
   toggle() {
     this.show = !this.show;
+  }
+
+  bind(elementRef: ElementRef) {
+    this.toggleDom = elementRef.nativeElement;
+    this.autoPosition();
+    let ticking = false;
+    window.addEventListener('scroll', _ => {
+      if (!ticking) {
+        window.requestAnimationFrame(_ => {
+          this.autoPosition();
+          ticking = false;
+        });
+      }
+      ticking = true;
+    });
+  }
+
+  autoPosition() {
+    const position = this.htmlDomService.getPosition(this.toggleDom);
+    this.datepickerStyle.left = position.x + 'px';
+    this.datepickerStyle.top = position.y + 'px';
+    console.log(position);
   }
 
 }

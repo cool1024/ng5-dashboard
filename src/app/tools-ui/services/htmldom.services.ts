@@ -10,4 +10,8 @@ export class HtmlDomService {
         return height;
     }
 
+    getPosition(dom: HTMLElement): { x: number, y: number } {
+        console.log(dom);
+        return { x: dom.clientLeft, y: dom.clientTop };
+    }
 }
