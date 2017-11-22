@@ -20,7 +20,7 @@
         单选框
     </div>
     <div class="card-body">
-        <ts-radio-group value="Right" [(value)]="radioValue">
+        <ts-radio-group [(value)]="radioValue">
             <ts-radio [value]="1" label="先生" color="info"></ts-radio>
             <ts-radio [value]="2" label="女士" color="danger"></ts-radio>
             <ts-radio [value]="3" label="保密" color="secondary"></ts-radio>
@@ -34,7 +34,7 @@
         自定义
     </div>
     <div class="card-body">
-        <ts-radio-group value="Right" [(value)]="radioValue">
+        <ts-radio-group [(value)]="radioValue">
             <div class="p-2 bg-info text-white d-inline-block">
                 <ts-radio [value]="1" label="先生" color="white"></ts-radio>
             </div>
@@ -101,7 +101,7 @@
             <tbody>
                 <tr>
                     <td>性别</td>
-                    <td>{{radios[radioValue-1].text}}</td>
+                    <td>{{radios[radioValue-1]?radios[radioValue-1].text:'未设置'}}</td>
                     <td>{{radioValue}}</td>
                 </tr>
                 <tr>

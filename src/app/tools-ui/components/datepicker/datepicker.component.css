@@ -1,0 +1,42 @@
+.ts-box {
+    max-width: 300px;
+    box-shadow: 1px 2px 3px rgb(200, 200, 200);
+}
+
+.ts-datepicker-table {
+    margin: auto auto;
+}
+
+.ts-month-title {
+    padding-left: 15px;
+    padding-top: 15px;
+    font-size: 15px;
+}
+
+.ts-weeks {
+    border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.ts-weeks th {
+    padding-bottom: 10px;
+}
+
+.ts-day {
+    width: 40px;
+    height: 25px;
+    line-height: 25x;
+    border: 15px solid transparent;
+}
+
+.ts-day-hover:hover {
+    background-color: #cccccc;
+}
+
+th {
+    font-weight: normal;
+    font-family: Microsoft YaiHei, 微软雅黑, KaiTi;
+}
+
+td {
+    cursor: pointer;
+}

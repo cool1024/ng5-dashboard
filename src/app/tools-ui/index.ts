@@ -12,6 +12,7 @@ export { CollapseModule as TSCollapseModule } from './modules/collapse.module';
 export { ProgressModule as TSProgressModule } from './modules/progress.module';
 export { ToastModule as TSToastModule } from './modules/toast.module';
 export { ConfirmModule as TSConfirmModule } from './modules/confirm.module';
+export { DatePickerModule as TSDatePickerModule } from './modules/datepicker.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';

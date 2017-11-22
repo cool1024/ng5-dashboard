@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 /*tool-ui*/
-import { TSCheckboxModule, TSFileModule, TSLoadingModule, TSModalModule, TSDropdownModule, TSSelectModule } from './../../tools-ui';
+import { TSCheckboxModule, TSFileModule, TSLoadingModule, TSModalModule, TSDatePickerModule, TSSelectModule } from './../../tools-ui';
 
 /*路由模块*/
 import { FormRoutingModule } from './form.routing';
@@ -14,6 +14,7 @@ import { SimpleModalComponent } from './modal/simple-modal.component';
 import { SimpleComponent } from './pages/simple/simple.component';
 import { SelectComponent } from './pages/select/select.component';
 import { CheckboxComponent } from './pages/checkbox/checkbox.component';
+import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { CheckboxComponent } from './pages/checkbox/checkbox.component';
     TSLoadingModule,
     TSModalModule,
     FormRoutingModule,
-    TSDropdownModule,
+    TSDatePickerModule,
     TSSelectModule,
   ],
   declarations: [
@@ -31,6 +32,7 @@ import { CheckboxComponent } from './pages/checkbox/checkbox.component';
     SimpleModalComponent,
     SelectComponent,
     CheckboxComponent,
+    DatepickerComponent,
   ],
   entryComponents: [
     SimpleModalComponent
