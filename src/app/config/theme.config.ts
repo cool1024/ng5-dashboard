@@ -2,7 +2,7 @@
 
 /*菜单配置*/
 const Menu = {
-    bgClass: 'bg-white', // 基础样式类
+    baseClass: 'bg-white', // 基础样式类
     angleIconWidth: '30px', // 折叠图标尺寸
     titleIconWidth: '30px', // 菜单图标尺寸
     mainMenuHeight: '40px', // 主菜单高度

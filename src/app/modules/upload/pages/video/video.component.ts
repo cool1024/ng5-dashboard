@@ -48,19 +48,30 @@ export class VideoComponent {
 
   file: File;
 
-  testExcel(file: File) {
+  theads: string[] = [];
+  tbodys: { [key: string]: string }[] = [];
+
+  readExcel(file: File) {
+    this.theads = [];
     const reader = new FileReader();
     reader.addEventListener('load', event => {
-      console.log(event);
       const data = new Uint8Array(reader.result);
       const workbook = XLSX.read(data, { type: 'array' });
-      const result = {};
-      workbook.SheetNames.forEach(function (sheetName) {
-        const roa = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-        if (roa.length) { result[sheetName] = roa; }
+      const result = new Array<any>();
+      workbook.SheetNames.forEach(sheetName => {
+        const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+        if (roa.length) { result.push(roa); }
       });
-      const jsonString = JSON.stringify(result);
-      console.log(jsonString);
+      try {
+        for (const key in result[0][0]) {
+          if (result[0][0].hasOwnProperty(key)) {
+            this.theads.push(key);
+          }
+        }
+        this.tbodys = result[0];
+      } catch (error) {
+        console.error(error);
+      }
     });
     reader.readAsArrayBuffer(file);
   }

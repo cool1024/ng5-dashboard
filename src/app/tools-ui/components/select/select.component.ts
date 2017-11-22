@@ -12,6 +12,7 @@ export class SelectComponent {
   @Input() placeholder: string;
   @Input() value: any;
   @Input() width: string;
+  @Input() emptyLabel: string;
   @Output() valueChange = new EventEmitter<any>();
   @ViewChild('DropdownToggle') dropdownToggle: ElementRef;
   @ViewChild('DropdownMenu') dropdownMenu: ElementRef;
@@ -26,6 +27,7 @@ export class SelectComponent {
     this.items = [];
     this.searchKey = '';
     this.width = 'auto';
+    this.emptyLabel = 'No results found.';
   }
 
   openDropdown() {
