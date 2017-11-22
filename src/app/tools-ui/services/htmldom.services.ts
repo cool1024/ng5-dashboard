@@ -11,7 +11,6 @@ export class HtmlDomService {
     }
 
     getPosition(dom: HTMLElement): { x: number, y: number } {
-        console.log(dom);
-        return { x: dom.clientLeft, y: dom.clientTop };
+        return { x: dom.offsetLeft, y: dom.offsetTop };
     }
 }
