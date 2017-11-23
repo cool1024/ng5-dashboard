@@ -2,7 +2,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 /*tool-ui*/
-import { TSCheckboxModule, TSFileModule, TSLoadingModule, TSModalModule, TSDatePickerModule, TSSelectModule, TSToggleModule } from './../../tools-ui';
+import {
+  TSCheckboxModule,
+  TSFileModule,
+  TSLoadingModule,
+  TSModalModule,
+  TSDatePickerModule,
+  TSSelectModule,
+  TSToggleModule,
+  TSTimePickerModule,
+} from './../../tools-ui';
 
 /*路由模块*/
 import { FormRoutingModule } from './form.routing';
@@ -27,6 +36,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
     TSDatePickerModule,
     TSToggleModule,
     TSSelectModule,
+    TSTimePickerModule,
   ],
   declarations: [
     SimpleComponent,

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './../components/datepicker/datepicker.component';
 import { DropdownModule } from './dropdown.module';
 import { HtmlDomService } from './../services/htmldom.services';
@@ -12,7 +11,6 @@ import { HtmlDomService } from './../services/htmldom.services';
     DatepickerComponent
   ],
   exports: [
-    CommonModule,
     DropdownModule,
     DatepickerComponent,
   ],

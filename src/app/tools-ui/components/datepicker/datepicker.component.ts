@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { ToggleComponent } from './../../interfaces/toggle-component.interface';
 import { HtmlDomService } from './../../services/htmldom.services';
 
@@ -13,7 +13,7 @@ const MAX_MONTH = 12;
   styleUrls: ['./datepicker.component.css'],
   exportAs: 'datePicker'
 })
-export class DatepickerComponent implements OnInit, ToggleComponent {
+export class DatepickerComponent implements OnInit, OnDestroy, ToggleComponent {
 
   @Input() weekTitles: string[];
 
@@ -43,7 +43,11 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
 
   toggleDom: HTMLElement;
 
-  datepickerStyle = { top: '0', left: '0', display: 'none', zIndex: '1041', position: 'absolute' };
+  ticking = false;
+
+  autoHandle: () => void;
+
+  datepickerStyle = { top: '0', left: '0', display: 'none', position: 'absolute' };
 
   get days(): number[] {
     let date = new Date(this.year, this.month, 0);
@@ -109,6 +113,11 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
     }
   }
 
+  ngOnDestroy() {
+    window.removeEventListener('scroll', this.autoHandle);
+    window.removeEventListener('resize', this.autoHandle);
+  }
+
   getMonth(month: number): string {
     return this.monthTitles[month - 1];
   }
@@ -159,22 +168,25 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
     if (this.show) {
       this.year = this.activeDate.year;
       this.month = this.activeDate.month;
+      this.autoPosition();
     }
   }
 
   bind(elementRef: ElementRef) {
     this.toggleDom = elementRef.nativeElement;
-    this.autoPosition();
-    let ticking = false;
-    window.addEventListener('scroll', _ => {
-      if (!ticking) {
+    this.autoHandle = () => {
+      if (!this.ticking) {
         window.requestAnimationFrame(() => {
-          this.autoPosition();
-          ticking = false;
+          if (this.show) {
+            this.autoPosition();
+          }
+          this.ticking = false;
         });
       }
-      ticking = true;
-    });
+      this.ticking = true;
+    };
+    window.addEventListener('scroll', this.autoHandle, false);
+    window.addEventListener('resize', this.autoHandle, false);
   }
 
   autoPosition() {
@@ -186,13 +198,13 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
       this.datepickerStyle.top = height + position.y + 7.5 + 'px';
       let top = height + position.y + 7.5 + 380;
       if (window.innerHeight < top) {
-        top = position.y - 380 - height - 7.5;
+        top = window.innerHeight - 380 - 7.5;
       } else {
-        top = height + 7.5;
+        top = position.y + height + 7.5;
       }
       this.datepickerStyle.top = top + 'px';
       this.datepickerStyle.display = '';
-    }, 100);
+    });
   }
 
   tryClose($event) {

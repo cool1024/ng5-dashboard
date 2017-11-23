@@ -7,14 +7,13 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DashboardModule.forRoot(),
   ],
-  // providers: [BreadcrumbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
