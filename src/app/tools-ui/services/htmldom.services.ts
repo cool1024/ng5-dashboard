@@ -11,6 +11,23 @@ export class HtmlDomService {
     }
 
     getPosition(dom: HTMLElement): { x: number, y: number } {
-        return { x: dom.offsetLeft, y: dom.offsetTop };
+        const rect = dom.getBoundingClientRect();
+        return { x: rect.left, y: rect.top };
+    }
+
+    getHeight(dom: HTMLElement): number {
+        return dom.clientHeight;
+    }
+
+    overflowBottom(dom: HTMLElement, offset = 0): boolean {
+        const height = dom.clientHeight + offset;
+        const position = this.getPosition(dom);
+        return window.innerHeight > position.y + height + offset;
+    }
+
+    overflowTop(dom: HTMLElement, offset = 0): boolean {
+        const height = dom.clientHeight + offset;
+        const position = this.getPosition(dom);
+        return (position.y - height - offset) > 0;
     }
 }

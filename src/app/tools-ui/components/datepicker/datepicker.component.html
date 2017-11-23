@@ -1,5 +1,5 @@
-<div class="fixed-top">
-    <div class="card rounded-0 border-0 ts-box" *ngIf="show" [ngStyle]="datepickerStyle">
+<div *ngIf="show" #pad class="fixed-top h-100 2-100" (click)="tryClose($event)">
+    <div class="card rounded-0 border-0 ts-box"  #datepicker [ngStyle]="datepickerStyle">
         <div class="card-body">
             <table class="ts-datepicker-table">
                 <thead>

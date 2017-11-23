@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ToggleComponent } from './../../interfaces/toggle-component.interface';
 import { HtmlDomService } from './../../services/htmldom.services';
 
@@ -15,7 +15,6 @@ const MAX_MONTH = 12;
 })
 export class DatepickerComponent implements OnInit, ToggleComponent {
 
-
   @Input() weekTitles: string[];
 
   @Input() monthTitles: string[];
@@ -30,6 +29,10 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
 
   @Output() activeDateChange = new EventEmitter<{ year: number, month: number, day: number }>();
 
+  @ViewChild('pad') pad: ElementRef;
+
+  @ViewChild('datepicker') datepicker: ElementRef;
+
   year: number;
 
   month: number;
@@ -40,7 +43,7 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
 
   toggleDom: HTMLElement;
 
-  datepickerStyle = { top: '0', left: '0' };
+  datepickerStyle = { top: '0', left: '0', display: 'none', zIndex: '1041', position: 'absolute' };
 
   get days(): number[] {
     let date = new Date(this.year, this.month, 0);
@@ -70,7 +73,6 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
     const years = [];
     for (let i = 0; i < 3; i++) {
       years.push(this.year - 3 + i);
-
     }
     years.push(this.year);
     for (let i = 0; i < 3; i++) {
@@ -117,6 +119,7 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
     this.activeDate.month = this.month;
     this.activeDate.day = day;
     this.activeDateChange.emit(this.activeDate);
+    this.toggle();
   }
 
   isActiveDay(day: number): boolean {
@@ -153,6 +156,10 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
 
   toggle() {
     this.show = !this.show;
+    if (this.show) {
+      this.year = this.activeDate.year;
+      this.month = this.activeDate.month;
+    }
   }
 
   bind(elementRef: ElementRef) {
@@ -161,7 +168,7 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
     let ticking = false;
     window.addEventListener('scroll', _ => {
       if (!ticking) {
-        window.requestAnimationFrame(_ => {
+        window.requestAnimationFrame(() => {
           this.autoPosition();
           ticking = false;
         });
@@ -171,10 +178,27 @@ export class DatepickerComponent implements OnInit, ToggleComponent {
   }
 
   autoPosition() {
-    const position = this.htmlDomService.getPosition(this.toggleDom);
-    this.datepickerStyle.left = position.x + 'px';
-    this.datepickerStyle.top = position.y + 'px';
-    console.log(position);
+    setTimeout(() => {
+      const position = this.htmlDomService.getPosition(this.toggleDom);
+      const height = this.htmlDomService.getHeight(this.toggleDom);
+      this.datepickerStyle.display = 'none';
+      this.datepickerStyle.left = position.x + 'px';
+      this.datepickerStyle.top = height + position.y + 7.5 + 'px';
+      let top = height + position.y + 7.5 + 380;
+      if (window.innerHeight < top) {
+        top = position.y - 380 - height - 7.5;
+      } else {
+        top = height + 7.5;
+      }
+      this.datepickerStyle.top = top + 'px';
+      this.datepickerStyle.display = '';
+    }, 100);
+  }
+
+  tryClose($event) {
+    if ($event.target === this.pad.nativeElement) {
+      this.toggle();
+    }
   }
 
 }
