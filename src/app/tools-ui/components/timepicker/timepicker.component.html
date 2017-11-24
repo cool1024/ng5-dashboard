@@ -1,22 +1,29 @@
 <div class="fixed-top h-100 w-100" style="padding-top:200px;">
     <div class="card rounded-0 border-0 ts-box">
+        <div class="card-header bg-white">Timer
+            <span class="pull-right">
+                <i class="fa fa-angle-left fa-fw"></i>
+                24
+                <i class="fa fa-angle-right fa-fw"></i>
+            </span>
+        </div>
         <div class="card-body">
             <div class="d-inline-block timer-picker-input text-center">
-                <i (click)="addHour()" class="fa fa-angle-up fa-fw"></i>
-                <input (wheel)="autoHour($event)" #hourInput [value]="activeTime.hour" type="text" class="form-control text-center">
-                <i (click)="decHour()" class="fa fa-angle-down fa-fw"></i>
+                <i (click)="decHour()" class="fa fa-angle-up fa-fw"></i>
+                <input (wheel)="autoTime($event,0)" #hourInput [value]="activeTime.hour" type="text" class="form-control text-center">
+                <i (click)="addHour()" class="fa fa-angle-down fa-fw"></i>
             </div>
             <div class="d-inline-block align-top timer-picker-label">:</div>
             <div class="d-inline-block timer-picker-input text-center">
-                <i (click)="addMinute()" class="fa fa-angle-up fa-fw"></i>
-                <input [value]="activeTime.minute" type="text" class="form-control text-center">
-                <i (click)="decMinute()" class="fa fa-angle-down fa-fw"></i>
+                <i (click)="decMinute()" class="fa fa-angle-up fa-fw"></i>
+                <input (wheel)="autoTime($event,1)" [value]="activeTime.minute" type="text" class="form-control text-center">
+                <i (click)="addMinute()" class="fa fa-angle-down fa-fw"></i>
             </div>
             <div class="d-inline-block align-top timer-picker-label">:</div>
             <div class="d-inline-block timer-picker-input text-center">
-                <i (click)="addSecond()" class="fa fa-angle-up fa-fw"></i>
-                <input [value]="activeTime.second" type="text" class="form-control text-center">
-                <i (click)="decSecond()" class="fa fa-angle-down fa-fw"></i>
+                <i (click)="decSecond()" class="fa fa-angle-up fa-fw"></i>
+                <input (wheel)="autoTime($event,2)" [value]="activeTime.second" type="text" class="form-control text-center">
+                <i (click)="addSecond()" class="fa fa-angle-down fa-fw"></i>
             </div>
         </div>
     </div>

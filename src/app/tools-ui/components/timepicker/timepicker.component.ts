@@ -54,17 +54,21 @@ export class TimepickerComponent implements OnInit {
     }
   }
 
-  autoHour($event) {
+  autoTime($event: any, type: number) {
     let offset = $event.deltaY || 0;
     offset /= 3;
     if (offset > 0) {
       for (let i = 0; i < offset; i++) {
-        this.addHour();
+        if (type === 0) { this.addHour(); }
+        if (type === 1) { this.addMinute(); }
+        if (type === 2) { this.addSecond(); }
       }
     } else {
       offset = -offset;
       for (let i = 0; i < offset; i++) {
-        this.decHour();
+        if (type === 0) { this.decHour(); }
+        if (type === 1) { this.decMinute(); }
+        if (type === 2) { this.decSecond(); }
       }
     }
   }
