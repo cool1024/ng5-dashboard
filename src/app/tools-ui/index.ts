@@ -15,6 +15,7 @@ export { ToastModule as TSToastModule } from './modules/toast.module';
 export { ConfirmModule as TSConfirmModule } from './modules/confirm.module';
 export { DatePickerModule as TSDatePickerModule } from './modules/datepicker.module';
 export { TimePickerModule as TSTimePickerModule } from './modules/timepicker.module';
+export { SwitchModule as TSSwitchModule } from './modules/switch.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';

@@ -1,0 +1,3 @@
+<span class="d-inline-block triggle-line  {{open?activeClass:defaultClass}}" (click)="toggle()">
+    <span class="d-inline-block rounded-circle triggle-bar {{barClass}}" [ngClass]="{'triggle-open': open,'triggle-close':!open}"></span>
+</span>

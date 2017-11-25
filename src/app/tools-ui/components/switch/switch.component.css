@@ -1,0 +1,23 @@
+.triggle-bar {
+    height: 17px;
+    width: 17px;
+}
+
+.triggle-line {
+    height: 21px;
+    width: 35px;
+    padding: 2px;
+    border-radius: 30px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.triggle-open {
+    transition: all 0.3s linear;
+    margin-left: 14px;
+}
+
+.triggle-close {
+    transition: all 0.3s linear;
+    margin-left: 0px;
+}

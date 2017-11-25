@@ -13,4 +13,13 @@ export class DatepickerComponent {
   date = { year: 2017, month: 11, day: 23 };
 
   dateEmpty: { year: number, month: number, day: number };
+
+  time = { hour: 12, minute: 30, second: 59 };
+
+  timeEmpty: { hour: number, minute: number, second: number };
+
+  switchValue = true;
+
+  switchString = 'danger';
+
 }

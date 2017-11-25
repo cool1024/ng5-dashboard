@@ -1,11 +1,11 @@
-import { Directive, HostListener, Input, ElementRef } from '@angular/core';
+import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { ToggleComponent } from './../interfaces/toggle-component.interface';
 
 @Directive({
   selector: '[ts-dom-toggle]',
   exportAs: 'tsDomToggle',
 })
-export class DomToggleDirective {
+export class DomToggleDirective implements AfterViewInit {
 
   @Input() target: ToggleComponent;
 
@@ -13,8 +13,11 @@ export class DomToggleDirective {
 
   constructor(private elementRef: ElementRef) { }
 
-  @HostListener('click') onclick() {
+  ngAfterViewInit() {
     this.bind();
+  }
+
+  @HostListener('click') onclick() {
     this.target.toggle();
   }
 
