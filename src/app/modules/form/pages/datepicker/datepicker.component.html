@@ -49,15 +49,3 @@
         </form>
     </div>
 </div>
-<br>
-<div class="card rounded-0">
-    <div class="card-header bg-white">
-        开关按钮
-    </div>
-    <div class="card-body">
-        <ts-switch activeClass="bg-info" [(value)]="switchValue"></ts-switch>
-        {{switchValue}}
-        <ts-switch activeClass="bg-success" defaultClass="bg-danger" [values]="{open:'success',close:'danger'}" [(value)]="switchString"></ts-switch>
-        {{switchString}}
-    </div>
-</div>

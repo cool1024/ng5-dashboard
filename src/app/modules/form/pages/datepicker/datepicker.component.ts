@@ -18,8 +18,4 @@ export class DatepickerComponent {
 
   timeEmpty: { hour: number, minute: number, second: number };
 
-  switchValue = true;
-
-  switchString = 'danger';
-
 }

@@ -8,10 +8,13 @@ import { ToggleComponent } from './../interfaces/toggle-component.interface';
 export class DomToggleDirective implements AfterViewInit {
 
   @Input() target: ToggleComponent;
+  @Input() useHover: boolean;
 
   hasBind = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {
+    this.useHover = false;
+  }
 
   ngAfterViewInit() {
     this.bind();
@@ -19,6 +22,12 @@ export class DomToggleDirective implements AfterViewInit {
 
   @HostListener('click') onclick() {
     this.target.toggle();
+  }
+
+  @HostListener('hover') onhover() {
+    if (this.useHover) {
+      this.target.toggle();
+    }
   }
 
   private bind() {

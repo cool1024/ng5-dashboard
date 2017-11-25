@@ -9,7 +9,8 @@ export class SwitchComponent implements OnChanges {
 
   @Input() activeClass: string;
   @Input() defaultClass: string;
-  @Input() barClass: string;
+  @Input() activeBarClass: string;
+  @Input() defaultBarClass: string;
   @Input() values: { open: any, close: any };
   @Input() value: any;
 
@@ -21,7 +22,7 @@ export class SwitchComponent implements OnChanges {
     this.open = false;
     this.activeClass = 'bg-dark';
     this.defaultClass = 'bg-secondary';
-    this.barClass = 'bg-white';
+    this.activeBarClass = this.defaultBarClass = 'bg-white';
     this.values = { open: true, close: false };
   }
 

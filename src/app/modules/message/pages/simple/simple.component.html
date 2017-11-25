@@ -39,3 +39,11 @@
         " type="button" class="btn btn-outline-info">自定义</button> -->
     </div>
 </div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">悬浮提示</div>
+    <div class="card-body">
+        <button ts-dom-hover [target]="popover" type="button" class="btn btn-white">点我显示</button>
+        <ts-popover #popover="tsPopover"></ts-popover>
+    </div>
+</div>
