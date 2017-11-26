@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angular/core';
+import { Directive, HostListener, Input, EventEmitter, Output, ElementRef, AfterViewInit } from '@angular/core';
 import { HoverComponent } from './../interfaces/hover-component.interface';
 
 @Directive({
@@ -8,6 +8,8 @@ import { HoverComponent } from './../interfaces/hover-component.interface';
 export class HoverDirective implements AfterViewInit {
 
   @Input() target: HoverComponent;
+  @Output() hover = new EventEmitter<void>();
+  @Output() leave = new EventEmitter<void>();
 
   hasBind = false;
 
@@ -19,10 +21,12 @@ export class HoverDirective implements AfterViewInit {
 
   @HostListener('mouseover') mouseover() {
     this.target.hover();
+    this.hover.emit();
   }
 
   @HostListener('mouseleave') mouseleave() {
     this.target.leave();
+    this.leave.emit();
   }
 
   private bind() {

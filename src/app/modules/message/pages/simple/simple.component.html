@@ -43,7 +43,15 @@
 <div class="card rounded-0">
     <div class="card-header bg-white">悬浮提示</div>
     <div class="card-body">
-        <button ts-dom-hover [target]="popover" type="button" class="btn btn-white">点我显示</button>
-        <ts-popover #popover="tsPopover"></ts-popover>
+        <button ts-dom-toggle [target]="popover1" type="button" class="btn btn-white">点我显示</button>
+        <button ts-dom-hover [target]="popover2" type="button" class="btn btn-white">覆盖显示</button>
+        <button ts-dom-toggle [target]="popover3" type="button" class="btn btn-info" disabled>Target Dom</button>
+        <button (click)="popoverPosition='left';popover3.toggle()" type="button" class="btn btn-white">左侧显示</button>
+        <button (click)="popoverPosition='top';popover3.toggle()" type="button" class="btn btn-white">上方显示</button>
+        <button (click)="popoverPosition='bottom';popover3.toggle()" type="button" class="btn btn-white">下方显示</button>
+        <button (click)="popoverPosition='right';popover3.toggle()" type="button" class="btn btn-white">右侧显示</button>
+        <ts-popover #popover1="tsPopover" title="提示消息" message="你发现了一条新的提示消息~"></ts-popover>
+        <ts-popover #popover2="tsPopover" message="你发现了一条新的提示消息~"></ts-popover>
+        <ts-popover #popover3="tsPopover" message="你发现了一条新的提示消息~" [position]="popoverPosition" bodyClass="text-info"></ts-popover>
     </div>
 </div>
