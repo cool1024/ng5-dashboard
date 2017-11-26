@@ -1,0 +1,28 @@
+<div [sortablejs]="menus" [sortablejsOptions]="{ animation: 300 }">
+    <div class="card rounded-0 mt-2" *ngFor="let main of menus">
+        <div class="card-header bg-white"><i class="{{main.icon}}"></i>{{main.title}}</div>
+        <div class="card-body">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">序号</th>
+                        <th scope="col">图标</th>
+                        <th scope="col">链接</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody [sortablejs]="main.children" [sortablejsOptions]="{ animation: 300 }">
+                    <tr *ngFor="let child of main.children;index as i">
+                        <td class="w-25">{{i+1}}</td>
+                        <td class="w-25">{{child.title}}</td>
+                        <td class="w-25"><a routerLink="{{child.url}}">{{child.url}}</a></td>
+                        <td class="w-25">
+                            <button class="btn btn-sm btn-info">修改</button>
+                            <button class="btn btn-sm btn-danger">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

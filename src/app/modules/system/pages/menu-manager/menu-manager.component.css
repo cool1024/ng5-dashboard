@@ -1,0 +1,9 @@
+div {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.list-group-item {
+    cursor: all-scroll;
+}

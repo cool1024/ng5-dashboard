@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'upload', loadChildren: 'app/modules/upload/upload.module#UploadModule' },
   { path: 'pad', loadChildren: 'app/modules/pad/pad.module#PadModule' },
   { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule' },
+  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule' },
+  { path: 'system', loadChildren: 'app/modules/system/system.module#SystemModule' },
 ];
 
 @NgModule({

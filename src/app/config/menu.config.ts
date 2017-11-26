@@ -40,5 +40,12 @@ export const Menus = [
             { title: '简单示例', url: '/message/simple' },
         ]
     },
+    {
+        icon: 'fa fa-cogs fa-fw',
+        title: '系统设置',
+        children: [
+            { title: '菜单管理', url: '/system/menu' },
+        ]
+    },
 ];
 
