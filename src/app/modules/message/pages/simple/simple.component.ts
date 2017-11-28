@@ -7,6 +7,8 @@ import { TSToastService, TSConfirmService } from './../../../../tools-ui';
 })
 export class SimpleComponent implements OnInit {
 
+  popoverPosition = 'left';
+
   constructor(private toastService: TSToastService, private confirmService: TSConfirmService) { }
 
   ngOnInit() { }

@@ -87,6 +87,18 @@
 <br>
 <div class="card rounded-0">
     <div class="card-header bg-white">
+        开关按钮
+    </div>
+    <div class="card-body">
+        <ts-switch activeClass="bg-info" [(value)]="switchValue"></ts-switch>
+        <ts-switch activeClass="bg-success" defaultClass="bg-danger" [values]="{open:'success',close:'danger'}" [(value)]="switchString"></ts-switch>
+        <ts-switch activeClass="bg-warning" defaultClass="bg-dark" activeBarClass="bg-dark" defaultBarClass="bg-warning"></ts-switch>
+        <ts-switch activeClass="bg-primary" defaultClass="bg-warning"></ts-switch>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
         资料卡片（选择结果）
     </div>
     <div class="card-body">
@@ -108,6 +120,11 @@
                     <td>喜欢的食物</td>
                     <td>{{checkboxLables()}}</td>
                     <td>{{checkboxValue}}</td>
+                </tr>
+                <tr>
+                    <td>开关按钮</td>
+                    <td>{{switchString}}</td>
+                    <td>{{switchValue}}</td>
                 </tr>
             </tbody>
         </table>

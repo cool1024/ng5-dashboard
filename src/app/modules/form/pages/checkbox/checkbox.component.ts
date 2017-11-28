@@ -12,6 +12,9 @@ export class CheckboxComponent implements OnInit {
   checkboxs = [{ text: 'Apple', value: 1 }, { text: 'Banana', value: 2 }, { text: 'Carota', value: 3 }];
   radios = [{ text: '先生', value: 1 }, { text: '女士', value: 2 }, { text: '保密', value: 3 }];
 
+  switchValue = true;
+  switchString = 'danger';
+
   constructor() { }
 
   ngOnInit() { }

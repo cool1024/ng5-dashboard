@@ -9,12 +9,18 @@ export { ModalModule as TSModalModule } from './modules/modal.module';
 export { TabModule as TSTabModule } from './modules/tab.module';
 export { TriggleModule as TSTriggleModule } from './modules/triggle.module';
 export { ToggleModule as TSToggleModule } from './modules/toggle.module';
+export { HoverModule as TSHoverModule } from './modules/hover.module';
 export { CollapseModule as TSCollapseModule } from './modules/collapse.module';
 export { ProgressModule as TSProgressModule } from './modules/progress.module';
 export { ToastModule as TSToastModule } from './modules/toast.module';
 export { ConfirmModule as TSConfirmModule } from './modules/confirm.module';
 export { DatePickerModule as TSDatePickerModule } from './modules/datepicker.module';
 export { TimePickerModule as TSTimePickerModule } from './modules/timepicker.module';
+export { SwitchModule as TSSwitchModule } from './modules/switch.module';
+export { PopoverModule as TSPopoverModule } from './modules/popover.module';
+
+/*lib modules*/
+export { SortableModule } from './lib/sortable/sortable.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
@@ -33,3 +39,4 @@ export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
 export { ModalService as TSModalService } from './components/modal/modal.service';
 export { ConfirmService as TSConfirmService } from './components/confirm/confirm.service';
 export { ToastService as TSToastService } from './components/toast/toast.service';
+export { SortableService } from './lib/sortable/sortable.service';

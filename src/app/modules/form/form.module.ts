@@ -11,6 +11,7 @@ import {
   TSSelectModule,
   TSToggleModule,
   TSTimePickerModule,
+  TSSwitchModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -37,6 +38,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
     TSToggleModule,
     TSSelectModule,
     TSTimePickerModule,
+    TSSwitchModule,
   ],
   declarations: [
     SimpleComponent,

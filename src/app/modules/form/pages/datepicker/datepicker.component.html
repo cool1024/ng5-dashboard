@@ -23,24 +23,27 @@
         </form>
     </div>
 </div>
+<br>
 <div class="card rounded-0">
     <div class="card-header bg-white">
         时间选择
     </div>
     <div class="card-body">
-        <ts-timepicker></ts-timepicker>
+        <ts-timepicker #timpicker1="timePicker" [(activeTime)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0" confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
+        <ts-timepicker #timpicker2="timePicker" [(activeTime)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0" confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
+        <ts-timepicker #timpicker3="timePicker" [(activeTime)]="timeEmpty" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0" confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
         <form class="form-inline">
-            <button ts-dom-toggle type="button" class="btn btn-info mr-2 mb-1">选择时间</button>
+            <button ts-dom-toggle [target]="timpicker1" type="button" class="btn btn-info mr-2 mb-1">选择时间</button>
             <div class="input-group mr-2 mb-1" style="width:20rem;">
-                <input value="" type="text" class="form-control bg-white" placeholder="选择时间" readonly>
+                <input ts-dom-toggle [target]="timpicker2" value="{{time.hour+':'+time.minute+':'+time.second}}" type="text" class="form-control bg-white" placeholder="选择时间" readonly>
                 <span class="input-group-btn">
-                    <button class="btn btn-white" type="button"><i class="fa fa-clock-o fa-fw"></i></button>
+                    <button (click)="timpicker2.toggle()" class="btn btn-white" type="button"><i class="fa fa-clock-o fa-fw"></i></button>
                 </span>
             </div>
             <div class="input-group mb-1" style="width:20rem;">
-                <input value="" type="text" class="form-control bg-white" placeholder="选择时间" readonly>
+                <input ts-dom-toggle [target]="timpicker3" value="{{timeEmpty?timeEmpty.hour+':'+timeEmpty.minute+':'+timeEmpty.second:''}}" type="text" class="form-control bg-white" placeholder="选择时间" readonly>
                 <span class="input-group-btn">
-                    <button class="btn btn-white" type="button"><i class="fa fa-clock-o fa-fw"></i></button>
+                    <button (click)="timpicker3.toggle()" class="btn btn-white" type="button"><i class="fa fa-clock-o fa-fw"></i></button>
                 </span>
             </div>
         </form>

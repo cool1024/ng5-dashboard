@@ -1,21 +1,33 @@
-import { Directive, HostListener, Input, ElementRef } from '@angular/core';
+import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { ToggleComponent } from './../interfaces/toggle-component.interface';
 
 @Directive({
   selector: '[ts-dom-toggle]',
   exportAs: 'tsDomToggle',
 })
-export class DomToggleDirective {
+export class DomToggleDirective implements AfterViewInit {
 
   @Input() target: ToggleComponent;
+  @Input() useHover: boolean;
 
   hasBind = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {
+    this.useHover = false;
+  }
+
+  ngAfterViewInit() {
+    this.bind();
+  }
 
   @HostListener('click') onclick() {
-    this.bind();
     this.target.toggle();
+  }
+
+  @HostListener('hover') onhover() {
+    if (this.useHover) {
+      this.target.toggle();
+    }
   }
 
   private bind() {

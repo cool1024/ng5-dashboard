@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SimpleComponent } from './pages/simple/simple.component';
-import { TSToastModule, TSConfirmModule } from './../../tools-ui';
+import { TSToastModule, TSConfirmModule, TSPopoverModule, TSHoverModule, TSToggleModule } from './../../tools-ui';
 
 /*路由模块*/
 import { MessageRoutingModule } from './message.routing';
@@ -10,7 +10,10 @@ import { MessageRoutingModule } from './message.routing';
   imports: [
     TSToastModule,
     TSConfirmModule,
+    TSPopoverModule,
     MessageRoutingModule,
+    TSHoverModule,
+    TSToggleModule,
   ],
   declarations: [SimpleComponent]
 })

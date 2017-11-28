@@ -94,7 +94,7 @@ export class ToastService {
 
     dark(title: string, message: string, options: { positionClass?: string } = {}) {
         this.create(title, message, {
-            bgClass: 'bg-dark text-white', positionClass: options.positionClass || this.defaultPosition
+            bgClass: 'bg-dark text-white', closeClass: 'text-white', positionClass: options.positionClass || this.defaultPosition
         });
     }
 
