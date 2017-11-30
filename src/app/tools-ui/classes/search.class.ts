@@ -1,11 +1,11 @@
 export class SearchParams {
-    constructor(public params: { [key: string]: string | number }) { }
+    constructor(public params: { [key: string]: string | number }, private emptyNumber = -1) { }
     get values(): { [key: string]: string | number } {
         const params: { [key: string]: string | number } = {};
         for (const key in this.params) {
             if (typeof this.params[key] === 'string') {
                 if (!!this.params[key]) { params[key] = this.params[key]; }
-            } else {
+            } else if (typeof this.params[key] === 'number') {
                 params[key] = this.params[key];
             }
         }
@@ -15,7 +15,7 @@ export class SearchParams {
         for (const key in this.params) {
             if (typeof this.params[key] === 'string') {
                 this.params[key] = '';
-            } else {
+            } else if (typeof this.params[key] === 'number') {
                 this.params[key] = -1;
             }
         }

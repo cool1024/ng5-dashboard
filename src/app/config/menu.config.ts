@@ -46,6 +46,7 @@ export const Menus = [
         children: [
             { title: '菜单管理', url: '/system/menu' },
             { title: '权限管理', url: '/system/permission' },
+            { title: '角色管理', url: '/system/role' },
         ]
     },
 ];
