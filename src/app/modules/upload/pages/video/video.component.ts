@@ -62,38 +62,39 @@ export class VideoComponent {
         const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
         if (roa.length) {
           result.push(roa);
-          const test = roa;
-          const temp = {};
-          test.forEach(element => {
-            if (element['知识层级（一级）']) {
-              temp[element['知识层级（一级）']] = {};
-            }
-          });
+          // const test = roa;
+          // const temp = {};
+          // test.forEach(element => {
+          //   if (element['知识层级（一级）']) {
+          //     temp[element['知识层级（一级）']] = {};
+          //   }
+          // });
 
-          let level_1 = '';
+          // let level_1 = '';
 
-          test.forEach(element => {
-            if (element['知识层级（一级）']) {
-              level_1 = element['知识层级（一级）'];
-            }
-            if (element['知识层级（二级）']) {
-              temp[level_1][element['知识层级（二级）']] = new Array<string>();
-            }
-          });
+          // test.forEach(element => {
+          //   if (element['知识层级（一级）']) {
+          //     level_1 = element['知识层级（一级）'];
+          //   }
+          //   if (element['知识层级（二级）']) {
+          //     temp[level_1][element['知识层级（二级）']] = new Array<string>();
+          //   }
+          // });
 
-          let level_2 = '';
+          // let level_2 = '';
 
-          test.forEach(element => {
-            if (element['知识层级（一级）']) {
-              level_1 = element['知识层级（一级）'];
-            }
-            if (element['知识层级（二级）']) {
-              level_2 = element['知识层级（二级）'];
-            }
-            temp[level_1][level_2].push(element['知识层级（三级）']);
-          });
+          // test.forEach(element => {
+          //   if (element['知识层级（一级）']) {
+          //     level_1 = element['知识层级（一级）'];
+          //   }
+          //   if (element['知识层级（二级）']) {
+          //     level_2 = element['知识层级（二级）'];
+          //   }
+          //   temp[level_1][level_2].push(element['知识层级（三级）']);
+          // });
 
-          console.log(JSON.stringify(temp));
+          // console.log(JSON.stringify(temp));
+          console.log(JSON.stringify(roa));
         }
       });
       try {
