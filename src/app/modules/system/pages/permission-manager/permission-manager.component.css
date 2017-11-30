@@ -1,0 +1,10 @@
+.col-xl-4,
+.col-lg-6 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}

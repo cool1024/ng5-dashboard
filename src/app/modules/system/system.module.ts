@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { SortablejsModule } from 'angular-sortablejs';
 import { SystemRoutingModule } from './system.routing';
 import { MenuManagerComponent } from './pages/menu-manager/menu-manager.component';
+import { PermissionManagerComponent } from './pages/permission-manager/permission-manager.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    SystemRoutingModule,
     SortablejsModule,
+    SystemRoutingModule,
   ],
-  declarations: [MenuManagerComponent]
+  declarations: [
+    MenuManagerComponent,
+    PermissionManagerComponent
+  ]
 })
 export class SystemModule { }
