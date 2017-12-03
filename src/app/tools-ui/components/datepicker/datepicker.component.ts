@@ -166,8 +166,13 @@ export class DatepickerComponent implements OnInit, OnDestroy, ToggleComponent {
   toggle() {
     this.show = !this.show;
     if (this.show) {
-      this.year = this.activeDate.year;
-      this.month = this.activeDate.month;
+      if (this.activeDate === undefined || this.activeDate === null) {
+        this.activeDate = { year: this.year, month: this.month, day: this.day };
+      } else {
+        this.year = this.activeDate.year;
+        this.month = this.activeDate.month;
+      }
+
       this.autoPosition();
     }
   }

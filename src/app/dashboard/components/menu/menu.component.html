@@ -7,6 +7,7 @@
         </div>
     </div>
     <hr class="m-0">
+    <p class="pl-3 ml-1 mt-3 mb-2 text-muted">插件展示</p>
     <div class="menu-block pl-2 border-l-3 {{isCollopseArray[i]?menuConfigs.borderActiveClass:''}}" *ngFor="let main of menus;index as i">
         <div (click)="triggerMenu(i)" class="menu-main pointer">
             <div class="d-table w-100 {{isCollopseArray[i]?menuConfigs.mainMenuActiveClass:''}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">
@@ -32,5 +33,5 @@
             </div>
         </div>
     </div>
-    <!-- <p class="pl-3 m-0 text-muted" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">其它页面</p> -->
+    <p class="pl-3 ml-1 mt-0 mb-0 text-muted" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">其它页面</p>
 </div>

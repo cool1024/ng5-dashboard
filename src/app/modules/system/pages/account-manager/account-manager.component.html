@@ -3,17 +3,10 @@
         <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
     <div class="card-body">
         <div class="input-group">
-            <span class="input-group-addon bg-white">角色名称</span>
+            <span class="input-group-addon bg-white">账号</span>
+            <input [(ngModel)]="this.search.params.account" type="text" class="form-control" placeholder="请输入查询名称的关键词">
+            <span class="input-group-addon bg-white">名称</span>
             <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
-        </div>
-        <br>
-        <ts-datepicker #datepicker1="datePicker" [(activeDate)]="search.params.start" btnClass="btn-info" activeClass="bg-info text-white" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
-        <ts-datepicker #datepicker2="datePicker" [(activeDate)]="search.params.end" btnClass="btn-info" activeClass="bg-info text-white" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
-        <div class="input-group">
-            <span class="input-group-addon bg-white">创建日期</span>
-            <input ts-dom-toggle [target]='datepicker1' value="{{search.params.start?search.params.start.year+'/'+search.params.start.month+'/'+search.params.start.day:''}}" type="text" class="form-control bg-white pointer" readonly placeholder="最早创建时间">
-            <span class="input-group-addon  bg-white">到</span>
-            <input ts-dom-toggle [target]='datepicker2' value="{{search.params.end?search.params.end.year+'/'+search.params.end.month+'/'+search.params.end.day:''}}" type="text" class="form-control bg-white pointer" readonly placeholder="最晚创建时间">
         </div>
         <br>
         <div class="row">
@@ -26,13 +19,13 @@
             </div>
             <div class="col-6 text-right">
                 <button (click)="resetSearch()" class="btn btn-white">
-                      <i class="fa fa-refresh fa-fw"></i>
-                      <span>重置</span>
-                  </button>
+                    <i class="fa fa-refresh fa-fw"></i>
+                    <span>重置</span>
+                </button>
                 <button (click)="doSearch()" class="btn btn-white">
-                      <i class="fa fa-search fa-fw"></i>
-                      <span>搜索</span>
-                  </button>
+                    <i class="fa fa-search fa-fw"></i>
+                    <span>搜索</span>
+                </button>
             </div>
         </div>
     </div>
@@ -49,9 +42,9 @@
             <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
                 <tr *ngFor="let item of list;index as i" class="mat-cell">
                     <td>{{i+1}}</td>
+                    <td>{{item.account}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.created_at}}</td>
+                    <td>{{item.role}}</td>
                     <td>
                         <button class="btn btn-info btn-sm">详情/编辑</button>
                         <button class="btn btn-danger btn-sm">删除</button>

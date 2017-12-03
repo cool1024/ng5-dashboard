@@ -47,6 +47,7 @@ export const Menus = [
             { title: '菜单管理', url: '/system/menu' },
             { title: '权限管理', url: '/system/permission' },
             { title: '角色管理', url: '/system/role' },
+            { title: '账户管理', url: '/system/account' },
         ]
     },
 ];

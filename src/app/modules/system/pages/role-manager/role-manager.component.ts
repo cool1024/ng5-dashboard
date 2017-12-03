@@ -37,7 +37,7 @@ export class RoleManagerComponent implements OnInit {
   pagination = new Pagination();
 
   // 查询参数
-  search = new SearchParams({ name: '', start: '', end: '' });
+  search = new SearchParams({ name: '', account: '' });
 
   // 表格数据
   list = new Array<{ id: number, name: string, description: string, created_at: string }>();
@@ -72,14 +72,12 @@ export class RoleManagerComponent implements OnInit {
   // 搜索方法
   doSearch() {
     console.log(this.search.values);
-    console.log(this.search.params);
   }
 
   // 重置搜索
   resetSearch() {
     this.search.clean();
     console.log(this.search.values);
-    console.log(this.search.params);
   }
 
 }
