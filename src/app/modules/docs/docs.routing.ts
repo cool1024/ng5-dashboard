@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
-import { SimpleComponent } from './pages/simple/simple.component';
 import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
+import { SimpleComponent } from './pages/simple/simple.component';
+
 
 const routes: Routes = [
-  { path: 'simple', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['消息', 'comments-o'], ['简单示例', 'tablet']]) } },
+  { path: ':docs', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['内置服务', 'cogs'], ['HTTP请求', 'internet-explorer']]) } },
 ];
 
 @NgModule({
@@ -16,8 +17,8 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class MessageRoutingModule {
+export class DocsRoutingModule {
   constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('message', routes);
+    breadcrumbService.append('docs', routes);
   }
 }

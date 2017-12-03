@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
   menus = Menus;
 
   // 菜单展开状态列表
-  isCollopseArray = new Array<boolean>();
+  isCollopseArray = new Array<boolean[]>();
 
   constructor() { }
 
@@ -24,29 +24,35 @@ export class MenuComponent implements OnInit {
 
     // 默认收起所有的菜单
     for (let i = 0; i < this.menus.length; i++) {
-      this.isCollopseArray.push(false);
+      const temp = new Array<boolean>();
+      this.menus[i].menus.forEach(() => {
+        temp.push(false);
+      });
+      this.isCollopseArray.push(temp);
     }
   }
 
   // 展开指定菜单
-  openMenu(index: number) {
+  openMenu(i: number, j: number) {
     this.closeAllMenu();
-    this.isCollopseArray[index] = true;
+    this.isCollopseArray[i][j] = true;
   }
 
   // 菜单状态反转
-  triggerMenu(index: number) {
-    if (this.isCollopseArray[index] === true) {
-      this.isCollopseArray[index] = false;
+  triggerMenu(i: number, j: number) {
+    if (this.isCollopseArray[i][j] === true) {
+      this.isCollopseArray[i][j] = false;
     } else {
-      this.openMenu(index);
+      this.openMenu(i, j);
     }
   }
 
   // 收起所有的菜单
   closeAllMenu() {
     for (let i = 0; i < this.menus.length; i++) {
-      this.isCollopseArray[i] = false;
+      for (let j = 0; j < this.menus[i].menus.length; j++) {
+        this.isCollopseArray[i][j] = false;
+      }
     }
   }
 

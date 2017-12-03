@@ -7,31 +7,32 @@
         </div>
     </div>
     <hr class="m-0">
-    <p class="pl-3 ml-1 mt-3 mb-2 text-muted">插件展示</p>
-    <div class="menu-block pl-2 border-l-3 {{isCollopseArray[i]?menuConfigs.borderActiveClass:''}}" *ngFor="let main of menus;index as i">
-        <div (click)="triggerMenu(i)" class="menu-main pointer">
-            <div class="d-table w-100 {{isCollopseArray[i]?menuConfigs.mainMenuActiveClass:''}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">
-                <div class="d-table-cell text-center" [ngStyle]="{'width':menuConfigs.titleIconWidth}">
-                    <i class="{{main.icon}}" aria-hidden="true"></i>
-                </div>
-                <div class="d-table-cell">
-                    <span>{{main.title}}</span>
-                </div>
-                <div class="d-table-cell" [ngStyle]="{'width':menuConfigs.angleIconWidth}">
-                    <i class="fa fa-angle-down" aria-hidden="true" [ngClass]="{'icon-up': isCollopseArray[i],'icon-down':!isCollopseArray[i]}"></i>
+    <ng-template ngFor let-item let-i="index" [ngForOf]="menus">
+        <p class="pl-3 ml-1 mt-3 mb-2 text-muted">{{item.title}}</p>
+        <div class="menu-block pl-2 border-l-3 {{isCollopseArray[i][j]?menuConfigs.borderActiveClass:''}}" *ngFor="let main of item.menus;index as j">
+            <div (click)="triggerMenu(i,j)" class="menu-main pointer">
+                <div class="d-table w-100 {{isCollopseArray[i][j]?menuConfigs.mainMenuActiveClass:''}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">
+                    <div class="d-table-cell text-center" [ngStyle]="{'width':menuConfigs.titleIconWidth}">
+                        <i class="{{main.icon}}" aria-hidden="true"></i>
+                    </div>
+                    <div class="d-table-cell">
+                        <span>{{main.title}}</span>
+                    </div>
+                    <div class="d-table-cell" [ngStyle]="{'width':menuConfigs.angleIconWidth}">
+                        <i class="fa fa-angle-down" aria-hidden="true" [ngClass]="{'icon-up': isCollopseArray[i][j],'icon-down':!isCollopseArray[i][j]}"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="menu-child-block" [ngClass]="{'child-open': isCollopseArray[i],'child-close':!isCollopseArray[i]}" [ngStyle]="{'line-height':menuConfigs.childMenuHeight}">
-            <div class="menu-child-item" *ngFor="let child of main.children;index as j">
-                <div class="d-table w-100 pointer" [routerLinkActive]="menuConfigs.childMenuActiveClass" routerLink="{{child.url}}">
-                    <div class="d-table-cell" [ngStyle]="{'width':menuConfigs.titleIconWidth}"></div>
-                    <div class="d-table-cell">
-                        <span>{{child.title}}</span>
+            <div class="menu-child-block" [ngClass]="{'child-open': isCollopseArray[i][j],'child-close':!isCollopseArray[i][j]}" [ngStyle]="{'line-height':menuConfigs.childMenuHeight}">
+                <div class="menu-child-item" *ngFor="let child of main.children;">
+                    <div class="d-table w-100 pointer" [routerLinkActive]="menuConfigs.childMenuActiveClass" routerLink="{{child.url}}">
+                        <div class="d-table-cell" [ngStyle]="{'width':menuConfigs.titleIconWidth}"></div>
+                        <div class="d-table-cell">
+                            <span>{{child.title}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <p class="pl-3 ml-1 mt-0 mb-0 text-muted" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">其它页面</p>
+    </ng-template>
 </div>

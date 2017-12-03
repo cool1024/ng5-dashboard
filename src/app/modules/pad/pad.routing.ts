@@ -20,6 +20,6 @@ const routes: Routes = [
 })
 export class PadRoutingModule {
   constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('table', routes);
+    breadcrumbService.append('pad', routes);
   }
 }

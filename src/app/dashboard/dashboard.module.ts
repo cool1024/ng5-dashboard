@@ -6,6 +6,7 @@ import { DashboardRoutingModule } from './dashboard.routing';
 
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { AuthService } from './services/auth.service';
+import { RequestService } from './services/request.service';
 
 import { HeadComponent } from './components/head/head.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -46,6 +47,7 @@ export class DashboardModule {
       providers: [
         AuthService,
         BreadcrumbService,
+        RequestService,
       ]
     };
   }

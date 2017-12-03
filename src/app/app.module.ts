@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
-import { CoreModule } from './core.module';
-
 import { DashboardModule } from './dashboard/dashboard.module';
-import { SortablejsModule } from 'angular-sortablejs';
 import { AppComponent } from './app.component';
 
 
@@ -14,7 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
+    HttpClientModule,
     AppRoutingModule,
     DashboardModule.forRoot(),
   ],
