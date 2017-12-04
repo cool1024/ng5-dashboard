@@ -1,0 +1,8 @@
+{
+    "result": true,
+    "message": "request success",
+    "datas": {
+        "name": "tool-ui",
+        "keyword": "bootstrap,angular,typescript"
+    }
+}

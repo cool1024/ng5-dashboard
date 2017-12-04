@@ -18,6 +18,9 @@ const LANGUAGE = {
     `:host ::ng-deep .markdown-blockquote {
       border-left: 3px solid #e1e1e1 !important;
       padding-left: 10px !important;
+    }`,
+    `:host ::ng-deep code{
+      font-size: 14px !important;
     }`
   ]
 })
@@ -33,7 +36,7 @@ export class SimpleComponent implements OnInit {
         const renderer = new window.marked.Renderer();
 
         renderer.code = (code: string, language: string): string => {
-          return `<pre class='language-${language} bg-white border border-muted'>
+          return `<pre class='language-${language} bg-white'>
 <code>${window.Prism.highlight(code, LANGUAGE[language] || LANGUAGE.html)}</code></pre>`;
         };
 
