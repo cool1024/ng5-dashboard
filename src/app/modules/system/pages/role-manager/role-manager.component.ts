@@ -37,7 +37,7 @@ export class RoleManagerComponent implements OnInit {
   pagination = new Pagination();
 
   // 查询参数
-  search = new SearchParams({ name: '', account: '' });
+  search = new SearchParams({ name: '', account: '', start: null, end: null });
 
   // 表格数据
   list = new Array<{ id: number, name: string, description: string, created_at: string }>();

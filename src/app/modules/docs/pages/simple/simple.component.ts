@@ -3,6 +3,14 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { ActivatedRoute } from '@angular/router';
 declare const window: any;
+declare const Prism: any;
+const LANGUAGE = {
+  html: Prism.languages.html,
+  typescript: Prism.languages.typescript,
+  javascript: Prism.languages.javascript,
+  xml: Prism.languages.xml,
+  php: Prism.languages.php,
+};
 
 @Component({
   templateUrl: './simple.component.html',
@@ -24,9 +32,10 @@ export class SimpleComponent implements OnInit {
       this.requestService.text(`/assets/docs/${params.docs}.md`).subscribe(res => {
         const renderer = new window.marked.Renderer();
 
-        // renderer.code = (code: string, language: string): string => {
-        //   return `<pre class='language-${language}'><code>${Prism.highlight(code, LANGUAGE[language] || LANGUAGE.html)}</code></pre>`
-        // }
+        renderer.code = (code: string, language: string): string => {
+          return `<pre class='language-${language} bg-white border border-muted'>
+<code>${window.Prism.highlight(code, LANGUAGE[language] || LANGUAGE.html)}</code></pre>`;
+        };
 
         renderer.blockquote = (quote: string): string => {
           return `<blockquote class="markdown-blockquote">${quote}</blockquote>`;
