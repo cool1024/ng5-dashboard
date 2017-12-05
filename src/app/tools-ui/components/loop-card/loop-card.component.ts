@@ -17,6 +17,7 @@ export class LoopCardComponent {
 
   changeFile(files: File[]) {
     if (files && files.length > 0) {
+      this.loopCard.active = false;
       this.loopCard.file = files[0];
       this.loopCard.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.loopCard.file));
     }
