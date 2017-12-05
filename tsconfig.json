@@ -14,9 +14,6 @@
         "lib": [
             "es2017",
             "dom"
-        ],
-        "include": [
-            "./src/app/dashboard"
         ]
     }
 }

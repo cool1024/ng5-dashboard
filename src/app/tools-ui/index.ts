@@ -18,6 +18,7 @@ export { DatePickerModule as TSDatePickerModule } from './modules/datepicker.mod
 export { TimePickerModule as TSTimePickerModule } from './modules/timepicker.module';
 export { SwitchModule as TSSwitchModule } from './modules/switch.module';
 export { PopoverModule as TSPopoverModule } from './modules/popover.module';
+export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
 
 /*lib modules*/
 export { SortableModule } from './lib/sortable/sortable.module';

@@ -18,6 +18,7 @@ export const Menus = [
                     { title: '多选/单选', url: '/form/checkbox' },
                     { title: '下拉选择', url: '/form/select' },
                     { title: '日期选择', url: '/form/datepicker' },
+                    { title: '轮播图', url: '/form/loopcard' },
                 ]
             },
             {

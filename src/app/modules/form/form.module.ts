@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SortablejsModule } from 'angular-sortablejs';
 
 /*tool-ui*/
 import {
@@ -12,6 +13,7 @@ import {
   TSToggleModule,
   TSTimePickerModule,
   TSSwitchModule,
+  TSLoopCardModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -25,6 +27,7 @@ import { SimpleComponent } from './pages/simple/simple.component';
 import { SelectComponent } from './pages/select/select.component';
 import { CheckboxComponent } from './pages/checkbox/checkbox.component';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
+import { LoopCardComponent } from './pages/loop-card/loop-card.component';
 
 @NgModule({
   imports: [
@@ -39,6 +42,8 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
     TSSelectModule,
     TSTimePickerModule,
     TSSwitchModule,
+    TSLoopCardModule,
+    SortablejsModule,
   ],
   declarations: [
     SimpleComponent,
@@ -46,6 +51,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
     SelectComponent,
     CheckboxComponent,
     DatepickerComponent,
+    LoopCardComponent,
   ],
   entryComponents: [
     SimpleModalComponent
