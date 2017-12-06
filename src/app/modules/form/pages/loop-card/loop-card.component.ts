@@ -47,7 +47,7 @@ export class LoopCardComponent implements OnInit {
       // 如果需要上传图片
       if (this.loopCards[i].file) {
 
-        this.loopCards[i].src = 'http://...';
+        // this.loopCards[i].src = 'http://...';
       }
 
       // 修改成功后设为积极状态
@@ -57,7 +57,7 @@ export class LoopCardComponent implements OnInit {
 
       // 添加成功后获取轮播图ID和图片地址,并设置为积极状态
       this.loopCards[i].id = 1;
-      this.loopCards[i].src = 'http://...';
+      // this.loopCards[i].src = 'http://...';
       this.loopCards[i].active = true;
       this.loopCards[i].file = null;
     }

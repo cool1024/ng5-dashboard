@@ -6,7 +6,7 @@
             <button (click)="addLoopCard()" type="button" class="btn btn-sm btn-link text-success"><i class="fa fa-plus fa-fw"></i>添加新轮播图</button>
         </span>
     </div>
-    <div class="card-body" [sortablejs]="loopCards" [sortablejsOptions]="{ animation: 300 }">
+    <div class="card-body" [sortablejs]="loopCards">
         <ts-loop-card *ngFor="let loopCard of loopCards;index as i" [loopCard]="loopCard" (onSave)="saveLoopCard(i)" (onRemove)="deleteLoopCard(i)"></ts-loop-card>
     </div>
 </div>

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/skipWhile';
-
 import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
+
 @Injectable()
 export class RequestService {
 
@@ -66,12 +66,27 @@ export class RequestService {
     }
 
     // 发送一个post请求，可附带文件（用于文件上传）
-    files(url: string, params: { [key: string]: number | string }, files = new Array<{ name: string, files: Array<File> }>(), check = true) {
+    files(url: string, params: { [key: string]: number | string },
+        files: Array<{ name: string, files: Array<File> }>, check = true): Observable<ApiData> {
         const observable = this.http.post<ApiData>(
             this.server_url + url, this.getFormdata(params, files), { headers: this.getHeaders(), params: this.getParams(params) });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 
+    // 发送一个post请求，可附带文件（用于文件上传，提供上传进度）
+    upload(url: string, files: Array<{ name: string, files: Array<File> }>, onprogress: (value: number) => void, final: (value: any) => void) {
+        const req = new HttpRequest('POST', this.server_url + url, this.getFormdata({}, files), {
+            reportProgress: true,
+        });
+        this.http.request(req).subscribe(event => {
+            if (event.type === HttpEventType.UploadProgress) {
+                const percentDone = Math.round(100 * event.loaded / event.total);
+                onprogress(percentDone);
+            } else if (event instanceof HttpResponse) {
+                final(event);
+            }
+        });
+    }
     private getHeaders(): HttpHeaders {
         let header = new HttpHeaders();
         header = header.append('ng-params-one', '123456789');

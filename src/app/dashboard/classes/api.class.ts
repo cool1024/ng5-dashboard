@@ -1,3 +1,3 @@
 export class ApiData {
-    constructor(public result: boolean, public message: string, public datas: any) { }
+    constructor(public result: boolean, public message: string, public datas?: any, public id?: number) { }
 }
