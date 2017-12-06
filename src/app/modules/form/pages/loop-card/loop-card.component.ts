@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './loop-card.component.html',
   styleUrls: ['./loop-card.component.css']
 })
-export class LoopCardComponent {
+export class LoopCardComponent implements OnInit {
 
   // 轮播图列表
   loopCards = new Array<{ id: number, url: string, src: string, active?: boolean, file?: File }>();
 
   constructor() { }
+
+  ngOnInit() {
+
+    // 获取轮播图列表
+    this.loopCards = [
+      { id: 1, url: '1', src: 'http://127.0.0.1:4200/assets/image/card/1.jpg', active: true },
+      { id: 2, url: '2', src: 'http://127.0.0.1:4200/assets/image/card/2.jpg', active: true },
+      { id: 3, url: '3', src: 'http://127.0.0.1:4200/assets/image/card/3.jpg', active: true },
+    ];
+  }
 
   // 添加轮播图
   addLoopCard() {
@@ -31,10 +41,17 @@ export class LoopCardComponent {
   // 保存轮播图
   saveLoopCard(i: number) {
     if (this.loopCards[i].id > 0) {
-      // 调用保存接口
+      // 调用修改接口
       console.log(this.loopCards[i].id);
 
-      this.loopCards.splice(i, 1);
+      // 如果需要上传图片
+      if (this.loopCards[i].file) {
+
+        this.loopCards[i].src = 'http://...';
+      }
+
+      // 修改成功后设为积极状态
+      this.loopCards[i].active = true;
     } else {
       // 调用添加接口
 
