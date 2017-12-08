@@ -9,6 +9,7 @@ import { TableRoutingModule } from './table.routing';
 
 /*页面组件*/
 import { SimpleComponent } from './pages/simple/simple.component';
+import { DetailComponent } from './pages/detail/detail.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { SimpleComponent } from './pages/simple/simple.component';
   ],
   declarations: [
     SimpleComponent,
+    DetailComponent,
   ]
 })
 export class TableModule { }

@@ -2,10 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { SimpleComponent } from './pages/simple/simple.component';
+import { DetailComponent } from './pages/detail/detail.component';
 import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 
 const routes: Routes = [
-  { path: 'simple', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['表格', 'table'], ['标准', 'tablet']]) } },
+  {
+    path: 'simple',
+    component: SimpleComponent,
+    data: { breadcrumbs: new Breadcrumbs([['表格', 'table'], ['标准', 'tablet']]) },
+    children: [
+      {
+        path: ':id',
+        component: DetailComponent,
+        data: { breadcrumbs: new Breadcrumbs([['1', 'table'], ['标准', 'tablet']]) },
+      }
+    ]
+  },
 ];
 
 @NgModule({

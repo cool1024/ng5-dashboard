@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 declare const window: any;
 declare const Prism: any;
 const LANGUAGE = {
@@ -22,13 +23,15 @@ const LANGUAGE = {
     `:host ::ng-deep code{
       font-size: 14px !important;
     }`
-  ]
+  ],
+  providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
 })
 export class SimpleComponent implements OnInit {
 
   markdown: SafeHtml | string = '';
 
-  constructor(private requestService: RequestService, private activatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer) { }
+  constructor(
+    private requestService: RequestService, private activatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer, private location: Location) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -54,6 +57,9 @@ export class SimpleComponent implements OnInit {
 
       });
     });
+  }
+  back() {
+    this.location.back();
   }
 
 }
