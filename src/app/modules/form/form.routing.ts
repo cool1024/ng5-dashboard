@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
-import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 import { SimpleComponent } from './pages/simple/simple.component';
 import { SelectComponent } from './pages/select/select.component';
 import { CheckboxComponent } from './pages/checkbox/checkbox.component';
@@ -24,8 +23,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class FormRoutingModule {
-  constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('form', routes);
-  }
-}
+export class FormRoutingModule { }

@@ -1,6 +1,9 @@
-<div [sortablejs]="menus" [sortablejsOptions]="{ animation: 300 }">
-    <div class="card rounded-0 mt-2" *ngFor="let main of menus">
-        <div class="card-header bg-white"><i class="{{main.icon}}"></i>{{main.title}}</div>
+<div [sortablejs]="mains.menus" [sortablejsOptions]="{ animation: 300 }" *ngFor="let mains of menus">
+    <div class="card rounded-0 mt-2" *ngFor="let main of mains.menus">
+        <div class="card-header bg-white">
+            <i class="{{main.icon}}"></i>{{main.title}}
+            <span class="pull-right">所属板块：{{mains.title}}</span>
+        </div>
         <div class="card-body">
             <table class="table table-striped text-center">
                 <thead>
@@ -15,7 +18,9 @@
                     <tr *ngFor="let child of main.children;index as i">
                         <td class="w-25">{{i+1}}</td>
                         <td class="w-25">{{child.title}}</td>
-                        <td class="w-25"><a routerLink="{{child.url}}">{{child.url}}</a></td>
+                        <td class="w-25">
+                            <a routerLink="{{child.url}}">{{child.url}}</a>
+                        </td>
                         <td class="w-25">
                             <button class="btn btn-sm btn-info">修改</button>
                             <button class="btn btn-sm btn-danger">删除</button>

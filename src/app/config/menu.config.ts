@@ -65,6 +65,13 @@ export const Menus = [
                 children: [
                     { title: 'HTTP请求', url: '/docs/http-service' },
                 ]
+            },
+            {
+                icon: 'fa fa-book fa-fw',
+                title: 'Angular速查',
+                children: [
+                    { title: '路由参考', url: '/docs/route-point' },
+                ]
             }
         ]
     }

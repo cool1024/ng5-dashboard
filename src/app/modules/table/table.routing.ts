@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { SimpleComponent } from './pages/simple/simple.component';
 import { DetailComponent } from './pages/detail/detail.component';
-import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 
 const routes: Routes = [
   {
@@ -12,9 +11,9 @@ const routes: Routes = [
     data: { breadcrumbs: new Breadcrumbs([['表格', 'table'], ['标准', 'tablet']]) },
     children: [
       {
-        path: ':id',
+        path: 'detail/:id',
         component: DetailComponent,
-        data: { breadcrumbs: new Breadcrumbs([['1', 'table'], ['标准', 'tablet']]) },
+        data: { breadcrumbs: new Breadcrumbs([['表格', 'table', '/table/simple'], ['详情', 'info']]) },
       }
     ]
   },
@@ -28,8 +27,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class TableRoutingModule {
-  constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('table', routes);
-  }
-}
+export class TableRoutingModule { }

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { SimpleComponent } from './pages/simple/simple.component';
 import { VideoComponent } from './pages/video/video.component';
-import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 
 const routes: Routes = [
   { path: 'simple', component: SimpleComponent, data: { breadcrumbs: new Breadcrumbs([['文件上传', 'upload'], ['图片上传', 'file-image-o']]) } },
@@ -18,8 +17,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class UploadRoutingModule {
-  constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('upload', routes);
-  }
-}
+export class UploadRoutingModule { }

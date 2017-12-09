@@ -1,1 +1,59 @@
-detail
+<!-- <div class="row">
+    <div class="col-md-6">
+        <div class="card rounded-0 h-100">
+            <div class="card-header bg-white">JSON数据</div>
+            <div class="card-body">
+                <pre>{{detail|json}}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-white">图片展示</div>
+            <div class="card-body">
+                <img [src]="detail.thumb">
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="card rounded-0">
+    <div class="card-header bg-white">图片展示</div>
+    <div class="card-body">
+        <img class="align-top" [src]="detail.thumb">
+        <pre class="d-inline-block ml-2">{{detail|json}}</pre>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">详情表单</div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Position</label>
+                <input type="number" name="position" [(ngModel)]="detail.position" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Name</label>
+                <input type="text" name="name" [(ngModel)]="detail.name" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Weight</label>
+                <input type="text" name="weight" [(ngModel)]="detail.weight" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Symbol</label>
+                <input type="text" name="symbol" [(ngModel)]="detail.symbol" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Thumb Url</label>
+            <input type="text" name="thumb" [(ngModel)]="detail.thumb" class="form-control">
+        </div>
+        <div class="text-right">
+            <button type="button" class="btn btn-white" routerLink="/table/simple">返回列表</button>
+            <button ts-loading #submit="tsLoading" type="button" class="btn btn-success" title="确认修改"></button>
+        </div>
+    </div>
+</div>

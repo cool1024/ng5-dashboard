@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
-import { BreadcrumbService } from './../../dashboard/services/breadcrumb.service';
 import { TabComponent } from './pages/tab/tab.component';
 import { CollapseComponent } from './pages/collapse/collapse.component';
 
@@ -18,8 +17,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class PadRoutingModule {
-  constructor(breadcrumbService: BreadcrumbService) {
-    breadcrumbService.append('pad', routes);
-  }
-}
+export class PadRoutingModule { }
