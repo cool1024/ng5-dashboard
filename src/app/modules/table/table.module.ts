@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 /*tool-ui*/
-import { TSPaginationModule, TSLoadingModule, TSDropdownModule } from './../../tools-ui';
+import { TSPaginationModule, TSLoadingModule, TSDropdownModule, TSConfirmModule, TSToastModule } from './../../tools-ui';
 
 /*路由模块*/
 import { TableRoutingModule } from './table.routing';
@@ -18,6 +18,8 @@ import { DetailComponent } from './pages/detail/detail.component';
     TSDropdownModule,
     TSLoadingModule,
     TableRoutingModule,
+    TSConfirmModule,
+    TSToastModule,
   ],
   declarations: [
     SimpleComponent,

@@ -1,4 +1,4 @@
-<div *ngIf="!outlet.isActivated">
+<div [ngClass]="{'d-none':outlet.isActivated}">
     <div class="card rounded-0">
         <div class="card-header bg-white">
             <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
-                    <tr *ngFor="let item of list" class="mat-cell">
+                    <tr *ngFor="let item of list;index as i" class="mat-cell">
                         <td>{{item.position}}</td>
                         <td>
                             <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" src="{{item.thumb}}">
@@ -68,8 +68,15 @@
                                     <button class="dropdown-item">重新审核</button>
                                 </div>
                             </div>
-                            <button routerLink="/table/simple/detail/{{item.position}}" class="btn btn-info btn-sm">详情</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
+                            <button routerLink="/table/simple/detail/{{item.position}}" class="btn btn-info btn-sm">
+                                <i class="fa fa-info-circle fa-fw"></i>详情</button>
+                            <button (click)="deleteItem(i)" class="btn btn-danger btn-sm">
+                                <i class="fa fa-close fa-fw"></i>删除</button>
+                        </td>
+                    </tr>
+                    <tr class="mat-cell">
+                        <td [attr.colspan]="theads.length" class="text-center text-info">
+                            暂无数据～
                         </td>
                     </tr>
                 </tbody>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Pagination, SearchParams } from './../../../../tools-ui';
+import { Pagination, SearchParams, TSConfirmService } from './../../../../tools-ui';
 import { RouterOutlet } from '@angular/router';
 
 const datas = [
@@ -41,21 +41,27 @@ export class SimpleComponent implements OnInit {
     search = new SearchParams({ name: '', start: '', end: '' });
 
     // 表格数据
-    list = new Array<{ position: number, thumb: string, name: string, weight: number, symbol: string }>();
+    list = new Array<{ position: number, name: string, weight: number, symbol: string, thumb: string, }>();
 
     // 表格标题
     theads = new Array<string>();
 
-    constructor() { }
+    constructor(private confirm: TSConfirmService) { }
 
     ngOnInit() {
 
         // 载入表格数据
         this.theads = ['No.', '图片', '名称', '质量', '符号', '操作'];
-        this.list = datas.slice(0, this.pagination.limit);
+        this.pageChanged();
+    }
 
-        // 分页组件配置
-        this.pagination.total = datas.length;
+    // 删除方法
+    deleteItem(i: number) {
+        this.confirm.danger('危险操作', `确认删除 ${this.list[i].name} ，操作不可恢复！`, { okTitle: '确认', cancelTitle: '取消' }).next(() => {
+            const index = datas.indexOf(this.list[i]);
+            if (index >= 0) { datas.splice(index, 1); }
+            this.pageChanged();
+        });
     }
 
     // 换页事件(特别的更改每页数据量也会触发此事件)
@@ -65,6 +71,7 @@ export class SimpleComponent implements OnInit {
         // 模拟数据加载过程
         setTimeout(() => {
             this.list = datas.slice(this.pagination.offset, this.pagination.offset + this.pagination.limit);
+            this.pagination.total = datas.length;
             this.flash.complete();
         }, 1000);
 

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortablejsModule } from 'angular-sortablejs';
 
 /*tool-ui*/
 import {
-  TSCheckboxModule,
-  TSFileModule,
-  TSLoadingModule,
-  TSModalModule,
-  TSDatePickerModule,
-  TSSelectModule,
-  TSToggleModule,
-  TSTimePickerModule,
-  TSSwitchModule,
-  TSLoopCardModule,
+    TSCheckboxModule,
+    TSFileModule,
+    TSLoadingModule,
+    TSModalModule,
+    TSDatePickerModule,
+    TSSelectModule,
+    TSToggleModule,
+    TSTimePickerModule,
+    TSSwitchModule,
+    TSLoopCardModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -28,33 +28,37 @@ import { SelectComponent } from './pages/select/select.component';
 import { CheckboxComponent } from './pages/checkbox/checkbox.component';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { LoopCardComponent } from './pages/loop-card/loop-card.component';
+import { MutiComponent } from './pages/muti/muti.component';
 
 @NgModule({
-  imports: [
-    FormsModule,
-    TSCheckboxModule,
-    TSFileModule,
-    TSLoadingModule,
-    TSModalModule,
-    FormRoutingModule,
-    TSDatePickerModule,
-    TSToggleModule,
-    TSSelectModule,
-    TSTimePickerModule,
-    TSSwitchModule,
-    TSLoopCardModule,
-    SortablejsModule,
-  ],
-  declarations: [
-    SimpleComponent,
-    SimpleModalComponent,
-    SelectComponent,
-    CheckboxComponent,
-    DatepickerComponent,
-    LoopCardComponent,
-  ],
-  entryComponents: [
-    SimpleModalComponent
-  ]
+    imports: [
+        FormsModule,
+        /*ReactiveFormsModule为响应式表单模块，不使用时，请勿导入*/
+        ReactiveFormsModule,
+        TSCheckboxModule,
+        TSFileModule,
+        TSLoadingModule,
+        TSModalModule,
+        FormRoutingModule,
+        TSDatePickerModule,
+        TSToggleModule,
+        TSSelectModule,
+        TSTimePickerModule,
+        TSSwitchModule,
+        TSLoopCardModule,
+        SortablejsModule,
+    ],
+    declarations: [
+        SimpleComponent,
+        SimpleModalComponent,
+        SelectComponent,
+        CheckboxComponent,
+        DatepickerComponent,
+        MutiComponent,
+        LoopCardComponent,
+    ],
+    entryComponents: [
+        SimpleModalComponent
+    ]
 })
 export class FormModule { }

@@ -1,0 +1,126 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">表单校验:板驱动表单</div>
+    <div class="card-body">
+        <form #datasForm="ngForm" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="input-name">
+                        <span class="text-danger">*</span>
+                        <span>货物名称</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':name.invalid && !name.pristine}" #name="ngModel" [(ngModel)]="datas.name" id="input-name"
+                        name="name" type="text" class="form-control" required>
+                    <div class="invalid-feedback">货物名称是必填的～</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="input-no">
+                        <span class="text-danger">*</span>
+                        <span>货物编号</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':no.invalid && !no.pristine}" #no="ngModel" [(ngModel)]="datas.no" id="input-no" name="no"
+                        type="text" class="form-control" required>
+                    <div class="invalid-feedback">货物编号是必填的～</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="input-address">
+                        <span class="text-danger">*</span>
+                        <span>收货地址</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':address.invalid && !address.pristine}" #address="ngModel" [(ngModel)]="datas.address" id="input-address"
+                        name="address" type="text" class="form-control" required>
+                    <div class="invalid-feedback">货物收货地址是必填的～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="input-size">
+                        <span class="text-danger">*</span>
+                        <span>尺寸</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':size.invalid && !size.pristine}" #size="ngModel" [(ngModel)]="datas.size" id="input-size"
+                        name="size" type="number" class="form-control" required>
+                    <div class="invalid-feedback">货物尺寸是必填的且必须是数字～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="input-weight">重量</label>
+                    <input [ngClass]="{'is-invalid':weight.invalid && !weight.pristine}" #weight="ngModel" [(ngModel)]="datas.weight" id="input-weight"
+                        name="weight" type="number" class="form-control" required>
+                    <div class="invalid-feedback">货物重量是必填的且必须是数字～</div>
+                </div>
+            </div>
+            <div class="text-right">
+                <!-- <span>表单数据：{{datas|json}}</span> -->
+                <button class="btn btn-white" type="button">返回列表</button>
+                <button [disabled]="datasForm.form.invalid" class="btn btn-success" type="button">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">表单校验:响应式表单/异步校验</div>
+    <div class="card-body">
+        <form [formGroup]="mutiForm" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="_input-name">
+                        <span class="text-danger">*</span>
+                        <span>货物名称</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!mutiForm.get('_name').pristine&&mutiForm.get('_name').invalid}" formControlName="_name"
+                        id="_input-name" type="text" class="form-control">
+                    <div class="invalid-feedback">货物名称是必填的～</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="_input-no">
+                        <span class="text-danger">*</span>
+                        <span>货物编号</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!mutiForm.get('_no').pristine&&mutiForm.get('_no').invalid}" formControlName="_no" id="_input-no"
+                        name="_no" type="text" class="form-control">
+                    <div class="invalid-feedback">货物编号是必填的且必须是且不能超过8个字符～</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="_input-address">
+                        <span class="text-danger">*</span>
+                        <span>收货地址</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!mutiForm.get('_address').pristine&&mutiForm.get('_address').invalid}" formControlName="_address"
+                        id="_input-address" name="_address" type="text" class="form-control">
+                    <div class="invalid-feedback">货物收货地址是必填的～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="_input-size">
+                        <span class="text-danger">*</span>
+                        <span>尺寸</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!mutiForm.get('_size').pristine&&mutiForm.get('_size').invalid}" formControlName="_size"
+                        id="_input-size" name="_size" type="number" class="form-control">
+                    <div class="invalid-feedback">货物重量是必填的且必须是0-100的数字～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="_input-weight">重量</label>
+                    <input [ngClass]="{'is-invalid':!mutiForm.get('_weight').pristine&&mutiForm.get('_weight').invalid&&mutiForm.get('_weight').errors}"
+                        formControlName="_weight" id="_input-weight" name="_weight" type="number" class="form-control">
+                    <div class="invalid-feedback">
+                        {{mutiForm.get('_weight').errors&&mutiForm.get('_weight').errors.muti?mutiForm.get('_weight').errors.muti:'货物重量是必填的且必须是0-100的数字～'}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <!-- <span>表单数据：{{datas|json}}</span> -->
+                <button class="btn btn-white" type="button">返回列表</button>
+                <button [disabled]="mutiForm.pristine||mutiForm.invalid" class="btn btn-success" type="button">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">动态表单</div>
+    <div class="card-body text-muted">
+        暂无参考
+    </div>
+</div>

@@ -32,6 +32,10 @@ export class BtnLoadingComponent implements OnChanges {
     return this.loading;
   }
 
+  ready() {
+    this.complete = true;
+  }
+
   showLoading() {
     this.complete = false;
   }

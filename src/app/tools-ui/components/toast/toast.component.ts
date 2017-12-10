@@ -11,9 +11,9 @@ import {
   template: `
     <div *ngIf="show" class="{{positionClass}} position-fixed alert {{bgClass}} m-2" role="alert" style="width:20rem;z-index:9999" [@toastAnimate] >
       <h6 class="alert-heading">{{title}}
-        <button (click)="show = false" type="button" class="close pull-right {{closeClass}}" aria-label="Close">
+        <span (click)="show = false" class="pointer pull-right {{closeClass}}" style="opacity: 0.8;">
           &times;
-        </button>
+        </span>
       </h6>
       <hr class="mb-2">
       <p class="mb-0 mt-0">{{message}}</p>

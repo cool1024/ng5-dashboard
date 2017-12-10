@@ -12,6 +12,8 @@ export class FlashLoadingDirective implements AfterViewInit {
 
   @Input() bgColor: string;
 
+  private active = false;
+
   private flash: HTMLDivElement;
 
   constructor(private elementRef: ElementRef) {
@@ -34,7 +36,8 @@ export class FlashLoadingDirective implements AfterViewInit {
     this.flash.style.position = 'absolute';
     this.flash.style.transform = `translate3d(0px, -${dom.clientHeight}px, 0px)`;
     this.flash.innerHTML = '<i class="fa fa-spinner fa-pulse"></i>Loading...';
-    this.flash.style.display = 'none';
+    this.flash.style.display = this.active ? '' : 'none';
+    this.flash.innerHTML = `<i class="fa fa-spinner fa-pulse"></i>${this.label}`;
   }
 
   ngAfterViewInit() {
@@ -42,13 +45,13 @@ export class FlashLoadingDirective implements AfterViewInit {
   }
 
   loading() {
+    this.active = true;
     this.init();
-    this.flash.style.display = '';
-    this.flash.innerHTML = `<i class="fa fa-spinner fa-pulse"></i>${this.label}`;
   }
 
   complete() {
-    this.flash.style.display = 'none';
+    this.active = false;
+    this.init();
   }
 
 }

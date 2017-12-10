@@ -1,7 +1,7 @@
 <div class="card rounded-0">
     <div class="card-header bg-white">确认对话框</div>
     <div class="card-body">
-        <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？');
+        <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
         " type="button" class="btn btn-danger">危险操作</button>
         <button (click)="confirm.primary('提示', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });
         " type="button" class="btn btn-primary">重要操作</button>

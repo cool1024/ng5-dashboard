@@ -8,9 +8,9 @@ import { Task, TaskHandle } from './../../classes/task.class';
     <div class="align-self-center w-100">
       <div class="card {{cardClass}}" style="max-width: 20rem;margin:auto;">
         <div class="card-header">{{title}}
-          <button (click)="show = false" type="button" class="close pull-right {{closeClass}}" aria-label="Close">
-            &times;
-          </button>
+          <span (click)="show = false" class="pointer pull-right {{closeClass}}" aria-label="Close" style="opacity: 0.8;">
+          &times;
+          </span>
         </div>
         <div class="card-body">
           <p class="card-text">{{message}}</p>

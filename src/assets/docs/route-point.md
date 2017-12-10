@@ -48,8 +48,8 @@ this.activatedRoute.queryParams.subscribe(params => {
 1.列表页面HTML模板list.component.html
 
 ```html
-<!--子路由出口，当详情页显示时，隐藏列表页内容-->
-<div *ngIf="!outlet.isActivated">
+<!--子路由出口，当详情页显示时，隐藏列表页内容,不要使用ngIf-->
+<div [ngClass]="{'d-none':outlet.isActivated}">
     <!--列表页面内容-->
 </div>
 <!--子路由出口，详情页-->

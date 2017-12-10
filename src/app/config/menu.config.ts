@@ -15,6 +15,7 @@ export const Menus = [
                 title: '表单',
                 children: [
                     { title: '基本表单', url: '/form/simple' },
+                    { title: '功能表单', url: '/form/muti' },
                     { title: '多选/单选', url: '/form/checkbox' },
                     { title: '下拉选择', url: '/form/select' },
                     { title: '日期选择', url: '/form/datepicker' },

@@ -5,9 +5,9 @@ import { TSModalService } from './../../../tools-ui';
     template: `
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">预览结果</h5>
-            <button type="button" class="close pointer" (click)="dismiss()" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <span type="button" class="close pointer" (click)="dismiss()">
+                &times;
+            </span>
         </div>
         <div class="modal-body" style="height:600px;">
             <div class="embed-responsive h-100">
