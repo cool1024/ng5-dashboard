@@ -20,4 +20,12 @@ export class AuthService {
     get isLoggedIn(): boolean {
         return this.loginState;
     }
+
+    saveToken() {
+
+    }
+
+    // getToken(): { [key: string]: string } {
+
+    // }
 }
