@@ -18,38 +18,39 @@ import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    DashboardRoutingModule,
-    BrowserAnimationsModule,
-  ],
-  declarations: [
-    HeadComponent,
-    MenuComponent,
-    LoginComponent,
-    ContentDirective,
-    ErrorComponent,
-    HomeComponent,
-  ],
-  exports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    HeadComponent,
-    MenuComponent,
-    LoginComponent,
-    ContentDirective,
-  ]
+   imports: [
+      CommonModule,
+      RouterModule,
+      DashboardRoutingModule,
+      BrowserAnimationsModule,
+   ],
+   declarations: [
+      HeadComponent,
+      MenuComponent,
+      LoginComponent,
+      ContentDirective,
+      ErrorComponent,
+      HomeComponent,
+   ],
+   exports: [
+      CommonModule,
+      BrowserAnimationsModule,
+      HeadComponent,
+      MenuComponent,
+      LoginComponent,
+      ContentDirective,
+   ]
 })
 export class DashboardModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: DashboardModule,
-      providers: [
-        AuthService,
-        BreadcrumbService,
-        RequestService,
-      ]
-    };
-  }
+   public static forRoot(): ModuleWithProviders {
+      return {
+         ngModule: DashboardModule,
+         providers: [
+            AuthService,
+            BreadcrumbService,
+            RequestService,
+            StorageService,
+         ]
+      };
+   }
 }

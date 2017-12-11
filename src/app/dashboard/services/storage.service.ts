@@ -15,7 +15,7 @@ export class StorageService {
     }
 
     // 批量获取本地存储
-    gets(...keys: string[]): { [key: string]: string } {
+    gets(keys: string[]): { [key: string]: string } {
         const datas: { [key: string]: string } = {};
         keys.forEach(key => {
             datas[key] = localStorage.getItem(key) || '';
@@ -31,5 +31,15 @@ export class StorageService {
     // 批量获取本地存储
     get(key: string) {
         return localStorage.getItem(key) || '';
+    }
+
+    // 判断数据是否存在
+    empty(keys?: string[]) {
+        for (let i = 0; i < keys.length; i++) {
+            if (this.get(keys[i]) === '') {
+                return true;
+            }
+        }
+        return false;
     }
 }

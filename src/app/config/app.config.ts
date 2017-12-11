@@ -1,6 +1,6 @@
 /*应用配置文件*/
 
-export const AuthConfig = {
+export const AppConfig = {
 
     // 系统版本
     version: '2.0.0',
@@ -15,7 +15,10 @@ export const AuthConfig = {
     description: '',
 
     // 令牌参数
-    tokenParams: ['ng-params-one', 'ng-params-two', 'ng-params-three', 'ng-params-four'],
+    tokenParams: ['ng-params-one', 'ng-params-two', 'ng-params-three'],
+
+    // 令牌校验地址
+    tokenCheckUrl: '/check',
 
     // 登入参数
     loginParams: ['account', 'password'],

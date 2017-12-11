@@ -9,9 +9,12 @@ import { HttpConfig } from '../../config/http.config';
 export class RequestService {
 
     private server_url: string;
+    private coverHeader: boolean;
+    private appedHeaders: { [key: string]: string };
 
     constructor(private http: HttpClient) {
         this.server_url = HttpConfig.SERVER_URL;
+        this.coverHeader = false;
     }
 
     // 发送一个get请求（永恒获取文本文件内容）
@@ -87,9 +90,51 @@ export class RequestService {
             }
         });
     }
+
+    // 重置一个reqeust服务,添加自定义请求头
+    withHeader(headers: { [key: string]: string }, cover = false): RequestService {
+        const request = new RequestService(this.http);
+        request.appedHeaders = headers;
+        request.coverHeader = cover;
+        return request;
+    }
+
+    // 重置一个reqeust服务,不带请求头
+    withoutHeader(): RequestService {
+        return this.withHeader({}, true);
+    }
+
+    // 重置一个reqeust服务,自定义参数
+    withConfig(config: { url?: string, withoutHeader?: boolean, headers: { [key: string]: string }, cover?: boolean }): RequestService {
+        const request = new RequestService(this.http);
+        if (config.url) {
+            request.server_url = config.url;
+        }
+        if (config.headers) {
+            request.appedHeaders = config.headers;
+        }
+        if (config.cover) {
+            request.coverHeader = config.cover;
+        }
+        if (config.withoutHeader) {
+            request.appedHeaders = {};
+            request.coverHeader = true;
+        }
+        return request;
+    }
+
     private getHeaders(): HttpHeaders {
         let header = new HttpHeaders();
-        header = header.append('ng-params-one', '123456789');
+        if (this.appedHeaders) {
+            for (const key in this.appedHeaders) {
+                if (this.appedHeaders.hasOwnProperty(key)) {
+                    header = header.append(key, this.appedHeaders[key]);
+                }
+            }
+        }
+        if (this.coverHeader === false) {
+            header = header.append('ng-params-one', '123456789');
+        }
         return header;
     }
 
