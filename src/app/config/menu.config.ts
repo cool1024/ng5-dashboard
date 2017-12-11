@@ -73,6 +73,13 @@ export const Menus = [
                 children: [
                     { title: '路由参考', url: '/docs/route-point' },
                 ]
+            },
+            {
+                icon: 'fa fa-file-code-o fa-fw',
+                title: 'Lumen笔记',
+                children: [
+                    { title: 'ORM模型', url: '/docs/route-point' },
+                ]
             }
         ]
     }

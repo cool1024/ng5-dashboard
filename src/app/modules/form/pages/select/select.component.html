@@ -18,6 +18,20 @@
                     <option *ngFor="let select of selects" [ngValue]="select">{{select.text}}</option>
                 </select>
             </div>
+            <label>多级联动</label>
+            <div class="input-group">
+                <span class="input-group-addon bg-white">一级菜单</span>
+                <select class="form-control custom-select" name="answer" [(ngModel)]="parentId">
+                    <option value="" disabled>--请选择--</option>
+                    <option *ngFor="let select of parentSelects" [ngValue]="select.value">{{select.text}}</option>
+                </select>
+                <span class="input-group-addon bg-white">二级菜单</span>
+                <select class="form-control custom-select" name="answer" [(ngModel)]="childId">
+                    <option value="" disabled>--请选择--</option>
+                    <option *ngFor="let select of childSelects" [ngValue]="select.value">{{select.text}}</option>
+                </select>
+            </div>
+            <span>select value : {{[parentId,childId]}}</span>
         </form>
     </div>
 </div>

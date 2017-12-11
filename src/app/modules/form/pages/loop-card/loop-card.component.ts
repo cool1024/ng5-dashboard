@@ -15,9 +15,9 @@ export class LoopCardComponent implements OnInit {
 
     // 获取轮播图列表
     this.loopCards = [
-      { id: 1, url: '1', src: 'http://127.0.0.1:4200/assets/image/card/1.jpg', active: true },
-      { id: 2, url: '2', src: 'http://127.0.0.1:4200/assets/image/card/2.jpg', active: true },
-      { id: 3, url: '3', src: 'http://127.0.0.1:4200/assets/image/card/3.jpg', active: true },
+      { id: 1, url: '1', src: '/assets/image/card/1.jpg', active: true },
+      { id: 2, url: '2', src: '/assets/image/card/2.jpg', active: true },
+      { id: 3, url: '3', src: '/assets/image/card/3.jpg', active: true },
     ];
   }
 

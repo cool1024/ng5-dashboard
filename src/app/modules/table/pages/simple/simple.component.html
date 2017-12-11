@@ -74,7 +74,7 @@
                                 <i class="fa fa-close fa-fw"></i>删除</button>
                         </td>
                     </tr>
-                    <tr class="mat-cell">
+                    <tr class="mat-cell" *ngIf="list.length<=0">
                         <td [attr.colspan]="theads.length" class="text-center text-info">
                             暂无数据～
                         </td>
