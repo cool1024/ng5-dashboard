@@ -1,0 +1,35 @@
+<div>
+    <ng-template [ngIf]="finished">
+        <div>
+            <div class="step-circle rounded-circle d-inline-block border border-{{color}} text-center">
+                <i class="fa fa-check fa-fw text-{{color}}"></i>
+            </div>
+            <span class="ml-2">{{title}}</span>
+        </div>
+        <div class="step-content border-{{color}} text-muted" [ngStyle]="{'border-left-width':end?0:2+'px'}">
+            <small class="ml-2">{{content}}</small>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="!finished&&loading">
+        <div>
+            <div class="step-circle rounded-circle d-inline-block bg-{{color}} text-center text-light text-{{color}}">
+                {{index}}
+            </div>
+            <span class="ml-2">{{title}}</span>
+        </div>
+        <div class="step-content border-{{color}} text-muted" [ngStyle]="{'border-left-width':end?0:2+'px'}">
+            <small class="ml-2">{{content}}</small>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="!finished&&!loading">
+        <div>
+            <div class="step-circle rounded-circle d-inline-block border border-secondary text-center text-muted">
+                {{index}}
+            </div>
+            <span class="ml-2 text-muted">{{title}}</span>
+        </div>
+        <div class="step-content border-secondary" [ngStyle]="{'border-left-width':end?0:2+'px'}">
+            <small class="ml-2 text-muted">{{content}}</small>
+        </div>
+    </ng-template>
+</div>

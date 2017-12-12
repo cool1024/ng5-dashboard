@@ -1,0 +1,12 @@
+.step-circle{
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+}
+.step-content{
+    margin-top: 2px;
+    margin-bottom:2px;      
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left-style: dashed;
+}

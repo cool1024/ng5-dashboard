@@ -55,3 +55,43 @@
         <ts-popover #popover3="tsPopover" message="你发现了一条新的提示消息~" [position]="popoverPosition" bodyClass="text-info"></ts-popover>
     </div>
 </div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">步骤条</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <ts-step [index]="1" title="第一步" content="接通电源" [finished]="true"></ts-step>
+                <ts-step [index]="1" title="第二步" content="按下开机按钮" [loading]="true"></ts-step>
+                <ts-step [index]="2" title="第三步" content="打开显示器"></ts-step>
+                <ts-step [index]="3" title="第四步" content="打开打印机"></ts-step>
+                <ts-step [index]="4" title="第五步" content="打开空调"></ts-step>
+                <ts-step [index]="5" title="第六步" content="按下闸门开关" [end]="true"></ts-step>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <ts-step [index]="1" color="info" title="第一步" content="接通电源" [finished]="true"></ts-step>
+                <ts-step [index]="1" color="info" title="第二步" content="按下开机按钮" [loading]="true"></ts-step>
+                <ts-step [index]="2" color="info" title="第三步" content="打开显示器"></ts-step>
+                <ts-step [index]="3" color="info" title="第四步" content="打开打印机"></ts-step>
+                <ts-step [index]="4" color="info" title="第五步" content="打开空调"></ts-step>
+                <ts-step [index]="5" color="info" title="第六步" content="按下闸门开关" [end]="true"></ts-step>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <ts-step [index]="1" color="danger" title="第一步" content="接通电源" [finished]="true"></ts-step>
+                <ts-step [index]="1" color="danger" title="第二步" content="按下开机按钮" [loading]="true"></ts-step>
+                <ts-step [index]="2" color="danger" title="第三步" content="打开显示器"></ts-step>
+                <ts-step [index]="3" color="danger" title="第四步" content="打开打印机"></ts-step>
+                <ts-step [index]="4" color="danger" title="第五步" content="打开空调"></ts-step>
+                <ts-step [index]="5" color="danger" title="第六步" content="按下闸门开关" [end]="true"></ts-step>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <ts-step [index]="1" color="success" title="第一步" content="接通电源" [finished]="true"></ts-step>
+                <ts-step [index]="1" color="success" title="第二步" content="按下开机按钮" [finished]="true"></ts-step>
+                <ts-step [index]="2" title="第三步" [loading]="true" content="打开显示器"></ts-step>
+                <ts-step [index]="3" title="第四步" content="打开打印机"></ts-step>
+                <ts-step [index]="4" title="第五步" content="打开空调"></ts-step>
+                <ts-step [index]="5" title="第六步" content="按下闸门开关" [end]="true"></ts-step>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,7 @@ export { TimePickerModule as TSTimePickerModule } from './modules/timepicker.mod
 export { SwitchModule as TSSwitchModule } from './modules/switch.module';
 export { PopoverModule as TSPopoverModule } from './modules/popover.module';
 export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
+export { StepModule as TSStepModule } from './modules/step.module';
 
 /*lib modules*/
 export { SortableModule } from './lib/sortable/sortable.module';
