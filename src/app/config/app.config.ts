@@ -22,4 +22,7 @@ export const AppConfig = {
 
     // 登入参数
     loginParams: ['account', 'password'],
+
+    // 登入跳转页面
+    loginGoPage: '/home',
 };

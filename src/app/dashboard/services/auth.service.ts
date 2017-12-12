@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Routes, Route } from '@angular/router';
+import { Routes, Routem, Router } from '@angular/router';
 import { Breadcrumbs, Breadcrumb } from './../classes/breadcrumb.class';
 import { AppConfig } from '../../config/app.config';
 import { StorageService } from './storage.service';
 import { RequestService } from './request.service';
 import { ApiData } from '../classes/api.class';
 import { Observable } from 'rxjs/Observable';
+import { CanActivate } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-    private loginState = true;
+    private loginState = false;
 
-    constructor(private storageService: StorageService, private request: RequestService) { }
+    private authErrorUrl = '/401';
+
+    constructor(private storageService: StorageService, private request: RequestService, private router: Router) { }
 
     setOut() {
         this.loginState = false;
@@ -27,12 +30,20 @@ export class AuthService {
     }
 
     checkLogin(): Observable<boolean> | boolean {
+        if (this.loginState !== true) {
+            this.router.navigateByUrl(this.authErrorUrl);
+        }
         return this.loginState || this.checkToken();
     }
 
     checkToken(): Observable<boolean> | boolean {
         return this.storageService.empty(AppConfig.tokenParams) ?
-            false : this.request.withoutHeader().post(AppConfig.tokenCheckUrl, this.getToken()).map<ApiData, boolean>(res => res.result);
+            false : this.request.withoutHeader().post(AppConfig.tokenCheckUrl, this.getToken()).map<ApiData, boolean>(res => {
+                if (res.result !== true) {
+                    this.router.navigateByUrl(this.authErrorUrl);
+                }
+                return res.result;
+            });
     }
 
     saveToken(params: { [key: string]: string }) {

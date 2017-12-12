@@ -8,6 +8,7 @@ import { BreadcrumbService } from './services/breadcrumb.service';
 import { AuthService } from './services/auth.service';
 import { RequestService } from './services/request.service';
 import { StorageService } from './services/storage.service';
+import { GuardService } from './services/guard.service';
 
 import { HeadComponent } from './components/head/head.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -50,6 +51,7 @@ export class DashboardModule {
             BreadcrumbService,
             RequestService,
             StorageService,
+            GuardService,
          ]
       };
    }
