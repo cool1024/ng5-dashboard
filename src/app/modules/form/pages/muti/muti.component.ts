@@ -36,4 +36,5 @@ export class MutiComponent implements OnInit {
             _weight: ['', Validators.required, mutiAsyncValidatorFn()],
         });
     }
+
 }

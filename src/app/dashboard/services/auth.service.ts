@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Routes, Routem, Router } from '@angular/router';
+import { Routes, Router } from '@angular/router';
 import { Breadcrumbs, Breadcrumb } from './../classes/breadcrumb.class';
 import { AppConfig } from '../../config/app.config';
 import { StorageService } from './storage.service';

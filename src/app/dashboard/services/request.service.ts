@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/skipWhile';
+import 'rxjs/add/operator/timeout';
 import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 
@@ -17,9 +18,9 @@ export class RequestService {
         this.coverHeader = false;
     }
 
-    // 发送一个get请求（永恒获取文本文件内容）
+    // 发送一个get请求（获取文本文件内容）
     text(url: string): Observable<string> {
-        return this.http.request('get', this.server_url + url, { responseType: 'text' });
+        return this.http.request('get', this.server_url + url, { responseType: 'text' }).timeout(1000);
     }
 
     // 发送一个get请求不带参数)
@@ -105,7 +106,7 @@ export class RequestService {
     }
 
     // 重置一个reqeust服务,自定义参数
-    withConfig(config: { url?: string, withoutHeader?: boolean, headers: { [key: string]: string }, cover?: boolean }): RequestService {
+    withConfig(config: { url?: string, withoutHeader?: boolean, headers?: { [key: string]: string }, cover?: boolean }): RequestService {
         const request = new RequestService(this.http);
         if (config.url) {
             request.server_url = config.url;
