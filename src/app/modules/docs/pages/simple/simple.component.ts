@@ -34,10 +34,12 @@ export class SimpleComponent implements OnInit {
     private requestService: RequestService, private activatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer, private location: Location) { }
 
   ngOnInit() {
-    this.requestService.withConfig({ url: 'http://127.0.0.0:81' }).text('').subscribe(res => {
-      console.log(res);
-    });
     this.activatedRoute.params.subscribe(params => {
+
+      this.requestService.withConfig({ url: 'http://127.0.0.1' }).post('/signin ').subscribe(res => {
+        console.log(res);
+      });
+
       this.requestService.text(`/assets/docs/${params.docs}.md`).subscribe(res => {
         const renderer = new window.marked.Renderer();
 

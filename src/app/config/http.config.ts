@@ -1,5 +1,4 @@
 /*HTTP请求配置文件*/
-
 export const HttpConfig = {
 
     // 服务器HTTP请求地址

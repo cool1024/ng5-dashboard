@@ -1,5 +1,4 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardRoutingModule } from './dashboard.routing';
@@ -22,7 +21,6 @@ import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
     imports: [
-        CommonModule,
         RouterModule,
         DashboardRoutingModule,
         BrowserAnimationsModule,
@@ -36,7 +34,6 @@ import { ErrorComponent } from './pages/error/error.component';
         HomeComponent,
     ],
     exports: [
-        CommonModule,
         BrowserAnimationsModule,
         HeadComponent,
         MenuComponent,

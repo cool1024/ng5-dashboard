@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { TSToastModule } from './tools-ui';
 import { AppComponent } from './app.component';
 
 
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule,
     DashboardModule.forRoot(),
+    TSToastModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })

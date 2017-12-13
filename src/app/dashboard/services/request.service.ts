@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/skipWhile';
-import 'rxjs/add/operator/timeout';
 import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 
@@ -20,7 +19,7 @@ export class RequestService {
 
     // 发送一个get请求（获取文本文件内容）
     text(url: string): Observable<string> {
-        return this.http.request('get', this.server_url + url, { responseType: 'text' }).timeout(1000);
+        return this.http.request('get', this.server_url + url, { responseType: 'text' });
     }
 
     // 发送一个get请求不带参数)
