@@ -78,7 +78,7 @@ export const Menus = [
                 icon: 'fa fa-file-code-o fa-fw',
                 title: 'Lumen笔记',
                 children: [
-                    { title: 'ORM模型', url: '/docs/route-point' },
+                    { title: 'ORM模型', url: '/docs/orm-point' },
                 ]
             }
         ]
