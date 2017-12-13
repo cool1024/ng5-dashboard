@@ -1,4 +1,4 @@
-<div *ngIf="show" #pad class="fixed-top h-100 w-100" (click)="tryClose($event)">
+<div [ngClass]="{'d-none':!show}" #pad class="fixed-top h-100 w-100" (click)="tryClose($event)">
     <div class="card rounded-0 border-0 ts-box" #datepicker [ngStyle]="datepickerStyle">
         <div class="card-body">
             <table class="ts-datepicker-table">
@@ -12,7 +12,8 @@
                         <td class="text-muted ts-month-title" colspan="7">{{getMonth(month)}} </td>
                     </tr>
                     <tr *ngFor="let tr of trList" class="{{textClass}}">
-                        <td class="ts-day text-center rounded-circle {{isActiveDay(td)?activeClass:''}}" [ngClass]="{'ts-day-hover':td>0}" *ngFor="let td of tr" (click)="setDay(td)">{{td||''}}</td>
+                        <td class="ts-day text-center rounded-circle {{isActiveDay(td)?activeClass:''}}" [ngClass]="{'ts-day-hover':td>0}" *ngFor="let td of tr"
+                            (click)="setDay(td)">{{td||''}}</td>
                     </tr>
                     <tr *ngIf="trList.length<5" class="{{textClass}}">
                         <td class="ts-day" colspan="7">&nbsp;</td>
@@ -24,21 +25,22 @@
                         <td class="text-right" colspan="7">
                             <div class="btn-group">
                                 <button (click)="prevYear()" class="btn btn-sm {{btnClass}}">
-                                <i class="fa fa-angle-left fa-fw" aria-hidden="true"></i>
-                            </button>
+                                    <i class="fa fa-angle-left fa-fw" aria-hidden="true"></i>
+                                </button>
                                 <ts-dropdown btnClass="btn-sm {{btnClass}} rounded-0" [items]="yearList" [(value)]="year" [dropup]="true" [select]="true"></ts-dropdown>
                                 <button (click)="nextYear()" class="btn btn-sm {{btnClass}}">
-                                <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
-                            </button>
+                                    <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                                </button>
                             </div>
                             <div class="btn-group">
                                 <button (click)="prevMonth()" type="button" class="btn btn-sm {{btnClass}}">
-                                <i class="fa fa-angle-left fa-fw" aria-hidden="true"></i>
-                            </button>
-                                <ts-dropdown btnClass="btn-sm {{btnClass}} rounded-0" [items]="monthTitles" [(value)]="month" [useNumber]="1" [dropup]="true" [select]="true"></ts-dropdown>
+                                    <i class="fa fa-angle-left fa-fw" aria-hidden="true"></i>
+                                </button>
+                                <ts-dropdown btnClass="btn-sm {{btnClass}} rounded-0" [items]="monthTitles" [(value)]="month" [useNumber]="1" [dropup]="true"
+                                    [select]="true"></ts-dropdown>
                                 <button (click)="nextMonth()" class="btn btn-sm {{btnClass}}">
-                                <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
-                            </button>
+                                    <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
