@@ -40,12 +40,14 @@ export class SelectComponent implements OnChanges {
         dropMenuDom.style.width = this.dropdownToggle.nativeElement.clientWidth + 'px';
         this.open = true;
         this.searchKey = '';
+        this.inputDom.nativeElement.readonly = false;
     }
 
     closeDropdown() {
         if (this.open === false) { return; }
         this.open = false;
         this.searchKey = '';
+        this.inputDom.nativeElement.readonly = true;
     }
 
     trycloseDropdown($event) {
