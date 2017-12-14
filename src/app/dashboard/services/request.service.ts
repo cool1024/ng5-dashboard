@@ -44,7 +44,7 @@ export class RequestService {
             check = <boolean>params;
             params = {};
         }
-        const observable = this.http.post<ApiData>(this.server_url + url, { headers: this.getHeaders(), params: this.getParams(params) });
+        const observable = this.http.post<ApiData>(this.server_url + url, null, { headers: this.getHeaders(), params: this.getParams(params) });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 
@@ -54,7 +54,7 @@ export class RequestService {
             check = <boolean>params;
             params = {};
         }
-        const observable = this.http.put<ApiData>(this.server_url + url, { headers: this.getHeaders(), params: this.getParams(params) });
+        const observable = this.http.put<ApiData>(this.server_url + url, null, { headers: this.getHeaders(), params: this.getParams(params) });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 
@@ -145,6 +145,7 @@ export class RequestService {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
+                console.log(key);
                 httpParams = httpParams.append(key, <string>params[key]);
             }
         }

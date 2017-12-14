@@ -195,20 +195,22 @@ export class DatepickerComponent implements OnInit, OnDestroy, ToggleComponent {
     }
 
     autoPosition() {
-        const padPositon = this.htmlDomService.getPosition(this.pad.nativeElement);
-        const position = this.htmlDomService.getPosition(this.toggleDom);
-        const height = this.htmlDomService.getHeight(this.toggleDom);
-        this.datepickerStyle.display = 'none';
-        this.datepickerStyle.left = position.x - padPositon.x + 'px';
-        this.datepickerStyle.top = height + position.y + 7.5 + 'px';
-        let top = height + position.y + 7.5 + 380;
-        if (window.innerHeight < top) {
-            top = window.innerHeight - 380 - 7.5;
-        } else {
-            top = position.y + height + 7.5;
-        }
-        this.datepickerStyle.top = top - padPositon.y + 'px';
-        this.datepickerStyle.display = '';
+        setTimeout(() => {
+            const padPositon = this.htmlDomService.getPosition(this.pad.nativeElement);
+            const position = this.htmlDomService.getPosition(this.toggleDom);
+            const height = this.htmlDomService.getHeight(this.toggleDom);
+            this.datepickerStyle.display = 'none';
+            this.datepickerStyle.left = position.x - padPositon.x + 'px';
+            this.datepickerStyle.top = height + position.y + 7.5 + 'px';
+            let top = height + position.y + 7.5 + 380;
+            if (window.innerHeight < top) {
+                top = window.innerHeight - 380 - 7.5;
+            } else {
+                top = position.y + height + 7.5;
+            }
+            this.datepickerStyle.top = top - padPositon.y + 'px';
+            this.datepickerStyle.display = '';
+        });
     }
 
     tryClose($event) {

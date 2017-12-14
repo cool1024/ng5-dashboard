@@ -36,9 +36,10 @@ export class DefaultInterceptor implements HttpInterceptor {
                         const apiData = new ApiData(response.body.result, response.body.message, response.body.datas);
                         if (apiData.result === false) {
                             console.log('api use error');
+                            this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).warning('操作失败', apiData.messageStr);
                         }
                         response = response.clone({ body: apiData });
-                        this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger('请求失败', apiData.messageStr);
+
                     } else if (req.responseType !== 'text') {
                         console.log('response error');
                         response = response.clone({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });

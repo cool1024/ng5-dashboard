@@ -36,10 +36,11 @@ export class SimpleComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
 
-      this.requestService.withConfig({ url: 'http://127.0.0.1' }).post('/signin ').subscribe(res => {
-        console.log(res);
-      });
-
+      // this.requestService.withConfig({ url: 'http://ng.cool1024.com' })
+      //   .post('/login', { email: 'xiaojiannangkang@126.com', password: '123456789' })
+      //   .subscribe(res => {
+      //     console.log(res);
+      //   });
       this.requestService.text(`/assets/docs/${params.docs}.md`).subscribe(res => {
         const renderer = new window.marked.Renderer();
 
