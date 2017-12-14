@@ -107,10 +107,10 @@ export class RequestService {
     // 重置一个reqeust服务,自定义参数
     withConfig(config: { url?: string, withoutHeader?: boolean, headers?: { [key: string]: string }, cover?: boolean }): RequestService {
         const request = new RequestService(this.http);
-        if (config.url) {
+        if (config.url != null || config !== undefined) {
             request.server_url = config.url;
         }
-        if (config.headers) {
+        if (config.headers != null || config !== undefined) {
             request.appedHeaders = config.headers;
         }
         if (config.cover) {

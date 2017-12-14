@@ -1,3 +1,5 @@
+import { HttpConfig } from './http.config';
+
 /*应用配置文件*/
 
 export const AppConfig = {
@@ -29,8 +31,23 @@ export const AppConfig = {
     // 登入参数
     loginParams: ['account', 'password'],
 
+    // 附加默认参数
+    defaultParams: {
+        platform: 'admin'
+    },
+
+    // 登入令牌存储
+    tokenSave: {
+        secret: 'ng-params-one',
+        token: 'ng-params-two',
+        platform: 'ng-params-three',
+    },
+
     // 登入跳转页面
     loginGoPage: '/home',
+
+    // 登入接口地址(注意，这里的URL必须是完整的URL地址，默认值为 HttpConfig.SERVER_URL + '/login')
+    loginUrl: HttpConfig.SERVER_URL + '/signin',
 
     // 首页数据展示配置-------------------------------------------------
 

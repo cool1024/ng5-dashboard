@@ -42,6 +42,7 @@ export class SelectComponent implements OnInit {
 
     selectValue1 = 'Amsterdam';
     selectValue2 = 2;
+    selectValue3 = 0;
     constructor() { }
 
     ngOnInit() { }

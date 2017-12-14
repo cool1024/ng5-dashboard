@@ -1,7 +1,7 @@
 <div class="btn-group" [ngStyle]="{'width': width}" [class.show]="open" (click)="open?closeDropdown():openDropdown()">
-    <div #DropdownToggle class="input-group border border-default rounded">
-        <input #inputDom type="text" (blur)="trycloseDropdown($event)" class="form-control border-0 shadow-0 bg-white"
-            [(ngModel)]="searchKey" placeholder="{{placeholder}}" autocomplete="off">
+    <div #DropdownToggle class="input-group border border-default rounded" [ngClass]="selectClass">
+        <input #inputDom type="text" (blur)="trycloseDropdown($event)" class="form-control border-0 shadow-0 bg-white" [(ngModel)]="searchKey"
+            placeholder="{{placeholder}}" autocomplete="off">
         <span class="input-group-addon bg-white border-0">
             <i class="fa fa-fw fa-caret-down"></i>
         </span>

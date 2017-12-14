@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'ts-select',
@@ -13,6 +13,7 @@ export class SelectComponent implements OnChanges {
     @Input() value: any;
     @Input() width: string;
     @Input() emptyLabel: string;
+    @Input() selectClass: string;
     @Output() valueChange = new EventEmitter<any>();
     @ViewChild('DropdownToggle') dropdownToggle: ElementRef;
     @ViewChild('DropdownMenu') dropdownMenu: ElementRef;
@@ -28,6 +29,7 @@ export class SelectComponent implements OnChanges {
         this.searchKey = '';
         this.width = 'auto';
         this.emptyLabel = 'No results found.';
+        this.selectClass = '';
     }
 
     openDropdown() {
@@ -46,7 +48,7 @@ export class SelectComponent implements OnChanges {
     closeDropdown() {
         if (this.open === false) { return; }
         this.open = false;
-        this.searchKey = '';
+        this.searchKey = this.title;
         this.inputDom.nativeElement.readonly = true;
     }
 
@@ -61,21 +63,14 @@ export class SelectComponent implements OnChanges {
     setValue(item: { value: any, text: string }) {
         this.value = item.value;
         this.title = item.text;
+        this.searchKey = this.title;
         this.inputDom.nativeElement.value = this.title;
         this.valueChange.emit(item.value);
     }
 
-    setSearchKey($event) {
-
-        const code = $event.keyCode;
-        if (this.isChar(code) || this.isNumber(code) || this.isOtherChar(code) || this.isOtherOp(code)) {
-            this.searchKey = $event.target.value;
-        }
-
-    }
-
     ngOnChanges() {
-        this.searchKey = this.inputDom.nativeElement.value;
+        this.setTitle();
+        this.searchKey = this.title;
     }
 
     get itemsList(): Array<{ value: any, text: string }> {
@@ -91,36 +86,29 @@ export class SelectComponent implements OnChanges {
         return items;
     }
 
-    get realTitle(): string {
-        if (this.searchKey || this.open === true) {
-            return this.searchKey;
-        }
-        return (this.value !== undefined && this.value != null) ? function (that: any) {
-            let title = '';
-            const items = that.itemsList;
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].value === that.value) {
-                    title = items[i].text;
+    setTitle() {
+        if (this.value !== undefined && this.value != null) {
+            for (let i = 0; i < this.itemsList.length; i++) {
+                if (this.itemsList[i].value === this.value) {
+                    this.title = this.itemsList[i].text;
                 }
             }
-            return title;
-        }(this) : this.title;
+        }
     }
 
-    isChar(code: number): boolean {
-        return code >= 65 && code <= 90;
-    }
+    // isChar(code: number): boolean {
+    //     return code >= 65 && code <= 90;
+    // }
 
-    isNumber(code: number): boolean {
-        return (code >= 96 && code <= 105) || (code >= 48 && code <= 57);
-    }
+    // isNumber(code: number): boolean {
+    //     return (code >= 96 && code <= 105) || (code >= 48 && code <= 57);
+    // }
 
-    isOtherChar(code: number): boolean {
-        return code >= 186 && code <= 222;
-    }
+    // isOtherChar(code: number): boolean {
+    //     return code >= 186 && code <= 222;
+    // }
 
-    isOtherOp(code: number): boolean {
-        return code === 8 || code === 32;
-    }
-
+    // isOtherOp(code: number): boolean {
+    //     return code === 8 || code === 32;
+    // }
 }

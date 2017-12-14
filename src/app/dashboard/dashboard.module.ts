@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { AuthService } from './services/auth.service';
@@ -19,9 +19,10 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 
+
 @NgModule({
     imports: [
-        RouterModule,
+        FormsModule,
         DashboardRoutingModule,
         BrowserAnimationsModule,
     ],

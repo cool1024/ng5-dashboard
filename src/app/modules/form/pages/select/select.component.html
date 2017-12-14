@@ -76,13 +76,18 @@
                 'Naples', 'Palermo', 'Paris', 'Poznań', 'Prague', 'Riga', 'Rome',
                 'Rotterdam', 'Seville', 'Sheffield', 'Sofia', 'Stockholm', 'Stuttgart',
                 'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Wrocław',
-                'Zagreb', 'Zaragoza', 'Łódź']" placeholder="--请选择--" [(value)]="selectValue1"></ts-select>
-                <!-- <span>select value : {{selectValue1}}</span> -->
+                'Zagreb', 'Zaragoza', 'Łódź']" placeholder="--请选择--" emptyLabel='没有匹配的选项' [(value)]="selectValue1"></ts-select>
+                <span>select value : {{selectValue1}}</span>
             </div>
             <div class="form-group">
                 <label class="mr-3">值与文本</label>
                 <ts-select width="100%" [items]="selects" placeholder="--请选择--" [(value)]="selectValue2"></ts-select>
-                <!-- <span>select value : {{selectValue2}}</span> -->
+                <span>select value : {{selectValue2}}</span>
+            </div>
+            <div class="form-group">
+                <label class="mr-3">默认空值</label>
+                <ts-select width="100%" [items]="selects" placeholder="--请选择--" [(value)]="selectValue3"></ts-select>
+                <span>select value : {{selectValue3}}</span>
             </div>
         </form>
     </div>
