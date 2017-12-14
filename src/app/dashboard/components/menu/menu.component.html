@@ -1,9 +1,9 @@
 <div class="{{menuConfigs.baseClass}} shadow-r fixed-top h-100" [ngStyle]="{'width':menuConfigs.width,'padding-top':menuConfigs.marginTop,'overflow-y':'auto'}">
     <div class="media pl-3 pt-3" [ngStyle]="{'padding-left':menuConfigs.titleIconWidth}">
-        <img class="rounded-circle mt-2" width="40" src="/assets/image/avatar/6.jpg" alt="avatar">
+        <img class="rounded-circle mt-2" width="40" [src]="menuUserInfo[0]" alt="avatar">
         <div class="media-body pl-2">
-            <p class="mt-0 mb-0"><b>Admin</b></p>
-            <p>18270881855</p>
+            <p class="mt-0 mb-0"><b style="font-size: 15px;">{{menuUserInfo[1]}}</b></p>
+            <p>{{menuUserInfo[2]}}</p>
         </div>
     </div>
     <hr class="m-0">

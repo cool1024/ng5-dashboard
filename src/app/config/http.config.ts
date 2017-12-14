@@ -9,4 +9,7 @@ export const HttpConfig = {
 
     // 请求超时设置:毫秒
     REQUEST_TIMEOUT: 5000,
+
+    // 错误弹窗显示时间
+    TOAST_ERROR_TIME: 3000,
 };

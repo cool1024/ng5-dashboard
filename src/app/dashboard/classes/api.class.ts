@@ -1,5 +1,5 @@
 export class ApiData {
-    constructor(public result: boolean, public message: string, public datas?: any, public id?: number) { }
+    constructor(public result: boolean, public message: string | { [key: string]: string[] }, public datas?: any, public id?: number) { }
     toJsonString(): string {
         const json = {
             result: this.result || false,
@@ -8,6 +8,20 @@ export class ApiData {
             id: this.id || '',
         };
         return JSON.stringify(json);
+    }
+    get messageStr(): string {
+        let message = '';
+        if (typeof this.message !== 'string') {
+            for (const key in this.message) {
+                if (this.message.hasOwnProperty(key)) {
+                    message = this.message[key][0] || 'message error';
+                    break;
+                }
+            }
+        } else {
+            this.message = this.message;
+        }
+        return message;
     }
 }
 export const HttpError = {

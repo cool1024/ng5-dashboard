@@ -15,6 +15,8 @@ export class AuthService {
 
     private authErrorUrl = '/401';
 
+    private user: { [key: string]: string } = {};
+
     constructor(private storageService: StorageService, private request: RequestService, private router: Router) { }
 
     setOut() {
@@ -56,5 +58,22 @@ export class AuthService {
 
     getToken(): { [key: string]: string } {
         return this.storageService.gets(AppConfig.tokenParams);
+    }
+
+    // 获取当前用户信息
+    userInfo(): { [key: string]: string } {
+        return this.user;
+    }
+
+    // 获取当前用户的菜单简略信息
+    menuUserInfo(): [string, string, string] {
+        if (this.loginState === false) {
+            return <[string, string, string]>AppConfig.menuUserEmpty;
+        }
+        return [
+            this.user[AppConfig.menuUserParams[0]] || AppConfig.menuUserEmpty[0],
+            this.user[AppConfig.menuUserParams[1]] || AppConfig.menuUserEmpty[1],
+            this.user[AppConfig.menuUserParams[2]] || AppConfig.menuUserEmpty[2]
+        ];
     }
 }

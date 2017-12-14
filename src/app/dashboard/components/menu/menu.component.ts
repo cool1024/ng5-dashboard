@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Theme } from '../../../config/theme.config';
 import { Menus } from '../../../config/menu.config';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'dashboard-menu',
@@ -18,7 +19,7 @@ export class MenuComponent implements OnInit {
   // 菜单展开状态列表
   isCollopseArray = new Array<boolean[]>();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -30,6 +31,11 @@ export class MenuComponent implements OnInit {
       });
       this.isCollopseArray.push(temp);
     }
+  }
+
+  // 获取用户信息
+  get menuUserInfo(): [string, string, string] {
+    return this.authService.menuUserInfo();
   }
 
   // 展开指定菜单

@@ -21,11 +21,11 @@ export class DefaultInterceptor implements HttpInterceptor {
                 if (error instanceof HttpErrorResponse) {
                     console.log('response error');
                     errorMessage = HttpError.SERVER_ERROR;
-                    this.toast.setTimeOut(3000).danger(error.statusText, errorMessage);
+                    this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger(error.statusText, errorMessage);
                 } else {
                     console.log('timeout');
                     errorMessage = HttpError.TIMEOUT_ERROR;
-                    this.toast.setTimeOut(3000).danger('请求超时', errorMessage);
+                    this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger('请求超时', errorMessage);
                 }
                 return Observable.of<HttpEvent<string>>(new HttpResponse<string>({ body: new ApiData(false, errorMessage).toJsonString() }));
             })
@@ -38,7 +38,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                             console.log('api use error');
                         }
                         response = response.clone({ body: apiData });
-                        this.toast.setTimeOut(3000).danger('请求失败', apiData.message.toString());
+                        this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger('请求失败', apiData.messageStr);
                     } else if (req.responseType !== 'text') {
                         console.log('response error');
                         response = response.clone({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
