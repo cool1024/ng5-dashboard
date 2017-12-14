@@ -72,7 +72,7 @@ export class DropdownComponent {
       let i = this.useNumber;
       this.items.forEach(e => {
         if (typeof e !== 'string') {
-          console.error('useNumber>=0,items element must be a string')
+          console.error('useNumber>=0,items element must be a string');
         } else {
           items.push({ value: i++, text: e });
         }
