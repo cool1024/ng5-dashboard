@@ -7,13 +7,17 @@
             <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
         </div>
         <br>
-        <ts-datepicker #datepicker1="datePicker" [(activeDate)]="search.params.start" btnClass="btn-info" activeClass="bg-info text-white" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
-        <ts-datepicker #datepicker2="datePicker" [(activeDate)]="search.params.end" btnClass="btn-info" activeClass="bg-info text-white" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
+        <ts-datepicker #datepicker1="datePicker" [(activeDate)]="search.params.start" btnClass="btn-info" activeClass="bg-info text-white"
+            [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
+        <ts-datepicker #datepicker2="datePicker" [(activeDate)]="search.params.end" btnClass="btn-info" activeClass="bg-info text-white"
+            [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
         <div class="input-group">
             <span class="input-group-addon bg-white">创建日期</span>
-            <input ts-dom-toggle [target]='datepicker1' value="{{search.params.start?search.params.start.year+'/'+search.params.start.month+'/'+search.params.start.day:''}}" type="text" class="form-control bg-white pointer" readonly placeholder="最早创建时间">
+            <input ts-dom-toggle [target]='datepicker1' value="{{search.params.start?search.params.start.year+'/'+search.params.start.month+'/'+search.params.start.day:''}}"
+                type="text" class="form-control bg-white pointer" readonly placeholder="最早创建时间">
             <span class="input-group-addon  bg-white">到</span>
-            <input ts-dom-toggle [target]='datepicker2' value="{{search.params.end?search.params.end.year+'/'+search.params.end.month+'/'+search.params.end.day:''}}" type="text" class="form-control bg-white pointer" readonly placeholder="最晚创建时间">
+            <input ts-dom-toggle [target]='datepicker2' value="{{search.params.end?search.params.end.year+'/'+search.params.end.month+'/'+search.params.end.day:''}}"
+                type="text" class="form-control bg-white pointer" readonly placeholder="最晚创建时间">
         </div>
         <br>
         <div class="row">
@@ -26,13 +30,13 @@
             </div>
             <div class="col-6 text-right">
                 <button (click)="resetSearch()" class="btn btn-white">
-                      <i class="fa fa-refresh fa-fw"></i>
-                      <span>重置</span>
-                  </button>
+                    <i class="fa fa-refresh fa-fw"></i>
+                    <span>重置</span>
+                </button>
                 <button (click)="doSearch()" class="btn btn-white">
-                      <i class="fa fa-search fa-fw"></i>
-                      <span>搜索</span>
-                  </button>
+                    <i class="fa fa-search fa-fw"></i>
+                    <span>搜索</span>
+                </button>
             </div>
         </div>
     </div>
@@ -57,12 +61,17 @@
                         <button class="btn btn-danger btn-sm">删除</button>
                     </td>
                 </tr>
+                <tr>
+                    <td *ngIf="list.length<=0" colspan="6"></td>
+                </tr>
             </tbody>
         </table>
         <div class="text-right">
-            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true" [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+                [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
                 [dropup]="true"></ts-dropdown>
-            <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页" colors="btn-outline-info border-muted"></ts-pagination>
+            <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+                colors="btn-outline-info border-muted"></ts-pagination>
         </div>
     </div>
 </div>

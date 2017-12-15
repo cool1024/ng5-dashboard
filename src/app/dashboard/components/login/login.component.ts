@@ -60,7 +60,7 @@ export class LoginComponent {
             // 保存登入令牌
             for (const key in this.tokenParams) {
                 if (this.tokenParams.hasOwnProperty(key)) {
-                    this.storageService.set(key, res.datas[key] || '');
+                    this.storageService.set(this.tokenParams[key], res.datas[key] || '');
                 }
             }
             this.authService.setIn();

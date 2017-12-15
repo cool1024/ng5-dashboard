@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="card rounded-0">
             <div class="card-header">系统模块</div>
@@ -158,5 +158,42 @@
                 </table>
             </div>
         </div>
+    </div>
+</div> -->
+<div class="card rounded-0" *ngFor="let model of models">
+    <div class="card-header bg-white">
+        {{model.name}}
+        <span class="pull-right text-danger">
+            <button class="btn btn-sm btn-white text-danger">
+                <i class="fa fa-trash-o fa-fw"></i> 删除模块
+            </button>
+        </span>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">名称</th>
+                    <th scope="col">关键词</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let permission of permissions;index as i">
+                    <th scope="row">{{permission.id}}</th>
+                    <td>{{permission.name}}</td>
+                    <td class="text-info">{{permission.key}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">
+                            <i class="fa fa-edit fa-fw"></i>编辑
+                        </button>
+                        <button class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash-o fa-fw"></i>删除
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

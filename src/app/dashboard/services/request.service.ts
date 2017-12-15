@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/skipWhile';
 import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
+import { AppConfig } from '../../config/app.config';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class RequestService {
@@ -12,7 +14,7 @@ export class RequestService {
     private coverHeader: boolean;
     private appedHeaders: { [key: string]: string };
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private storage: StorageService) {
         this.server_url = HttpConfig.SERVER_URL;
         this.coverHeader = false;
     }
@@ -93,7 +95,7 @@ export class RequestService {
 
     // 重置一个reqeust服务,添加自定义请求头
     withHeader(headers: { [key: string]: string }, cover = false): RequestService {
-        const request = new RequestService(this.http);
+        const request = new RequestService(this.http, this.storage);
         request.appedHeaders = headers;
         request.coverHeader = cover;
         return request;
@@ -106,7 +108,7 @@ export class RequestService {
 
     // 重置一个reqeust服务,自定义参数
     withConfig(config: { url?: string, withoutHeader?: boolean, headers?: { [key: string]: string }, cover?: boolean }): RequestService {
-        const request = new RequestService(this.http);
+        const request = new RequestService(this.http, this.storage);
         if (config.url != null || config !== undefined) {
             request.server_url = config.url;
         }
@@ -133,7 +135,9 @@ export class RequestService {
             }
         }
         if (this.coverHeader === false) {
-            header = header.append('ng-params-one', '123456789');
+            AppConfig.tokenParams.forEach(key => {
+                header = header.append(key, this.storage.get(key));
+            });
         }
         return header;
     }
@@ -145,7 +149,6 @@ export class RequestService {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
-                console.log(key);
                 httpParams = httpParams.append(key, <string>params[key]);
             }
         }

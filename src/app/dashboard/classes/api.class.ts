@@ -1,5 +1,9 @@
 export class ApiData {
-    constructor(public result: boolean, public message: string | { [key: string]: string[] }, public datas?: any, public id?: number) { }
+    constructor(
+        public result: boolean,
+        public message: string | { [key: string]: string[] },
+        public datas?: any | { rows: any[], total: number },
+        public id?: number) { }
     toJsonString(): string {
         const json = {
             result: this.result || false,
