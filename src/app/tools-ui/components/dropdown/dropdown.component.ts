@@ -51,7 +51,7 @@ export class DropdownComponent {
   }
 
   trycloseDropdown($event) {
-    if ($event.explicitOriginalTarget.className === 'dropdown-item') {
+    if ($event.explicitOriginalTarget.getAttribute('dropdownClass') === 'dropdown-item') {
       $event.explicitOriginalTarget.click();
       return;
     }

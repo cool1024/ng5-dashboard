@@ -61,12 +61,12 @@
                         <button class="btn btn-danger btn-sm">删除</button>
                     </td>
                 </tr>
-                <tr>
-                    <td *ngIf="list.length<=0" colspan="6"></td>
+                <tr class="mat-cell">
+                    <td class="text-center text-info" *ngIf="list.length<=0" colspan="6">暂无数据~</td>
                 </tr>
             </tbody>
         </table>
-        <div class="text-right">
+        <div class="text-right mt-4">
             <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
                 [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
                 [dropup]="true"></ts-dropdown>

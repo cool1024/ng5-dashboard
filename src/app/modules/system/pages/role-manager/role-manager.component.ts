@@ -37,8 +37,10 @@ export class RoleManagerComponent implements OnInit {
     pageChanged() {
         this.flash.loading();
         this.requestService.get('/role/search', this.pagination.getpageDataWith(this.search.values), false).subscribe(res => {
-            this.list = res.datas.rows;
-            this.pagination.total = res.datas.total;
+            if (res.result) {
+                this.list = res.datas.rows;
+                this.pagination.total = res.datas.total;
+            }
             this.flash.complete();
         });
     }
