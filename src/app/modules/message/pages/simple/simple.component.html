@@ -95,3 +95,16 @@
         </div>
     </div>
 </div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">加载动画
+        <button class="btn btn-sm btn-white ml-2" (click)="flash.loading()">显示动画</button>
+        <button class="btn btn-sm btn-white" (click)="flash.complete()">关闭动画</button>
+    </div>
+    <div class="card-body">
+        <div ts-flash-loading #flash="tsFlash" class="col-xl-3 col-lg-4 col-md-6" style="height:200px;width:400px;" label="加载中..."
+            textClass="text-info">
+
+        </div>
+    </div>
+</div>
