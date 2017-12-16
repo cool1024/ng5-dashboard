@@ -6,7 +6,10 @@
             <span class="input-group-addon bg-white">账号</span>
             <input [(ngModel)]="this.search.params.account" type="text" class="form-control" placeholder="请输入查询名称的关键词">
             <span class="input-group-addon bg-white">名称</span>
-            <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
+            <div class="form-control p-0" style="display: block;">
+                <ts-select [items]="roles" placeholder="选择角色名称" [(value)]="search.params.role_id" selectClass="border-0" width="100%"></ts-select>
+            </div>
+            <!-- <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词"> -->
         </div>
         <br>
         <div class="row">
@@ -43,19 +46,26 @@
                 <tr *ngFor="let item of list;index as i" class="mat-cell">
                     <td>{{i+1}}</td>
                     <td>{{item.account}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.role}}</td>
+                    <td>{{item.role.name}}</td>
                     <td>
-                        <button class="btn btn-info btn-sm">详情/编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
+                        <span class="badge badge-pill badge-success" *ngIf="item.is_active==1">启用</span>
+                        <span class="badge badge-pill badge-secondary" *ngIf="item.is_active==0">停用</span>
+                    </td>
+                    <td>
+                        <button (click)="showModal(i)" class="btn btn-info btn-sm">
+                            <i class="fa fa-info-circle fa-fw"></i>详情/编辑</button>
+                        <button (click)="deleteConfirm(i)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash fa-fw"></i>删除</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="text-right">
-            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true" [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+        <div class="text-right mt-2">
+            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+                [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
                 [dropup]="true"></ts-dropdown>
-            <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页" colors="btn-outline-info border-muted"></ts-pagination>
+            <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+                colors="btn-outline-info border-muted"></ts-pagination>
         </div>
     </div>
 </div>

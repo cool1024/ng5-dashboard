@@ -21,9 +21,6 @@ export { PopoverModule as TSPopoverModule } from './modules/popover.module';
 export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
 export { StepModule as TSStepModule } from './modules/step.module';
 
-/*lib modules*/
-export { SortableModule } from './lib/sortable/sortable.module';
-
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
 export { UploadResult, UploadingProgress } from './interfaces/upload-result.interface';
@@ -41,4 +38,4 @@ export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
 export { ModalService as TSModalService } from './components/modal/modal.service';
 export { ConfirmService as TSConfirmService } from './components/confirm/confirm.service';
 export { ToastService as TSToastService } from './components/toast/toast.service';
-export { SortableService } from './lib/sortable/sortable.service';
+export { SelectService as TSSelectService } from './services/select.services';

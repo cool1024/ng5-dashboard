@@ -91,9 +91,11 @@ export class SelectComponent implements OnChanges {
             for (let i = 0; i < this.itemsList.length; i++) {
                 if (this.itemsList[i].value === this.value) {
                     this.title = this.itemsList[i].text;
+                    return;
                 }
             }
         }
+        this.title = '';
     }
 
     // isChar(code: number): boolean {

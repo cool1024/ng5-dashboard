@@ -9,6 +9,7 @@ import { AuthService } from './services/auth.service';
 import { RequestService } from './services/request.service';
 import { StorageService } from './services/storage.service';
 import { GuardService } from './services/guard.service';
+import { FormService } from './services/form.service';
 import { DefaultInterceptor } from './services/default-intercept.service';
 
 import { HeadComponent } from './components/head/head.component';
@@ -52,6 +53,7 @@ export class DashboardModule {
                 RequestService,
                 StorageService,
                 GuardService,
+                FormService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: DefaultInterceptor,
