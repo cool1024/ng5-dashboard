@@ -15,8 +15,8 @@ import { Task, TaskHandle } from './../../classes/task.class';
         <div class="card-body">
           <p class="card-text">{{message}}</p>
           <div class="text-right">
-            <button (click)="show = false" type="button" class="btn btn-sm btn-link {{btnClass}}">{{cancleTitle}}</button>
-            <button (click)="confirm()" type="button" class="btn btn-sm btn-link {{btnClass}}">{{okTitle}}</button>
+            <span (click)="show = false" type="button" class="btn btn-sm btn-link {{btnClass}}">{{cancleTitle}}</span>
+            <span (click)="confirm()" type="button" class="btn btn-sm btn-link {{btnClass}}">{{okTitle}}</span>
           </div>
         </div>
       </div>

@@ -7,19 +7,6 @@
             <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
         </div>
         <br>
-        <ts-datepicker #datepicker1="datePicker" [(activeDate)]="search.params.start" btnClass="btn-info" activeClass="bg-info text-white"
-            [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
-        <ts-datepicker #datepicker2="datePicker" [(activeDate)]="search.params.end" btnClass="btn-info" activeClass="bg-info text-white"
-            [weekTitles]="['一', '二', '三', '四', '五', '六', '日']" [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"></ts-datepicker>
-        <div class="input-group">
-            <span class="input-group-addon bg-white">创建日期</span>
-            <input ts-dom-toggle [target]='datepicker1' value="{{search.params.start?search.params.start.year+'/'+search.params.start.month+'/'+search.params.start.day:''}}"
-                type="text" class="form-control bg-white pointer" readonly placeholder="最早创建时间">
-            <span class="input-group-addon  bg-white">到</span>
-            <input ts-dom-toggle [target]='datepicker2' value="{{search.params.end?search.params.end.year+'/'+search.params.end.month+'/'+search.params.end.day:''}}"
-                type="text" class="form-control bg-white pointer" readonly placeholder="最晚创建时间">
-        </div>
-        <br>
         <div class="row">
             <div class="col-6">
                 <div class="input-group">
@@ -55,10 +42,13 @@
                     <td>{{i+1}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.description}}</td>
-                    <td>{{item.created_at}}</td>
+                    <td>{{item.permissions}}</td>
                     <td>
-                        <button class="btn btn-info btn-sm">详情/编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
+                        <button (click)="showModal(i)" class="btn btn-info btn-sm">
+                            <i class="fa fa-info-circle fa-fw"></i>详情/编辑</button>
+                        <button (click)="deleteConfirm(i)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash-o fa-fw"></i>删除
+                        </button>
                     </td>
                 </tr>
                 <tr class="mat-cell">

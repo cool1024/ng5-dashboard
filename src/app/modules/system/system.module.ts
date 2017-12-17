@@ -9,6 +9,7 @@ import {
   TSSelectModule,
   TSConfirmModule,
   TSModalModule,
+  TSSwitchModule,
 } from './../../tools-ui';
 import { SystemRoutingModule } from './system.routing';
 import { MenuManagerComponent } from './pages/menu-manager/menu-manager.component';
@@ -16,6 +17,7 @@ import { PermissionManagerComponent } from './pages/permission-manager/permissio
 import { RoleManagerComponent } from './pages/role-manager/role-manager.component';
 import { AccountManagerComponent } from './pages/account-manager/account-manager.component';
 import { AccountManagerModalComponent } from './pages/account-manager/account-manager.modal';
+import { RoleManagerModalComponent } from './pages/role-manager/role-manager.modal';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { AccountManagerModalComponent } from './pages/account-manager/account-ma
     TSSelectModule,
     TSConfirmModule,
     TSModalModule,
+    TSSwitchModule,
   ],
   declarations: [
     MenuManagerComponent,
@@ -36,9 +39,11 @@ import { AccountManagerModalComponent } from './pages/account-manager/account-ma
     RoleManagerComponent,
     AccountManagerComponent,
     AccountManagerModalComponent,
+    RoleManagerModalComponent,
   ],
   entryComponents: [
-    AccountManagerModalComponent
+    AccountManagerModalComponent,
+    RoleManagerModalComponent,
   ]
 })
 export class SystemModule { }

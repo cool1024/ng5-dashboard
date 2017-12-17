@@ -1,11 +1,11 @@
-import { Component, Input, Output, ViewChild, ElementRef, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, EventEmitter, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
 
 @Component({
     selector: 'ts-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.css']
 })
-export class SelectComponent implements OnChanges {
+export class SelectComponent implements OnChanges, AfterViewInit {
 
     @Input() open: boolean;
     @Input() items: Array<string | number | { value: any, text: string }>;
@@ -42,14 +42,13 @@ export class SelectComponent implements OnChanges {
         dropMenuDom.style.width = this.dropdownToggle.nativeElement.clientWidth + 'px';
         this.open = true;
         this.searchKey = '';
-        this.inputDom.nativeElement.readonly = false;
     }
 
     closeDropdown() {
         if (this.open === false) { return; }
         this.open = false;
         this.searchKey = this.title;
-        this.inputDom.nativeElement.readonly = true;
+        this.inputDom.nativeElement.readonly = 'readonly';
     }
 
     trycloseDropdown($event) {
@@ -71,6 +70,10 @@ export class SelectComponent implements OnChanges {
     ngOnChanges() {
         this.setTitle();
         this.searchKey = this.title;
+    }
+
+    ngAfterViewInit() {
+        this.inputDom.nativeElement.readonly = 'readonly';
     }
 
     get itemsList(): Array<{ value: any, text: string }> {

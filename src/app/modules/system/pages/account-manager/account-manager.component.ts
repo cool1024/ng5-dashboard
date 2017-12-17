@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pagination, SearchParams } from './../../../../tools-ui';
 import { RequestService } from '../../../../dashboard/services/request.service';
-import { TSSelectService, TSConfirmService, TSModalService } from './../../../../tools-ui';
+import { TSSelectService, TSConfirmService, TSModalService, TSToastService } from './../../../../tools-ui';
 import { AccountManagerModalComponent } from './account-manager.modal';
 import { FormService } from '../../../../dashboard/services/form.service';
 
@@ -35,6 +35,7 @@ export class AccountManagerComponent implements OnInit {
         private confirm: TSConfirmService,
         private modalService: TSModalService,
         private formService: FormService,
+        private toast: TSToastService
     ) { }
 
     ngOnInit() {
@@ -75,19 +76,24 @@ export class AccountManagerComponent implements OnInit {
 
     // 删除确认
     deleteConfirm(index: number) {
-        this.confirm.danger('确认删除', `您确定要删除账户${this.list[index].account}，操作不可回复！`).next(() => {
-            this.request.delete('/admin/delete', { id: this.list[index].id }).subscribe(() => {
-                this.list.splice(index, 1);
+        this.confirm.danger('确认删除', `您确定要删除账户${this.list[index].account}，操作不可回复！`, { okTitle: '确认', cancelTitle: '取消' })
+            .next(() => {
+                this.request.delete('/admin/delete', { id: this.list[index].id }).subscribe(() => {
+                    this.list.splice(index, 1);
+                    this.toast.success('删除成功', '成功删除账号～');
+                });
             });
-        });
     }
 
     // 弹出添加/编辑窗口
     showModal(index = -1) {
         this.modalService.create(AccountManagerModalComponent);
         if (index >= 0) {
-            this.modalService.modal.instance.role = this.formService.jsonCopy(this.list[index]);
+            const admin = this.formService.jsonCopy(this.list[index]);
+            admin.role = admin.role.id;
+            this.modalService.modal.instance.admin = admin;
         }
+        this.modalService.modal.instance.roles = this.roles;
         this.modalService.open().next(() => {
             this.pageChanged();
         });

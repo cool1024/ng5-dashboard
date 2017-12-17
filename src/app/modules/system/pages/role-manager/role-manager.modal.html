@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@{{role.id>0?'修改账户':'添加账户'}}</h5>
+    <span type="button" class="close pointer" (click)="dismiss()">
+        &times;
+    </span>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="name" class="col-form-label">角色名称:</label>
+        <input name="name" [(ngModel)]="role.name" type="text" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="description" class="col-form-label">角色描述:</label>
+        <input name="description" [(ngModel)]="role.description" placeholder="请输入角色描述" type="text" class="form-control" id="description">
+    </div>
+    <div class="form-group">
+        <label for="parent" class="col-form-label">上级角色:</label>
+        <ts-select [items]="roles" width="100%" placeholder="请选择角色" emptyLabel="没有匹配的选项." [(value)]="role.parentid"></ts-select>
+    </div>
+    <div class="form-group">
+        <label for="parent" class="col-form-label">权限分配:</label>
+        <div>
+            <div class="border border-muted p-2 permission-pad" *ngFor="let model of models">
+                <p>{{model.name}}</p>
+                <div class="mt-2 toggles">
+                    <div class="d-inline-block" style="width:100px;" *ngFor="let permission of getPermissionsByModel(model.id);index as i">
+                        <ts-switch activeClass="bg-info" [(value)]="switchs[i]"></ts-switch>
+                        <span [class.text-info]="switchs[i]">{{permission.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ts-loading #submit="tsLoading" type="button" class="btn btn-success" (click)="updateOrSave(submit)" [title]="'确认'+(role.id>0?'修改':'添加')"></button>
+</div>

@@ -51,7 +51,7 @@ export class RequestService {
     }
 
     // 发送一个put请求(可带参数)
-    put(url: string, params?: { [key: string]: number | string } | boolean, check = true): Observable<ApiData> {
+    put(url: string, params?: { [key: string]: number | string } | boolean, check = true, final?: () => void): Observable<ApiData> {
         if (typeof params === 'boolean') {
             check = <boolean>params;
             params = {};

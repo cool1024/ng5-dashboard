@@ -1,22 +1,10 @@
 import { Component } from '@angular/core';
-import { TSModalService } from './../../../../tools-ui';
+import { TSModalService, TSToastService } from './../../../../tools-ui';
+import { RequestService } from '../../../../dashboard/services/request.service';
+import 'rxjs/add/operator/finally';
 
 @Component({
-    template: `
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">预览结果</h5>
-            <span type="button" class="close pointer" (click)="dismiss()">
-                &times;
-            </span>
-        </div>
-        <div class="modal-body" style="height:600px;">
-            <div class="embed-responsive h-100">
-                <iframe class="embed-responsive-item" src="http://www.cool1024.com" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-white" (click)="dismiss()">关闭窗口</button>
-        </div>`,
+    templateUrl: './account-manager.modal.html'
 })
 export class AccountManagerModalComponent {
 
@@ -28,13 +16,34 @@ export class AccountManagerModalComponent {
         role: 0
     };
 
-    constructor(private modalService: TSModalService) { }
+    // 角色下拉选项列表
+    roles = new Array<{ value: number, text: string }>();
 
-    close() {
-        this.modalService.close();
-    }
+    constructor(private modalService: TSModalService, private request: RequestService, private toast: TSToastService) { }
 
     dismiss() {
         this.modalService.dismiss();
+    }
+
+    // 更新或删除
+    updateOrSave(handle: any) {
+        if (this.admin.id > 0) {
+            this.request.put('/admin/update', this.admin, false).subscribe(res => {
+                if (res.result) {
+                    this.modalService.close();
+                    this.toast.success('更新成功', '账号修改成功～');
+                }
+                handle.ready();
+            });
+        } else {
+            this.request.post('/admin/add', this.admin, false).subscribe(res => {
+                if (res.result) {
+                    this.modalService.close();
+                    this.toast.success('新增成功', '添加账号成功～');
+                }
+                handle.ready();
+            });
+        }
+
     }
 }

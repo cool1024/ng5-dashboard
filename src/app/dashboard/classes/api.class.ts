@@ -23,7 +23,7 @@ export class ApiData {
                 }
             }
         } else {
-            this.message = this.message;
+            message = this.message;
         }
         return message;
     }
