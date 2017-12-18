@@ -57,6 +57,8 @@
             </tbody>
         </table>
         <div class="text-right mt-4">
+            <button (click)="showModal()" class="btn btn-outline-success border-muted">
+                <i class="fa fa-plus fa-fw"></i>添加角色</button>
             <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
                 [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
                 [dropup]="true"></ts-dropdown>

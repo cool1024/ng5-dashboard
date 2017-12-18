@@ -70,9 +70,9 @@ export class RoleManagerComponent implements OnInit {
     deleteConfirm(index: number) {
         this.confirm.danger('确认删除', `您确定要删除角色${this.list[index].name}，操作不可回复！`, { okTitle: '确认', cancelTitle: '取消' })
             .next(() => {
-                this.request.delete('/admin/delete', { id: this.list[index].id }).subscribe(() => {
-                    this.list.splice(index, 1);
-                    this.toast.success('删除成功', '成功删除账号～');
+                this.request.delete('/role/delete', { roleid: this.list[index].id }).subscribe(() => {
+                    this.pageChanged();
+                    this.toast.success('删除成功', '成功删除角色～');
                 });
             });
     }

@@ -79,7 +79,7 @@ export class AccountManagerComponent implements OnInit {
         this.confirm.danger('确认删除', `您确定要删除账户${this.list[index].account}，操作不可回复！`, { okTitle: '确认', cancelTitle: '取消' })
             .next(() => {
                 this.request.delete('/admin/delete', { id: this.list[index].id }).subscribe(() => {
-                    this.list.splice(index, 1);
+                    this.pageChanged();
                     this.toast.success('删除成功', '成功删除账号～');
                 });
             });

@@ -54,10 +54,10 @@ export class RoleManagerModalComponent implements OnInit {
                 this.switchs.push(flag);
 
             });
-            console.log(this.switchs);
         });
         this.request.url('/admin/roles ').subscribe(res => {
             this.roles = this.selectService.formatSelectOptions(res.datas, { value: 'id', text: 'name' });
+            this.roles.unshift({ value: 0, text: '无上级角色' });
         });
     }
 
@@ -67,25 +67,32 @@ export class RoleManagerModalComponent implements OnInit {
 
     // 更新或保存
     updateOrSave(handle: any) {
-        console.log(this.switchs);
-        // if (this.admin.id > 0) {
-        //     this.request.put('/admin/update', this.admin, false).subscribe(res => {
-        //         if (res.result) {
-        //             this.modalService.close();
-        //             this.toast.success('更新成功', '账号修改成功～');
-        //         }
-        //         handle.ready();
-        //     });
-        // } else {
-        //     this.request.post('/admin/add', this.admin, false).subscribe(res => {
-        //         if (res.result) {
-        //             this.modalService.close();
-        //             this.toast.success('新增成功', '添加账号成功～');
-        //         }
-        //         handle.ready();
-        //     });
-        // }
-        handle.ready();
+        const permissions = new Array<number>();
+        this.switchs.forEach((e, i) => {
+            if (e) {
+                permissions.push(this.permissions[i].id);
+            }
+        });
+        this.role.permissions = permissions.join();
+        console.log(this.permissions);
+        if (this.role.id > 0) {
+            this.request.put('/role/update', this.role, false).subscribe(res => {
+                if (res.result) {
+                    this.modalService.close();
+                    this.toast.success('更新成功', '账号修改成功～');
+                }
+                handle.ready();
+            });
+        } else {
+
+            this.request.post('/role/add', this.role, false).subscribe(res => {
+                if (res.result) {
+                    this.modalService.close();
+                    this.toast.success('新增成功', '添加账号成功～');
+                }
+                handle.ready();
+            });
+        }
     }
 
     getPermissionsByModel(modelid: number) {
