@@ -1,0 +1,60 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">基本信息</div>
+    <div class="card-body">
+        <form [formGroup]="goodsForm" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="goods_name">
+                        <span class="text-danger">*</span>
+                        <span>商品名称</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('goods_name').pristine&&goodsForm.get('goods_name').invalid}" formControlName="goods_name"
+                        id="goods_name" type="text" class="form-control">
+                    <div class="invalid-feedback">商品名称是必填的～</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="goods_type">
+                        <span class="text-danger">*</span>
+                        <span>商品种类</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('goods_no').pristine&&goodsForm.get('goods_no').invalid}" formControlName="goods_no" id="goods_no"
+                        name="goods_no" type="text" class="form-control">   
+                    <div class="invalid-feedback">货物编号是必填的且必须是且不能超过8个字符～</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="_input-address">
+                        <span class="text-danger">*</span>
+                        <span>收货地址</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('_address').pristine&&goodsForm.get('_address').invalid}" formControlName="_address"
+                        id="_input-address" name="_address" type="text" class="form-control">
+                    <div class="invalid-feedback">货物收货地址是必填的～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="_input-size">
+                        <span class="text-danger">*</span>
+                        <span>尺寸</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('_size').pristine&&goodsForm.get('_size').invalid}" formControlName="_size"
+                        id="_input-size" name="_size" type="number" class="form-control">
+                    <div class="invalid-feedback">货物重量是必填的且必须是0-100的数字～</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="_input-weight">重量</label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('_weight').pristine&&goodsForm.get('_weight').invalid&&goodsForm.get('_weight').errors}"
+                        formControlName="_weight" id="_input-weight" name="_weight" type="number" class="form-control">
+                    <div class="invalid-feedback">
+                        {{goodsForm.get('_weight').errors&&goodsForm.get('_weight').errors.muti?goodsForm.get('_weight').errors.muti:'货物重量是必填的且必须是0-100的数字～'}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <!-- <span>表单数据：{{datas|json}}</span> -->
+                <button class="btn btn-white" type="button">返回列表</button>
+                <button [disabled]="goodsForm.pristine||goodsForm.invalid" class="btn btn-success" type="button">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>

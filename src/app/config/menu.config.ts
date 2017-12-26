@@ -58,6 +58,18 @@ export const Menus = [
         ]
     },
     {
+        title: '模块示例',
+        menus: [
+            {
+                icon: 'fa fa-cogs fa-fw',
+                title: '商品管理',
+                children: [
+                    { title: '商品列表', url: '/docs/http-service' },
+                ]
+            }
+        ]
+    },
+    {
         title: '参考文档',
         menus: [
             {

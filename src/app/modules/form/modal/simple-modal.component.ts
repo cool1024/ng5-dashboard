@@ -5,7 +5,7 @@ import { TSModalService } from './../../../tools-ui';
     template: `
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">预览结果</h5>
-            <span type="button" class="close pointer" (click)="dismiss()">
+            <span  class="close pointer" (click)="dismiss()">
                 &times;
             </span>
         </div>

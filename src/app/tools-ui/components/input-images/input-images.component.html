@@ -1,4 +1,4 @@
-<input #input_file type="file" [hidden]="true" accept="image/*" multiple="multiple" (change)="changeFile($event.target.files)">
+<input #input_file type="file" class="d-block" accept="image/*" multiple="multiple" (change)="changeFile($event.target.files)">
 <div class="btn-group" role="group">
     <button type="button" [ngClass]="openBtnClassName||'btn btn-secondary'" (click)="input_file.click()"><i class="fa fa-file-image-o fa-fw" aria-hidden="true"></i>{{openTitle||'Open File'}}</button>
     <button type="button" [ngClass]="resetBtnClassName||'btn btn-warning'" (click)="resetInput(input_file)"><i class="fa fa-refresh fa-fw" aria-hidden="true"></i>{{resetTitle||''}}</button>
