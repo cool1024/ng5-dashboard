@@ -21,7 +21,7 @@ export class GoodsInfoComponent implements OnInit {
   createForm() {
     this.goodsForm = this.formBuilder.group({
       goods_name: ['', Validators.required],
-      goods_type: [0, [Validators.required, Validators.maxLength(8)]],
+      goods_no: ['', [Validators.required, Validators.maxLength(8)]],
       price: ['', Validators.required],
       size: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
       weight: ['', Validators.required],
