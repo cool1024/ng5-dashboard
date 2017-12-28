@@ -18,6 +18,8 @@ import { RoleManagerComponent } from './pages/role-manager/role-manager.componen
 import { AccountManagerComponent } from './pages/account-manager/account-manager.component';
 import { AccountManagerModalComponent } from './pages/account-manager/account-manager.modal';
 import { RoleManagerModalComponent } from './pages/role-manager/role-manager.modal';
+import { PermissionManagerModalComponent } from './pages/permission-manager/permission-manager.modal';
+import { PermissionModelModalComponent } from './pages/permission-manager/permission-model.modal';
 
 @NgModule({
   imports: [
@@ -40,10 +42,14 @@ import { RoleManagerModalComponent } from './pages/role-manager/role-manager.mod
     AccountManagerComponent,
     AccountManagerModalComponent,
     RoleManagerModalComponent,
+    PermissionManagerModalComponent,
+    PermissionModelModalComponent,
   ],
   entryComponents: [
     AccountManagerModalComponent,
     RoleManagerModalComponent,
+    PermissionManagerModalComponent,
+    PermissionModelModalComponent,
   ]
 })
 export class SystemModule { }

@@ -160,11 +160,20 @@
         </div>
     </div>
 </div> -->
-<div class="card rounded-0" *ngFor="let model of models">
+<div class="card rounded-0 mb-2" *ngFor="let model of models">
     <div class="card-header bg-white">
         {{model.name}}
-        <span class="pull-right text-danger">
-            <button class="btn btn-sm btn-white text-danger">
+        <span class="pull-right">
+            <button (click)="showPermissionModal(model.id)" class="btn btn-sm btn-white text-success">
+                + 新增权限
+            </button>
+            <button (click)="showPermissionModelModal()" class="btn btn-sm btn-white text-success">
+                + 新增模块
+            </button>
+            <button (click)="showPermissionModelModal(model)" class="btn btn-sm btn-white text-info">
+                <i class="fa fa-edit fa-fw"></i> 编辑模块
+            </button>
+            <button (click)="deletePermissionModelConfirm(model)" class="btn btn-sm btn-white text-danger">
                 <i class="fa fa-trash-o fa-fw"></i> 删除模块
             </button>
         </span>
@@ -173,22 +182,22 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">名称</th>
-                    <th scope="col">关键词</th>
-                    <th scope="col">操作</th>
+                    <th class="w-25">#</th>
+                    <th class="w-25">名称</th>
+                    <th class="w-25">关键词</th>
+                    <th class="w-25">操作</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let permission of permissions;index as i">
+                <tr *ngFor="let permission of getPermissionByModelId(model.id)">
                     <th scope="row">{{permission.id}}</th>
                     <td>{{permission.name}}</td>
                     <td class="text-info">{{permission.key}}</td>
                     <td>
-                        <button class="btn btn-sm btn-info">
+                        <button (click)="showPermissionModal(permission)" class="btn btn-sm btn-info">
                             <i class="fa fa-edit fa-fw"></i>编辑
                         </button>
-                        <button class="btn btn-sm btn-danger">
+                        <button (click)="deletePermissionConfirm(permission)" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash-o fa-fw"></i>删除
                         </button>
                     </td>
