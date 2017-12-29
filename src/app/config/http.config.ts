@@ -8,7 +8,7 @@ export const HttpConfig = {
     SOURCE_URL: 'http://ng.cool1024.com',
 
     // 请求超时设置:毫秒
-    REQUEST_TIMEOUT: 5000,
+    REQUEST_TIMEOUT: 10000,
 
     // 错误弹窗显示时间
     TOAST_ERROR_TIME: 3000,

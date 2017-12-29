@@ -12,6 +12,8 @@ export class FlashLoadingDirective implements AfterViewInit, OnDestroy {
 
     @Input() bgColor: string;
 
+    status = false;
+
     ticking = false;
 
     autoHandle: () => void;
@@ -31,7 +33,7 @@ export class FlashLoadingDirective implements AfterViewInit, OnDestroy {
             dom.parentNode.appendChild(this.flash);
         }
         this.resize();
-        this.flash.style.display = 'none';
+        this.flash.style.display = this.status ? '' : 'none';
     }
 
     ngAfterViewInit() {
@@ -53,11 +55,12 @@ export class FlashLoadingDirective implements AfterViewInit, OnDestroy {
     }
 
     loading() {
+        this.status = true;
         this.init();
-        this.flash.style.display = '';
     }
 
     complete() {
+        this.status = false;
         this.flash.style.display = 'none';
     }
 

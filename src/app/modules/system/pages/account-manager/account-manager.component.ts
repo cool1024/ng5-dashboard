@@ -51,6 +51,10 @@ export class AccountManagerComponent implements OnInit {
 
     }
 
+    // ngAfterViewInit(){
+    //     this.pageChanged();
+    // }
+
     // 换页事件(特别的更改每页数据量也会触发此事件)
     pageChanged() {
         this.flash.loading();

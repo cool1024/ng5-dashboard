@@ -20,6 +20,7 @@ import { AccountManagerModalComponent } from './pages/account-manager/account-ma
 import { RoleManagerModalComponent } from './pages/role-manager/role-manager.modal';
 import { PermissionManagerModalComponent } from './pages/permission-manager/permission-manager.modal';
 import { PermissionModelModalComponent } from './pages/permission-manager/permission-model.modal';
+import { MenuModelModalComponent } from './pages/menu-manager/menu-model.modal';
 
 @NgModule({
   imports: [
@@ -44,12 +45,14 @@ import { PermissionModelModalComponent } from './pages/permission-manager/permis
     RoleManagerModalComponent,
     PermissionManagerModalComponent,
     PermissionModelModalComponent,
+    MenuModelModalComponent,
   ],
   entryComponents: [
     AccountManagerModalComponent,
     RoleManagerModalComponent,
     PermissionManagerModalComponent,
     PermissionModelModalComponent,
+    MenuModelModalComponent,
   ]
 })
 export class SystemModule { }

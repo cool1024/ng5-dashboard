@@ -15,4 +15,13 @@ export class FormService {
         }
         return copy;
     }
+
+    // 获取对象数组中的id
+    getIds(objs: any[]): number[] {
+        const ids = [];
+        objs.forEach(obj => {
+            ids.push(obj.id);
+        });
+        return ids;
+    }
 }

@@ -59,6 +59,9 @@
                             <i class="fa fa-trash fa-fw"></i>删除</button>
                     </td>
                 </tr>
+                <tr class="mat-cell">
+                    <td class="text-center text-info" *ngIf="list.length<=0" colspan="6">暂无数据~</td>
+                </tr>
             </tbody>
         </table>
         <div class="text-right mt-2">
