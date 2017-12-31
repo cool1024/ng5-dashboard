@@ -9,14 +9,14 @@ const routes: Routes = [
 
   // 懒加载子模块
   { path: 'table', loadChildren: 'app/modules/table/table.module#TableModule', canActivate: [GuardService] },
-  { path: 'form', loadChildren: 'app/modules/form/form.module#FormModule' },
-  { path: 'upload', loadChildren: 'app/modules/upload/upload.module#UploadModule' },
-  { path: 'pad', loadChildren: 'app/modules/pad/pad.module#PadModule' },
-  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule' },
-  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule' },
-  { path: 'system', loadChildren: 'app/modules/system/system.module#SystemModule' },
-  { path: 'docs', loadChildren: 'app/modules/docs/docs.module#DocsModule' },
-  { path: 'goods', loadChildren: 'app/modules/goods/goods.module#GoodsModule' },
+  { path: 'form', loadChildren: 'app/modules/form/form.module#FormModule', canActivate: [GuardService] },
+  { path: 'upload', loadChildren: 'app/modules/upload/upload.module#UploadModule', canActivate: [GuardService] },
+  { path: 'pad', loadChildren: 'app/modules/pad/pad.module#PadModule', canActivate: [GuardService] },
+  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule', canActivate: [GuardService] },
+  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule', canActivate: [GuardService] },
+  { path: 'system', loadChildren: 'app/modules/system/system.module#SystemModule', canActivate: [GuardService] },
+  { path: 'docs', loadChildren: 'app/modules/docs/docs.module#DocsModule', canActivate: [GuardService] },
+  { path: 'goods', loadChildren: 'app/modules/goods/goods.module#GoodsModule', canActivate: [GuardService] },
 ];
 
 @NgModule({

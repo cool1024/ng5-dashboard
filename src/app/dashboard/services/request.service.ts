@@ -46,7 +46,7 @@ export class RequestService {
             check = <boolean>params;
             params = {};
         }
-        const observable = this.http.post<ApiData>(this.server_url + url, null, { headers: this.getHeaders(), params: this.getParams(params) });
+        const observable = this.http.post<ApiData>(this.server_url + url, params, { headers: this.getHeaders() });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 

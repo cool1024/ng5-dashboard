@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GlobalValueService } from '../../services/global-value.service';
 
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.css']
 })
-export class ErrorComponent {
+export class ErrorComponent implements OnInit {
 
   errorConfig = {
     zIndex: 1050,
   };
 
-  constructor() { }
+  constructor(private global: GlobalValueService) { }
+
+  ngOnInit() {
+    // console.log(111);
+    // this.global.setValue('checkStatus', true);
+  }
 
 }

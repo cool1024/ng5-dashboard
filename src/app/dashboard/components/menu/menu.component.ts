@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Theme } from '../../../config/theme.config';
 import { Menus } from '../../../config/menu.config';
 import { AuthService } from '../../services/auth.service';
+import { RequestService } from '../../services/request.service';
 
 @Component({
   selector: 'dashboard-menu',
@@ -19,9 +20,13 @@ export class MenuComponent implements OnInit {
   // 菜单展开状态列表
   isCollopseArray = new Array<boolean[]>();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private request: RequestService) { }
 
   ngOnInit() {
+    this.request.url('/menus').subscribe(res => {
+      const menus = this.formateMenu(res.datas.groups, res.datas.models);
+      console.log(menus);
+    });
 
     // 默认收起所有的菜单
     for (let i = 0; i < this.menus.length; i++) {
@@ -60,6 +65,44 @@ export class MenuComponent implements OnInit {
         this.isCollopseArray[i][j] = false;
       }
     }
+  }
+
+  // 格式化菜单
+  formateMenu(menus: Array<{ parentid: number, groups: Array<any> }>, models: { id: number, title: string }[]) {
+
+    let mains: { parentid: number, groups: Array<any> };
+    let mainIndex = -1;
+
+    for (let i = 0; i < menus.length; i++) {
+      if (menus[i].parentid === 0) {
+        mains = menus[i];
+        mainIndex = i;
+        break;
+      }
+    }
+
+    // not mains
+    if (mainIndex < 0) {
+      return [];
+    }
+
+    menus.splice(mainIndex, 1);
+
+    const temps = new Array<{ icon: string, title: string, childs: Array<{ icon: string, title: string, url: string }> }>();
+
+    for (let i = 0; i < mains.groups.length; i++) {
+      const temp = { icon: mains.groups[i].icon, title: mains.groups[i].title, childs: [] };
+      const childs = menus.filter(e => e.parentid === mains.groups[i].id);
+      temp.childs = childs.length > 0 ? childs[0].groups : [];
+      temps.push(temp);
+    }
+
+    // const menus = [];
+    for (let i = 0; i < models.length; i++) {
+      // const mains =
+    }
+
+    return temps;
   }
 
 }

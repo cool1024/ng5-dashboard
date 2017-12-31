@@ -4,12 +4,12 @@ import { RequestService } from '../../../../dashboard/services/request.service';
 import 'rxjs/add/operator/finally';
 
 @Component({
-    templateUrl: './menu-model.modal.html'
+    templateUrl: './menu-main.modal.html'
 })
-export class MenuModelModalComponent {
+export class MenuMainModalComponent {
 
     // 权限模块信息
-    model = { id: 0, title: '' };
+    menu = { id: 0, title: '', icon: '', url: '#', mid: 0, parentid: 0, permissionid: 0 };
 
     constructor(private modalService: TSModalService, private request: RequestService, private toast: TSToastService) { }
 
@@ -19,22 +19,23 @@ export class MenuModelModalComponent {
 
     // 更新或添加
     updateOrAdd(handle: any) {
-        if (this.model.id > 0) {
-            this.request.put('/menu/model/update', this.model, false).subscribe(res => {
+        if (this.menu.id > 0) {
+            this.request.put('/menu/update', this.menu, false).subscribe(res => {
                 if (res.result) {
                     this.modalService.close();
-                    this.toast.success('更新成功', '模块修改成功～');
+                    this.toast.success('更新成功', '菜单修改成功～');
                 }
                 handle.ready();
             });
         } else {
-            this.request.post('/menu/model/add', this.model, false).subscribe(res => {
+            this.request.post('/menu/add', this.menu, false).subscribe(res => {
                 if (res.result) {
                     this.modalService.close();
-                    this.toast.success('新增成功', '添加模块成功～');
+                    this.toast.success('新增成功', '添加菜单成功～');
                 }
                 handle.ready();
             });
         }
+
     }
 }

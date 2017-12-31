@@ -6,7 +6,7 @@
                 <button (click)="showMainMenuModal(model.id)" class="btn btn-sm btn-white text-success">
                     + 新增菜单
                 </button>
-                <button (click)="confrimMenuSort(model.menus)" class="btn btn-sm btn-white text-warning">
+                <button (click)="confrimMenuSort(model.menus)" class="btn btn-sm btn-white text-dark">
                     <i class="fa fa-refresh fa-fw"></i> 主菜单排序
                 </button>
                 <button (click)="showModelModal(model)" class="btn btn-sm btn-white text-info">
@@ -22,6 +22,20 @@
                 <div class="card rounded-0 mt-2" *ngFor="let main of model.menus">
                     <div class="card-header bg-white">
                         <i class="{{main.icon}}"></i>{{main.title}}
+                        <span class="pull-right">
+                            <button (click)="showChildMenuModal(model.id,main.id)" class="btn btn-sm btn-white text-success">
+                                + 新增菜单
+                            </button>
+                            <button (click)="confrimMenuSort(main.children)" class="btn btn-sm btn-white text-dark">
+                                <i class="fa fa-refresh fa-fw"></i> 子菜单排序
+                            </button>
+                            <button (click)="showMainMenuModal(main)" class="btn btn-sm btn-white text-info">
+                                <i class="fa fa-edit fa-fw"></i> 编辑菜单
+                            </button>
+                            <button (click)="confirmDeleteMenu(main)" class="btn btn-sm btn-white text-danger">
+                                <i class="fa fa-trash-o fa-fw"></i> 删除菜单
+                            </button>
+                        </span>
                     </div>
                     <div class="card-body">
                         <table class="table text-center">
@@ -41,8 +55,8 @@
                                         <a routerLink="{{child.url}}">{{child.url}}</a>
                                     </td>
                                     <td class="w-25">
-                                        <button class="btn btn-sm btn-info">修改</button>
-                                        <button class="btn btn-sm btn-danger">删除</button>
+                                        <button (click)="showChildMenuModal(child)" class="btn btn-sm btn-info">修改</button>
+                                        <button (click)="confirmDeleteMenu(child)" class="btn btn-sm btn-danger">删除</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -54,6 +68,8 @@
     </div>
 </div>
 <div class="text-right">
-    <button (click)="showModelModal()" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>新增菜单模块</button>
-    <button (click)="confirmModelSort()" class="btn btn-warning"><i class="fa fa-refresh fa-fw"></i>确认模块排序</button>
+    <button (click)="showModelModal()" class="btn btn-success">
+        <i class="fa fa-plus fa-fw"></i>新增菜单模块</button>
+    <button (click)="confirmModelSort()" class="btn btn-warning">
+        <i class="fa fa-refresh fa-fw"></i>确认模块排序</button>
 </div>

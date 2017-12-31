@@ -61,10 +61,10 @@ export const Menus = [
         title: '模块示例',
         menus: [
             {
-                icon: 'fa fa-cogs fa-fw',
+                icon: 'fa fa-shopping-bag fa-fw',
                 title: '商品管理',
                 children: [
-                    { title: '商品列表', url: '/docs/http-service' },
+                    { title: '商品列表', url: '/goods/list' },
                 ]
             }
         ]

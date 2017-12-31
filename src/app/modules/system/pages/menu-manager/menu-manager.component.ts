@@ -3,7 +3,10 @@ import { Menus } from '../../../../config/menu.config';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { TSToastService, TSModalService } from '../../../../tools-ui';
 import { MenuModelModalComponent } from './menu-model.modal';
+import { MenuMainModalComponent } from './menu-main.modal';
 import { FormService } from '../../../../dashboard/services/form.service';
+import { ConfirmService } from '../../../../tools-ui/components/confirm/confirm.service';
+import { MenuChildModalComponent } from './menu-child.modal';
 
 @Component({
     selector: 'app-menu-manager',
@@ -19,6 +22,7 @@ export class MenuManagerComponent implements OnInit {
         private toast: TSToastService,
         private modalService: TSModalService,
         private form: FormService,
+        private confirm: ConfirmService,
     ) { }
 
     ngOnInit() {
@@ -38,7 +42,6 @@ export class MenuManagerComponent implements OnInit {
             const mains = new Array<{ id: number, icon: string, title: string, mid: number, children: any[] }>();
             for (let i = 0; i < res.datas.groups.length; i++) {
                 if (res.datas.groups[i].parentid === 0) {
-                    console.log(res.datas.groups[i]);
                     res.datas.groups[i].groups.forEach(e => {
                         mains.push({ id: e.id, icon: e.icon, title: e.title, mid: e.mid, children: [] });
                     });
@@ -98,7 +101,7 @@ export class MenuManagerComponent implements OnInit {
 
     // 显示主菜单添加/编辑窗口
     showMainMenuModal(params: any) {
-        this.modalService.create(MenuModelModalComponent);
+        this.modalService.create(MenuMainModalComponent);
         if (typeof params !== 'number') {
             this.modalService.modal.instance.menu = this.form.jsonCopy(params);
         } else {
@@ -110,12 +113,14 @@ export class MenuManagerComponent implements OnInit {
     }
 
     // 显示子菜单添加/编辑窗口
-    showChildMenuModal(params: any) {
-        this.modalService.create(MenuModelModalComponent);
-        if (typeof params !== 'number') {
+    showChildMenuModal(params: any, parentid = 0) {
+        this.modalService.create(MenuChildModalComponent);
+        if (parentid === 0) {
+            params.permissionid = parseInt(params.permissionid.toString(), 10);
             this.modalService.modal.instance.menu = this.form.jsonCopy(params);
         } else {
             this.modalService.modal.instance.menu.mid = params;
+            this.modalService.modal.instance.menu.parentid = parentid;
         }
         this.modalService.open().next(() => {
             this.loadDatas();
@@ -138,5 +143,16 @@ export class MenuManagerComponent implements OnInit {
             this.loadDatas();
             this.toast.success('操作成功', '模块排序成功~');
         });
+    }
+
+    // 确认删除菜单
+    confirmDeleteMenu(menu: any) {
+        this.confirm.danger('确认删除', `您确定要删除菜单'${menu.title}'，操作不可回复！`, { okTitle: '确认', cancelTitle: '取消' })
+            .next(() => {
+                this.request.delete('/menu/delete', { menuid: menu.id }).subscribe(() => {
+                    this.loadDatas();
+                    this.toast.success('操作成功', '菜单删除成功~');
+                });
+            });
     }
 }

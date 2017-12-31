@@ -9,7 +9,9 @@ import { AuthService } from './services/auth.service';
 import { RequestService } from './services/request.service';
 import { StorageService } from './services/storage.service';
 import { GuardService } from './services/guard.service';
+import { DefaultGuardService } from './services/default-guard.service';
 import { FormService } from './services/form.service';
+import { GlobalValueService } from './services/global-value.service';
 import { DefaultInterceptor } from './services/default-intercept.service';
 
 import { HeadComponent } from './components/head/head.component';
@@ -19,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { LoginComponent as LoginPageComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { ErrorComponent } from './pages/error/error.component';
         ContentDirective,
         ErrorComponent,
         HomeComponent,
+        LoginPageComponent,
     ],
     exports: [
         BrowserAnimationsModule,
@@ -53,12 +57,14 @@ export class DashboardModule {
                 RequestService,
                 StorageService,
                 GuardService,
+                DefaultGuardService,
                 FormService,
+                GlobalValueService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: DefaultInterceptor,
                     multi: true,
-                }
+                },
             ]
         };
     }

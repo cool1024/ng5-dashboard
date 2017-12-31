@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@{{menu.id>0?'修改主菜单':'添加主菜单'}}</h5>
+    <span class="close pointer" (click)="dismiss()">
+        &times;
+    </span>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="name" class="col-form-label">菜单名称:</label>
+        <input name="name" [(ngModel)]="menu.title" type="text" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="icon" class="col-form-label">菜单图标:
+            <i class="text-info" [ngClass]="menu.icon"></i>
+        </label>
+        <input name="icon" [(ngModel)]="menu.icon" type="text" class="form-control" id="icon">
+    </div>
+</div>
+<div class="modal-footer">
+    <button ts-loading #submit="tsLoading" type="button" class="btn btn-success" (click)="updateOrAdd(submit)" [title]="'确认'+(menu.id>0?'修改':'添加')"></button>
+</div>

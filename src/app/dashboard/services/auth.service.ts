@@ -7,17 +7,28 @@ import { RequestService } from './request.service';
 import { ApiData } from '../classes/api.class';
 import { Observable } from 'rxjs/Observable';
 import { CanActivate } from '@angular/router';
+import { GlobalValueService } from './global-value.service';
 
 @Injectable()
 export class AuthService {
 
-    private loginState = true;
-
-    private authErrorUrl = '/401';
+    private authErrorUrl = AppConfig.authErrorUrl;
 
     private user: { [key: string]: string } = {};
 
-    constructor(private storageService: StorageService, private request: RequestService, private router: Router) { }
+    constructor(
+        private storageService: StorageService,
+        private request: RequestService,
+        private router: Router,
+        private global: GlobalValueService) { }
+
+    get loginState(): boolean {
+        return <boolean>this.global.values.loginState;
+    }
+
+    set loginState(value: boolean) {
+        this.global.setValue('loginState', value);
+    }
 
     setOut() {
         this.loginState = false;
@@ -32,20 +43,35 @@ export class AuthService {
     }
 
     checkLogin(): Observable<boolean> | boolean {
-        if (this.loginState !== true) {
-            this.router.navigateByUrl(this.authErrorUrl);
-        }
+
         return this.loginState || this.checkToken();
     }
 
     checkToken(): Observable<boolean> | boolean {
-        return this.storageService.empty(AppConfig.tokenParams) ?
-            false : this.request.withoutHeader().post(AppConfig.tokenCheckUrl, this.getToken()).map<ApiData, boolean>(res => {
+        if (this.storageService.empty(AppConfig.tokenParams)) {
+            this.global.setValue('checkStatus', true);
+            this.router.navigateByUrl('/login');
+            return false;
+        } else {
+            return this.request.withoutHeader().post(AppConfig.tokenCheckUrl, this.getToken(), false).map<ApiData, boolean>(res => {
                 if (res.result !== true) {
-                    this.router.navigateByUrl(this.authErrorUrl);
+                    this.router.navigateByUrl('/login');
+                } else {
+                    this.setIn();
                 }
+                this.global.setValue('checkStatus', true);
                 return res.result;
             });
+        }
+    }
+
+    reCheckLogin(): Observable<boolean> {
+        const check = this.checkToken();
+        if (typeof check === 'boolean') {
+            return Observable.of(check);
+        } else {
+            return check;
+        }
     }
 
     saveToken(params: { [key: string]: string }) {

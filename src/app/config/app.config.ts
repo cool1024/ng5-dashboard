@@ -26,6 +26,9 @@ export const AppConfig = {
     // 令牌校验地址
     tokenCheckUrl: '/check',
 
+    // 权限错误页面地址
+    authErrorUrl: '/401',
+
     // 系统登入配置参数-------------------------------------------------
 
     // 登入参数

@@ -4,6 +4,8 @@ import { ApiData, HttpError } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 import { TSToastService } from '../../tools-ui';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { AppConfig } from '../../config/app.config';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/timeout';
@@ -11,7 +13,7 @@ import 'rxjs/add/operator/timeout';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-    constructor(private toast: TSToastService) { }
+    constructor(private toast: TSToastService, private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
@@ -20,7 +22,18 @@ export class DefaultInterceptor implements HttpInterceptor {
                 let errorMessage = '';
                 if (error instanceof HttpErrorResponse) {
                     console.log('response error');
-                    errorMessage = HttpError.SERVER_ERROR;
+                    if (error.status === 401) {
+                        errorMessage = HttpError.AUTH_ERROR;
+                        this.router.navigateByUrl(AppConfig.authErrorUrl);
+                    } else if (error.status === 404) {
+                        errorMessage = HttpError.NOTFOUND_ERROR;
+
+                    } else if (error.status === 500) {
+                        errorMessage = HttpError.SERVER_ERROR;
+
+                    } else {
+                        errorMessage = HttpError.OTHER_ERROR;
+                    }
                     this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger(error.statusText, errorMessage);
                 } else {
                     console.log('timeout');
@@ -36,13 +49,17 @@ export class DefaultInterceptor implements HttpInterceptor {
                         const apiData = new ApiData(response.body.result, response.body.message, response.body.datas);
                         if (apiData.result === false) {
                             console.log('api use error');
-                            this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).warning('操作失败', apiData.messageStr);
+                            if (apiData.messageStr !== HttpError.CHECK_ERROR) {
+                                this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).warning('操作失败', apiData.messageStr);
+                            } else {
+                                this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).info('登入', '请先登入账户～');
+                            }
                         }
-                        response = response.clone({ body: apiData });
+                        response = response.clone<ApiData>({ body: apiData });
 
                     } else if (req.responseType !== 'text') {
                         console.log('response error');
-                        response = response.clone({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
+                        response = response.clone<ApiData>({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
                     }
                 }
                 return response;

@@ -42,13 +42,14 @@ export class SelectComponent implements OnChanges, AfterViewInit {
         dropMenuDom.style.width = this.dropdownToggle.nativeElement.clientWidth + 'px';
         this.open = true;
         this.searchKey = '';
+        this.inputDom.nativeElement.readOnly = false;
     }
 
     closeDropdown() {
         if (this.open === false) { return; }
         this.open = false;
         this.searchKey = this.title;
-        this.inputDom.nativeElement.readonly = 'readonly';
+        this.inputDom.nativeElement.readOnly = true;
     }
 
     trycloseDropdown($event) {
@@ -73,7 +74,7 @@ export class SelectComponent implements OnChanges, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.inputDom.nativeElement.readonly = 'readonly';
+        this.inputDom.nativeElement.readOnly = true;
     }
 
     get itemsList(): Array<{ value: any, text: string }> {

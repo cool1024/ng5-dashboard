@@ -2,8 +2,8 @@ export class ApiData {
     constructor(
         public result: boolean,
         public message: string | { [key: string]: string[] },
-        public datas?: any | { rows: any[], total: number },
-        public id?: number) { }
+        public datas: any | { rows: any[], total: number } = {},
+        public id: number = 0) { }
     toJsonString(): string {
         const json = {
             result: this.result || false,
@@ -35,4 +35,6 @@ export const HttpError = {
     AUTH_ERROR: '权限校验失败，请提供正确的令牌',
     NETWORK_ERROR: '网络好像出问题了',
     TIMEOUT_ERROR: '服务器很久没有响应了',
+    OTHER_ERROR: '接收到一个错误的响应',
+    CHECK_ERROR: '未授权的令牌~'
 };
