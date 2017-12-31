@@ -22,18 +22,8 @@ export class GoodsInfoComponent implements OnInit {
     this.goodsForm = this.formBuilder.group({
       goods_name: ['', Validators.required],
       goods_no: ['', [Validators.required, Validators.maxLength(8)]],
-      price: ['', Validators.required],
-      size: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-      weight: ['', Validators.required],
+      price: ['', [Validators.required, Validators.pattern(/^(0|([1-9]\d{0,9}(\.\d{1,2})?))$/)]],
+      inventory: ['', [Validators.required, Validators.min(0), Validators.max(99999)]],
     });
   }
-  // createForm() {
-  //   this.mutiForm = this.formBuilder.group({
-  //     _name: ['', Validators.required],
-  //     _no: ['', [Validators.required, Validators.maxLength(8)]],
-  //     _address: ['', Validators.required],
-  //     _size: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-  //     _weight: ['', Validators.required],
-  //   });
-  // }
 }

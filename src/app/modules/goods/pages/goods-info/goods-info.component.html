@@ -23,41 +23,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="col-md-3 mb-3">
-                        <label for="_input-size">
-                            <span class="text-danger">*</span>
-                            <span>尺寸</span>
-                        </label>
-                        <input [ngClass]="{'is-invalid':!goodsForm.get('_size').pristine&&goodsForm.get('_size').invalid}" formControlName="_size"
-                            id="_input-size" name="_size" type="number" class="form-control">
-                        <div class="invalid-feedback">货物重量是必填的且必须是0-100的数字～</div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="_input-weight">重量</label>
-                        <input [ngClass]="{'is-invalid':!goodsForm.get('_weight').pristine&&goodsForm.get('_weight').invalid&&goodsForm.get('_weight').errors}"
-                            formControlName="_weight" id="_input-weight" name="_weight" type="number" class="form-control">
-                        <div class="invalid-feedback">
-                            {{goodsForm.get('_weight').errors&&goodsForm.get('_weight').errors.muti?goodsForm.get('_weight').errors.muti:'货物重量是必填的且必须是0-100的数字～'}}
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-3 mb-3">
-                    <label for="_input-size">
+                    <label for="_input-inventory">
                         <span class="text-danger">*</span>
-                        <span>尺寸</span>
+                        <span>库存</span>
                     </label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('_size').pristine&&goodsForm.get('_size').invalid}" formControlName="_size"
-                        id="_input-size" name="_size" type="number" class="form-control">
-                    <div class="invalid-feedback">货物重量是必填的且必须是0-100的数字～</div>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('inventory').pristine&&goodsForm.get('inventory').invalid}" formControlName="inventory"
+                        id="_input-inventory" name="inventory" type="number" class="form-control">
+                    <div class="invalid-feedback">商品库存必填的且必须是0-99999的数字～</div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <label for="_input-weight">重量</label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('_weight').pristine&&goodsForm.get('_weight').invalid&&goodsForm.get('_weight').errors}"
-                        formControlName="_weight" id="_input-weight" name="_weight" type="number" class="form-control">
-                    <div class="invalid-feedback">
-                        {{goodsForm.get('_weight').errors&&goodsForm.get('_weight').errors.muti?goodsForm.get('_weight').errors.muti:'货物重量是必填的且必须是0-100的数字～'}}
-                    </div>
+                    <label for="_input-price">
+                        <span class="text-danger">*</span>
+                        <span>单价</span>
+                    </label>
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('price').pristine&&goodsForm.get('price').invalid&&goodsForm.get('price').errors}"
+                        formControlName="price" id="_input-price" name="price" type="text" class="form-control">
+                    <div class="invalid-feedback">商品价格必填的且必须大于0且最多两位小数～</div>
                 </div>
             </div>
             <div class="text-right">
