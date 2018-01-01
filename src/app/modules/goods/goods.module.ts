@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsRoutingModule } from './goods.routing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TSSelectModule, TSLoadingModule, TSDropdownModule, TSPaginationModule, TSConfirmModule } from '../../tools-ui';
+import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
+import { GoodsListComponent } from './pages/goods-list/goods-list.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    GoodsRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  declarations: [
-    GoodsInfoComponent
-  ]
+    imports: [
+        CommonModule,
+        GoodsRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TSSelectModule,
+        TSLoadingModule,
+        TSDropdownModule,
+        TSPaginationModule,
+        TSConfirmModule,
+    ],
+    declarations: [
+        GoodsInfoComponent,
+        GoodsListComponent,
+    ]
 })
 export class GoodsModule { }

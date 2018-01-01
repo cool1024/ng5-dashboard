@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
 
     ngOnInit() {
         this.activatedRoute.paramMap
-            .switchMap(params => this.request.get('/assets/json/detail-api.json', { id: params.get('id') }))
+            .switchMap(params => this.request.withConfig({ url: '' }).get('/assets/json/detail-api.json', { id: params.get('id') }))
             .subscribe(res => {
                 this.detail = res.datas;
             });

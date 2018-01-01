@@ -37,14 +37,22 @@
                         <span class="text-danger">*</span>
                         <span>单价</span>
                     </label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('price').pristine&&goodsForm.get('price').invalid&&goodsForm.get('price').errors}"
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('price').pristine&&goodsForm.get('price').invalid}"
                         formControlName="price" id="_input-price" name="price" type="text" class="form-control">
                     <div class="invalid-feedback">商品价格必填的且必须大于0且最多两位小数～</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>
+                        <span class="text-danger">*</span>
+                        <span>商品种类</span>
+                    </label>
+                    <ts-select [items]="['零食','餐具','电子产品','无线设备']" width="100%"></ts-select>
+                    <div class="invalid-feedback" [class.d-block]="">商品编号是必填的且必须是且不能超过8个字符～</div>
                 </div>
             </div>
             <div class="text-right">
                 <!-- <span>表单数据：{{datas|json}}</span> -->
-                <button class="btn btn-white" type="button">返回列表</button>
+                <button routerLink="/goods/list" class="btn btn-white" type="button">返回列表</button>
                 <button [disabled]="goodsForm.pristine||goodsForm.invalid" class="btn btn-success" type="button">确认提交</button>
             </div>
         </form>
