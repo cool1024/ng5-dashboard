@@ -35,11 +35,11 @@ export class LoginComponent {
 
     };
 
-    // 登入状态
-    loginState: boolean;
-
-    constructor(private authService: AuthService, private router: Router, private request: RequestService, private storageService: StorageService) {
-        this.loginState = this.authService.isLoggedIn;
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private request: RequestService,
+        private storageService: StorageService) {
     }
 
     // 登入方法

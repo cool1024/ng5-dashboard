@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   template: ``
 })
 export class LoginComponent {
 
-  errorConfig = {
-    zIndex: 1050,
-  };
-
-  constructor() { }
+  constructor(private auth: AuthService) {
+    this.auth.setOut();
+  }
 
 }

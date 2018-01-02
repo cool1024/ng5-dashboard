@@ -66,13 +66,17 @@ export class FlashLoadingDirective implements AfterViewInit, OnDestroy {
 
     resize() {
         const dom = this.elementRef.nativeElement;
-        this.flash.className = `text-center ${this.textClass}`;
-        this.flash.style.backgroundColor = this.bgColor;
-        this.flash.style.height = dom.clientHeight + 'px';
-        this.flash.style.width = dom.clientWidth + 'px';
-        this.flash.style.lineHeight = dom.clientHeight + 'px';
-        this.flash.style.position = 'absolute';
-        this.flash.style.transform = `translate3d(0px, -${dom.clientHeight}px, 0px)`;
-        this.flash.innerHTML = `<i class="fa fa-spinner fa-pulse"></i>${this.label}`;
+
+        setTimeout(() => {
+            this.flash.className = `text-center ${this.textClass}`;
+            this.flash.style.backgroundColor = this.bgColor;
+            this.flash.style.height = dom.clientHeight + 'px';
+            this.flash.style.width = dom.clientWidth + 'px';
+            this.flash.style.lineHeight = dom.clientHeight <= 0 ? this.flash.style.lineHeight : dom.clientHeight + 'px';
+            this.flash.style.position = 'absolute';
+            this.flash.style.transform = `translate3d(0px, -${dom.clientHeight}px, 0px)`;
+            this.flash.innerHTML = `<i class="fa fa-spinner fa-pulse"></i>${this.label}`;
+        }, 100);
+
     }
 }

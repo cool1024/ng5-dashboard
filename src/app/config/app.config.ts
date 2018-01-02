@@ -52,6 +52,9 @@ export const AppConfig = {
     // 登入接口地址(注意，这里的URL必须是完整的URL地址，默认值为 HttpConfig.SERVER_URL + '/login')
     loginUrl: HttpConfig.SERVER_URL + '/signin',
 
+    // 登出接口地址(注意，这里的URL必须是完整的URL地址，默认值为 HttpConfig.SERVER_URL + '/signout')
+    outUrl: HttpConfig.SERVER_URL + '/signout',
+
     // 首页数据展示配置-------------------------------------------------
 
     // 左侧菜单用户信息，数组第一个参数为头像的字段，第二个为加粗的文字字段，第三个为加粗文字下面的小文字字段

@@ -34,12 +34,22 @@ export class StorageService {
     }
 
     // 判断数据是否存在
-    empty(keys?: string[]) {
+    empty(keys: string[]) {
         for (let i = 0; i < keys.length; i++) {
             if (this.get(keys[i]) === '') {
                 return true;
             }
         }
         return false;
+    }
+
+    // 清空指定参数列表
+    cleans(keys: string[]) {
+        keys.forEach(key => localStorage.removeItem(key));
+    }
+
+    // 清空指定参数
+    clean(key: string) {
+        localStorage.removeItem(key);
     }
 }
