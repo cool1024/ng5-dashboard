@@ -17,11 +17,11 @@ export class GoodsInfoComponent implements OnInit {
     // 商品数据
     goods = {
         id: 0,
-        goods_name: '',
-        goods_no: '',
+        name: '',
+        no: '',
         price: '',
         inventory: '',
-        goods_type: '',
+        type: '',
     };
 
     constructor(
@@ -40,8 +40,8 @@ export class GoodsInfoComponent implements OnInit {
                 this.goods = res.datas;
             });
         this.goodsForm.patchValue({
-            goods_name: this.goods.goods_name,
-            goods_no: this.goods.goods_no,
+            goods_name: this.goods.name,
+            goods_no: this.goods.no,
             price: this.goods.price,
             inventory: this.goods.inventory,
         });

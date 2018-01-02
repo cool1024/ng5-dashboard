@@ -49,7 +49,7 @@
     <br>
     <div class="card rounded-0">
         <div class="card-body">
-            <table class="table bg-white mb-0 text-center">
+            <table class="table bg-white mb-0 text-left">
                 <thead class="text-dark">
                     <tr>
                         <th *ngFor="let th of theads" class="border-0">{{th}}</th>
@@ -57,13 +57,17 @@
                 </thead>
                 <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
                     <tr *ngFor="let item of list;index as i" class="mat-cell">
-                        <td>{{item.position}}</td>
+                        <td>{{pagination.offset+i+1}}</td>
                         <td>
-                            <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" src="{{item.thumb}}">
+                            <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" [src]="source+'/'+item.thumb">
                         </td>
                         <td>{{item.name}}</td>
-                        <td>{{item.weight}}</td>
-                        <td>{{item.symbol}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.inventory}}</td>
+                        <td>
+                            <span class="badge badge-pill badge-success" *ngIf="item.status===1">上架</span>
+                            <span class="badge badge-pill badge-secondary" *ngIf="item.status===0">下架</span>
+                        </td>
                         <td>
                             <div class="btn-group" ts-dropdown>
 

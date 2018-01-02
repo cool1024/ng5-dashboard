@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pagination, SearchParams, TSConfirmService } from './../../../../tools-ui';
 import { RouterOutlet } from '@angular/router';
+import { RequestService } from '../../../../dashboard/services/request.service';
+import { AppConfig } from '../../../../config/app.config';
+import { HttpConfig } from '../../../../config/http.config';
 
 @Component({
     templateUrl: './goods-list.component.html',
@@ -18,17 +21,20 @@ export class GoodsListComponent implements OnInit {
     search = new SearchParams({ name: '', type: '', status: '' });
 
     // 表格数据
-    list = new Array<{ position: number, name: string, weight: number, symbol: string, thumb: string, }>();
+    list = new Array<{ id: number, no: string, name: string, price: number, inventory: number, thumb: string, status: number }>();
 
     // 表格标题
     theads = new Array<string>();
 
-    constructor(private confirm: TSConfirmService) { }
+    // 资源地址
+    source = HttpConfig.SOURCE_URL;
+
+    constructor(private confirm: TSConfirmService, private request: RequestService) { }
 
     ngOnInit() {
 
         // 载入表格数据
-        this.theads = ['No.', '商品名称', '单价', '库存', '状态', '操作'];
+        this.theads = ['No.', '图片', '商品名称', '单价', '库存', '状态', '操作'];
         this.pageChanged();
     }
 
@@ -42,24 +48,24 @@ export class GoodsListComponent implements OnInit {
     // 换页事件(特别的更改每页数据量也会触发此事件)
     pageChanged() {
         this.flash.loading();
-
-        // 模拟数据加载过程
-        setTimeout(() => {
+        this.request.get('/goods/search', this.pagination.getpageDataWith(this.search.values), false).subscribe(res => {
+            if (res.result) {
+                this.list = res.datas.rows;
+                this.pagination.total = res.datas.total;
+            }
             this.flash.complete();
-        }, 1000);
-
+        });
     }
 
     // 搜索方法
     doSearch() {
-        console.log(this.search.values);
-        console.log(this.search.params);
+        this.pageChanged();
     }
 
     // 重置搜索
     resetSearch() {
         this.search.clean();
-        console.log(this.search.values);
-        console.log(this.search.params);
+        this.pageChanged();
+
     }
 }
