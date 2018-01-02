@@ -20,18 +20,27 @@ export class InputImageComponent implements OnChanges {
   @Input() openTitle: string;
   @Input() imageStyle: { [key: string]: string };
 
-  @Output() onChange = new EventEmitter<{ file: File, image: string | SafeResourceUrl }>();
+  @Output() fileChange = new EventEmitter<{ file: File, image: string | SafeResourceUrl }>(false);
+  @Output() srcChange = new EventEmitter<string | SafeResourceUrl>(false);
 
   showImage = false;
   isLoading = false;
   hasUpload = true;
   default: string;
+  file: File;
+
 
   get uploaderTitle(): string { return this.config ? (this.config.uploaderTitle || '') : ''; }
 
   get autoUpload(): boolean { return this.config ? (this.config.auto || false) : false; }
 
   get useUploader(): boolean { return this.config ? (this.config.useUploader || false) : false; }
+
+  get source(): string { return this.config ? (this.config.source || '') : ''; }
+
+  get realSrc(): string | SafeResourceUrl {
+    return typeof this.src === 'string' ? this.source + this.src : this.src;
+  }
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -42,8 +51,9 @@ export class InputImageComponent implements OnChanges {
   changeFile(files: File[]) {
     this.hasUpload = false;
     this.isLoading = false;
+    this.file = files[0];
     if (files.length > 0) {
-      this.onChange.emit({ file: files[0], image: this.src });
+      this.fileChange.emit({ file: files[0], image: this.src });
       this.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[0]));
       this.showImage = true;
       if (!!this.config && this.config.auto) {
@@ -56,27 +66,31 @@ export class InputImageComponent implements OnChanges {
     this.showImage = false;
     this.isLoading = false;
     this.hasUpload = true;
+    this.file = null;
     input.value = '';
     this.src = this.default || '';
-    this.onChange.emit({ file: null, image: this.src });
+    this.fileChange.emit({ file: null, image: this.src });
   }
 
   cleanInput(input: HTMLInputElement) {
-    this.src = ''; this.showImage = false;
+    this.src = '';
+    this.showImage = false;
     this.isLoading = false;
     this.hasUpload = true;
-    input.value = ''; this.onChange.emit({ file: null, image: '' });
+    this.file = null;
+    input.value = ''; this.fileChange.emit({ file: null, image: '' });
   }
 
   uploadImage() {
     if (this.hasUpload === true) { return; }
     this.hasUpload = true;
     this.isLoading = true;
-    if (this.config.uploader !== undefined || this.config.uploader != null) {
-      this.config.uploader.subscribe(result => {
+    if (this.config.uploadeFunc !== undefined || this.config.uploadeFunc !== null) {
+      this.config.uploadeFunc(this.file).subscribe(result => {
         if (result.result === true) {
           this.isLoading = false;
           this.src = result.source;
+          this.srcChange.emit(result.source);
         } else {
           this.hasUpload = false;
         }

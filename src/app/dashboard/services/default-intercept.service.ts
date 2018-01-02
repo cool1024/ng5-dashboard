@@ -40,7 +40,8 @@ export class DefaultInterceptor implements HttpInterceptor {
                     errorMessage = HttpError.TIMEOUT_ERROR;
                     this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger('请求超时', errorMessage);
                 }
-                return Observable.of<HttpEvent<string>>(new HttpResponse<string>({ body: new ApiData(false, errorMessage).toJsonString() }));
+                return Observable.of<HttpEvent<string>>(
+                    new HttpResponse<string>({ body: new ApiData(false, errorMessage).toJsonString() }));
             })
             .map(response => {
                 console.log(req.responseType);

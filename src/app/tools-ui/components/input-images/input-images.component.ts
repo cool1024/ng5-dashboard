@@ -18,7 +18,7 @@ export class InputImagesComponent implements OnInit {
   @Input() imageStyle: { [key: string]: string };
   @Input() config: ImageConfig;
 
-  @Output() onChange = new EventEmitter<TSInputImages>();
+  @Output() fileChange = new EventEmitter<TSInputImages>();
 
   images = new TSInputImages();
 
@@ -34,7 +34,7 @@ export class InputImagesComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       const url = window.URL.createObjectURL(files[i]);
       this.images.push({ type: 'file', file: files[i], url, uploading: false });
-      this.onChange.emit(this.images);
+      this.fileChange.emit(this.images);
     }
   }
 
@@ -44,7 +44,7 @@ export class InputImagesComponent implements OnInit {
 
   removeImage(index: number) {
     this.images.remove(index);
-    this.onChange.emit(this.images);
+    this.fileChange.emit(this.images);
   }
 
   uploadImage() {

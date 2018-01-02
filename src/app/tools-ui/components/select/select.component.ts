@@ -69,6 +69,7 @@ export class SelectComponent implements OnChanges, AfterViewInit {
     }
 
     ngOnChanges() {
+        this.searchKey = '';
         this.setTitle();
         this.searchKey = this.title;
     }

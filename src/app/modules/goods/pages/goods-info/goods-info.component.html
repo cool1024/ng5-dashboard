@@ -4,21 +4,21 @@
         <form [formGroup]="goodsForm" novalidate>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="goods_name">
+                    <label for="name">
                         <span class="text-danger">*</span>
                         <span>商品名称</span>
                     </label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('goods_name').pristine&&goodsForm.get('goods_name').invalid}" formControlName="goods_name"
-                        id="goods_name" type="text" class="form-control">
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('name').pristine&&goodsForm.get('name').invalid}" formControlName="name" id="name"
+                        type="text" class="form-control">
                     <div class="invalid-feedback">商品名称是必填的～</div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="goods_no">
+                    <label for="no">
                         <span class="text-danger">*</span>
                         <span>商品编号</span>
                     </label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('goods_no').pristine&&goodsForm.get('goods_no').invalid}" formControlName="goods_no"
-                        id="goods_no" name="goods_no" type="text" class="form-control">
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('no').pristine&&goodsForm.get('no').invalid}" formControlName="no" id="goods_no"
+                        name="goods_no" type="text" class="form-control">
                     <div class="invalid-feedback">商品编号是必填的且必须是且不能超过8个字符～</div>
                 </div>
             </div>
@@ -37,24 +37,46 @@
                         <span class="text-danger">*</span>
                         <span>单价</span>
                     </label>
-                    <input [ngClass]="{'is-invalid':!goodsForm.get('price').pristine&&goodsForm.get('price').invalid}"
-                        formControlName="price" id="_input-price" name="price" type="text" class="form-control">
+                    <input [ngClass]="{'is-invalid':!goodsForm.get('price').pristine&&goodsForm.get('price').invalid}" formControlName="price"
+                        id="_input-price" name="price" type="text" class="form-control">
                     <div class="invalid-feedback">商品价格必填的且必须大于0且最多两位小数～</div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-3 mb-3">
                     <label>
                         <span class="text-danger">*</span>
                         <span>商品种类</span>
                     </label>
-                    <ts-select [items]="['零食','餐具','电子产品','无线设备']" width="100%"></ts-select>
-                    <div class="invalid-feedback" [class.d-block]="">商品编号是必填的且必须是且不能超过8个字符～</div>
+                    <ts-select placeholder="请选择商品种类" [items]="goods_types" width="100%" [(value)]="goods.type"></ts-select>
+                    <div class="invalid-feedback" [class.d-block]="">商品编号是必填的且必须是且不能超过20个字符～</div>
                 </div>
-            </div>
-            <div class="text-right">
-                <!-- <span>表单数据：{{datas|json}}</span> -->
-                <button routerLink="/goods/list" class="btn btn-white" type="button">返回列表</button>
-                <button [disabled]="goodsForm.pristine||goodsForm.invalid" class="btn btn-success" type="button">确认提交</button>
+                <div class="col-md-3 mb-3">
+                    <label>
+                        <span class="text-danger">*</span>
+                        <span>商品状态</span>
+                    </label>
+                    <div class="w-100">
+                        <div class="form-control border-0">
+                            <ts-switch #switch activeClass="bg-info" [values]="{open:1,close:0}" [(value)]="goods.status"></ts-switch>
+                            <span *ngIf="goods.status===1" class="text-info pointer" (click)="switch.toggle()">上架</span>
+                            <span *ngIf="goods.status===0" class="text-muted pointer" (click)="switch.toggle()">下架</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">详细信息</div>
+    <div class="card-body">
+        <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.thumb" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"
+            uploadBtnClassName="btn btn-white" [config]="autpUploadConfig"></ts-image>
+    </div>
+</div>
+<br>
+<div class="text-right">
+    <!-- <span>表单数据：{{datas|json}}</span> -->
+    <button routerLink="/goods/list" class="btn btn-white" type="button">返回列表</button>
+    <button (click)="confirmChange()" [disabled]="goodsForm.invalid" class="btn btn-success" type="button">确认提交</button>
 </div>

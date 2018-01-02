@@ -56,7 +56,7 @@ export class RequestService {
             check = <boolean>params;
             params = {};
         }
-        const observable = this.http.put<ApiData>(this.server_url + url, null, { headers: this.getHeaders(), params: this.getParams(params) });
+        const observable = this.http.put<ApiData>(this.server_url + url, params, { headers: this.getHeaders() });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 
@@ -74,12 +74,13 @@ export class RequestService {
     files(url: string, params: { [key: string]: number | string },
         files: Array<{ name: string, files: Array<File> }>, check = true): Observable<ApiData> {
         const observable = this.http.post<ApiData>(
-            this.server_url + url, this.getFormdata(params, files), { headers: this.getHeaders(), params: this.getParams(params) });
+            this.server_url + url, this.getFormdata(params, files), { headers: this.getHeaders() });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
 
     // 发送一个post请求，可附带文件（用于文件上传，提供上传进度）
-    upload(url: string, files: Array<{ name: string, files: Array<File> }>, onprogress: (value: number) => void, final: (value: any) => void) {
+    upload(url: string, files: Array<{ name: string, files: Array<File> }>,
+        onprogress: (value: number) => void, final: (value: any) => void) {
         const req = new HttpRequest('POST', this.server_url + url, this.getFormdata({}, files), {
             reportProgress: true,
         });

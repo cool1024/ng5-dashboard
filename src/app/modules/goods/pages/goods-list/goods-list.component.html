@@ -11,13 +11,13 @@
             <div class="input-group">
                 <span class="input-group-addon bg-white">商品状态</span>
                 <div class="form-control p-0" style="display: block;">
-                    <ts-select [items]="['下架','上架']" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品状态" [(value)]="search.params.status"
+                    <ts-select [items]="goods_status" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品状态" [(value)]="search.params.status"
                         selectClass="border-0" width="100%"></ts-select>
                 </div>
                 <span class="input-group-addon  bg-white">商品种类</span>
                 <div class="form-control p-0" style="display: block;">
-                    <ts-select [items]="['零食','餐具','电子产品','无线设备']" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品种类" [(value)]="search.params.type"
-                        selectClass="border-0" width="100%"></ts-select>
+                    <ts-select [items]="goods_types" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品种类" [(value)]="search.params.type" selectClass="border-0"
+                        width="100%"></ts-select>
                 </div>
             </div>
             <br>
@@ -72,16 +72,13 @@
                             <div class="btn-group" ts-dropdown>
 
                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle">
-                                    <i class="fa fa-eye fa-fw"></i>审核</button>
+                                    <i class="fa fa-pencil fa-fw"></i>修改状态</button>
                                 <div class="dropdown-menu">
-                                    <button class="dropdown-item"></button>
-                                    <button class="dropdown-item">审核通过</button>
-                                    <button class="dropdown-item">驳回/拒绝</button>
-                                    <div class="dropdown-divider"></div>
-                                    <button class="dropdown-item">重新审核</button>
+                                    <button (click)="changeGoodsStatus(i,0)" type="button" class="dropdown-item">下架</button>
+                                    <button (click)="changeGoodsStatus(i,1)" class="dropdown-item">上架</button>
                                 </div>
                             </div>
-                            <button routerLink="/table/simple/detail/{{item.position}}" class="btn btn-info btn-sm">
+                            <button routerLink="/goods/list/info/{{item.id}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-info-circle fa-fw"></i>详情</button>
                             <button (click)="deleteItem(i)" class="btn btn-danger btn-sm">
                                 <i class="fa fa-close fa-fw"></i>删除</button>

@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { AppConfig } from '../../../../config/app.config';
 import { HttpConfig } from '../../../../config/http.config';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './goods-list.component.html',
@@ -18,7 +19,7 @@ export class GoodsListComponent implements OnInit {
     pagination = new Pagination();
 
     // 查询参数
-    search = new SearchParams({ name: '', type: '', status: '' });
+    search = new SearchParams({ name: '', type: '', status: -1 }, -1);
 
     // 表格数据
     list = new Array<{ id: number, no: string, name: string, price: number, inventory: number, thumb: string, status: number }>();
@@ -29,13 +30,27 @@ export class GoodsListComponent implements OnInit {
     // 资源地址
     source = HttpConfig.SOURCE_URL;
 
-    constructor(private confirm: TSConfirmService, private request: RequestService) { }
+    // 商品种类
+    goods_types = [
+        { value: 1, text: '零食' },
+        { value: 2, text: '餐具' },
+        { value: 3, text: '电子产品' },
+        { value: 4, text: '无线设备' },
+    ];
+
+    // 商品状态
+    goods_status = [
+        { value: 0, text: '下架' },
+        { value: 1, text: '上架' },
+    ];
+
+    constructor(private confirm: TSConfirmService, private request: RequestService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-
-        // 载入表格数据
         this.theads = ['No.', '图片', '商品名称', '单价', '库存', '状态', '操作'];
-        this.pageChanged();
+        this.activatedRoute.url.subscribe(() => {
+            this.pageChanged();
+        });
     }
 
     // 删除方法
@@ -68,4 +83,12 @@ export class GoodsListComponent implements OnInit {
         this.pageChanged();
 
     }
+
+    // 修改商品状态
+    changeGoodsStatus(index: number, status: number) {
+        this.request.put('/goods/update', { id: this.list[index].id, status }).subscribe(res => {
+            this.list[index].status = status;
+        });
+    }
+
 }

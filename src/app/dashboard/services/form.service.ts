@@ -16,6 +16,22 @@ export class FormService {
         return copy;
     }
 
+    // 合并表单数据，如果参数字段相同，第二个参数会覆盖第一个参数内容(通常第一参数是模型数据，第二个是表单数据)
+    combineFormDatas(baseParams: { [key: string]: any }, appendParams: { [key: string]: any }) {
+        const cb: { [key: string]: any } = {};
+        for (const key in baseParams) {
+            if (baseParams.hasOwnProperty(key)) {
+                cb[key] = baseParams[key];
+            }
+        }
+        for (const key in appendParams) {
+            if (appendParams.hasOwnProperty(key)) {
+                cb[key] = appendParams[key];
+            }
+        }
+        return cb;
+    }
+
     // 获取对象数组中的id
     getIds(objs: any[]): number[] {
         const ids = [];

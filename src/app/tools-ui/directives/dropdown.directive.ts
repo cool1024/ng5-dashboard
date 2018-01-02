@@ -26,13 +26,13 @@ export class DropdownDirective implements AfterViewInit {
       this.toggle();
     });
     this.buttonDom.addEventListener('blur', (event: any) => {
-      if (event.explicitOriginalTarget.parentNode !== this.menusDom) {
+      if (event.relatedTarget.parentNode !== this.menusDom) {
         this.closeMenu();
       }
     });
     this.menusDom.addEventListener('click', event => {
       this.closeMenu();
-    })
+    });
     this.menusDom.style.top = '0';
     this.menusDom.style.left = '0';
   }

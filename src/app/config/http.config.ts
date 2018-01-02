@@ -5,7 +5,7 @@ export const HttpConfig = {
     SERVER_URL: 'http://127.0.0.1',
 
     // 服务器其他资源地址
-    SOURCE_URL: 'http://ng.cool1024.com',
+    SOURCE_URL: 'http://127.0.0.1',
 
     // 请求超时设置:毫秒
     REQUEST_TIMEOUT: 10000,

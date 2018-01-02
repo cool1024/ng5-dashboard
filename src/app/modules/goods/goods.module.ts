@@ -2,7 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoodsRoutingModule } from './goods.routing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TSSelectModule, TSLoadingModule, TSDropdownModule, TSPaginationModule, TSConfirmModule } from '../../tools-ui';
+import {
+    TSSelectModule,
+    TSLoadingModule,
+    TSDropdownModule,
+    TSPaginationModule,
+    TSConfirmModule,
+    TSSwitchModule,
+    TSFileModule,
+} from '../../tools-ui';
 import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsListComponent } from './pages/goods-list/goods-list.component';
 
@@ -17,6 +25,8 @@ import { GoodsListComponent } from './pages/goods-list/goods-list.component';
         TSDropdownModule,
         TSPaginationModule,
         TSConfirmModule,
+        TSSwitchModule,
+        TSFileModule,
     ],
     declarations: [
         GoodsInfoComponent,

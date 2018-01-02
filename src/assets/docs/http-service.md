@@ -231,7 +231,8 @@ export class SimpleComponent implements OnInit {
 ------------------------------
 ```typescript
 files(
-    url: string, params: { [key: string]: number | string },
+    url: string, 
+    params: { [key: string]: number | string },
     files: Array<{ name: string, files: Array<File> }>, 
     check = true
 ): Observable<ApiData>
