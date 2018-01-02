@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TSModalService, TSToastService } from './../../../../tools-ui';
 import { RequestService } from '../../../../dashboard/services/request.service';
-import 'rxjs/add/operator/finally';
 
 @Component({
     templateUrl: './permission-model.modal.html'

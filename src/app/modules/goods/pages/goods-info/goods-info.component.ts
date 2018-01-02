@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { TSToastService, ImageConfig, UploadResult } from '../../../../tools-ui';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/skipWhile';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { ApiData } from '../../../../dashboard/classes/api.class';
@@ -70,6 +71,7 @@ export class GoodsInfoComponent implements OnInit {
 
     ngOnInit() {
         this.activatedRoute.paramMap
+            .skipWhile(params => !params.has('id'))
             .switchMap(params => this.request.get('/goods/info', { id: params.get('id') }))
             .subscribe(res => {
                 this.goods = res.datas;
@@ -98,10 +100,20 @@ export class GoodsInfoComponent implements OnInit {
     }
 
     // 修改商品
-    confirmChange() {
+    confirmChange(btn: any) {
         const formValue = this.form.combineFormDatas(this.goods, this.goodsForm.value);
-        this.request.put('/goods/update', formValue).subscribe(res => {
-            this.toast.success('操作成功', '商品信息修改成功～');
+        this.request.put('/goods/update', formValue, false).subscribe(res => {
+            if (res.result) { this.toast.success('操作成功', '商品信息修改成功～'); }
+            btn.ready();
+        });
+    }
+
+    // 添加商品
+    confirmAdd(btn: any) {
+        const formValue = this.form.combineFormDatas(this.goods, this.goodsForm.value);
+        this.request.post('/goods/add', formValue, false).subscribe(res => {
+            if (res.result) { this.toast.success('操作成功', '商品添加成功～'); }
+            btn.ready();
         });
     }
 }

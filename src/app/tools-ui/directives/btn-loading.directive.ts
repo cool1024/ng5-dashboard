@@ -3,7 +3,7 @@ import { Component, ElementRef, OnChanges, SimpleChanges, HostBinding, Input } f
 @Component({
   selector: `button[ts-loading]`,
   template: `
-      <i [hidden]="!complete" class="fa fa-spinner fa-pulse"></i>
+      <i [class.d-none]="!complete" class="fa fa-spinner fa-pulse"></i>
       <span>{{title}}</span>
   `,
   host: { '(click)': 'showLoading()' },

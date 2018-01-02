@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pagination, SearchParams, TSConfirmService } from './../../../../tools-ui';
-import { RouterOutlet } from '@angular/router';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { AppConfig } from '../../../../config/app.config';
 import { HttpConfig } from '../../../../config/http.config';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TSToastService } from '../../../../tools-ui';
 
 @Component({
     templateUrl: './goods-list.component.html',
@@ -13,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 export class GoodsListComponent implements OnInit {
 
     @ViewChild('loading') flash: any;
-    @ViewChild(RouterOutlet) outlet: any;
 
     // 分页参数
     pagination = new Pagination();
@@ -44,19 +43,30 @@ export class GoodsListComponent implements OnInit {
         { value: 1, text: '上架' },
     ];
 
-    constructor(private confirm: TSConfirmService, private request: RequestService, private activatedRoute: ActivatedRoute) { }
+    constructor(
+        private confirm: TSConfirmService,
+        private request: RequestService,
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        private toast: TSToastService,
+    ) { }
 
     ngOnInit() {
         this.theads = ['No.', '图片', '商品名称', '单价', '库存', '状态', '操作'];
         this.activatedRoute.url.subscribe(() => {
-            this.pageChanged();
+            if (this.router.url === '/goods/list') {
+                this.pageChanged();
+            }
         });
     }
 
     // 删除方法
     deleteItem(i: number) {
-        this.confirm.danger('危险操作', `确认删除 ${this.list[i].name} ，操作不可恢复！`, { okTitle: '确认', cancelTitle: '取消' }).next(() => {
-            this.pageChanged();
+        this.confirm.danger('危险操作', `确认删除商品‘${this.list[i].name}’，操作不可恢复！`, { okTitle: '确认', cancelTitle: '取消' }).next(() => {
+            this.request.delete('/goods/delete', { id: this.list[i].id }).subscribe(() => {
+                this.pageChanged();
+                this.toast.success('操作成功', '删除商品成功');
+            });
         });
     }
 

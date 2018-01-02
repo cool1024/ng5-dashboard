@@ -78,5 +78,8 @@
 <div class="text-right">
     <!-- <span>表单数据：{{datas|json}}</span> -->
     <button routerLink="/goods/list" class="btn btn-white" type="button">返回列表</button>
-    <button (click)="confirmChange()" [disabled]="goodsForm.invalid" class="btn btn-success" type="button">确认提交</button>
+    <button #btn="tsLoading" ts-loading *ngIf="goods.id>0" (click)="confirmChange(btn)" [disabled]="goodsForm.invalid" class="btn btn-success"
+        type="button" title="确认修改"></button>
+    <button #btn="tsLoading" ts-loading *ngIf="goods.id<=0" (click)="confirmAdd(btn)" [disabled]="goodsForm.invalid" class="btn btn-success"
+        type="button" title="确认添加"></button>
 </div>

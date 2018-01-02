@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TSModalService, TSToastService, TSSelectService } from './../../../../tools-ui';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { FormService } from '../../../../dashboard/services/form.service';
-import 'rxjs/add/operator/finally';
-
 
 @Component({
     templateUrl: './role-manager.modal.html'

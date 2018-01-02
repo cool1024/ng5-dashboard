@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsListComponent } from './pages/goods-list/goods-list.component';
+import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
       }
     ]
   },
-  // { path: 'info', component: GoodsInfoComponent, data: { breadcrumbs: new Breadcrumbs([['商品列表', 'list-alt'], ['添加/编辑', 'tablet']]) } },
+  { path: 'type', component: GoodsTypeComponent, data: { breadcrumbs: new Breadcrumbs([['商品分类', 'tags']]) } },
 ];
 
 @NgModule({

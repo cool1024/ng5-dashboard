@@ -12,7 +12,7 @@
     </button>
 </div>
 <br>
-<img class="img-thumbnail mt-2 rounded-0" #img_pad [hidden]="(!showImage&&!src)||isLoading" [src]="realSrc" [ngStyle]="imageStyle||{ 'max-width': '100%', 'max-height': '200px' }">
+<img class="img-thumbnail mt-2 rounded-0" #img_pad [class.d-none]="(!showImage&&!src)||isLoading" [src]="realSrc" [ngStyle]="imageStyle||{ 'max-width': '100%', 'max-height': '200px' }">
 <div class="span img-thumbnail rounded-0 mt-2" *ngIf="isLoading">
     <div class="typing_loader"></div>
 </div>

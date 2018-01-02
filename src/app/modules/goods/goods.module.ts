@@ -13,6 +13,7 @@ import {
 } from '../../tools-ui';
 import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsListComponent } from './pages/goods-list/goods-list.component';
+import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { GoodsListComponent } from './pages/goods-list/goods-list.component';
     declarations: [
         GoodsInfoComponent,
         GoodsListComponent,
+        GoodsTypeComponent,
     ]
 })
 export class GoodsModule { }

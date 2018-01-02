@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TSModalService, TSToastService, TSSelectService } from './../../../../tools-ui';
 import { RequestService } from '../../../../dashboard/services/request.service';
-import 'rxjs/add/operator/finally';
 
 @Component({
     templateUrl: './menu-child.modal.html'
