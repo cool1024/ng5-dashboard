@@ -4,88 +4,102 @@ import { VideoConfig } from './../../interfaces/video-config.interface';
 import { TSUploadingProgress, TSUploadResult } from './../../classes/upload.class';
 
 @Component({
-  selector: 'ts-video',
-  templateUrl: './input-video.component.html',
+    selector: 'ts-video',
+    templateUrl: './input-video.component.html',
 })
 export class InputVideoComponent implements OnChanges {
 
-  constructor(private sanitizer: DomSanitizer) { }
+    @Input() src: string | SafeResourceUrl;
 
-  @Input() src: string | SafeResourceUrl;
+    @Input() videoStyle: any;
 
-  @Input() videoStyle: any;
+    @Input() btnClass: string;
 
-  @Input() btnClass: string;
+    @Input() title: string;
 
-  @Input() title: string;
+    @Input() type: string;
 
-  @Input() config: VideoConfig;
+    @Input() config: VideoConfig;
 
-  @Output() onChange = new EventEmitter<File>();
+    @Output() fileChange = new EventEmitter<File>();
 
-  showVideo = false;
+    @Output() srcChange = new EventEmitter<string>();
 
-  showLoading = false;
+    showVideo = false;
 
-  hasUpload = false;
+    showLoading = false;
 
-  loaded = '0%';
+    hasUpload = false;
 
-  get uploaderTitle(): string { return this.config ? (this.config.uploaderTitle || '') : ''; }
+    loaded = '0%';
 
-  get autoUpload(): boolean { return this.config ? (this.config.auto || false) : false; }
+    file: File;
 
-  get useUploader(): boolean { return this.config ? (this.config.useUploader || false) : false; }
+    get uploaderTitle(): string { return this.config ? (this.config.uploaderTitle || '') : ''; }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.src) {
-      this.showVideo = true;
-      this.src = !changes.src.firstChange ? changes.src.currentValue : this.src;
+    get autoUpload(): boolean { return this.config ? (this.config.auto || false) : false; }
+
+    get useUploader(): boolean { return this.config ? (this.config.useUploader || false) : false; }
+
+    get source(): string { return this.config ? (this.config.source || '') : ''; }
+
+    get realSrc(): string | SafeResourceUrl { return typeof this.src === 'string' ? this.source + this.src : this.src; }
+
+    constructor(private sanitizer: DomSanitizer) {
+        this.type = 'video';
     }
-  }
 
-  changeFile(files: File[]) {
-    if (files.length > 0) {
-      this.onChange.emit(files[0]);
-      this.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[0]))
-      this.showVideo = true;
-      this.hasUpload = false;
-      this.showLoading = false;
-      if (!!this.config && this.config.auto === true) {
-        this.tryUpload();
-      }
-    }
-  }
-
-  cleanInput() {
-    this.src = '';
-    this.showVideo = false;
-    this.hasUpload = true;
-    this.showLoading = false;
-    this.onChange.emit(null);
-  }
-
-  tryUpload() {
-    if (this.hasUpload === true) { return; }
-    this.hasUpload = true;
-    this.loaded = '0%';
-    if (this.config.uploader !== undefined || this.config.uploader != null) {
-      this.config.uploader.subscribe(result => {
-        if (result instanceof TSUploadingProgress) {
-          this.showLoading = true;
-          console.log(1);
-          this.loaded = result.loaded + '%';
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.src) {
+            this.showVideo = true;
+            this.src = !changes.src.firstChange ? changes.src.currentValue : this.src;
         }
-        if (result instanceof TSUploadResult) {
-          if (result.result === true) {
-            this.src = result.source;
-            this.showLoading = false;
-          } else {
-            this.loaded = result.message;
+    }
+
+    changeFile(files: File[]) {
+        if (files.length > 0) {
+            this.file = files[0];
+            this.fileChange.emit(files[0]);
+            this.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[0]));
+            this.showVideo = true;
             this.hasUpload = false;
-          }
+            this.showLoading = false;
+            if (!!this.config && this.config.auto === true) {
+                this.tryUpload();
+            }
         }
-      });
     }
-  }
+
+    cleanInput() {
+        this.src = '';
+        this.showVideo = false;
+        this.hasUpload = true;
+        this.showLoading = false;
+        this.file = null;
+        this.fileChange.emit(null);
+    }
+
+    tryUpload() {
+        if (this.hasUpload === true) { return; }
+        this.hasUpload = true;
+        this.loaded = '0%';
+        if (this.config.uploadeFunc !== undefined || this.config.uploadeFunc != null) {
+            this.config.uploadeFunc(this.file).subscribe(result => {
+                if (result instanceof TSUploadingProgress) {
+                    this.showLoading = true;
+                    this.loaded = result.loaded + '%';
+                }
+                if (result instanceof TSUploadResult) {
+                    if (result.result === true) {
+                        this.src = result.source;
+                        this.showLoading = false;
+                        this.srcChange.emit(result.source);
+                    } else {
+                        this.loaded = result.message;
+                        this.hasUpload = false;
+                    }
+                }
+            });
+        }
+    }
 }

@@ -4,6 +4,7 @@ import { UploadResult, UploadingProgress } from './upload-result.interface';
 export interface VideoConfig {
     useUploader?: boolean;
     uploaderTitle?: string;
-    uploader?: Observable<UploadResult | UploadingProgress>;
+    uploadeFunc?: (file: File) => Observable<UploadResult | UploadingProgress>;
     auto?: boolean;
+    source?: string;
 }
