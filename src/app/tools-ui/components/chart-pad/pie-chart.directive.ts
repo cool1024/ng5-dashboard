@@ -1,6 +1,6 @@
 
 import { Directive, ViewChild, ElementRef, AfterViewInit, OnInit, Input } from '@angular/core';
-import { LineChartColor } from './chart.config';
+import { DefaultChartColor } from './chart.config';
 declare const window: any;
 
 @Directive({
@@ -14,34 +14,27 @@ export class PieChartDirective implements AfterViewInit, OnInit {
     private chart: any;
     private type = 'pie';
     @Input() datas = new Array<number[]>();
-    @Input() colors = new Array<{
-        backgroundColor: string,
-        borderColor: string,
+    @Input() colors: {
+        backgroundColor: string[],
+        borderColor: string[],
         borderWidth: number,
-    }>();
-    @Input() labels = new Array<string>();
+    };
     @Input() xlabels = new Array<string>();
 
     constructor(private elementRef: ElementRef) {
-        LineChartColor.backgroundColor.forEach((e, i) => {
-            this.colors.push({
-                backgroundColor: e,
-                borderColor: LineChartColor.borderColor[i],
-                borderWidth: LineChartColor.borderWidth,
-            });
-        });
+        this.colors = DefaultChartColor;
     }
+
     ngOnInit() { }
     ngAfterViewInit() {
         this.canvas = this.elementRef.nativeElement;
         const datasets = [];
         this.datas.forEach((data, i) => {
             datasets.push({
-                label: this.labels[i],
                 data: this.datas[i],
-                backgroundColor: this.colors[i].backgroundColor,
-                borderColor: this.colors[i].borderColor,
-                borderWidth: this.colors[i].borderWidth,
+                backgroundColor: this.colors.backgroundColor,
+                borderColor: this.colors.borderColor,
+                borderWidth: this.colors.borderWidth,
             });
         });
         this.chart = new window.Chart(this.canvas, {

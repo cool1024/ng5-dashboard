@@ -1,6 +1,6 @@
 
 import { Directive, ViewChild, ElementRef, AfterViewInit, OnInit, Input } from '@angular/core';
-import { LineChartColor } from './chart.config';
+import { DefaultChartColor } from './chart.config';
 declare const window: any;
 
 @Directive({
@@ -23,11 +23,11 @@ export class BarChartDirective implements AfterViewInit, OnInit {
     @Input() xlabels = new Array<string>();
 
     constructor(private elementRef: ElementRef) {
-        LineChartColor.backgroundColor.forEach((e, i) => {
+        DefaultChartColor.backgroundColor.forEach((e, i) => {
             this.colors.push({
                 backgroundColor: e,
-                borderColor: LineChartColor.borderColor[i],
-                borderWidth: LineChartColor.borderWidth,
+                borderColor: DefaultChartColor.borderColor[i],
+                borderWidth: DefaultChartColor.borderWidth,
             });
         });
     }
