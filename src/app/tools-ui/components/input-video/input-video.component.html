@@ -1,5 +1,5 @@
 <div class="w-100">
-    <input #input_file type="file" class="d-none" accept="video/*" (change)="changeFile($event.target.files)">
+    <input #input_file type="file" class="d-none" [attr.accept]="type+'/*'" (change)="changeFile($event.target.files)">
     <div class="btn-group" role="group">
         <button type="button" class="btn {{btnClass||'btn-dark'}}" (click)="input_file.click()">
             <i class="fa fa-folder-open-o fa-fw fa-lg" aria-hidden="true"></i>{{title||'OpenFile'}}</button>
@@ -9,12 +9,18 @@
             <i class="fa fa-remove fa-fw" aria-hidden="true"></i>
         </button>
     </div>
-    <div [ngStyle]="videoStyle||{'width':'300px','height':'200px'}" *ngIf="showVideo&&!showLoading">
-        <video *ngIf="type!=='audio'" class="p-1 mt-1 rounded-0 border border-muted w-100 h-100 d-block" [src]="realSrc" controls="true"></video>
-        <audio *ngIf="type==='audio'" class="p-1 mt-1 rounded-0 border border-muted w-100 h-100 d-block" [src]="realSrc" controls="true"></audio>
+    <div [ngStyle]="videoStyle" *ngIf="showVideo&&!showLoading&&type!=='audio'">
+        <video class="p-1 mt-1 rounded-0 border border-muted w-100 h-100 d-block" [src]="realSrc" controls="true"></video>
     </div>
-    <div class="p-1 mt-1 rounded-0 border border-muted text-center" [ngStyle]="videoStyle||{'width':'300px','height':'200px','line-height':'200px'}"
-        *ngIf="showLoading">
-        {{loaded}}
+    <div [style.width]="videoStyle.width" *ngIf="showVideo&&!showLoading&&type==='audio'">
+        <audio class="p-1 mt-1 rounded-0 border border-muted w-100 h-100 d-block" [src]="realSrc" controls="true"></audio>
+    </div>
+    <div class="p-1 mt-1 rounded-0 border border-muted text-center" [style.width]="videoStyle.width" *ngIf="showLoading">
+        <!-- {{loaded}} -->
+        <div class="progress">
+            <div class="progress-bar bg-{{progressColor}} progress-bar-striped progress-bar-animated" [style.width]="loaded">
+                {{loaded}}
+            </div>
+        </div>
     </div>
 </div>

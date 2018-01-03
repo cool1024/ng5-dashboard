@@ -35,15 +35,6 @@
                         <i class="fa fa-remove fa-fw"></i>
                     </button>
                 </div>
-                <!-- <div class="btn-group ml-3" role="group">
-                    <button (click)="fileObj.openFileDialog()" class="btn btn-outline-info" type="button">
-                        <i class="fa fa-folder-o fa-fw"></i>选择文件</button>
-                    <button (click)="fileObj.removeFile()" class="btn btn-outline-info">
-                        <i class="fa fa-remove fa-fw"></i>
-                    </button>
-                </div> -->
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" type="audio" title="选择音频" [videoStyle]="{'width':'300px','height':'40px','line-height':'40px'}"
-                    [config]="autoConfig"></ts-video>
                 <br>
                 <pre *ngIf="!!file" class="text-info pt-2">
 FileName : {{file.name}}
@@ -51,6 +42,10 @@ FileSize : {{file.size}}
 FileType : {{file.type||'未知类型'}}
 FileDate : {{file.lastModifiedDate}}
                 </pre>
+                <div class="mt-2">
+                    <ts-video progressColor="danger" btnClass="btn-white" src="http://ng.cool1024.com/mmd.mp4" type="audio" title="选择音频" [videoStyle]="{'width':'300px','height':'40px','line-height':'40px'}"
+                        [config]="autoConfig"></ts-video>
+                </div>
             </div>
         </div>
     </div>

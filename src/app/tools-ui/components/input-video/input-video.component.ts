@@ -15,6 +15,8 @@ export class InputVideoComponent implements OnChanges {
 
     @Input() btnClass: string;
 
+    @Input() progressColor: string;
+
     @Input() title: string;
 
     @Input() type: string;
@@ -47,6 +49,8 @@ export class InputVideoComponent implements OnChanges {
 
     constructor(private sanitizer: DomSanitizer) {
         this.type = 'video';
+        this.videoStyle = { 'width': '300px', 'height': '200px' };
+        this.progressColor = 'dark';
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -81,8 +85,10 @@ export class InputVideoComponent implements OnChanges {
 
     tryUpload() {
         if (this.hasUpload === true) { return; }
+        if (this.file === null || this.file === undefined) { return; }
         this.hasUpload = true;
         this.loaded = '0%';
+        console.log(this.file);
         if (this.config.uploadeFunc !== undefined || this.config.uploadeFunc != null) {
             this.config.uploadeFunc(this.file).subscribe(result => {
                 if (result instanceof TSUploadingProgress) {

@@ -83,6 +83,7 @@ export class InputImageComponent implements OnChanges {
 
     uploadFile() {
         if (this.hasUpload === true) { return; }
+        if (this.file === null || this.file === undefined) { return; }
         this.hasUpload = true;
         this.isLoading = true;
         if (this.config.uploadeFunc !== undefined || this.config.uploadeFunc !== null) {
