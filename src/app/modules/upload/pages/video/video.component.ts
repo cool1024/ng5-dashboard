@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { VideoConfig, TSUploadingProgress, TSUploadResult } from './../../../../tools-ui';
 import { Observable } from 'rxjs/Observable';
+import { RequestService } from '../../../../dashboard/services/request.service';
+import { Subject } from 'rxjs/Subject';
+import { ApiData } from '../../../../dashboard/classes/api.class';
+import { HttpConfig } from '../../../../config/http.config';
 declare const XLSX: any;
 
 @Component({
@@ -8,52 +12,58 @@ declare const XLSX: any;
 })
 export class VideoComponent {
 
-    defaultConfig: VideoConfig = {
-        useUploader: true,
-        uploaderTitle: '确认上传',
-        uploadeFunc: file => {
-            return new Observable<TSUploadingProgress | TSUploadResult>(obs => {
-                let loaded = 0;
-                // 模拟上传过程
-                const timer = setInterval(() => {
-                    const ready = loaded >= 100;
-                    obs.next(new TSUploadingProgress(false, loaded++));
-                    if (ready) {
-                        clearInterval(timer);
-                        // 上传结束，获取视频的访问链接
-                        obs.next(new TSUploadResult('http://ng.cool1024.com/mmd.mp4', true, '上传成功'));
-                        obs.complete();
-                    }
-                }, 100);
-            });
-        }
-    };
-
-    autoConfig: VideoConfig = {
+    // 音频自动上传配置
+    autoAudioConfig: VideoConfig = {
         auto: true,
-        uploaderTitle: '上传视频',
+        useUploader: true,
+        source: HttpConfig.SOURCE_URL + '/',
         uploadeFunc: file => {
-            return new Observable<TSUploadingProgress | TSUploadResult>(obs => {
-                let loaded = 0;
-                // 模拟上传过程
-                const timer = setInterval(() => {
-                    const ready = loaded >= 100;
-                    obs.next(new TSUploadingProgress(false, loaded++));
-                    if (ready) {
-                        clearInterval(timer);
-                        // 上传结束，获取视频的访问链接
-                        obs.next(new TSUploadResult('http://ng.cool1024.com/mmd.mp4', true, '上传成功'));
-                        obs.complete();
-                    }
-                }, 100);
+            const sub = new Subject<TSUploadingProgress | TSUploadResult>();
+            this.reqeust.upload('/tool/audio', [{ name: 'audio', files: [file] }], percentDone => {
+                console.log(percentDone);
+                sub.next(new TSUploadingProgress(false, percentDone));
+            }, res => {
+                if (res.result) {
+                    sub.next(new TSUploadResult(res.datas, true, '上传成功'));
+                } else {
+                    sub.next(new TSUploadResult('', false, '上传失败'));
+                }
+                sub.complete();
+                sub.unsubscribe();
             });
+            return sub.asObservable();
         }
     };
 
+    // 视频自动上传配置
+    defaultVideoConfig: VideoConfig = {
+        uploaderTitle: '上传视频',
+        useUploader: true,
+        source: HttpConfig.SOURCE_URL + '/',
+        uploadeFunc: file => {
+            const sub = new Subject<TSUploadingProgress | TSUploadResult>();
+            this.reqeust.upload('/tool/video', [{ name: 'video', files: [file] }], percentDone => {
+                console.log(percentDone);
+                sub.next(new TSUploadingProgress(false, percentDone));
+            }, res => {
+                if (res.result) {
+                    sub.next(new TSUploadResult(res.datas, true, '上传成功'));
+                } else {
+                    sub.next(new TSUploadResult('', false, '上传失败'));
+                }
+                sub.complete();
+                sub.unsubscribe();
+            });
+            return sub.asObservable();
+        }
+    };
     file: File;
-
     theads: string[] = [];
     tbodys: { [key: string]: string }[] = [];
+    video = 'upload/47e0b428f30fde9a0395b18e6db62ddd.mp4';
+    audio = 'upload/c2d8f23c236f257039305cc263ec6439.mp3';
+
+    constructor(private reqeust: RequestService) { }
 
     readExcel(file: File) {
         this.theads = [];

@@ -80,8 +80,9 @@ export class RequestService {
 
     // 发送一个post请求，可附带文件（用于文件上传，提供上传进度）
     upload(url: string, files: Array<{ name: string, files: Array<File> }>,
-        onprogress: (value: number) => void, final: (value: any) => void) {
+        onprogress: (value: number) => void, final: (value: ApiData) => void) {
         const req = new HttpRequest('POST', this.server_url + url, this.getFormdata({}, files), {
+            headers: this.getHeaders(),
             reportProgress: true,
         });
         this.http.request(req).subscribe(event => {
@@ -89,7 +90,7 @@ export class RequestService {
                 const percentDone = Math.round(100 * event.loaded / event.total);
                 onprogress(percentDone);
             } else if (event instanceof HttpResponse) {
-                final(event);
+                final(<ApiData>event.body);
             }
         });
     }

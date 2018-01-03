@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoodsRoutingModule } from './goods.routing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SortablejsModule } from 'angular-sortablejs/dist';
 import {
     TSSelectModule,
     TSLoadingModule,
@@ -28,6 +29,7 @@ import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
         TSConfirmModule,
         TSSwitchModule,
         TSFileModule,
+        SortablejsModule,
     ],
     declarations: [
         GoodsInfoComponent,

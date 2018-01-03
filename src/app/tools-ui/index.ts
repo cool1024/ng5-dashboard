@@ -21,6 +21,7 @@ export { PopoverModule as TSPopoverModule } from './modules/popover.module';
 export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
 export { StepModule as TSStepModule } from './modules/step.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
+export { ChartModule as TSChartModule } from './modules/chart.module';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';

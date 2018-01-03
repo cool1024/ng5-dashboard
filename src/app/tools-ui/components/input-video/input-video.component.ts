@@ -54,7 +54,8 @@ export class InputVideoComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.src) {
+        if (changes.src && changes.src.currentValue) {
+            console.log(changes.src);
             this.showVideo = true;
             this.src = !changes.src.firstChange ? changes.src.currentValue : this.src;
         }
@@ -88,7 +89,6 @@ export class InputVideoComponent implements OnChanges {
         if (this.file === null || this.file === undefined) { return; }
         this.hasUpload = true;
         this.loaded = '0%';
-        console.log(this.file);
         if (this.config.uploadeFunc !== undefined || this.config.uploadeFunc != null) {
             this.config.uploadeFunc(this.file).subscribe(result => {
                 if (result instanceof TSUploadingProgress) {

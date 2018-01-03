@@ -3,8 +3,12 @@
         <div class="card rounded-0">
             <div class="card-header bg-white">视频上传</div>
             <div class="card-body">
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="defaultConfig"></ts-video>
-                <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoConfig"></ts-video>
+                <ts-video [(src)]="video" title="选择视频" [config]="defaultVideoConfig"></ts-video>
+                <div class="mt-2">
+                    <ts-video progressColor="danger" btnClass="btn-white" [(src)]="audio" type="audio" title="选择音频" [videoStyle]="{'width':'300px','height':'40px','line-height':'40px'}"
+                        [config]="autoAudioConfig"></ts-video>
+                </div>
+                <!-- <ts-video src="http://ng.cool1024.com/mmd.mp4" title="选择视频" [config]="autoVideoConfig"></ts-video> -->
             </div>
         </div>
     </div>
@@ -42,10 +46,6 @@ FileSize : {{file.size}}
 FileType : {{file.type||'未知类型'}}
 FileDate : {{file.lastModifiedDate}}
                 </pre>
-                <div class="mt-2">
-                    <ts-video progressColor="danger" btnClass="btn-white" src="http://ng.cool1024.com/mmd.mp4" type="audio" title="选择音频" [videoStyle]="{'width':'300px','height':'40px','line-height':'40px'}"
-                        [config]="autoConfig"></ts-video>
-                </div>
             </div>
         </div>
     </div>

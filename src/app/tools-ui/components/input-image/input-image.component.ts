@@ -45,7 +45,7 @@ export class InputImageComponent implements OnChanges {
     constructor(private sanitizer: DomSanitizer) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.src && changes.src.firstChange) { this.default = changes.src.currentValue; }
+        if (changes.src && !this.default) { this.default = changes.src.currentValue; }
     }
 
     changeFile(files: File[]) {

@@ -18,6 +18,14 @@ import { FormService } from '../../../../dashboard/services/form.service';
 })
 export class GoodsTypeComponent implements OnInit {
 
+    // 种类列表
+    goods_type = [
+        { id: 1, name: '零食' },
+        { id: 2, name: '餐具' },
+        { id: 3, name: '电子产品' },
+        { id: 4, name: '无线设备' }
+    ];
+
     constructor(
         private formBuilder: FormBuilder,
         private activatedRoute: ActivatedRoute,

@@ -1,27 +1,32 @@
 # Ng5Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+### version
+`5.0.0`
 
-## Development server
+### install
+`npm install`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### build
+`ng build -bh /ng/ -d http://ts.cool1024.com/ng/ --prod`
 
-## Code scaffolding
+### run
+`ng serve --aot`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### suport IE10+
 
-## Build
+### javascript lib
+*if not use,remove from index.html*
+```html
+<script type="text/javascript" src="assets/lib/xlsx.js" async></script>
+<script type="text/javascript" src="assets/lib/markdown.js" async></script>
+<script type="text/javascript" src="assets/prism/prism.js" async></script>
+```
+>1.xlsx.js *Excel File Reader*
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+>2.markdown.js *Markdown Reader*
 
-## Running unit tests
+>3.prism.js *Code Reader*
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+>4.Chart.js *Simple yet flexible JavaScript charting for designers & developers*
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
