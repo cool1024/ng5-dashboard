@@ -4,15 +4,15 @@ import { LineChartColor } from './chart.config';
 declare const window: any;
 
 @Directive({
-    selector: 'canvas[line-chart]',
-    exportAs: 'lineChart',
+    selector: 'canvas[bar-chart]',
+    exportAs: 'barChart',
 })
 
-export class LineChartDirective implements AfterViewInit, OnInit {
+export class BarChartDirective implements AfterViewInit, OnInit {
 
     private canvas: HTMLCanvasElement;
     private chart: any;
-    private type = 'line';
+    private type = 'bar';
     @Input() datas = new Array<number[]>();
     @Input() colors = new Array<{
         backgroundColor: string,
@@ -44,7 +44,6 @@ export class LineChartDirective implements AfterViewInit, OnInit {
                 borderWidth: this.colors[i].borderWidth,
             });
         });
-        console.log(datasets);
         this.chart = new window.Chart(this.canvas, {
             type: this.type,
             data: {

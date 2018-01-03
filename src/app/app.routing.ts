@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'upload', loadChildren: 'app/modules/upload/upload.module#UploadModule', canActivate: [GuardService] },
   { path: 'pad', loadChildren: 'app/modules/pad/pad.module#PadModule', canActivate: [GuardService] },
   { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule', canActivate: [GuardService] },
-  { path: 'message', loadChildren: 'app/modules/message/message.module#MessageModule', canActivate: [GuardService] },
+  { path: 'demo', loadChildren: 'app/modules/demo/demo.module#DemoModule', canActivate: [GuardService] },
   { path: 'system', loadChildren: 'app/modules/system/system.module#SystemModule', canActivate: [GuardService] },
   { path: 'docs', loadChildren: 'app/modules/docs/docs.module#DocsModule', canActivate: [GuardService] },
   { path: 'goods', loadChildren: 'app/modules/goods/goods.module#GoodsModule', canActivate: [GuardService] },

@@ -1,0 +1,18 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">图表</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <canvas line-chart [labels]="lineChartData.labels" [datas]="lineChartData.datas" [xlabels]="lineChartData.xlabels"></canvas>
+            </div>
+            <div class="col-6">
+                <canvas bar-chart [labels]="barChartData.labels" [datas]="barChartData.datas" [xlabels]="barChartData.xlabels"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <canvas pie-chart [labels]="lineChartData.labels" [datas]="lineChartData.datas" [xlabels]="lineChartData.xlabels"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

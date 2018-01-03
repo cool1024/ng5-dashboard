@@ -9,7 +9,6 @@ import {
   TSToggleModule,
   TSStepModule,
   TSLoadingModule,
-  TSChartModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -25,7 +24,6 @@ import { MessageRoutingModule } from './message.routing';
     TSToggleModule,
     TSStepModule,
     TSLoadingModule,
-    TSChartModule,
   ],
   declarations: [SimpleComponent]
 })
