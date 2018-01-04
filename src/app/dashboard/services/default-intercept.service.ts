@@ -21,7 +21,7 @@ export class DefaultInterceptor implements HttpInterceptor {
             .catch(error => {
                 let errorMessage = '';
                 if (error instanceof HttpErrorResponse) {
-                    console.log('response error');
+                    // console.log('response error');
                     if (error.status === 401) {
                         errorMessage = HttpError.AUTH_ERROR;
                         this.router.navigateByUrl(AppConfig.authErrorUrl);
@@ -36,7 +36,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                     }
                     this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger(error.statusText, errorMessage);
                 } else {
-                    console.log('timeout');
+                    // console.log('timeout');
                     errorMessage = HttpError.TIMEOUT_ERROR;
                     this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).danger('请求超时', errorMessage);
                 }
@@ -44,12 +44,12 @@ export class DefaultInterceptor implements HttpInterceptor {
                     new HttpResponse<string>({ body: new ApiData(false, errorMessage).toJsonString() }));
             })
             .map(response => {
-                console.log(req.responseType);
+                // console.log(req.responseType);
                 if (response instanceof HttpResponse) {
                     if (response.body != null && response.body.result != null) {
                         const apiData = new ApiData(response.body.result, response.body.message, response.body.datas);
                         if (apiData.result === false) {
-                            console.log('api use error');
+                            // console.log('api use error');
                             if (apiData.messageStr !== HttpError.CHECK_ERROR) {
                                 this.toast.setTimeOut(HttpConfig.TOAST_ERROR_TIME).warning('操作失败', apiData.messageStr);
                             } else {
@@ -59,7 +59,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                         response = response.clone<ApiData>({ body: apiData });
 
                     } else if (req.responseType !== 'text') {
-                        console.log('response error');
+                        // console.log('response error');
                         response = response.clone<ApiData>({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
                     }
                 }

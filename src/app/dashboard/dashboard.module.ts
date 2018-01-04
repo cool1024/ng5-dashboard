@@ -13,6 +13,7 @@ import { DefaultGuardService } from './services/default-guard.service';
 import { FormService } from './services/form.service';
 import { GlobalValueService } from './services/global-value.service';
 import { DefaultInterceptor } from './services/default-intercept.service';
+import { SignInterceptor } from './services/sign-intercept.service';
 
 import { HeadComponent } from './components/head/head.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -62,9 +63,15 @@ export class DashboardModule {
                 GlobalValueService,
                 {
                     provide: HTTP_INTERCEPTORS,
+                    useClass: SignInterceptor,
+                    multi: true,
+                },
+                {
+                    provide: HTTP_INTERCEPTORS,
                     useClass: DefaultInterceptor,
                     multi: true,
                 },
+
             ]
         };
     }
