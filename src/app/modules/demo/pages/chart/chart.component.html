@@ -1,17 +1,40 @@
 <div class="card rounded-0">
-    <div class="card-header bg-white">图表</div>
+    <div class="card-header bg-white">图表
+        <span class="pull-right">
+            <button (click)="randomData()" class="btn btn-sm btn-white" type="button">变换数据</button>
+            <button (click)="toBase64Image()" class="btn btn-sm btn-white" type="button">快照</button>
+        </span>
+
+    </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">线图</p>
                 <canvas line-chart [labels]="lineChartData.labels" [datas]="lineChartData.datas" [xlabels]="lineChartData.xlabels"></canvas>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">条图</p>
                 <canvas bar-chart [labels]="barChartData.labels" [datas]="barChartData.datas" [xlabels]="barChartData.xlabels"></canvas>
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">饼图</p>
                 <canvas pie-chart [datas]="pieChartData.datas" [xlabels]="pieChartData.xlabels"></canvas>
+            </div>
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">雷达</p>
+                <canvas radar-chart [labels]="radarChartData.labels" [datas]="radarChartData.datas" [xlabels]="radarChartData.xlabels"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">基础图表</p>
+                <canvas base-chart [data]="baseChartData.data" [type]="baseChartData.type"></canvas>
+            </div>
+            <div class="col-lg-6 mb-2">
+                <p class="text-center">基础图表</p>
+                <canvas base-chart #chart="baseChart" [data]="bubbleChartData.data" type="bubble"></canvas>
             </div>
         </div>
     </div>
