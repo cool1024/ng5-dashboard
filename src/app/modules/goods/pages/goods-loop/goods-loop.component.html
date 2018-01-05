@@ -1,0 +1,16 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">商城轮播图</div>
+    <div class="card-body">
+        <div class="w-100" [sortablejs]="loopCards">
+            <ts-loop-card *ngFor="let loopCard of loopCards;index as i" [loopCard]="loopCard" (saveCard)="saveLoopCard(i)" (removeCard)="deleteLoopCard(i)"
+                [source]="source"></ts-loop-card>
+        </div>
+        <hr>
+        <div class="text-right mt-2">
+            <button (click)="sortLoopCard()" class="btn btn-warning" type="button">
+                <i class="fa fa-refresh fa-fw"></i>确认排序</button>
+            <button (click)="addLoopCard()" class="btn btn-success" type="button">
+                <i class="fa fa-plus fa-fw"></i>添加幻灯片</button>
+        </div>
+    </div>
+</div>

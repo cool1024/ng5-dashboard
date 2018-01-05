@@ -1,10 +1,10 @@
 <div class="card rounded-0 p-2 d-inline-block m-1" style="width:20rem;">
     <input #file type="file" style="display:none" accept="image/*" (change)="changeFile($event.target.files)">
-    <img (click)="file.click()" class="card-img-top pointer" [src]="loopCard.src||'assets/image/material/file-open.svg'" style="height:10rem;width:100%;">
+    <img (click)="file.click()" class="card-img-top pointer" [src]="realSrc||'assets/image/material/file-open.svg'" style="height:10rem;width:100%;">
     <hr style="width:100%;" class="mt-2 mb-0">
     <div class="input-group input-group-sm mt-2">
         <span class="input-group-addon bg-white">链接</span>
-        <input (change)="loopCard.active=false" name="url" [(ngModel)]="loopCard.url" type="text" class="form-control" placeholder="请输入链接地址">
+        <input (ngModelChange)="loopCard.active=false" name="url" [(ngModel)]="loopCard.url" type="text" class="form-control" placeholder="请输入链接地址">
     </div>
     <div class="text-right mt-2">
         <span [class.d-none]="loopCard.active === true" class="pull-left badge badge-danger">未保存</span>

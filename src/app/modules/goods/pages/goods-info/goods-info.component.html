@@ -70,8 +70,16 @@
 <div class="card rounded-0">
     <div class="card-header bg-white">详细信息</div>
     <div class="card-body">
-        <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.thumb" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"
-            uploadBtnClassName="btn btn-white" [config]="autpUploadConfig"></ts-image>
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.thumb" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"
+                    uploadBtnClassName="btn btn-white" [config]="autpUploadConfig"></ts-image>
+            </div>
+            <div class="col-lg-8 mb-3">
+                <ts-images [config]="autpUploadConfig" openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.images" resetBtnClassName="btn btn-white"
+                    removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white"></ts-images>
+            </div>
+        </div>
     </div>
 </div>
 <br>

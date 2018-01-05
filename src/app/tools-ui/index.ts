@@ -30,11 +30,13 @@ export { VideoConfig } from './interfaces/video-config.interface';
 export { ToggleComponent } from './interfaces/toggle-component.interface';
 
 /*tool interfaces*/
+export { LoopCard } from './interfaces/loop-card.interface';
 
 /*tool classes*/
 export { Pagination } from './classes/pagination.class';
 export { SearchParams } from './classes/search.class';
 export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
+export { LoopCardObj, LoopCardArray } from './classes/loopcard.class';
 
 /*tool services*/
 export { ModalService as TSModalService } from './components/modal/modal.service';

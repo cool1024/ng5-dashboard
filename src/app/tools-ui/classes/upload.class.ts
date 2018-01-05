@@ -27,13 +27,13 @@ export class TSUploadingProgress implements UploadingProgress {
 
 export class TSInputImages {
 
-    private items: Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }>
+    private items: Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }>;
 
     constructor(images: string = '') {
-        this.items = new Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }>()
+        this.items = new Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }>();
         if (!!images) {
             images.split(',').forEach(url => {
-                this.items.push({ type: 'url', file: null, url, uploading: false })
+                this.items.push({ type: 'url', file: null, url, uploading: false });
             });
         }
     }
@@ -56,6 +56,16 @@ export class TSInputImages {
             }
         });
         return files;
+    }
+
+    get fileItems(): Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }> {
+        const fileItems = new Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }>();
+        this.items.forEach(e => {
+            if (e.type === 'file') {
+                fileItems.push(e);
+            }
+        });
+        return fileItems;
     }
 
     get list(): Array<{ type: string, file: File, url: string | SafeResourceUrl, uploading: boolean }> {

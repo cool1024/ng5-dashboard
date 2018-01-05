@@ -4,6 +4,7 @@ import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsListComponent } from './pages/goods-list/goods-list.component';
 import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
+import { GoodsLoopComponent } from './pages/goods-loop/goods-loop.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     ]
   },
   { path: 'type', component: GoodsTypeComponent, data: { breadcrumbs: new Breadcrumbs([['商品分类', 'tags']]) } },
+  { path: 'loop', component: GoodsLoopComponent, data: { breadcrumbs: new Breadcrumbs([['商城幻灯片', 'picture-o']]) } },
 ];
 
 @NgModule({

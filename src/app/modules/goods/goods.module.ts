@@ -11,10 +11,12 @@ import {
     TSConfirmModule,
     TSSwitchModule,
     TSFileModule,
+    TSLoopCardModule,
 } from '../../tools-ui';
 import { GoodsInfoComponent } from './pages/goods-info/goods-info.component';
 import { GoodsListComponent } from './pages/goods-list/goods-list.component';
 import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
+import { GoodsLoopComponent } from './pages/goods-loop/goods-loop.component';
 
 @NgModule({
     imports: [
@@ -30,11 +32,13 @@ import { GoodsTypeComponent } from './pages/goods-type/goods-type.component';
         TSSwitchModule,
         TSFileModule,
         SortablejsModule,
+        TSLoopCardModule,
     ],
     declarations: [
         GoodsInfoComponent,
         GoodsListComponent,
         GoodsTypeComponent,
+        GoodsLoopComponent,
     ]
 })
 export class GoodsModule { }

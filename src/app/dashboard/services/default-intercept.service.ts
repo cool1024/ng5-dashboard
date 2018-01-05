@@ -3,6 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, Htt
 import { ApiData, HttpError } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 import { TSToastService } from '../../tools-ui';
+import { GlobalValueService } from './global-value.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../config/app.config';
@@ -10,10 +11,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/timeout';
 
-
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-    constructor(private toast: TSToastService, private router: Router) { }
+    constructor(private toast: TSToastService, private router: Router, private global: GlobalValueService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
@@ -24,6 +24,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                     // console.log('response error');
                     if (error.status === 401) {
                         errorMessage = HttpError.AUTH_ERROR;
+                        this.global.setValue('loginState', false);
                         this.router.navigateByUrl(AppConfig.authErrorUrl);
                     } else if (error.status === 404) {
                         errorMessage = HttpError.NOTFOUND_ERROR;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { RequestService } from '../../../../dashboard/services/request.service';
-import { TSToastService, ImageConfig, UploadResult } from '../../../../tools-ui';
+import { TSToastService, TSSelectService, ImageConfig, UploadResult } from '../../../../tools-ui';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/skipWhile';
 import 'rxjs/add/operator/map';
@@ -31,15 +31,11 @@ export class GoodsInfoComponent implements OnInit {
         type: 1,
         status: 0,
         thumb: '',
+        images: '',
     };
 
     // 商品种类
-    goods_types = [
-        { value: 1, text: '零食' },
-        { value: 2, text: '餐具' },
-        { value: 3, text: '电子产品' },
-        { value: 4, text: '无线设备' },
-    ];
+    goods_types = [];
 
     // 自动上传配置
     autpUploadConfig: ImageConfig = {
@@ -58,12 +54,29 @@ export class GoodsInfoComponent implements OnInit {
         auto: true
     };
 
+    // 多图自动上传配置--共用
+    // filesAutoUploadConfig: ImageConfig = {
+    //     uploadeFunc: file => {
+    //         return this.request.files('/goods/thumb/upload ', {}, [{ name: 'thumb', files: [file] }])
+    //             .switchMap(res =>
+    //                 Observable.of<UploadResult>({
+    //                     source: res.datas,
+    //                     result: true,
+    //                     message: '上传成功'
+    //                 })
+    //             );
+    //     },
+    //     auto: true,
+    //     source: HttpConfig.SOURCE_URL + '/',
+    // };
+
     constructor(
         private formBuilder: FormBuilder,
         private activatedRoute: ActivatedRoute,
         private request: RequestService,
         private toast: TSToastService,
-        private form: FormService
+        private form: FormService,
+        private select: TSSelectService,
     ) {
         this.createForm();
     }
@@ -75,8 +88,12 @@ export class GoodsInfoComponent implements OnInit {
             .switchMap(params => this.request.get('/goods/info', { id: params.get('id') }))
             .subscribe(res => {
                 this.goods = res.datas;
+                console.log(this.goods);
                 this.setForm();
             });
+        this.request.url('/goods/types/options').subscribe(res => {
+            this.goods_types = this.select.formatSelectOptions(res.datas, { value: 'id', text: 'name' });
+        });
     }
 
     // 创建FormGroup

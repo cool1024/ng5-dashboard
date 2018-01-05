@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Pagination, SearchParams, TSConfirmService } from './../../../../tools-ui';
+import { NgModel } from '@angular/forms';
+import { Pagination, SearchParams, TSConfirmService, TSSelectService } from './../../../../tools-ui';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { AppConfig } from '../../../../config/app.config';
 import { HttpConfig } from '../../../../config/http.config';
@@ -30,12 +31,7 @@ export class GoodsListComponent implements OnInit {
     source = HttpConfig.SOURCE_URL;
 
     // 商品种类
-    goods_types = [
-        { value: 1, text: '零食' },
-        { value: 2, text: '餐具' },
-        { value: 3, text: '电子产品' },
-        { value: 4, text: '无线设备' },
-    ];
+    goods_types = [];
 
     // 商品状态
     goods_status = [
@@ -49,14 +45,18 @@ export class GoodsListComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private toast: TSToastService,
+        private select: TSSelectService,
     ) { }
 
     ngOnInit() {
-        this.theads = ['No.', '图片', '商品名称', '单价', '库存', '状态', '操作'];
+        this.theads = ['No.', '图片', '商品名称', '种类', '单价', '库存', '状态', '操作'];
         this.activatedRoute.url.subscribe(() => {
             if (this.router.url === '/goods/list') {
                 this.pageChanged();
             }
+        });
+        this.request.url('/goods/types/options').subscribe(res => {
+            this.goods_types = this.select.formatSelectOptions(res.datas, { value: 'id', text: 'name' });
         });
     }
 
@@ -80,6 +80,14 @@ export class GoodsListComponent implements OnInit {
             }
             this.flash.complete();
         });
+    }
+
+    // 跳转页面
+    goPage(page: NgModel) {
+        if (!isNaN(page.value) && page.value > 0 && page.value <= this.pagination.maxPage) {
+            this.pagination.page = page.value;
+            this.pageChanged();
+        }
     }
 
     // 搜索方法

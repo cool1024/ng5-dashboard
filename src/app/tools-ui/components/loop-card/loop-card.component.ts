@@ -1,5 +1,6 @@
 import { Component, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { LoopCard } from './../../interfaces/loop-card.interface';
 
 @Component({
   selector: 'ts-loop-card',
@@ -8,12 +9,19 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class LoopCardComponent {
 
-  @Input() loopCard: { id: number, url: string, src: string | SafeResourceUrl, active?: boolean, file?: File };
+  @Input() loopCard: LoopCard;
+  @Input() source: string;
 
-  @Output() onSave = new EventEmitter<{ id: number, url: string, src: string | SafeResourceUrl, active?: boolean, file?: File }>();
-  @Output() onRemove = new EventEmitter<void>();
+  @Output() saveCard = new EventEmitter<LoopCard>();
+  @Output() removeCard = new EventEmitter<void>();
 
-  constructor(private sanitizer: DomSanitizer) { }
+  get realSrc(): string | SafeResourceUrl {
+    return typeof this.loopCard.src === 'string' ? (this.loopCard.src ? this.source + this.loopCard.src : '') : this.loopCard.src;
+  }
+
+  constructor(private sanitizer: DomSanitizer) {
+    this.source = '';
+  }
 
   changeFile(files: File[]) {
     if (files && files.length > 0) {
@@ -24,10 +32,10 @@ export class LoopCardComponent {
   }
 
   save() {
-    this.onSave.emit(this.loopCard);
+    this.saveCard.emit(this.loopCard);
   }
 
   remove() {
-    this.onRemove.emit();
+    this.removeCard.emit();
   }
 }

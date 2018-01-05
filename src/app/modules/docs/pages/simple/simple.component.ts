@@ -31,7 +31,10 @@ export class SimpleComponent implements OnInit {
   markdown: SafeHtml | string = '';
 
   constructor(
-    private requestService: RequestService, private activatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer, private location: Location) { }
+    private requestService: RequestService,
+    private activatedRoute: ActivatedRoute,
+    private domSanitizer: DomSanitizer,
+    private location: Location) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {

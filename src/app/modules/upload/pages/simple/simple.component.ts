@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageConfig, UploadingProgress, UploadResult } from './../../../../tools-ui';
 import { Observable } from 'rxjs/Observable';
+import { HttpConfig } from '../../../../config/http.config';
+import { RequestService } from '../../../../dashboard/services/request.service';
 @Component({
   templateUrl: './simple.component.html',
   styleUrls: ['./simple.component.css']
@@ -27,7 +29,7 @@ export class SimpleComponent implements OnInit {
   };
 
   // 自动上传配置
-  autpUploadConfig: ImageConfig = {
+  autoUploadConfig: ImageConfig = {
 
     uploadeFunc: file => {
       return new Observable<UploadResult>(obs => {
@@ -47,7 +49,13 @@ export class SimpleComponent implements OnInit {
     auto: true
   };
 
-  constructor() { }
+  // 多图自动上传配置
+  filesAutoUploadConfig: ImageConfig = {
+    auto: false,
+    source: '',
+  };
+
+  constructor(private request: RequestService) { }
 
   ngOnInit() { }
 

@@ -4,9 +4,13 @@
     <div class="row">
       <div class="col-md-6 col-lg-3">
         <p>个性化设置</p>
-        <ts-image (onChange)="testFunction($event)" openBtnClassName="btn btn-white" openTitle="选择图片" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"></ts-image><br>
-        <ts-image openTitle="选择图片"></ts-image><br>
-        <ts-image openBtnClassName="btn btn-dark" openTitle="选择图片" resetBtnClassName="btn btn-dark" removeBtnClassName="btn btn-dark"></ts-image><br>
+        <ts-image (onChange)="testFunction($event)" openBtnClassName="btn btn-white" openTitle="选择图片" resetBtnClassName="btn btn-white"
+          removeBtnClassName="btn btn-white"></ts-image>
+        <br>
+        <ts-image openTitle="选择图片"></ts-image>
+        <br>
+        <ts-image openBtnClassName="btn btn-dark" openTitle="选择图片" resetBtnClassName="btn btn-dark" removeBtnClassName="btn btn-dark"></ts-image>
+        <br>
         <ts-image openBtnClassName="btn btn-info" openTitle="选择图片" resetBtnClassName="btn btn-info" removeBtnClassName="btn btn-info"></ts-image>
       </div>
       <div class="col-md-6 col-lg-3">
@@ -20,18 +24,18 @@
           removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white" [config]="uploadConfig"></ts-image>
       </div>
       <div class="col-md-6 col-lg-3">
-          <p>自动上传</p>
-          <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" src="/assets/image/card/4.jpg" resetBtnClassName="btn btn-white"
-            removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white" [config]="autpUploadConfig" ></ts-image>
-        </div>
+        <p>自动上传</p>
+        <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" src="/assets/image/card/4.jpg" resetBtnClassName="btn btn-white"
+          removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white" [config]="autoUploadConfig"></ts-image>
+      </div>
     </div>
   </div>
 </div>
 <br>
 <div class="card rounded-0">
-    <div class="card-header">多图上传</div>
-    <div class="card-body">
-      <ts-images openBtnClassName="btn btn-white" openTitle="选择图片" src="/assets/image/avatar/1.jpg,/assets/image/avatar/2.jpg,/assets/image/avatar/3.jpg,/assets/image/avatar/4.jpg" resetBtnClassName="btn btn-white"
+  <div class="card-header">多图上传</div>
+  <div class="card-body">
+    <ts-images [config]="filesAutoUploadConfig" openBtnClassName="btn btn-white" openTitle="选择图片" resetBtnClassName="btn btn-white"
       removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white"></ts-images>
-    </div>
   </div>
+</div>

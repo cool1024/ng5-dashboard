@@ -62,6 +62,7 @@
                             <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" [src]="source+'/'+item.thumb">
                         </td>
                         <td>{{item.name}}</td>
+                        <td>{{item.type.name}}</td>
                         <td>{{item.price}}</td>
                         <td>{{item.inventory}}</td>
                         <td>
@@ -92,6 +93,8 @@
                 </tbody>
             </table>
             <div class="text-right">
+                <button (click)="goPage(page)" class="btn btn-outline-info border-muted" type="button">跳转到</button>
+                <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input form-sm-control border-muted" type="number">
                 <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
                     [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
                     [dropup]="true"></ts-dropdown>
