@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Pagination, SearchParams, TSConfirmService } from './../../../../tools-ui';
 import { RouterOutlet } from '@angular/router';
 
@@ -75,6 +76,14 @@ export class SimpleComponent implements OnInit {
             this.flash.complete();
         }, 1000);
 
+    }
+
+    // 跳转页面
+    goPage(page: NgModel) {
+        if (!isNaN(page.value) && page.value > 0 && page.value <= this.pagination.maxPage) {
+            this.pagination.page = page.value;
+            this.pageChanged();
+        }
     }
 
     // 搜索方法

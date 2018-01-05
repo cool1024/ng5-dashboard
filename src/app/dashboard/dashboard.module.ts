@@ -61,11 +61,13 @@ export class DashboardModule {
                 DefaultGuardService,
                 FormService,
                 GlobalValueService,
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: SignInterceptor,
-                    multi: true,
-                },
+                /*请求参数加密&加签名*/
+                // {
+                //     provide: HTTP_INTERCEPTORS,
+                //     useClass: SignInterceptor,
+                //     multi: true,
+                // },
+                /*响应错误拦截*/
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: DefaultInterceptor,
