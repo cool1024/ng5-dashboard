@@ -88,7 +88,6 @@ export class GoodsInfoComponent implements OnInit {
             .switchMap(params => this.request.get('/goods/info', { id: params.get('id') }))
             .subscribe(res => {
                 this.goods = res.datas;
-                console.log(this.goods);
                 this.setForm();
             });
         this.request.url('/goods/types/options').subscribe(res => {
@@ -118,6 +117,7 @@ export class GoodsInfoComponent implements OnInit {
 
     // 修改商品
     confirmChange(btn: any) {
+        if (!this.checkImages()) { btn.ready(); return; }
         const formValue = this.form.combineFormDatas(this.goods, this.goodsForm.value);
         this.request.put('/goods/update', formValue, false).subscribe(res => {
             if (res.result) { this.toast.success('操作成功', '商品信息修改成功～'); }
@@ -127,10 +127,20 @@ export class GoodsInfoComponent implements OnInit {
 
     // 添加商品
     confirmAdd(btn: any) {
+        if (!this.checkImages()) { btn.ready(); return; }
         const formValue = this.form.combineFormDatas(this.goods, this.goodsForm.value);
         this.request.post('/goods/add', formValue, false).subscribe(res => {
             if (res.result) { this.toast.success('操作成功', '商品添加成功～'); }
             btn.ready();
         });
+    }
+
+    // 校验图片是否上传
+    checkImages(): boolean {
+        if (!this.goods.images || !this.goods.thumb) {
+            this.toast.warning('缺少表单数据', '请确认商品图片全部上传完成');
+            return false;
+        }
+        return true;
     }
 }

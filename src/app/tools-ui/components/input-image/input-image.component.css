@@ -1,22 +1,17 @@
-.loading-pad {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    line-height: 100px;
-    text-align: center;
+.img-thumbnail-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
 
 /*Typing Loader*/
 
 .span,
 .span_large {
-    width: 100px;
-    background-color: white;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     vertical-align: middle;
-    border-radius: 1px;
-    margin-right: 100px;
+    margin-right: 200px;
 }
 
 .typing_loader {
@@ -27,7 +22,7 @@
     -moz-animation: Typing 1s linear infinite alternate;
     -ms-animation: Typing 1s linear infinite alternate;
     animation: typing 1s linear infinite alternate;
-    margin: 46px auto;
+    margin: 90px auto;
     /* Not necessary- its only for layouting*/
     position: relative;
     left: -12px;

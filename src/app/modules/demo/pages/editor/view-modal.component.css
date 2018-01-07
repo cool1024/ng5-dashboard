@@ -1,0 +1,6 @@
+:host ::ng-deep img{
+    width: 100% !important;
+}
+:host ::ng-deep video{
+    width: 100% !important;
+}

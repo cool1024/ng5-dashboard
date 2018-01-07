@@ -20,7 +20,7 @@ export class InputImageComponent implements OnChanges {
     @Input() openTitle: string;
     @Input() imageStyle: { [key: string]: string };
 
-    @Output() fileChange = new EventEmitter<{ file: File, image: string | SafeResourceUrl }>(false);
+    @Output() fileChange = new EventEmitter<File>(false);
     @Output() srcChange = new EventEmitter<string | SafeResourceUrl>(false);
 
     showImage = false;
@@ -42,10 +42,16 @@ export class InputImageComponent implements OnChanges {
         return typeof this.src === 'string' ? this.source + this.src : this.src;
     }
 
-    constructor(private sanitizer: DomSanitizer) { }
+    constructor(private sanitizer: DomSanitizer) {
+        this.default = '';
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.src && !this.default) { this.default = changes.src.currentValue; }
+    }
+
+    getUrl() {
+        return `url(${this.realSrc})`;
     }
 
     changeFile(files: File[]) {
@@ -53,7 +59,7 @@ export class InputImageComponent implements OnChanges {
         this.isLoading = false;
         this.file = files[0];
         if (files.length > 0) {
-            this.fileChange.emit({ file: files[0], image: this.src });
+            this.fileChange.emit(files[0]);
             this.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[0]));
             this.showImage = true;
             if (!!this.config && this.config.auto) {
@@ -69,7 +75,7 @@ export class InputImageComponent implements OnChanges {
         this.file = null;
         input.value = '';
         this.src = this.default || '';
-        this.fileChange.emit({ file: null, image: this.src });
+        this.srcChange.emit(this.src);
     }
 
     cleanInput(input: HTMLInputElement) {
@@ -78,7 +84,8 @@ export class InputImageComponent implements OnChanges {
         this.isLoading = false;
         this.hasUpload = true;
         this.file = null;
-        input.value = ''; this.fileChange.emit({ file: null, image: '' });
+        input.value = '';
+        this.srcChange.emit(this.src);
     }
 
     uploadFile() {

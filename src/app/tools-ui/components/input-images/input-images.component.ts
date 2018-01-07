@@ -18,9 +18,12 @@ export class InputImagesComponent implements OnChanges {
     @Input() config: ImageConfig;
 
     @Output() srcChange = new EventEmitter<string>(false);
-    @Output() fileChange = new EventEmitter<TSInputImages>(false);
+    @Output() fileChange = new EventEmitter<File[]>(false);
+    @Output() deleteChange = new EventEmitter<any>(false);
 
     images = new TSInputImages();
+    uploading = false;
+    default: string;
 
     constructor() {
         this.src = '';
@@ -28,17 +31,21 @@ export class InputImagesComponent implements OnChanges {
             source: '',
             auto: false,
         };
+        this.default = '';
     }
 
-    ngOnChanges(change: SimpleChanges) {
-        this.images = new TSInputImages(this.src);
+    ngOnChanges(changes: SimpleChanges) {
+        if (!this.uploading) {
+            this.images = new TSInputImages(this.src);
+            if (changes.src && !this.default) { this.default = changes.src.currentValue; }
+        }
     }
 
     changeFile(files: File[]) {
         for (let i = 0; i < files.length; i++) {
             const url = window.URL.createObjectURL(files[i]);
             this.images.push({ type: 'file', file: files[i], url, uploading: this.config.auto });
-            this.fileChange.emit(this.images);
+            this.fileChange.emit(files);
         }
         if (this.config.auto) { this.uploadImage(); }
     }
@@ -52,13 +59,16 @@ export class InputImagesComponent implements OnChanges {
     }
 
     removeImage(index: number) {
+        this.deleteChange.emit(this.images.list[index]);
         this.images.remove(index);
-        this.fileChange.emit(this.images);
+        this.srcChange.emit(this.images.urls.join());
     }
 
     uploadImage() {
         if (this.config.hasOwnProperty('uploadeFunc')) {
             const fileItems = this.images.fileItems;
+            let cx = 0;
+            this.uploading = true;
             for (let i = 0; i < fileItems.length; i++) {
                 this.config.uploadeFunc(fileItems[i].file).subscribe(res => {
                     if (res.result) {
@@ -67,6 +77,7 @@ export class InputImagesComponent implements OnChanges {
                         fileItems[i].file = null;
                         fileItems[i].url = res.source;
                         this.srcChange.emit(this.images.urls.join());
+                        if (++cx === fileItems.length) { this.uploading = false; }
                     }
                 });
             }
@@ -74,7 +85,10 @@ export class InputImagesComponent implements OnChanges {
     }
 
     resetInput(input: HTMLInputElement) {
+        this.src = this.default;
         this.images = new TSInputImages(this.src);
         input.value = '';
+        this.uploading = false;
+        this.srcChange.emit(this.images.urls.join());
     }
 }

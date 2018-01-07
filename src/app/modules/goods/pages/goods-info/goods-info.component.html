@@ -68,14 +68,15 @@
 </div>
 <br>
 <div class="card rounded-0">
-    <div class="card-header bg-white">详细信息</div>
     <div class="card-body">
         <div class="row">
             <div class="col-lg-4 mb-3">
+                <p>商品缩略图</p>
                 <ts-image openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.thumb" resetBtnClassName="btn btn-white" removeBtnClassName="btn btn-white"
                     uploadBtnClassName="btn btn-white" [config]="autpUploadConfig"></ts-image>
             </div>
             <div class="col-lg-8 mb-3">
+                <p>商品展示图</p>
                 <ts-images [config]="autpUploadConfig" openBtnClassName="btn btn-white" openTitle="选择图片" [(src)]="goods.images" resetBtnClassName="btn btn-white"
                     removeBtnClassName="btn btn-white" uploadBtnClassName="btn btn-white"></ts-images>
             </div>
