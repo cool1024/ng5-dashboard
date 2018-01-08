@@ -94,7 +94,8 @@
         <ts-btn-group [items]="items" [(values)]="values" [useIcon]="true"></ts-btn-group>
         <hr>
         <div>
-            <button class="btn btn-info btn-sm" type="button">修改选择</button>
+            <button (click)="showBtnGroupModal()" class="btn btn-info btn-sm" type="button">修改选择</button>
+            <span class="ml-2">{{moreValues}}</span>
         </div>
     </div>
 </div>

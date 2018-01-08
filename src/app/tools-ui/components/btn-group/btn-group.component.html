@@ -1,2 +1,2 @@
-<ts-btn-item *ngFor="let item of items;index as i" [useIcon]="useIcon" [defaultBtnClass]="defaultBtnClass" [activeBtnClass]="activeBtnClass"
-    [item]="item" [active]="actives[i]" (activeChange)="applyActive($event,i)"></ts-btn-item>
+<ts-btn-item *ngFor="let item of items;index as i" [class.d-none]="filterKey&&item.text.indexOf(filterKey)<0" [useIcon]="useIcon"
+    [defaultBtnClass]="defaultBtnClass" [activeBtnClass]="activeBtnClass" [item]="item" [active]="actives[i]" (activeChange)="applyActive($event,i)"></ts-btn-item>

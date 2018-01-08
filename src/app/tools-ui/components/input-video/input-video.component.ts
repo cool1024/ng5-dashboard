@@ -55,7 +55,6 @@ export class InputVideoComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.src && changes.src.currentValue) {
-            console.log(changes.src);
             this.showVideo = true;
             this.src = !changes.src.firstChange ? changes.src.currentValue : this.src;
         }

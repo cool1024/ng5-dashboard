@@ -9,6 +9,7 @@ import { SelectItem } from '../../interfaces/select-item.interface';
 export class BtnGroupComponent implements OnChanges {
 
     @Input() values: any[];
+    @Input() filterKey: string;
     @Input() items: SelectItem[];
     @Input() defaultBtnClass: string;
     @Input() activeBtnClass: string;
@@ -22,6 +23,7 @@ export class BtnGroupComponent implements OnChanges {
         this.values = [];
         this.items = [];
         this.useIcon = true;
+        this.filterKey = '';
     }
 
     ngOnChanges() {
