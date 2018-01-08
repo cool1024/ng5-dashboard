@@ -46,7 +46,8 @@
             </div>
         </ts-radio-group>
         <!-- <span class="ml-3">values : {{radioValue}}</span> -->
-        <br><br>
+        <br>
+        <br>
         <ts-checkbox-group [(values)]="checkboxValue">
             <div class="row">
                 <div class="col-sm-3">
@@ -87,6 +88,19 @@
 <br>
 <div class="card rounded-0">
     <div class="card-header bg-white">
+        按钮选项组
+    </div>
+    <div class="card-body">
+        <ts-btn-group [items]="items" [(values)]="values" [useIcon]="true"></ts-btn-group>
+        <hr>
+        <div>
+            <button class="btn btn-info btn-sm" type="button">修改选择</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">
         开关按钮
     </div>
     <div class="card-body">
@@ -120,6 +134,11 @@
                     <td>喜欢的食物</td>
                     <td>{{checkboxLables()}}</td>
                     <td>{{checkboxValue}}</td>
+                </tr>
+                <tr>
+                    <td>按钮组</td>
+                    <td>-无文本信息</td>
+                    <td>{{values}}</td>
                 </tr>
                 <tr>
                     <td>开关按钮</td>

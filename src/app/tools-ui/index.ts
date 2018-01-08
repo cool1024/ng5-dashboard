@@ -20,8 +20,10 @@ export { SwitchModule as TSSwitchModule } from './modules/switch.module';
 export { PopoverModule as TSPopoverModule } from './modules/popover.module';
 export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
 export { StepModule as TSStepModule } from './modules/step.module';
+export { BtnGroupModule as TSBtnGroupModule } from './modules/btn-group.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
+
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
@@ -31,6 +33,7 @@ export { ToggleComponent } from './interfaces/toggle-component.interface';
 
 /*tool interfaces*/
 export { LoopCard } from './interfaces/loop-card.interface';
+export { SelectItem } from './interfaces/select-item.interface';
 
 /*tool classes*/
 export { Pagination } from './classes/pagination.class';

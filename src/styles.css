@@ -22,6 +22,10 @@
     display: inline !important;
 }
 
+.fr-file{
+    visibility: visible !important;	
+}
+
 /* 设置滚动条的样式 */
 
 ::-webkit-scrollbar {

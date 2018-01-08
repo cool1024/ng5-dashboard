@@ -10,11 +10,12 @@ export const EditOptions = {
         'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-',
         'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|',
         'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|',
-        'print', 'spellChecker', 'help', '|', 'undo', 'redo'],
+        'print', 'spellChecker', 'help', '|', 'html', 'undo', 'redo'],
     charCounterCount: false,
     language: 'zh_cn',
     imageUploadURL: HttpConfig.SERVER_URL + '/tool/edit/upload',
     videoUploadURL: HttpConfig.SERVER_URL + '/tool/edit/upload',
+    fileUploadURL: HttpConfig.SERVER_URL + '/tool/edit/upload',
     heightMin: 600,
     // 默认图片宽度-自动
     imageDefaultWidth: 0,

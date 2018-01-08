@@ -8,6 +8,8 @@ import { ApiData } from '../classes/api.class';
 import { Observable } from 'rxjs/Observable';
 import { CanActivate } from '@angular/router';
 import { GlobalValueService } from './global-value.service';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
