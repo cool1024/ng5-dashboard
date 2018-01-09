@@ -17,6 +17,9 @@ import { ModalService } from './../components/modal/modal.service';
   ],
   providers: [
     ModalService,
+  ],
+  exports: [
+    CommonModule
   ]
 })
 export class ModalModule { }

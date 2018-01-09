@@ -23,13 +23,17 @@ export { StepModule as TSStepModule } from './modules/step.module';
 export { BtnGroupModule as TSBtnGroupModule } from './modules/btn-group.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
+export { MapModule as TSMapModule } from './lib/map/map.module';
 
+/*tool components*/
+export { BtnGroupModalComponent } from './modals/btn-group-modal.component';
 
 /*const configs*/
 export { ImageConfig } from './interfaces/image-config.interface';
 export { UploadResult, UploadingProgress } from './interfaces/upload-result.interface';
 export { VideoConfig } from './interfaces/video-config.interface';
 export { ToggleComponent } from './interfaces/toggle-component.interface';
+export { DefaultStyles as MapStyles } from './lib/map/default.config';
 
 /*tool interfaces*/
 export { LoopCard } from './interfaces/loop-card.interface';
@@ -46,3 +50,4 @@ export { ModalService as TSModalService } from './components/modal/modal.service
 export { ConfirmService as TSConfirmService } from './components/confirm/confirm.service';
 export { ToastService as TSToastService } from './components/toast/toast.service';
 export { SelectService as TSSelectService } from './services/select.services';
+export { MapService as TSMapService } from './lib/map/map.service';

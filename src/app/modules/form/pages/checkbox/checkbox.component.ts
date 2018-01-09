@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from '../../../../tools-ui';
-import { TSModalService } from './../../../../tools-ui';
-import { BtnGroupModalComponent } from './btn-group-modal.component';
+import { TSModalService, BtnGroupModalComponent } from './../../../../tools-ui';
+import { BtnGroupModalConfig } from '../../../../config/btn-group-modal.config';
 
 @Component({
     templateUrl: './checkbox.component.html',
@@ -56,6 +56,7 @@ export class CheckboxComponent implements OnInit {
         this.modal.create(BtnGroupModalComponent);
         this.modal.modal.instance.items = this.moreItems;
         this.modal.modal.instance.values = this.moreValues;
+        this.modal.modal.instance.options = BtnGroupModalConfig;
         this.modal.open().next(values => {
             this.moreValues = values;
         });

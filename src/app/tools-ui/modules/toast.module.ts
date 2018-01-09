@@ -20,7 +20,7 @@ import { ToastService } from './../components/toast/toast.service';
     CommonModule
   ]
 })
-export class  ToastModule {
+export class ToastModule {
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: ToastModule,

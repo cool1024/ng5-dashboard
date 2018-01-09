@@ -1,0 +1,41 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">地图视图</div>
+    <div class="card-body">
+        <div class="map-pad" #map="tsMap" ts-map [options]="{mapStyle:'amap://styles/whitesmoke'}"></div>
+        <div class="text-right mt-2" *ngIf="map.isReady">
+            <button (click)="randomStyle()" class="btn btn-info">
+                <i class="fa fa-paint-brush fa-fw"></i>随机样式
+            </button>
+            <button (click)="randomCenter()" class="btn btn-white">
+                <i class="fa fa-map-pin fa-fw"></i>切换中心
+            </button>
+            <button disabled (click)="getMyLocationInfo()" class="btn btn-white">
+                <i class="fa fa-bullseye fa-fw"></i>浏览器定位
+            </button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">地图服务</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="input-group">
+                    <input #address="ngModel" ngModel type="text" class="form-control">
+                    <div class="input-group-btn">
+                        <button (click)="getAddressInfo(address.value)" class="btn btn-white">
+                            <i class="fa fa-location-arrow fa-fw"></i>地址解析
+                        </button>
+                    </div>
+                </div>
+                <pre class="pre-json-pad bg-light mt-1 p-1 text-dark" *ngIf="testLocationInfo.result">{{testLocationInfo|json}}</pre>
+            </div>
+            <div class="col-lg-4 col-md-6">
+
+            </div>
+            <div class="col-lg-4 col-md-6"></div>
+        </div>
+
+    </div>
+</div>

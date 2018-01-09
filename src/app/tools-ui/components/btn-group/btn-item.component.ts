@@ -5,8 +5,7 @@ import { SelectItem } from '../../interfaces/select-item.interface';
     selector: 'ts-btn-item',
     template: `
         <button (click)="toggle()" class="btn" [ngClass]="active?activeBtnClass:defaultBtnClass">
-            {{item.text}}
-            <i class="fa fa-fw" *ngIf="useIcon" [class.fa-square-o]="!active" [class.fa-check-square-o]="active"></i>
+            <i class="fa fa-fw" *ngIf="useIcon" [class.fa-square-o]="!active" [class.fa-check-square-o]="active"></i>{{item.text}}
         </button>
 
     `

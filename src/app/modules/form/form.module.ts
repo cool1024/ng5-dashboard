@@ -22,7 +22,6 @@ import { FormRoutingModule } from './form.routing';
 
 /*弹窗组件*/
 import { SimpleModalComponent } from './modal/simple-modal.component';
-import { BtnGroupModalComponent } from './pages/checkbox/btn-group-modal.component';
 
 /*页面组件*/
 import { SimpleComponent } from './pages/simple/simple.component';
@@ -59,11 +58,9 @@ import { MutiComponent } from './pages/muti/muti.component';
         DatepickerComponent,
         MutiComponent,
         LoopCardComponent,
-        BtnGroupModalComponent,
     ],
     entryComponents: [
         SimpleModalComponent,
-        BtnGroupModalComponent,
     ]
 })
 export class FormModule { }
