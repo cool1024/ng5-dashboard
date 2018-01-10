@@ -19,7 +19,7 @@ export class VideoComponent {
         source: HttpConfig.SOURCE_URL + '/',
         uploadeFunc: file => {
             const sub = new Subject<TSUploadingProgress | TSUploadResult>();
-            this.reqeust.upload('/tool/audio', [{ name: 'audio', files: [file] }], percentDone => {
+            this.request.upload('/tool/audio', [{ name: 'audio', files: [file] }], percentDone => {
                 console.log(percentDone);
                 sub.next(new TSUploadingProgress(false, percentDone));
             }, res => {
@@ -42,7 +42,7 @@ export class VideoComponent {
         source: HttpConfig.SOURCE_URL + '/',
         uploadeFunc: file => {
             const sub = new Subject<TSUploadingProgress | TSUploadResult>();
-            this.reqeust.upload('/tool/video', [{ name: 'video', files: [file] }], percentDone => {
+            this.request.upload('/tool/video', [{ name: 'video', files: [file] }], percentDone => {
                 console.log(percentDone);
                 sub.next(new TSUploadingProgress(false, percentDone));
             }, res => {
@@ -63,7 +63,7 @@ export class VideoComponent {
     video = 'upload/47e0b428f30fde9a0395b18e6db62ddd.mp4';
     audio = 'upload/c2d8f23c236f257039305cc263ec6439.mp3';
 
-    constructor(private reqeust: RequestService) { }
+    constructor(private request: RequestService) { }
 
     readExcel(file: File) {
         this.theads = [];

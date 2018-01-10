@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { MapConfig } from './map.config';
-
+import { GeometryUtil } from './map';
 declare const window: any;
 declare const document: any;
 
@@ -11,33 +11,35 @@ export class MapService {
 
     private loadHandle: Observable<any>;
     private ready = false;
-    private map: any;
+    private amap: any;
 
     constructor(private mapConfig: MapConfig) {
         const sub = new Subject<any>();
+        this.loadHandle = sub.asObservable();
         if (!window.AMap) {
-            const node: any = document.createElement('script');
-            node.type = 'text/javascript';
-            node.src = 'http://webapi.amap.com/maps?v=1.4.3&key=' + mapConfig.appKey;
-            node.charset = 'utf-8';
-            node.onload = () => {
-                this.map = window.AMap;
+            window.aMapLoadCallBack = () => {
+                this.amap = window.AMap;
                 this.ready = true;
                 sub.next(window.AMap);
                 sub.complete();
             };
-            this.loadHandle = sub.asObservable();
+            const node: any = document.createElement('script');
+            node.async = true;
+            node.type = 'text/javascript';
+            node.src = `http://webapi.amap.com/maps?v=1.4.3&key=${mapConfig.appKey}&callback=aMapLoadCallBack`;
+            node.charset = 'utf-8';
             document.getElementsByTagName('head')[0].appendChild(node);
         } else {
             this.ready = true;
         }
+        console.log('load js');
     }
 
     doFuc(func: (amap: any) => void) {
         if (this.ready) {
-            func(this.map);
+            func(this.amap);
         } else {
-            this.loadHandle.subscribe(() => func(this.map));
+            this.loadHandle.subscribe(() => func(this.amap));
         }
     }
 
@@ -57,5 +59,11 @@ export class MapService {
             });
         });
         return sub.asObservable();
+    }
+
+    geometryUtil(callback: (gutil: GeometryUtil, amap: any) => void): void {
+        this.doFuc(amap => {
+            callback(amap.GeometryUtil, amap);
+        });
     }
 }
