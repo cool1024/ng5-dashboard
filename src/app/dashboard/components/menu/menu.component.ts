@@ -3,6 +3,7 @@ import { Theme } from '../../../config/theme.config';
 import { Menus } from '../../../config/menu.config';
 import { AuthService } from '../../services/auth.service';
 import { RequestService } from '../../services/request.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
     selector: 'dashboard-menu',
@@ -20,11 +21,12 @@ export class MenuComponent implements OnInit {
     // 菜单展开状态列表
     isCollopseArray = new Array<boolean[]>();
 
-    constructor(private authService: AuthService, private request: RequestService) { }
+    constructor(private authService: AuthService, private request: RequestService, private menuService: MenuService) { }
 
     ngOnInit() {
         this.request.url('/menus').subscribe(res => {
             this.menus = this.formateMenu(res.datas.groups, res.datas.models);
+            this.menuService.setMenuGroups(res.datas.groups);
             this.initCollopseArray();
         });
     }
@@ -86,7 +88,9 @@ export class MenuComponent implements OnInit {
             return [];
         }
         menus.splice(mainIndex, 1);
-        const temps = new Array<{ icon: string, mid: number, title: string, children: Array<{ icon: string, title: string, url: string }> }>();
+        const temps = new Array<{
+            icon: string, mid: number, title: string, children: Array<{ icon: string, title: string, url: string }>
+        }>();
         for (let i = 0; i < mains.groups.length; i++) {
             const temp = { icon: mains.groups[i].icon, mid: mains.groups[i].mid, title: mains.groups[i].title, children: [] };
             const childs = menus.filter(e => e.parentid.toString() === mains.groups[i].id.toString());

@@ -1,6 +1,7 @@
 .head {
     height: 60px;
     padding: 3px;
+    min-width: 900px;
 }
 
 .head-brand {
@@ -35,6 +36,7 @@
 
 .search-pad {
     left: 0;
+    top:60px;
 }
 
 .search-empty {
@@ -43,4 +45,48 @@
 
 .search-list {
     line-height: 50px;
+}
+.search-input{
+    width: 200px;
+}
+.h-0{
+    height: 0;
+    overflow: hidden;
+}
+
+.header-menu:hover>ul{
+    display: inline-block;
+}
+.header-menu ul {
+    display: none;
+    position: absolute;
+    color:black;
+    top: 0;
+    right: 2px;
+    width: 200px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+
+}
+.header-menu .empty-pad{
+    height: 60px;
+    line-height: 60px;
+    padding-left:97px;
+    opacity: 0;
+}
+.header-menu ul div{
+    background-color: white;
+    box-shadow: 1px 2px 3px #ccc;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+}
+.header-menu .menu-item{
+    padding-left: 20px;
+    margin: 0;
+}
+.header-menu .menu-item:hover{
+    background-color:#ccc;
 }

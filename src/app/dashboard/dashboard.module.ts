@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { AuthService } from './services/auth.service';
+import { MenuService } from './services/menu.service';
 import { RequestService } from './services/request.service';
 import { StorageService } from './services/storage.service';
 import { GuardService } from './services/guard.service';
@@ -61,6 +62,7 @@ export class DashboardModule {
                 DefaultGuardService,
                 FormService,
                 GlobalValueService,
+                MenuService,
                 /*请求参数加密&加签名*/
                 // {
                 //     provide: HTTP_INTERCEPTORS,

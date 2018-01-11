@@ -9,7 +9,10 @@ import { Observable } from 'rxjs/Observable';
 import { RequestService } from '../../services/request.service';
 import { AppConfig } from '../../../config/app.config';
 import { StorageService } from '../../services/storage.service';
-import { ToastService } from '../../../tools-ui/components/toast/toast.service';
+import { TSToastService, TSConfirmService } from '../../../tools-ui';
+import { MenuService } from '../../services/menu.service';
+import { Menu } from './../../interfaces/menu.interface';
+import { Theme } from '../../../config/theme.config';
 
 @Component({
     selector: 'dashboard-head',
@@ -19,16 +22,13 @@ import { ToastService } from '../../../tools-ui/components/toast/toast.service';
 export class HeadComponent implements OnInit {
 
     // 头部样式配置参数
-    headConfigs = {
-        zIndex: 1040,
-        titleWidth: '170px',
-    };
+    headConfigs = Theme.header;
+
+    // 关键词
+    keyword = '';
 
     // 是否查询面板
     showSearchPad = false;
-
-    // 查询结果
-    searchResults = new Array<any>();
 
     // 登出接口url
     outUrl = AppConfig.outUrl;
@@ -46,16 +46,21 @@ export class HeadComponent implements OnInit {
         return this.breadcrumbService.breadcrumbs;
     }
 
+    // 获取菜单列表
+    get menus(): Menu[] {
+        return this.keyword ? this.menuService.menus.filter(menu => menu.title.indexOf(this.keyword) >= 0) : this.menuService.menus;
+    }
+
     constructor(
         private router: Router,
         private breadcrumbService: BreadcrumbService,
+        private menuService: MenuService,
         private authService: AuthService,
         private request: RequestService,
         private storage: StorageService,
-        private toast: ToastService,
+        private toast: TSToastService,
+        private confirm: TSConfirmService,
     ) { }
-
-
 
     ngOnInit() {
         this.router.events.subscribe(event => {
@@ -64,18 +69,26 @@ export class HeadComponent implements OnInit {
 
     }
 
+    // 导航
+    navigate(url: string) {
+        this.router.navigateByUrl(url);
+        this.showSearchPad = false;
+    }
+
     // 退出登入
     signOut() {
-        this.request.withConfig({ url: '' }).url(this.outUrl).subscribe(res => {
-            // 清空登入令牌
-            for (const key in this.tokenParams) {
-                if (this.tokenParams.hasOwnProperty(key)) {
-                    this.storage.clean(this.tokenParams[key]);
+        this.confirm.danger('退出登入', '您确定要退出系统？', { okTitle: '确认退出', cancelTitle: '取消' }).next(() => {
+            this.request.withConfig({ url: '' }).url(this.outUrl).subscribe(res => {
+                // 清空登入令牌
+                for (const key in this.tokenParams) {
+                    if (this.tokenParams.hasOwnProperty(key)) {
+                        this.storage.clean(this.tokenParams[key]);
+                    }
                 }
-            }
-            this.authService.setOut();
-            this.router.navigateByUrl('/login');
-            this.toast.info('提示消息', '成功退出账号～');
+                this.authService.setOut();
+                this.router.navigateByUrl('/login');
+                this.toast.info('提示消息', '成功退出账号～');
+            });
         });
     }
 
@@ -95,5 +108,4 @@ export class HeadComponent implements OnInit {
             this.parseRoute(node.firstChild);
         }
     }
-
 }

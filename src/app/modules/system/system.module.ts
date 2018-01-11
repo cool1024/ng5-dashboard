@@ -7,7 +7,7 @@ import {
   TSDatePickerModule,
   TSToggleModule,
   TSSelectModule,
-  TSConfirmModule,
+  // TSConfirmModule,
   TSModalModule,
   TSSwitchModule,
 } from './../../tools-ui';
@@ -34,7 +34,7 @@ import { MenuChildModalComponent } from './pages/menu-manager/menu-child.modal';
     TSDatePickerModule,
     TSToggleModule,
     TSSelectModule,
-    TSConfirmModule,
+    // TSConfirmModule,
     TSModalModule,
     TSSwitchModule,
   ],

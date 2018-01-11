@@ -10,7 +10,7 @@
     </div>
     <hr class="m-0">
     <ng-template ngFor let-item let-i="index" [ngForOf]="menus">
-        <p class="pl-3 ml-1 mt-3 mb-2 text-muted">{{item.title}}</p>
+        <p class="pl-3 ml-1 mt-3 mb-2" [ngClass]="modelClass">{{item.title}}</p>
         <div class="menu-block pl-2 border-l-3 {{isCollopseArray[i][j]?menuConfigs.borderActiveClass:''}}" *ngFor="let main of item.menus;index as j">
             <div (click)="triggerMenu(i,j)" class="menu-main pointer">
                 <div class="d-table w-100 {{isCollopseArray[i][j]?menuConfigs.mainMenuActiveClass:''}}" [ngStyle]="{'line-height':menuConfigs.mainMenuHeight}">

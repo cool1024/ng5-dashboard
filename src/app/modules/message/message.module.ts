@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SimpleComponent } from './pages/simple/simple.component';
 import {
   TSToastModule,
-  TSConfirmModule,
+  // TSConfirmModule,
   TSPopoverModule,
   TSHoverModule,
   TSToggleModule,
@@ -17,7 +17,7 @@ import { MessageRoutingModule } from './message.routing';
 @NgModule({
   imports: [
     TSToastModule,
-    TSConfirmModule,
+    // TSConfirmModule,
     TSPopoverModule,
     MessageRoutingModule,
     TSHoverModule,

@@ -1,5 +1,4 @@
-# RequestService 
-### <span class="badge badge-primary">Injectable</span>
+# RequestService <span class="badge badge-primary">Injectable</span>
 ----------------------
 <table class="table table-bordered">
     <tbody>
@@ -17,11 +16,21 @@
     </tbody>
 </table>
 
-# ApiData 
-### <span class="badge badge-success">Class</span>
+# ApiData  <span class="badge badge-success">Class</span>
 ```typescript
 class ApiData {
-    constructor(public result: boolean, public message: string, public datas?: any,public id?:number) { }
+    // 接口调用结果
+    public result: boolean,
+    // 接口返回信息，可能是字符串，或一个消息实体
+    public message: string | { [key: string]: string[] },
+    // 接口返回数据，数据格式以接口文档为准
+    public datas: any | { rows: any[], total: number } = {},
+    // 接口调用返回的id字段，大部分接口没有（这个参数基本被弃用，请不要再使用）
+    public id: number = 0
+    // 把ApiData转换为JSON串
+    toJsonString(): string;
+    // 获取返回消息，如果是字符串就直接返回，如果是消息实体则返回实体中的第一条消息   
+    get messageStr(): string;
 }
 ```
 |变量名|类型|描述|
@@ -51,6 +60,12 @@ export const HttpConfig = {
 
     // 错误弹窗显示时间
     TOAST_ERROR_TIME: 3000,
+
+    // RSA 公钥
+    RSA_PUBLIC_KEY: ``,
+
+    // RSA 私钥
+    RSA_PRIVATE_KEY: ``,
 };
 ```
 >**参数**
@@ -63,6 +78,8 @@ export const HttpConfig = {
 
 >*TOAST_ERROR_TIME* : 每次request服务发送请求失败时，都会由拦截器截获这个异常，并在界面显示一个提示消息，这个参数用于配置弹窗显示时间
 
+>*RSA_PUBLIC_KEY* : Http请求加密公钥
+
 #### 引入服务到页面组件中
 --------------------------------
 ```typescript
@@ -73,11 +90,9 @@ import { RequestService } from './dashboard/services/request.service';
   templateUrl: './simple.component.html',
 })
 export class SimpleComponent implements OnInit {
+
      constructor(private requestService: RequestService) { }
 
-     ngOnInit() {
-
-     }
 }
 ```
 #### 获取一个文本文件/文本内容
@@ -278,7 +293,11 @@ export class SimpleComponent implements OnInit {
 #### POST请求，文件上传，大文件上传，可以获取进度条
 ------------------------------
 ```typescript
-upload(url: string, files: Array<{ name: string, files: Array<File> }>, onprogress: (value: number) => void, final: (value: any) => void)
+upload(
+    url: string, 
+    files: Array<{ name: string, files: Array<File> }>,
+    onprogress: (value: number) => void, 
+    final: (value: ApiData) => void):void
 ```
 >**参数**
 
@@ -292,7 +311,7 @@ upload(url: string, files: Array<{ name: string, files: Array<File> }>, onprogre
 
 >**注意**
 
-><span class="text-danger">这是一个实验性方法，且不会带请求头，没有权限令牌，建议定制开发，参考本方法自行编写上传请求代码</span>
+><span class="text-danger">这个方法不适合对接第三方上传，对响应格式有严格要求(ApiData)</span>
 
 #### 配置一个新的request服务
 ------------------------------
