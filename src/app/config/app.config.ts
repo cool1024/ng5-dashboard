@@ -58,7 +58,7 @@ export const AppConfig = {
     // 首页数据展示配置-------------------------------------------------
 
     // 左侧菜单用户信息，数组第一个参数为头像的字段，第二个为加粗的文字字段，第三个为加粗文字下面的小文字字段
-    menuUserParams: ['thumb', 'account', 'rolename'],
+    menuUserParams: ['thumb', 'rolename', 'account'],
 
     // 左侧菜单默认信息
     menuUserEmpty: ['/assets/image/avatar/avatar.jpg', 'Admin', 'www.cool1024.com'],

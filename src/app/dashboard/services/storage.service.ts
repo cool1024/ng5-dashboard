@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Routes, Route } from '@angular/router';
-import { Breadcrumbs, Breadcrumb } from './../classes/breadcrumb.class';
 
 @Injectable()
 export class StorageService {

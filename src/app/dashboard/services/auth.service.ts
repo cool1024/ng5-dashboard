@@ -60,6 +60,8 @@ export class AuthService {
                     this.router.navigateByUrl('/login');
                 } else {
                     this.setIn();
+                    this.user = res.datas;
+                    console.log(res.datas);
                 }
                 this.global.setValue('checkStatus', true);
                 return res.result;
@@ -103,5 +105,12 @@ export class AuthService {
             this.user[AppConfig.menuUserParams[1]] || AppConfig.menuUserEmpty[1],
             this.user[AppConfig.menuUserParams[2]] || AppConfig.menuUserEmpty[2]
         ];
+        // if (this.authService.isLoggedIn === false) {
+        //     return AppConfig.menuUserDefault;
+        // }
+        // const user = [];
+        // AppConfig.menuUserParams.forEach((param, index) => {
+        //     user.push(this.authService.userInfo[param] || AppConfig.menuUserEmpty[index]);
+        // });
     }
 }

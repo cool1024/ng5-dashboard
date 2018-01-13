@@ -12,7 +12,8 @@ import { StorageService } from '../../services/storage.service';
 import { TSToastService, TSConfirmService } from '../../../tools-ui';
 import { MenuService } from '../../services/menu.service';
 import { Menu } from './../../interfaces/menu.interface';
-import { Theme } from '../../../config/theme.config';
+import { ThemeService } from '../../services/theme.service';
+
 
 @Component({
     selector: 'dashboard-head',
@@ -20,9 +21,6 @@ import { Theme } from '../../../config/theme.config';
     styleUrls: ['./head.component.css']
 })
 export class HeadComponent implements OnInit {
-
-    // 头部样式配置参数
-    headConfigs = Theme.header;
 
     // 关键词
     keyword = '';
@@ -35,6 +33,12 @@ export class HeadComponent implements OnInit {
 
     // 令牌参数
     tokenParams = AppConfig.tokenSave;
+
+    // 系统标题
+    appTitle = AppConfig.title;
+
+    // 系统图标
+    appIcon = AppConfig.icon;
 
     // 登入状态
     get loginStatus(): boolean {
@@ -51,6 +55,11 @@ export class HeadComponent implements OnInit {
         return this.keyword ? this.menuService.menus.filter(menu => menu.title.indexOf(this.keyword) >= 0) : this.menuService.menus;
     }
 
+    // 头部样式配置参数
+    get headConfigs(): any {
+        return this.theme.theme.header;
+    }
+
     constructor(
         private router: Router,
         private breadcrumbService: BreadcrumbService,
@@ -60,6 +69,7 @@ export class HeadComponent implements OnInit {
         private storage: StorageService,
         private toast: TSToastService,
         private confirm: TSConfirmService,
+        private theme: ThemeService,
     ) { }
 
     ngOnInit() {
@@ -107,5 +117,10 @@ export class HeadComponent implements OnInit {
         if (node.firstChild) {
             this.parseRoute(node.firstChild);
         }
+    }
+
+    // 随机主题
+    changeTheme() {
+        this.theme.autoTheme();
     }
 }

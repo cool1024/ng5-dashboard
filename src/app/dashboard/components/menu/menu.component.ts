@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Theme } from '../../../config/theme.config';
+import { ThemeService } from '../../services/theme.service';
 import { Menus } from '../../../config/menu.config';
 import { AuthService } from '../../services/auth.service';
 import { RequestService } from '../../services/request.service';
@@ -12,16 +12,24 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MenuComponent implements OnInit {
 
-    // 菜单样式配置参数
-    menuConfigs = Theme.menu;
-
     // 系统菜单列表
     menus = new Array();
 
     // 菜单展开状态列表
     isCollopseArray = new Array<boolean[]>();
 
-    constructor(private authService: AuthService, private request: RequestService, private menuService: MenuService) { }
+    // 头部样式配置参数
+    get menuConfigs(): any {
+        return this.theme.theme.menu;
+    }
+
+
+    constructor(
+        private authService: AuthService,
+        private request: RequestService,
+        private menuService: MenuService,
+        private theme: ThemeService,
+    ) { }
 
     ngOnInit() {
         this.request.url('/menus').subscribe(res => {

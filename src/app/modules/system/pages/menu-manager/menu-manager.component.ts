@@ -155,4 +155,15 @@ export class MenuManagerComponent implements OnInit {
                 });
             });
     }
+
+    // 确认删除模块
+    deleteModelConfirm(model: any) {
+        this.confirm.danger('确认删除', `您确定要删除模块'${model.title}'，操作不可回复！`, { okTitle: '确认', cancelTitle: '取消' })
+            .next(() => {
+                this.request.delete('/menu/model/delete', { id: model.id }).subscribe(() => {
+                    this.loadDatas();
+                    this.toast.success('操作成功', '菜单模块删除成功~');
+                });
+            });
+    }
 }

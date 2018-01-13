@@ -1,10 +1,10 @@
 <nav class="head shadow-b fixed-top text-light" [ngClass]="headConfigs.bgClass" [ngStyle]="{'z-index': headConfigs.zIndex}">
     <div class="head-brand d-table h-100 w-100">
         <div class="d-table-cell align-middle" style="width:40px;">
-            <img class="ml-2" src="./favicon.ico" alt="tools icon">
+            <img class="ml-2" [src]="appIcon" alt="tools icon">
         </div>
         <div class="d-table-cell align-middle pl-3" [ngStyle]="{'width':headConfigs.titleWidth}">
-            <h4 class="m-0">ToolsUI</h4>
+            <h4 class="m-0">{{appTitle}}</h4>
         </div>
         <div class="d-table-cell align-middle p-3 t-breadcrumb">
             <span routerLink="/" class="pointer">
@@ -25,7 +25,7 @@
                 <div class="d-table-cell">
                     <div class="form-inline pull-right">
                         <div class="input-group">
-                            <input [(ngModel)]="keyword" (click)="showSearchPad=true;" type="text" class="search-input form-control border-0 shadow-0"
+                            <input [(ngModel)]="keyword" (click)="showSearchPad=true;" type="text" class="border-0 search-input form-control shadow-0"
                                 placeholder="关键词...">
                             <span class="input-group-addon bg-white border-0">
                                 <i class="fa fa-fw fa-search"></i>
@@ -43,7 +43,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <p class="menu-item pointer">
+                                    <p (click)="changeTheme()" class="menu-item pointer">
                                         <i class="fa fa-exchange fa-rotate-90 fa-fw" aria-hidden="true"></i>切换主题</p>
                                     <p class="menu-item pointer">
                                         <i class="fa fa-code-fork fa-fw" aria-hidden="true"></i>当前版本

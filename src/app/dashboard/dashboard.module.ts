@@ -9,6 +9,7 @@ import { AuthService } from './services/auth.service';
 import { MenuService } from './services/menu.service';
 import { RequestService } from './services/request.service';
 import { StorageService } from './services/storage.service';
+import { ThemeService } from './services/theme.service';
 import { GuardService } from './services/guard.service';
 import { DefaultGuardService } from './services/default-guard.service';
 import { FormService } from './services/form.service';
@@ -63,6 +64,7 @@ export class DashboardModule {
                 FormService,
                 GlobalValueService,
                 MenuService,
+                ThemeService,
                 /*请求参数加密&加签名*/
                 // {
                 //     provide: HTTP_INTERCEPTORS,
