@@ -85,7 +85,7 @@ export const Danger_Theme = {
 };
 
 export const Themes = {
-    'default': Danger_Theme, // 默认主题
+    'default': Info_Theme, // 默认主题
     'info': Info_Theme,
     'secondary': Secondary_Theme,
     'danger': Danger_Theme,

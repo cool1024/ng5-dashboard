@@ -61,7 +61,6 @@ export class AuthService {
                 } else {
                     this.setIn();
                     this.user = res.datas;
-                    console.log(res.datas);
                 }
                 this.global.setValue('checkStatus', true);
                 return res.result;

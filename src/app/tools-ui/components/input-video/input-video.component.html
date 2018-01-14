@@ -12,8 +12,8 @@
     <div [ngStyle]="videoStyle" *ngIf="showVideo&&!showLoading&&type!=='audio'">
         <video class="p-1 mt-1 rounded-0 border border-muted w-100 h-100 d-block" [src]="realSrc" controls="true"></video>
     </div>
-    <div [style.width]="videoStyle.width" class="border border-muted p-1" *ngIf="showVideo&&!showLoading&&type==='audio'">
-        <audio class="p-0 m-0 rounded-0 w-100" [src]="realSrc" controls="true"></audio>
+    <div [style.width]="videoStyle.width" class="border border-muted p-1 mt-1" *ngIf="showVideo&&!showLoading&&type==='audio'">
+        <audio class="p-0 m-0rounded-0 w-100" [src]="realSrc" controls="true"></audio>
     </div>
     <div class="p-1 mt-1 rounded-0 border border-muted text-center" [style.width]="videoStyle.width" *ngIf="showLoading">
         <!-- {{loaded}} -->

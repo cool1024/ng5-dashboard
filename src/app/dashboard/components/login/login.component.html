@@ -1,26 +1,32 @@
-<div class="fixed-top h-100 w-100">
-
-    <form style="width:30rem" class="card rounded-0 ml-auto mr-auto mt-5">
-        <div class="card-header">
-            NG5-DASHBOARD
-            <span class="pull-right text-muted">版本 2.0.0</span>
+<div class="fixed-top h-100 w-100 login-pad" [ngStyle]="{'background-image':'url('+loginConfigs.backgroundImage+')'}">
+    <form style="width:32rem" class="card rounded-0  border-0 ml-auto mr-auto mt-5 shadow-b" autocomplete="off">
+        <div class="card-header login-header text-center">
+            <img [src]="loginConfigs.icon" height="40">
+            <span class="ml-2">{{loginConfigs.title}}</span>
+            <!-- <span class="pull-right text-muted">版本 2.0.0</span> -->
         </div>
         <div class="card-body">
-            <div class="form-group">
-                <label>管理员账户</label>
-                <input type="account" name="account" [(ngModel)]="loginParams[0]" class="form-control rounded-0">
-                <small class="form-text text-muted">账户为邮箱或者手机号码</small>
+            <div class="mb-4">
+                <h5 class="text-info">{{loginConfigs.subject}}</h5>
+                <small class="text-muted">{{loginConfigs.body}}</small>
             </div>
-            <div class="form-group">
-                <label>管理员密码</label>
-                <input type="password" name="password" [(ngModel)]="loginParams[1]" class="form-control rounded-0">
+            <div class="form-group input-group-lg">
+                <label>{{loginConfigs.accountLabel}}</label>
+                <input type="text" name="account" [(ngModel)]="loginParams[0]" class="form-control rounded-0" [placeholder]="loginConfigs.passwordPlaceholder">
             </div>
-            <div class="form-group">
-                <input type="checkbox">
-                <span class="ml-3">记住我</span>
-                <span class="pull-right text-muted">忘记密码？</span>
+            <div class=" form-group input-group-lg ">
+                <label>密码</label>
+                <input type="password " name="password " [(ngModel)]="loginParams[1] " class="form-control
+                    rounded-0 " [placeholder]="loginConfigs.passwordPlaceholder">
             </div>
-            <button type="button" class="btn btn-info btn-block" (click)="login()">登入</button>
+            <div class="form-group ">
+                <!-- <input type="checkbox ">
+                <span class="ml-3 ">记住我</span> -->
+                <span class="pull-right text-muted ">忘记密码？</span>
+            </div>
+        </div>
+        <div class="card-footer ">
+            <button type="button " class="btn btn-lg btn-info btn-block " (click)="login() ">登入</button>
         </div>
     </form>
 </div>

@@ -1,48 +1,20 @@
-.icon-up {
-    animation: icon-up 0.5s ease-out forwards;
+.login-pad {}
+
+.card {
+    opacity: .95;
 }
 
-.icon-down {
-    animation: icon-down 0.5s ease-out forwards;
+.login-header {
+    height: 100px;
+    line-height: 100px;
+    padding: 0px;
+    background: white;
 }
 
-.menu-block {
-    overflow-y: hidden;
-    font-size: 14px;
+.login-header img {
+    vertical-align: middle;
 }
 
-p {
-    font-size: 15px;
-}
-
-.child-close {
-    max-height: 0px;
-    opacity: 0.5;
-    transform-origin: 50% 0%;
-    transition: all 0.5s linear;
-}
-
-.child-open {
-    max-height: 400px;
-    opacity: 1;
-    transform-origin: 50% 0%;
-    transition: all 1.5s linear;
-}
-
-@keyframes icon-up {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(180deg);
-    }
-}
-
-@keyframes icon-down {
-    0% {
-        transform: rotate(180deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+.login-header span {
+    font-size: 20px !important;
 }

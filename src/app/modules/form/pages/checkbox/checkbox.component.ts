@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from '../../../../tools-ui';
 import { TSModalService, BtnGroupModalComponent } from './../../../../tools-ui';
-import { BtnGroupModalConfig } from '../../../../config/btn-group-modal.config';
 
 @Component({
     templateUrl: './checkbox.component.html',
@@ -24,6 +23,14 @@ export class CheckboxComponent implements OnInit {
         { text: 'Carota', value: 3 },
         { text: 'Dinner ', value: 4 },
     ];
+
+    btnGroupModalOptions = {
+        title: '点击选中选项',
+        label: '关键词',
+        placeholder: '请输入关键词',
+        okTitle: '确认选择',
+        cancelTitle: '取消/返回',
+    };
 
     values = [1];
 
@@ -56,7 +63,7 @@ export class CheckboxComponent implements OnInit {
         this.modal.create(BtnGroupModalComponent);
         this.modal.modal.instance.items = this.moreItems;
         this.modal.modal.instance.values = this.moreValues;
-        this.modal.modal.instance.options = BtnGroupModalConfig;
+        this.modal.modal.instance.options = this.btnGroupModalOptions;
         this.modal.open().next(values => {
             this.moreValues = values;
         });

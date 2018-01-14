@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { AppConfig } from './../../../config/app.config';
+import { LoginPageConfig } from './../../../config/login-page.config';
 import { RequestService } from '../../services/request.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -30,10 +31,8 @@ export class LoginComponent {
     // 令牌参数
     tokenParams = AppConfig.tokenSave;
 
-    // 菜单样式配置参数
-    loginConfigs = {
-
-    };
+    //  界面配置参数
+    loginConfigs = LoginPageConfig;
 
     constructor(
         private authService: AuthService,
@@ -63,6 +62,7 @@ export class LoginComponent {
                     this.storageService.set(this.tokenParams[key], res.datas[key] || '');
                 }
             }
+            this.authService.reCheckLogin().subscribe();
             this.authService.setIn();
             this.router.navigateByUrl(this.homePageUrl);
         });
