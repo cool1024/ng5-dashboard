@@ -1,4 +1,6 @@
-.login-pad { }
+.login-pad input {
+    padding: 10px;
+}
 
 .card {
     opacity: .90;

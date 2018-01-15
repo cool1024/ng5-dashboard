@@ -8,5 +8,5 @@ export const LoginPageConfig = {
     accountPlaceholder: '请输入您的账号',
     passwordLabel: '密码',
     passwordPlaceholder: '请输入您的密码',
-    backgroundImage: '/assets/image/material/pattern.svg'
+    background: 'whitesmoke',
 };

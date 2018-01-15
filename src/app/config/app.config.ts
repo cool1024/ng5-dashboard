@@ -13,7 +13,7 @@ export const AppConfig = {
     title: 'ToolsUI',
 
     // 系统图标
-    icon: 'favicon.ico',
+    icon: '/assets/icon/angular.svg',
 
     // 系统描述
     description: '',

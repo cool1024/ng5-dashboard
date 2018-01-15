@@ -48,7 +48,7 @@ export class ThemeService {
     }
 
     autoTheme() {
-        const theme_key = this._theme_keys[Math.floor(Math.random() * 3)];
+        const theme_key = this._theme_keys[Math.floor(Math.random() * 4)];
         this._theme = Themes[theme_key];
         this.storage.set('theme', theme_key);
     }
