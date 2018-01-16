@@ -47,11 +47,11 @@ export class SimpleComponent implements OnInit {
 
                     const line_length = _code.split('\n').length;
                     let line_code = '<span class="line-numbers-rows">';
-                    for (let i = 0; i <= line_length; i++) {
+                    for (let i = 0; i < line_length; i++) {
                         line_code += '<span></span>';
                     }
                     line_code += '</span">';
-                    return `<pre class='line-numbers language-${language} bg-white'><code>${_code}${line_code}</code></pre>`;
+                    return `<pre class='line-numbers language-${language} rounded-0'><code>${_code}${line_code}</code></pre>`;
                 };
 
                 renderer.blockquote = (quote: string): string => {
