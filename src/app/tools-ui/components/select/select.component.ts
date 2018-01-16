@@ -14,7 +14,8 @@ export class SelectComponent implements OnChanges, AfterViewInit {
     @Input() width: string;
     @Input() emptyLabel: string;
     @Input() selectClass: string;
-    @Output() valueChange = new EventEmitter<any>();
+    @Output() valueChange = new EventEmitter<any>(false);
+    @Output() optionChange = new EventEmitter<any>(false);
     @ViewChild('DropdownToggle') dropdownToggle: ElementRef;
     @ViewChild('DropdownMenu') dropdownMenu: ElementRef;
     @ViewChild('inputDom') inputDom: ElementRef;
@@ -65,6 +66,7 @@ export class SelectComponent implements OnChanges, AfterViewInit {
         this.title = item.text;
         this.searchKey = this.title;
         this.inputDom.nativeElement.value = this.title;
+        this.optionChange.emit(item);
         this.valueChange.emit(item.value);
     }
 

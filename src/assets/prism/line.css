@@ -33,8 +33,13 @@ pre.line-numbers>code {
 
 .line-numbers-rows>span:before {
     content: counter(linenumber);
-    color: #999;
     display: block;
     padding-right: 0.8em;
     text-align: right;
+    box-sizing: border-box;
+    color: rgb(153, 153, 153);
+    display: block;
+    font-family: "Helvetica Neue For Number", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
 }
