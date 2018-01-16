@@ -39,16 +39,11 @@ export class SimpleComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
 
-      // this.requestService.withConfig({ url: 'http://ng.cool1024.com' })
-      //   .post('/login', { email: 'xiaojiannangkang@126.com', password: '123456789' })
-      //   .subscribe(res => {
-      //     console.log(res);
-      //   });
       this.requestService.withConfig({ url: '' }).text(`/assets/docs/${params.docs}.md`).subscribe(res => {
         const renderer = new window.marked.Renderer();
 
         renderer.code = (code: string, language: string): string => {
-          return `<pre class='language-${language} bg-white'>
+          return `<pre class='line-numbers language-${language} bg-white'>
 <code>${window.Prism.highlight(code, LANGUAGE[language] || LANGUAGE.html)}</code></pre>`;
         };
 

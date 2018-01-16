@@ -15,6 +15,7 @@ export class SwitchComponent implements OnChanges {
   @Input() value: any;
 
   @Output() valueChange = new EventEmitter<any>(false);
+  @Output() switchClick = new EventEmitter<any>(false);
 
   open: boolean;
 
@@ -40,6 +41,7 @@ export class SwitchComponent implements OnChanges {
 
   toggle() {
     this.open = !this.open;
+    this.switchClick.emit(this.open ? this.values.open : this.values.close);
     this.valueChange.emit(this.open ? this.values.open : this.values.close);
   }
 
