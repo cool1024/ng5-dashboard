@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'system', loadChildren: 'app/modules/system/system.module#SystemModule', canActivate: [GuardService] },
   { path: 'docs', loadChildren: 'app/modules/docs/docs.module#DocsModule', canActivate: [GuardService] },
   { path: 'goods', loadChildren: 'app/modules/goods/goods.module#GoodsModule', canActivate: [GuardService] },
+  { path: 'vip', loadChildren: 'app/modules/vip/vip.module#VipModule', canActivate: [GuardService] },
 ];
 
 @NgModule({

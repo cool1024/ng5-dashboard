@@ -92,14 +92,15 @@ export class GoodsListComponent implements OnInit {
 
     // 搜索方法
     doSearch() {
+        this.pagination.page = 1;
         this.pageChanged();
     }
 
     // 重置搜索
     resetSearch() {
         this.search.clean();
+        this.pagination.page = 1;
         this.pageChanged();
-
     }
 
     // 修改商品状态

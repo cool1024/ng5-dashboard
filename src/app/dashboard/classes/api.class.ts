@@ -15,7 +15,7 @@ export class ApiData {
     }
     get messageStr(): string {
         let message = '';
-        if (typeof this.message !== 'string') {
+        if (typeof this.message !== 'string' && typeof this.message !== 'number') {
             for (const key in this.message) {
                 if (this.message.hasOwnProperty(key)) {
                     message = this.message[key][0] || 'message error';
@@ -23,7 +23,7 @@ export class ApiData {
                 }
             }
         } else {
-            message = this.message;
+            message = this.message.toString();
         }
         return message;
     }

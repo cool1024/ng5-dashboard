@@ -20,6 +20,7 @@
 }
 
 .fr-wrapper div p a {
+    visibility: visible !important;
     display: inline !important;
 }
 

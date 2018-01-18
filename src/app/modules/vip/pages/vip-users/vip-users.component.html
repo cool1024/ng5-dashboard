@@ -1,0 +1,103 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
+    <div class="card-body">
+        <div class="input-group">
+            <span class="input-group-addon bg-white">昵称</span>
+            <input [(ngModel)]="this.search.params.nick" type="text" class="form-control" placeholder="请输入查询昵称的关键词">
+            <span class="input-group-addon bg-white">电话</span>
+            <input [(ngModel)]="this.search.params.phone" type="text" class="form-control" placeholder="请输入查询电话关键词">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon bg-white">等级</span>
+            <div class="form-control p-0" style="display: block;">
+                <ts-select [items]="vip_levels" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员等级" [(value)]="search.params.vip_level"
+                    selectClass="border-0" width="100%"></ts-select>
+            </div>
+            <span class="input-group-addon  bg-white">性别</span>
+            <div class="form-control p-0" style="display: block;">
+                <ts-select [items]="vip_genders" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员性别" [(value)]="search.params.gender"
+                    selectClass="border-0" width="100%"></ts-select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-addon bg-white">共查询到</span>
+                    <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
+                    <span class="input-group-addon bg-white">条/结果</span>
+                </div>
+            </div>
+            <div class="col-6 text-right">
+                <button (click)="resetSearch()" class="btn btn-white">
+                    <i class="fa fa-refresh fa-fw"></i>
+                    <span>重置</span>
+                </button>
+                <button (click)="doSearch()" class="btn btn-white">
+                    <i class="fa fa-search fa-fw"></i>
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
+    <div class="card-body">
+        <table class="table table-striped mb-0 text-center">
+            <thead class="text-dark">
+                <tr>
+                    <th *ngFor="let th of theads" class="border-0">{{th}}</th>
+                </tr>
+            </thead>
+            <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
+                <tr *ngFor="let item of list;index as i" class="mat-cell">
+                    <td>{{item.id}}</td>
+                    <td>
+                        <img class="rounded-circle" ts-loading default="/assets/image/card/1.jpg" width="30" height="30" [src]="item.avatar">
+                    </td>
+                    <td>{{item.nick}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>
+                        <span *ngIf="item.gender===0" class="text-info">
+                            <i class="fa fa-mars fa-fw"></i>先生
+                        </span>
+                        <span *ngIf="item.gender===1" class="text-danger">
+                            <i class="fa fa-mercury fa-fw"></i>女士
+                        </span>
+                        <span *ngIf="item.gender===2" class="text-muted">
+                            <i class="fa fa-transgender fa-fw"></i>未设置
+                        </span>
+                    </td>
+                    <!--Lv.5以上的会员要特别表明-->
+                    <td [class.text-danger]="item.vip_level>=5">Lv.{{item.vip_level}}</td>
+                    <td>{{item.vip_credit}}</td>
+                    <td>
+                        <button (click)="showUserInfoModal(item.id)" class="btn btn-info btn-sm">
+                            <i class="fa fa-info fa-fw"></i>详情</button>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fa fa-credit-card fa-fw"></i>充值</button>
+                        <button class="btn btn-danger btn-sm">
+                            <i class="fa fa-close fa-fw"></i>删除</button>
+                    </td>
+                </tr>
+                <tr class="mat-cell" *ngIf="list.length<=0">
+                    <td [attr.colspan]="theads.length" class="text-center text-info">
+                        暂无数据～
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <button (click)="goPage(page)" class="btn btn-outline-info border-muted" type="button">跳转到</button>
+            <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input form-sm-control border-muted" type="number">
+            <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+                [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+                [dropup]="true"></ts-dropdown>
+            <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+                colors="btn-outline-info border-muted"></ts-pagination>
+        </div>
+    </div>
+</div>

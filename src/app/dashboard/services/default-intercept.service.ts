@@ -14,7 +14,6 @@ import 'rxjs/add/operator/timeout';
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
     constructor(private toast: TSToastService, private router: Router, private global: GlobalValueService) { }
-
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
             .timeout(HttpConfig.REQUEST_TIMEOUT)
@@ -63,6 +62,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                         // console.log('response error');
                         response = response.clone<ApiData>({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
                     }
+                    console.log(document.cookie);
                 }
                 return response;
             });

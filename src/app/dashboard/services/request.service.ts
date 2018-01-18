@@ -12,7 +12,7 @@ export class RequestService {
 
     private server_url: string;
     private coverHeader: boolean;
-    private appedHeaders: { [key: string]: string };
+    private appendHeaders: { [key: string]: string };
 
     constructor(private http: HttpClient, private storage: StorageService) {
         this.server_url = HttpConfig.SERVER_URL;
@@ -98,7 +98,7 @@ export class RequestService {
     // 重置一个reqeust服务,添加自定义请求头
     withHeader(headers: { [key: string]: string }, cover = false): RequestService {
         const request = new RequestService(this.http, this.storage);
-        request.appedHeaders = headers;
+        request.appendHeaders = headers;
         request.coverHeader = cover;
         return request;
     }
@@ -115,13 +115,13 @@ export class RequestService {
             request.server_url = config.url;
         }
         if (config.headers != null || config !== undefined) {
-            request.appedHeaders = config.headers;
+            request.appendHeaders = config.headers;
         }
         if (config.cover) {
             request.coverHeader = config.cover;
         }
         if (config.withoutHeader) {
-            request.appedHeaders = {};
+            request.appendHeaders = {};
             request.coverHeader = true;
         }
         return request;
@@ -129,10 +129,10 @@ export class RequestService {
 
     private getHeaders(): HttpHeaders {
         let header = new HttpHeaders();
-        if (this.appedHeaders) {
-            for (const key in this.appedHeaders) {
-                if (this.appedHeaders.hasOwnProperty(key)) {
-                    header = header.append(key, this.appedHeaders[key]);
+        if (this.appendHeaders) {
+            for (const key in this.appendHeaders) {
+                if (this.appendHeaders.hasOwnProperty(key)) {
+                    header = header.append(key, this.appendHeaders[key]);
                 }
             }
         }
