@@ -62,7 +62,6 @@ export class DefaultInterceptor implements HttpInterceptor {
                         // console.log('response error');
                         response = response.clone<ApiData>({ body: new ApiData(false, HttpError.API_DATA_ERROR, response) });
                     }
-                    console.log(document.cookie);
                 }
                 return response;
             });

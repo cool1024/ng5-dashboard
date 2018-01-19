@@ -1,6 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { VipUser } from './../../interfaces/vip-user';
-import { SearchParams, Pagination, TSModalService } from '../../../../tools-ui';
+import {
+    SearchParams,
+    Pagination,
+    TSModalService,
+    TSConfirmService,
+    TSToastService,
+} from '../../../../tools-ui';
 import { HttpConfig } from '../../../../config/http.config';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { VipLevels } from './../../datas/vip-level.data';
@@ -32,7 +38,12 @@ export class VipUsersComponent implements OnInit {
     // 会员性别选项
     vip_genders = VipGenders;
 
-    constructor(private request: RequestService, private modal: TSModalService) { }
+    constructor(
+        private request: RequestService,
+        private modal: TSModalService,
+        private confirm: TSConfirmService,
+        private toast: TSToastService,
+    ) { }
 
     ngOnInit() {
         this.pagination.limit = 20;
@@ -43,7 +54,19 @@ export class VipUsersComponent implements OnInit {
     showUserInfoModal(id: number) {
         this.modal.create(VipUserInfoModalComponent);
         this.modal.modal.instance.user.id = id;
-        this.modal.open();
+        this.modal.open().next(() => { this.pageChanged(); });
+    }
+
+    // 删除用户
+    confirmDelete(user: VipUser) {
+        this.confirm.danger('警告', `确认删除会员 ${user.nick} ,操作不可恢复?!`, { okTitle: '确认', cancelTitle: '取消' }).next(() => {
+            this.toast.danger('拒绝操作', '这是测试数据,不允许删除(⊙o⊙)哦~');
+        });
+    }
+
+    // 用户充值
+    showRechargeModal(user: VipUser) {
+        this.toast.danger('拒绝操作', `${user.nick}-测试数据无法进行充值操作`);
     }
 
     // 换页事件(特别的更改每页数据量也会触发此事件)

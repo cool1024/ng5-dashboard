@@ -55,16 +55,6 @@ export class RoleManagerModalComponent implements OnInit {
                 });
                 this.switchs.push(permissionSwitchs);
             });
-            // this.permissions.forEach(permission => {
-            //     let flag = false;
-            //     rolePermission.forEach(p => {
-            //         if (permission.id === parseInt(p, 10)) {
-            //             flag = true;
-            //         }
-            //     });
-            //     this.switchs.push(flag);
-
-            // });
         });
         this.request.url('/admin/roles ').subscribe(res => {
             this.roles = this.selectService.formatSelectOptions(res.datas, { value: 'id', text: 'name' });
@@ -78,14 +68,17 @@ export class RoleManagerModalComponent implements OnInit {
 
     // 更新或保存
     updateOrSave(handle: any) {
-        const permissions = new Array<number>();
-        this.switchs.forEach((e, i) => {
-            if (e) {
-                permissions.push(this.permissions[i].id);
-            }
+        const permissions = <number[]>[];
+        this.models.forEach((model, i) => {
+            const permissionSwitchs = <boolean[]>[];
+            this.getPermissionsByModel(model.id).forEach((permission, j) => {
+                if (this.switchs[i][j]) {
+                    permissions.push(permission.id);
+                }
+            });
         });
         this.role.permissions = permissions.join();
-        console.log(this.permissions);
+        console.log(permissions);
         if (this.role.id > 0) {
             this.request.put('/role/update', this.role, false).subscribe(res => {
                 if (res.result) {

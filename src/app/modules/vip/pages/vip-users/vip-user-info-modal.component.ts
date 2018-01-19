@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TSModalService } from './../../../../tools-ui';
+import { TSModalService, TSToastService } from './../../../../tools-ui';
 import { VipUser } from '../../interfaces/vip-user';
 import { RequestService } from '../../../../dashboard/services/request.service';
 import { HttpConfig } from '../../../../config/http.config';
@@ -16,18 +16,18 @@ import { HttpConfig } from '../../../../config/http.config';
             </span>
         </div>
         <div class="modal-body" style="overflow:auto">
-            <ts-load-css *ngIf="loading;else form_pad" borderClass="border-secondary"></ts-load-css>
+            <ts-load-css *ngIf="loading;else form_pad" borderClass="border-info"></ts-load-css>
             <ng-template #form_pad>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">昵称</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" [value]="user.nick">
+                        <input type="text" class="form-control" [(ngModel)]="user.nick">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">电话</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" [value]="user.phone">
+                        <input type="text" class="form-control" [(ngModel)]="user.phone">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -61,7 +61,8 @@ import { HttpConfig } from '../../../../config/http.config';
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-white" (click)="dismiss()">关闭窗口</button>
-            <button type="button" [disabled]="loading" class="btn btn-success" (click)="confirmSubmit()">确认修改</button>
+            <button type="button" #btnSubmit="tsLoading" ts-loading title="确认修改"
+                 [disabled]="loading" class="btn btn-success" (click)="confirmSubmit(btnSubmit)"></button>
         </div>`,
 })
 export class VipUserInfoModalComponent implements OnInit {
@@ -81,8 +82,9 @@ export class VipUserInfoModalComponent implements OnInit {
     // source = HttpConfig.SOURCE_URL + '/';
 
     constructor(
-        private modalService: TSModalService,
+        private modal: TSModalService,
         private reqeust: RequestService,
+        private toast: TSToastService,
     ) { }
 
     ngOnInit() {
@@ -92,15 +94,21 @@ export class VipUserInfoModalComponent implements OnInit {
         });
     }
 
-    confirmSubmit() {
-
+    confirmSubmit(btnSubmit: any) {
+        this.reqeust.put('/vip/user/update', <{ [key: string]: any }>this.user, false).subscribe(res => {
+            if (res.result) {
+                this.toast.success('修改成功', '成功修改用户信息~');
+                this.close();
+            }
+            btnSubmit.ready();
+        });
     }
 
     close() {
-        this.modalService.close();
+        this.modal.close();
     }
 
     dismiss() {
-        this.modalService.dismiss();
+        this.modal.dismiss();
     }
 }

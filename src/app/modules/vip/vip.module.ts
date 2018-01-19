@@ -15,7 +15,6 @@ import {
 /*路由模块*/
 import { VipRoutingModule } from './vip.routing';
 
-
 /*页面组件*/
 import { VipUsersComponent } from './pages/vip-users/vip-users.component';
 import { VipUserInfoModalComponent } from './pages/vip-users/vip-user-info-modal.component';

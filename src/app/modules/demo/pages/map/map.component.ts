@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
         this.mapService.doFuc(() => {
             this.mapStatus = true;
             this.map.setMarker([116.480983, 40.0958]);
+            this.changeDetectorRef.detectChanges();
         });
     }
 

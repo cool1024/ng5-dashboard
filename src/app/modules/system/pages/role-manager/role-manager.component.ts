@@ -57,11 +57,13 @@ export class RoleManagerComponent implements OnInit {
 
     // 搜索方法
     doSearch() {
+        this.pagination.page = 1;
         this.pageChanged();
     }
 
     // 重置搜索
     resetSearch() {
+        this.pagination.page = 1;
         this.search.clean();
         this.pageChanged();
     }
