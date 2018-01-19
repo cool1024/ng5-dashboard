@@ -27,7 +27,7 @@ export class RoleManagerModalComponent implements OnInit {
     permissions = new Array<{ id: number, modelid: number, name: string }>();
 
     // 权限开启状态
-    switchs = new Array<boolean>();
+    switchs = new Array<boolean[]>();
 
     constructor(
         private modalService: TSModalService,
@@ -42,16 +42,29 @@ export class RoleManagerModalComponent implements OnInit {
             const rolePermission = this.role.permissions ? this.role.permissions.split(',') : [];
             this.models = res.datas.models;
             this.permissions = res.datas.permissions;
-            this.permissions.forEach(permission => {
-                let flag = false;
-                rolePermission.forEach(p => {
-                    if (permission.id === parseInt(p, 10)) {
-                        flag = true;
-                    }
+            this.models.forEach(model => {
+                const permissionSwitchs = <boolean[]>[];
+                this.getPermissionsByModel(model.id).forEach(permission => {
+                    let flag = false;
+                    rolePermission.forEach(p => {
+                        if (permission.id === parseInt(p, 10)) {
+                            flag = true;
+                        }
+                    });
+                    permissionSwitchs.push(flag);
                 });
-                this.switchs.push(flag);
-
+                this.switchs.push(permissionSwitchs);
             });
+            // this.permissions.forEach(permission => {
+            //     let flag = false;
+            //     rolePermission.forEach(p => {
+            //         if (permission.id === parseInt(p, 10)) {
+            //             flag = true;
+            //         }
+            //     });
+            //     this.switchs.push(flag);
+
+            // });
         });
         this.request.url('/admin/roles ').subscribe(res => {
             this.roles = this.selectService.formatSelectOptions(res.datas, { value: 'id', text: 'name' });

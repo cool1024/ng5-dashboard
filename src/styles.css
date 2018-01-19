@@ -29,6 +29,10 @@
 }
 
 
+/*load css*/
+
+@import "./assets/css/load-css.css";
+
 /* 设置滚动条的样式 */
 
 ::-webkit-scrollbar {

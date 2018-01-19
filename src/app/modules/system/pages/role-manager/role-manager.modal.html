@@ -20,12 +20,12 @@
     <div class="form-group">
         <label for="parent" class="col-form-label">权限分配:</label>
         <div>
-            <div class="border border-muted p-2 permission-pad" *ngFor="let model of models">
+            <div class="border border-muted p-2 permission-pad" *ngFor="let model of models;index as i">
                 <p>{{model.name}}</p>
                 <div class="mt-2 toggles">
-                    <div class="d-inline-block" style="width:100px;" *ngFor="let permission of getPermissionsByModel(model.id);index as i">
-                        <ts-switch activeClass="bg-info" [(value)]="switchs[i]"></ts-switch>
-                        <span [class.text-info]="switchs[i]">{{permission.name}}</span>
+                    <div class="d-inline-block" style="width:100px;" *ngFor="let permission of getPermissionsByModel(model.id);index as j">
+                        <ts-switch activeClass="bg-info" [(value)]="switchs[i][j]"></ts-switch>
+                        <span [class.text-info]="switchs[i][j]">{{permission.name}}</span>
                     </div>
                 </div>
             </div>

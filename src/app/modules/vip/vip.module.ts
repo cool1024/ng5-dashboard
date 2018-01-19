@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 
 /*tools-ui*/
 import {
-  TSDropdownModule,
-  TSPaginationModule,
-  TSLoadingModule,
-  TSSelectModule,
-  TSModalModule,
+    TSDropdownModule,
+    TSPaginationModule,
+    TSLoadingModule,
+    TSSelectModule,
+    TSModalModule,
+    TSSpinnerModule,
+    TSCheckboxModule,
 } from '../../tools-ui';
 
 /*路由模块*/
@@ -19,21 +21,23 @@ import { VipUsersComponent } from './pages/vip-users/vip-users.component';
 import { VipUserInfoModalComponent } from './pages/vip-users/vip-user-info-modal.component';
 
 @NgModule({
-  imports: [
-    FormsModule,
-    VipRoutingModule,
-    TSDropdownModule,
-    TSPaginationModule,
-    TSLoadingModule,
-    TSSelectModule,
-    TSModalModule,
-  ],
-  declarations: [
-    VipUsersComponent,
-    VipUserInfoModalComponent,
-  ],
-  entryComponents: [
-    VipUserInfoModalComponent,
-  ]
+    imports: [
+        FormsModule,
+        VipRoutingModule,
+        TSDropdownModule,
+        TSPaginationModule,
+        TSLoadingModule,
+        TSSelectModule,
+        TSModalModule,
+        TSSpinnerModule,
+        TSCheckboxModule,
+    ],
+    declarations: [
+        VipUsersComponent,
+        VipUserInfoModalComponent,
+    ],
+    entryComponents: [
+        VipUserInfoModalComponent,
+    ]
 })
 export class VipModule { }

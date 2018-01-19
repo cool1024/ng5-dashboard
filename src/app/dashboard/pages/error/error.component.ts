@@ -9,7 +9,7 @@ import { GlobalValueService } from '../../services/global-value.service';
 export class ErrorComponent implements OnInit {
 
   errorConfig = {
-    zIndex: 1050,
+    zIndex: 1051,
   };
 
   constructor(private global: GlobalValueService) { }
