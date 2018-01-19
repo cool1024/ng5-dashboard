@@ -40,4 +40,13 @@ export class FormService {
         });
         return ids;
     }
+
+    // 获取对象数组中的指定键值列表
+    getAttrs<T>(objs: any[], attr: string): T[] {
+        const attrs = [];
+        objs.forEach(obj => {
+            attrs.push(obj[attr]);
+        });
+        return attrs;
+    }
 }

@@ -39,7 +39,7 @@ export class SimpleComponent implements OnInit {
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
 
-            this.requestService.withConfig({ url: '' }).text(`/assets/docs/${params.docs}.md`).subscribe(res => {
+            this.requestService.withConfig({ url: '' }).text(`assets/docs/${params.docs}.md`).subscribe(res => {
                 const renderer = new window.marked.Renderer();
 
                 renderer.code = (code: string, language: string): string => {

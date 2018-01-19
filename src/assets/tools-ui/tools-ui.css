@@ -53,6 +53,11 @@ a:visited {
     cursor: not-allowed !important;
 }
 
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
 
 /*bootstrap4 样式拓展*/
 

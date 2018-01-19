@@ -2,39 +2,39 @@ import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angu
 import { ToggleComponent } from './../interfaces/toggle-component.interface';
 
 @Directive({
-  selector: '[ts-dom-toggle]',
-  exportAs: 'tsDomToggle',
+    selector: '[ts-dom-toggle]',
+    exportAs: 'tsDomToggle',
 })
 export class DomToggleDirective implements AfterViewInit {
 
-  @Input() target: ToggleComponent;
-  @Input() useHover: boolean;
+    @Input() target: ToggleComponent;
+    @Input() useHover: boolean;
 
-  hasBind = false;
+    hasBind = false;
 
-  constructor(private elementRef: ElementRef) {
-    this.useHover = false;
-  }
-
-  ngAfterViewInit() {
-    this.bind();
-  }
-
-  @HostListener('click') onclick() {
-    this.target.toggle();
-  }
-
-  @HostListener('hover') onhover() {
-    if (this.useHover) {
-      this.target.toggle();
+    constructor(private elementRef: ElementRef) {
+        this.useHover = false;
     }
-  }
 
-  private bind() {
-    if (this.hasBind || !this.target) {
-      return;
+    ngAfterViewInit() {
+        this.bind();
     }
-    this.hasBind = true;
-    this.target.bind(this.elementRef);
-  }
+
+    @HostListener('click') onclick() {
+        this.target.toggle();
+    }
+
+    @HostListener('hover') onhover() {
+        if (this.useHover) {
+            this.target.toggle();
+        }
+    }
+
+    private bind() {
+        if (this.hasBind || !this.target) {
+            return;
+        }
+        this.hasBind = true;
+        this.target.bind(this.elementRef);
+    }
 }

@@ -1,12 +1,13 @@
 /*系统主题配置文件*/
 
-/*顶部工具栏*/
+// info主题工具栏参数
 const Info_Header = {
-    zIndex: 1040,
-    titleWidth: '170px',
-    bgClass: 'bg-info',
+    zIndex: 1040, // header图层高度
+    titleWidth: '170px', // 标题宽度，与菜单宽度相关
+    bgClass: 'bg-info', // header背景样式
 };
-/*菜单配置*/
+
+// info主题菜单参数
 const Info_Menu = {
     baseClass: 'bg-white', // 基础样式类
     angleIconWidth: '30px', // 折叠图标尺寸
@@ -24,13 +25,14 @@ const Info_Menu = {
 };
 
 
-
+// secondary主题工具栏参数
 const Secondary_Header = {
     zIndex: 1040, // header图层高度
     titleWidth: '170px', // 标题宽度，与菜单宽度相关
     bgClass: 'bg-secondary text-light', // header背景样式
 };
 
+// secondary主题菜单参数
 const Secondary_Menu = {
     baseClass: 'bg-white', // 基础样式类
     angleIconWidth: '30px', // 折叠图标尺寸
@@ -47,12 +49,14 @@ const Secondary_Menu = {
     marginTop: '60px', // 菜单距离顶部的距离,与headbar高度有关
 };
 
+// danger主题工具栏参数
 const Danger_Header = {
     zIndex: 1040, // header图层高度
     titleWidth: '170px', // 标题宽度，与菜单宽度相关
     bgClass: 'bg-danger text-light', // header背景样式
 };
 
+// danger主题菜单参数
 const Danger_Menu = {
     baseClass: 'bg-white', // 基础样式类
     angleIconWidth: '30px', // 折叠图标尺寸
@@ -69,24 +73,27 @@ const Danger_Menu = {
     marginTop: '60px', // 菜单距离顶部的距离,与headbar高度有关
 };
 
+// info主题
 export const Info_Theme = {
     menu: Info_Menu,
     header: Info_Header
 };
 
+// secondary主题
 export const Secondary_Theme = {
     menu: Secondary_Menu,
     header: Secondary_Header
 };
 
+// danger主题
 export const Danger_Theme = {
     menu: Danger_Menu,
     header: Danger_Header
 };
 
 export const Themes = {
-    'default': Info_Theme, // 默认主题
-    'info': Info_Theme,
-    'secondary': Secondary_Theme,
-    'danger': Danger_Theme,
+    'default': Info_Theme, // info作为默认主题
+    'info': Info_Theme, // info主题
+    'secondary': Secondary_Theme, // secondary主题
+    'danger': Danger_Theme, // danger主题
 };

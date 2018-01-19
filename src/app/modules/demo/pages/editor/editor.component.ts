@@ -9,11 +9,18 @@ import { ViewModalComponent } from './view-modal.component';
 })
 export class EditorComponent {
 
-    config = EditOptions;
+    config = <any>EditOptions;
     content = `<pre style="text-align: center;"><span style="font-size: 36px;">这是一个富文本编辑器</span></pre>
-    <p><img src="http://139.129.161.216/upload/fc699c094126ee4800ac2a336dc9d7be.jpg" class="fr-fic fr-dib"></p>`;
+    <p><img src="http://139.129.161.216/upload/fc699c094126ee4800ac2a336dc9d7be.jpg" class="fr-fic fr-dib"></p>
+    <p><img src="http://ts.cool1024.com/upload/319d3234ef2791d6dcf0a59372b2f1cf.jpg" class="fr-fic fr-dib"></p>`;
 
-    constructor(private modal: TSModalService) { }
+    constructor(private modal: TSModalService) {
+        this.config.imageUploadParams = {
+            'ng-params-one': 'NjE=',
+            'ng-params-three': 'admin',
+            'ng-params-two': 'YmU5MDA2OTE4NzZlMzRmNzJlMDE5MzExMWVlNWI3NGI0MWYwYTkyOQ==',
+        };
+    }
 
     // 显示预览窗口
     showViewModal() {
