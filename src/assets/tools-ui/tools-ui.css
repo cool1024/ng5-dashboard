@@ -147,3 +147,8 @@ a:visited {
 .text-default {
     color: #ccc;
 }
+
+.required-label::before {
+    content: '* ';
+    color: red;
+}

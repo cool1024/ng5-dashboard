@@ -7,6 +7,7 @@ import { CheckboxComponent } from './pages/checkbox/checkbox.component';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { LoopCardComponent } from './pages/loop-card/loop-card.component';
 import { MutiComponent } from './pages/muti/muti.component';
+import { CheckFormComponent } from './pages/checkform/checkform.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'loopcard', component: LoopCardComponent,
     data: { breadcrumbs: new Breadcrumbs([['表单', 'list-alt'], ['轮播图', 'file-image-o']]) }
+  },
+  {
+    path: 'checkform', component: CheckFormComponent,
+    data: { breadcrumbs: new Breadcrumbs([['表单', 'list-alt'], ['表单校验', 'filter']]) }
   },
 ];
 

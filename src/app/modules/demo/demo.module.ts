@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 
 /*tool-ui*/
-import { TSChartModule, TSModalModule, TSMapModule } from './../../tools-ui';
+import {
+  TSChartModule,
+  TSModalModule,
+  TSMapModule,
+  TSPrismCodeModule,
+} from './../../tools-ui';
 
 /*富文本编辑模块*/
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -13,6 +18,7 @@ import { DemoRoutingModule } from './demo.routing';
 import { ChartComponent } from './pages/chart/chart.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { MapComponent } from './pages/map/map.component';
+import { CodeComponent } from './pages/code/code.component';
 
 /*弹窗组件*/
 import { ViewModalComponent } from './pages/editor/view-modal.component';
@@ -25,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     DemoRoutingModule,
     TSModalModule,
     TSMapModule,
+    TSPrismCodeModule,
 
     /*富文本编辑模块*/
     FroalaEditorModule,
@@ -33,6 +40,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ChartComponent,
     EditorComponent,
+    CodeComponent,
     MapComponent,
     ViewModalComponent,
   ],

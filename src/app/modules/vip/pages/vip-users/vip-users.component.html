@@ -3,19 +3,27 @@
         <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
     <div class="card-body">
         <div class="input-group">
-            <span class="input-group-addon bg-white">昵称</span>
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">昵称</span>
+            </div>
             <input [(ngModel)]="this.search.params.nick" type="text" class="form-control" placeholder="请输入查询昵称的关键词">
-            <span class="input-group-addon bg-white">电话</span>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">电话</span>
+            </div>
             <input [(ngModel)]="this.search.params.phone" type="text" class="form-control" placeholder="请输入查询电话关键词">
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon bg-white">等级</span>
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">等级</span>
+            </div>
             <div class="form-control p-0" style="display: block;">
                 <ts-select [items]="vip_levels" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员等级" [(value)]="search.params.vip_level"
                     selectClass="border-0" width="100%"></ts-select>
             </div>
-            <span class="input-group-addon  bg-white">性别</span>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">性别</span>
+            </div>
             <div class="form-control p-0" style="display: block;">
                 <ts-select [items]="vip_genders" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员性别" [(value)]="search.params.gender"
                     selectClass="border-0" width="100%"></ts-select>
@@ -25,9 +33,13 @@
         <div class="row">
             <div class="col-6">
                 <div class="input-group">
-                    <span class="input-group-addon bg-white">共查询到</span>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">共查询到</span>
+                    </div>
                     <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
-                    <span class="input-group-addon bg-white">条/结果</span>
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white">条/结果</span>
+                    </div>
                 </div>
             </div>
             <div class="col-6 text-right">

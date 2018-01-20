@@ -4,24 +4,37 @@
             <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
         <div class="card-body">
             <div class="input-group">
-                <span class="input-group-addon bg-white">名称</span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white">名称</span>
+                </div>
                 <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入查询名称的关键词">
             </div>
             <br>
             <div class="input-group">
-                <span class="input-group-addon bg-white">质量</span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white">质量</span>
+                </div>
                 <input [(ngModel)]="this.search.params.start" type="text" class="form-control" placeholder="筛选的最小质量">
-                <span class="input-group-addon  bg-white">到</span>
+                <div class="input-group-prepend input-group-append">
+                    <span class="input-group-text  bg-white">到</span>
+                </div>
                 <input [(ngModel)]="this.search.params.end" type="text" class="form-control" placeholder="筛选的最大质量">
-                <span class="input-group-addon bg-white">克</span>
+                <div class="input-group-append">
+                    <span class="input-group-text bg-white">克</span>
+                </div>
+
             </div>
             <br>
             <div class="row">
                 <div class="col-6">
                     <div class="input-group">
-                        <span class="input-group-addon bg-white">共查询到</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">共查询到</span>
+                        </div>
                         <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
-                        <span class="input-group-addon bg-white">条/结果</span>
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">条/结果</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6 text-right">

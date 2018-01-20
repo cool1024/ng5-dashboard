@@ -16,6 +16,7 @@ import { FormService } from './services/form.service';
 import { GlobalValueService } from './services/global-value.service';
 import { DefaultInterceptor } from './services/default-intercept.service';
 import { SignInterceptor } from './services/sign-intercept.service';
+import { RegExpService } from './services/regexp.service';
 
 import { HeadComponent } from './components/head/head.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -62,6 +63,7 @@ export class DashboardModule {
                 GuardService,
                 DefaultGuardService,
                 FormService,
+                RegExpService,
                 GlobalValueService,
                 MenuService,
                 ThemeService,

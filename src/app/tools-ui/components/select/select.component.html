@@ -2,9 +2,11 @@
     <div #DropdownToggle class="input-group border border-default rounded" [ngClass]="selectClass">
         <input #inputDom type="text" (blur)="trycloseDropdown($event)" class="form-control border-0 shadow-0 bg-white" [(ngModel)]="searchKey"
             placeholder="{{placeholder}}" autocomplete="off">
-        <span class="input-group-addon bg-white border-0">
-            <i class="fa fa-fw fa-caret-down"></i>
-        </span>
+        <div class="input-group-append">
+            <span class="input-group-text bg-white border-0">
+                <i class="fa fa-fw fa-caret-down"></i>
+            </span>
+        </div>
     </div>
     <div #DropdownMenu class="dropdown-menu" [class.show]="open" x-placement="bottom-start" style="position: absolute; top: 0px; left: 0px; will-change: transform;max-height: 300px;overflow-y: auto;">
         <button *ngFor="let item of itemsList" [class.active]="item.value==value" targetclass="dropdown-item" class="dropdown-item"

@@ -4,17 +4,23 @@
             <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
         <div class="card-body">
             <div class="input-group">
-                <span class="input-group-addon bg-white">商品名称</span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white">商品名称</span>
+                </div>
                 <input [(ngModel)]="this.search.params.name" type="text" class="form-control" placeholder="请输入商品名称的关键词">
             </div>
             <br>
             <div class="input-group">
-                <span class="input-group-addon bg-white">商品状态</span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white">商品状态</span>
+                </div>
                 <div class="form-control p-0" style="display: block;">
                     <ts-select [items]="goods_status" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品状态" [(value)]="search.params.status"
                         selectClass="border-0" width="100%"></ts-select>
                 </div>
-                <span class="input-group-addon  bg-white">商品种类</span>
+                <div class="input-group-prepend input-group-append">
+                    <span class="input-group-text bg-white">商品种类</span>
+                </div>
                 <div class="form-control p-0" style="display: block;">
                     <ts-select [items]="goods_types" width="100%" emptyLabel="没有匹配的选项." placeholder="选择商品种类" [(value)]="search.params.type" selectClass="border-0"
                         width="100%"></ts-select>
@@ -24,9 +30,13 @@
             <div class="row">
                 <div class="col-6">
                     <div class="input-group">
-                        <span class="input-group-addon bg-white">共查询到</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">共查询到</span>
+                        </div>
                         <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
-                        <span class="input-group-addon bg-white">条/结果</span>
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">条/结果</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6 text-right">

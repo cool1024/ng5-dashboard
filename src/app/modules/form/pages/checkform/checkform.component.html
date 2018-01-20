@@ -1,0 +1,37 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">正则验证服务</div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label class="required-label">价格(最多两位小数)</label>
+                <input ngModel #price="ngModel" type="text" [class.is-invalid]="!price.pristine&&!isValid(price.value,'price')" [class.is-valid]="isValid(price.value,'price')"
+                    class="form-control" required>
+                <div class="valid-feedback">格式正确</div>
+                <div class="invalid-feedback">格式错误</div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="required-label">正整数</label>
+                <input ngModel #integer="ngModel" type="text" [class.is-invalid]="!integer.pristine&&!isValid(integer.value,'integer')" [class.is-valid]="isValid(integer.value,'integer')"
+                    class="form-control" required>
+                <div class="valid-feedback">格式正确</div>
+                <div class="invalid-feedback">格式错误</div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="required-label">6数字位验证码</label>
+                <input ngModel #code="ngModel" type="text" [class.is-invalid]="!code.pristine&&!isValid(code.value,'code')" [class.is-valid]="isValid(code.value,'code')"
+                    class="form-control" required>
+                <div class="valid-feedback">格式正确</div>
+                <div class="invalid-feedback">格式错误</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label class="required-label">邮箱</label>
+                <input ngModel #email="ngModel" type="text" [class.is-invalid]="!email.pristine&&!isValid(email.value,'email')" [class.is-valid]="isValid(email.value,'email')"
+                    class="form-control" required>
+                <div class="valid-feedback">格式正确</div>
+                <div class="invalid-feedback">格式错误</div>
+            </div>
+        </div>
+    </div>
+</div>

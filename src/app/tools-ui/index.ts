@@ -24,6 +24,7 @@ export { BtnGroupModule as TSBtnGroupModule } from './modules/btn-group.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
 export { MapModule as TSMapModule } from './lib/map/map.module';
+export { PrismCodeModule as TSPrismCodeModule } from './lib/prism-code/prism-code.module';
 
 /*tool components*/
 export { BtnGroupModalComponent } from './modals/btn-group-modal.component';

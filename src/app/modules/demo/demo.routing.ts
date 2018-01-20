@@ -4,6 +4,7 @@ import { Breadcrumbs } from './../../dashboard/classes/breadcrumb.class';
 import { ChartComponent } from './pages/chart/chart.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { MapComponent } from './pages/map/map.component';
+import { CodeComponent } from './pages/code/code.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: 'map',
     component: MapComponent,
     data: { breadcrumbs: new Breadcrumbs([['第三方库', 'archive'], ['地图', 'map']]) }
+  },
+  {
+    path: 'code',
+    component: CodeComponent,
+    data: { breadcrumbs: new Breadcrumbs([['第三方库', 'archive'], ['代码高亮', 'code']]) }
   },
 ];
 

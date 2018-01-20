@@ -11,8 +11,10 @@ import { ModalService } from '../components/modal/modal.service';
         </div>
         <div class="modal-body" style="max-height:600px;overflow:auto">
             <div class="input-group">
-                <div class="input-group-addon bg-white">
-                    <span class="input-group-text">{{options.label}}</span>
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <span class="input-group-text">{{options.label}}</span>
+                    </div>
                 </div>
                 <input #filterKey="ngModel" ngModel type="text" class="form-control" placeholder="{{options.placeholder}}">
             </div>

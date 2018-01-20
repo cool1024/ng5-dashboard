@@ -30,6 +30,7 @@ import { CheckboxComponent } from './pages/checkbox/checkbox.component';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { LoopCardComponent } from './pages/loop-card/loop-card.component';
 import { MutiComponent } from './pages/muti/muti.component';
+import { CheckFormComponent } from './pages/checkform/checkform.component';
 
 @NgModule({
     imports: [
@@ -58,6 +59,7 @@ import { MutiComponent } from './pages/muti/muti.component';
         DatepickerComponent,
         MutiComponent,
         LoopCardComponent,
+        CheckFormComponent,
     ],
     entryComponents: [
         SimpleModalComponent,
