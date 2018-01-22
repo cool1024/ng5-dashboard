@@ -60,13 +60,19 @@ export class VipUsersComponent implements OnInit {
     // 删除用户
     confirmDelete(user: VipUser) {
         this.confirm.danger('警告', `确认删除会员 ${user.nick} ,操作不可恢复?!`, { okTitle: '确认', cancelTitle: '取消' }).next(() => {
-            this.toast.danger('拒绝操作', '这是测试数据,不允许删除(⊙o⊙)哦~');
+            this.request.delete('/vip/user/delete', { id: user.id }).subscribe(res => {
+                this.toast.success('删除成功', `成功删除会员 ${user.nick}`);
+                this.pageChanged();
+            });
         });
     }
 
     // 用户充值
-    showRechargeModal(user: VipUser) {
-        this.toast.danger('拒绝操作', `${user.nick}-测试数据无法进行充值操作`);
+    showRechargeModal(id: number) {
+        this.modal.create(VipUserInfoModalComponent);
+        this.modal.modal.instance.user.id = id;
+        this.modal.modal.instance.useRecharge = true;
+        this.modal.open().next(() => { this.pageChanged(); });
     }
 
     // 换页事件(特别的更改每页数据量也会触发此事件)
