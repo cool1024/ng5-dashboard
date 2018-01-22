@@ -1,6 +1,5 @@
 
 import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChildren } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageConfig } from './../../interfaces/image-config.interface';
 
 @Component({
@@ -12,7 +11,7 @@ import { ImageConfig } from './../../interfaces/image-config.interface';
 export class InputImageComponent implements OnChanges {
 
     @Input() config: ImageConfig;
-    @Input() src: string | SafeResourceUrl;
+    @Input() src: string | { blobUrl: string };
     @Input() openBtnClassName: string;
     @Input() uploadBtnClassName: string;
     @Input() removeBtnClassName: string;
@@ -21,7 +20,7 @@ export class InputImageComponent implements OnChanges {
     @Input() imageStyle: { [key: string]: string };
 
     @Output() fileChange = new EventEmitter<File>(false);
-    @Output() srcChange = new EventEmitter<string | SafeResourceUrl>(false);
+    @Output() srcChange = new EventEmitter<string>(false);
 
     showImage = false;
     isLoading = false;
@@ -38,11 +37,11 @@ export class InputImageComponent implements OnChanges {
 
     get source(): string { return this.config ? (this.config.source || '') : ''; }
 
-    get realSrc(): string | SafeResourceUrl {
-        return typeof this.src === 'string' ? this.source + this.src : this.src;
+    get realSrc(): string {
+        return typeof this.src === 'string' ? this.source + this.src : this.src.blobUrl;
     }
 
-    constructor(private sanitizer: DomSanitizer) {
+    constructor() {
         this.default = '';
     }
 
@@ -60,7 +59,7 @@ export class InputImageComponent implements OnChanges {
         this.file = files[0];
         if (files.length > 0) {
             this.fileChange.emit(files[0]);
-            this.src = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[0]));
+            this.src = { blobUrl: window.URL.createObjectURL(files[0]) };
             this.showImage = true;
             if (!!this.config && this.config.auto) {
                 this.uploadFile();
