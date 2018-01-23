@@ -28,7 +28,8 @@ export class VipUsersComponent implements OnInit {
     // 查询参数
     search = new SearchParams({}, -1);
     // 表格标题
-    theads = ['No.', '头像', '昵称', '电话', '性别', '等级', '积分', '操作'];
+    // theads = ['No.', '头像', '昵称', '电话', '性别', '等级', '积分', '操作'];
+    theads = ['No.', '用户', '联系方式', '地址', '积分|等级', '操作'];
     // 资源地址
     source = HttpConfig.SOURCE_URL;
     // 会员列表

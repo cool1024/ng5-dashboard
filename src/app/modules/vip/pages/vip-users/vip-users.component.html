@@ -56,7 +56,8 @@
     </div>
 </div>
 <br>
-<div class="card rounded-0">
+<!--默认表格模式-->
+<!-- <div class="card rounded-0">
     <div class="card-body">
         <table class="table table-striped text-center">
             <thead class="text-dark">
@@ -83,7 +84,6 @@
                             <i class="fa fa-transgender fa-fw"></i>未设置
                         </span>
                     </td>
-                    <!--Lv.5以上的会员要特别表明-->
                     <td [class.text-danger]="item.vip_level>=5">Lv.{{item.vip_level}}</td>
                     <td>{{item.vip_credit}}</td>
                     <td>
@@ -112,4 +112,65 @@
                 colors="btn-outline-info border-muted"></ts-pagination>
         </div>
     </div>
-</div>
+</div> -->
+<!--密集表格模式-->
+<table class="table table-bordered">
+    <thead class="text-dark bg-light">
+        <tr>
+            <th *ngFor="let th of theads" class="border-0">{{th}}</th>
+        </tr>
+    </thead>
+    <tbody ts-flash-loading #loading="tsFlash" label="加载中..." [textClass]="'text-info'" [bgColor]="'rgba(255,255,255,0.8)'">
+        <tr *ngFor="let item of list;index as i" class="mat-cell">
+            <th scope="row" [class.th-active]="item.vip_level>=5">{{item.id}}</th>
+            <td>
+                <div class="media">
+                    <img alt="avatar" class="align-self-center mr-3 rounded-circle" [src]="item.avatar" height="40">
+                    <div class="media-body">
+                        <p class="m-0">{{item.nick}}</p>
+                        <p class="m-0 text-muted">
+                            <small *ngIf="item.gender===0" class="text-info">
+                                <i class="fa fa-mars fa-fw"></i>先生
+                            </small>
+                            <small *ngIf="item.gender===1" class="text-danger">
+                                <i class="fa fa-mercury fa-fw"></i>女士
+                            </small>
+                            <small *ngIf="item.gender===2" class="text-muted">
+                                <i class="fa fa-transgender fa-fw"></i>未设置
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="mb-0">{{item.phone}}</p>
+                <small class="text-muted">{{item.email}}</small>
+            </td>
+            <td>{{item.location}}</td>
+            <td>
+                <span class="mb-0" [class.text-danger]="item.vip_level>=5">
+                    Lv.{{item.vip_level}}
+                </span>| {{item.vip_credit}}
+            </td>
+            <td>
+                <button (click)="showUserInfoModal(item.id)" class="btn btn-info btn-sm">
+                    <i class="fa fa-info fa-fw"></i>详情</button>
+                <button (click)="showRechargeModal(item.id)" class="btn btn-primary btn-sm">
+                    <i class="fa fa-credit-card fa-fw"></i>充值</button>
+                <button (click)="confirmDelete(item)" class="btn btn-danger btn-sm">
+                    <i class="fa fa-close fa-fw"></i>删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td [attr.colspan]="theads.length" class="text-right">
+                <button (click)="goPage(page)" class="btn btn-outline-info border-muted" type="button">跳转到</button>
+                <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input form-sm-control border-muted" type="number">
+                <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+                    [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+                    [dropup]="true"></ts-dropdown>
+                <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+                    colors="btn-outline-info border-muted"></ts-pagination>
+            </td>
+        </tr>
+    </tbody>
+</table>
