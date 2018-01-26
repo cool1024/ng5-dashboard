@@ -12,9 +12,11 @@ export class SearchParams {
                     params[key] = this.params[key];
                 }
             } else if (typeof this.params[key] === 'object') {
+                // 日期解析
                 if (this.params[key]['year'] && this.params[key]['month'] && this.params[key]['day']) {
                     params[key] = this.params[key]['year'] + '/' + this.params[key]['month'] + '/' + this.params[key]['day'];
                 }
+                // 其他数据对象解析....
             }
         }
         return params;

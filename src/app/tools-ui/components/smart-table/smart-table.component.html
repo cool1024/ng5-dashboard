@@ -1,0 +1,118 @@
+<div class="w-100">
+    <table [ngClass]="config.tableClass">
+        <thead class="bg-light">
+            <tr>
+                <th class="border-0" scope="col" *ngFor="let thead of theads">{{thead}}</th>
+            </tr>
+        </thead>
+        <tbody ts-flash-loading #loading="tsFlash" [label]="config.flash.label" [textClass]="config.flash.textClass" [bgColor]="config.flash.bgColor">
+            <tr *ngFor="let item of list">
+                <ng-template ngFor let-col="$implicit" [ngForOf]="config.rows">
+                    <ng-container [ngSwitch]="col.type">
+                        <ng-template [ngSwitchCase]="'text'">
+                            <td [ngClass]="col.textClass">{{item[col.key]}}</td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'span'">
+                            <td>
+                                <span [ngClass]="col.getSpanClass(item)">{{col.getText(item)}}</span>
+                            </td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'avatar'">
+                            <td>
+                                <img alt="avatar" class="align-self-center mr-3" [ngClass]="col.avatarClass" [src]="col.src+item[col.key]" [width]="col.size.width"
+                                    [height]="col.size.height">
+                            </td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'avatar-text'">
+                            <td>
+                                <div class="media">
+                                    <img alt="avatar" class="align-self-center mr-3" [ngClass]="col.itemClasses[0]" [src]="col.src+item[col.keys[0]]" [width]="col.size.width"
+                                        [height]="col.size.height">
+                                    <div class="media-body">
+                                        <p class="m-0" [ngClass]="col.itemClasses[1]">{{item[col.keys[1]]}}</p>
+                                        <p class="m-0" [ngClass]="col.itemClasses[2]">
+                                            <small>{{item[col.keys[2]]}}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'avatar-diy'">
+                            <td>
+                                <div class="media">
+                                    <img alt="avatar" class="align-self-center mr-3" [ngClass]="col.avatarClass" [src]="col.src+item[col.keys[0]]" [width]="col.size.width"
+                                        [height]="col.size.height">
+                                    <div class="media-body">
+                                        <p class="m-0" [innerHtml]="toSaveHtml(col.formats[0](item[col.keys[1]]))"></p>
+                                        <p class="m-0" [innerHtml]="toSaveHtml(col.formats[1](item[col.keys[2]]))"></p>
+                                    </div>
+                                </div>
+                            </td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'text-group'">
+                            <td>
+                                <p class="mb-0" [ngClass]="col.textClasses[0]">{{item[col.keys[0]]}}</p>
+                                <small [ngClass]="col.textClasses[1]">{{item[col.keys[1]]}}</small>
+                            </td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'diy-item'">
+                            <td [innerHtml]="toSaveHtml(col.getString(item))"></td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'diy-items'">
+                            <td [innerHtml]="toSaveHtml(col.getString(item))"></td>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'button-group'">
+                            <td>
+                                <span>
+                                    <ng-container *ngFor="let btn of col.buttons">
+                                        <ng-container [ngSwitch]="btn.type">
+                                            <ng-template [ngSwitchCase]="'button'">
+                                                <button type="button" (click)="doFunc(item,btn.func)" [ngClass]="btn.btnClass">
+                                                    <i [ngClass]="btn.icon"></i>{{btn.text}}
+                                                </button>
+                                            </ng-template>
+                                            <ng-template [ngSwitchCase]="'dropdown'">
+                                                <div class="btn-group" ts-dropdown>
+                                                    <button type="button" class="dropdown-toggle" [ngClass]="btn.btnClass">
+                                                        {{btn.text}}</button>
+                                                    <div class="dropdown-menu">
+                                                        <button *ngFor="let itemText of btn.itemTexts;index as btnIndex" type="button" (click)="doFunc(item,btn.funcs[btnIndex])"
+                                                            class="dropdown-item">{{itemText}}</button>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template [ngSwitchCase]="'diy-button'">
+                                                <span (click)="doFunc(item,btn.func)" [innerHtml]="toSaveHtml(btn.getString(item))"></span>
+                                            </ng-template>
+                                            <ng-template ngSwitchDefault="'diy-button'">
+                                                按钮配置错误
+                                            </ng-template>
+                                        </ng-container>
+                                    </ng-container>
+                                </span>
+
+                            </td>
+                        </ng-template>
+                        <ng-template ngSwitchDefault>
+                            错误配置参数
+                        </ng-template>
+                    </ng-container>
+                </ng-template>
+            </tr>
+            <tr class="mat-cell" *ngIf="list.length<=0">
+                <td [attr.colspan]="theads.length" class="text-center text-info">
+                    暂无数据～
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right mb-3">
+        <button (click)="goPage(page)" class="btn btn-outline-info border-muted" type="button">跳转到</button>
+        <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input form-sm-control border-muted" type="number">
+        <ts-dropdown [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]" title="Dropdown" [select]="true"
+            [(value)]="this.pagination.limit" (valueChange)="this.pagination.page=1;pageChanged()" btnClass="btn-outline-info border-muted"
+            [dropup]="true"></ts-dropdown>
+        <ts-pagination [(pagination)]='pagination' (pageChange)="pageChanged()" startTitle="首页" prevTitle="上一页" nextTitle="下一页" endTitle="尾页"
+            colors="btn-outline-info border-muted"></ts-pagination>
+    </div>
+</div>

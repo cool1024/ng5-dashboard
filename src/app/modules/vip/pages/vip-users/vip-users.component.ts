@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { VipUser } from './../../interfaces/vip-user';
+import { NgModel } from '@angular/forms';
 import {
     SearchParams,
     Pagination,
@@ -9,10 +9,11 @@ import {
 } from '../../../../tools-ui';
 import { HttpConfig } from '../../../../config/http.config';
 import { RequestService } from '../../../../dashboard/services/request.service';
+import { VipUser } from './../../interfaces/vip-user';
 import { VipLevels } from './../../datas/vip-level.data';
 import { VipGenders } from './../../datas/vip-genders.data';
-import { NgModel } from '@angular/forms';
 import { VipUserInfoModalComponent } from './vip-user-info-modal.component';
+
 
 @Component({
     selector: 'app-vip-users',

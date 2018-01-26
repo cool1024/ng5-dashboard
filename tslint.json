@@ -127,7 +127,10 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      [
+        "app",
+        "ts"
+      ],
       "kebab-case"
     ],
     "no-output-on-prefix": true,

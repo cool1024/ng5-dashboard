@@ -59,7 +59,8 @@ export class SimpleComponent implements OnInit {
                 };
 
                 renderer.table = (header: string, body: string): string => {
-                    return `<table class="table table-striped table-inverse"><thead>${header}<thead><tbody>${body}<tbody></table>`;
+                    return `<table class="table table-striped table-inverse table-bordered">
+                    <thead>${header}<thead><tbody>${body}<tbody></table>`;
                 };
 
                 const markdown = window.marked(res || '', { renderer: renderer });

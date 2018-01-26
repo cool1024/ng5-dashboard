@@ -1,0 +1,59 @@
+<div class="card rounded-0">
+    <div class="card-header bg-white">
+        <i class="fa fa-search fa-fw" aria-hidden="true"></i>条件筛选</div>
+    <div class="card-body">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">昵称</span>
+            </div>
+            <input [(ngModel)]="table.search.params.nick" type="text" class="form-control" placeholder="请输入查询昵称的关键词">
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">电话</span>
+            </div>
+            <input [(ngModel)]="table.search.params.phone" type="text" class="form-control" placeholder="请输入查询电话关键词">
+        </div>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">等级</span>
+            </div>
+            <div class="form-control p-0" style="display: block;">
+                <ts-select [items]="vip_levels" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员等级" [(value)]="table.search.params.vip_level"
+                    selectClass="border-0" width="100%"></ts-select>
+            </div>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">性别</span>
+            </div>
+            <div class="form-control p-0" style="display: block;">
+                <ts-select [items]="vip_genders" width="100%" emptyLabel="没有匹配的选项." placeholder="选择会员性别" [(value)]="table.search.params.gender"
+                    selectClass="border-0" width="100%"></ts-select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">共查询到</span>
+                    </div>
+                    <input type="text" value="{{table.pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white">条/结果</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 text-right">
+                <button (click)="table.resetSearch()" class="btn btn-white">
+                    <i class="fa fa-refresh fa-fw"></i>
+                    <span>重置</span>
+                </button>
+                <button (click)="table.doSearch()" class="btn btn-white">
+                    <i class="fa fa-search fa-fw"></i>
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<ts-smart-table #table="tsSmartTable" [config]="config"></ts-smart-table>

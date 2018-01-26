@@ -10,6 +10,7 @@ import {
     TSModalModule,
     TSSpinnerModule,
     TSCheckboxModule,
+    TSTableModule,
 } from '../../tools-ui';
 
 /*路由模块*/
@@ -17,6 +18,7 @@ import { VipRoutingModule } from './vip.routing';
 
 /*页面组件*/
 import { VipUsersComponent } from './pages/vip-users/vip-users.component';
+import { VipUsersSmartComponent } from './pages/vip-users-smart/vip-users-smart.component';
 import { VipUserInfoModalComponent } from './pages/vip-users/vip-user-info-modal.component';
 
 @NgModule({
@@ -30,9 +32,11 @@ import { VipUserInfoModalComponent } from './pages/vip-users/vip-user-info-modal
         TSModalModule,
         TSSpinnerModule,
         TSCheckboxModule,
+        TSTableModule,
     ],
     declarations: [
         VipUsersComponent,
+        VipUsersSmartComponent,
         VipUserInfoModalComponent,
     ],
     entryComponents: [

@@ -22,6 +22,8 @@ export { LoopCardModule as TSLoopCardModule } from './modules/loopcard.module';
 export { StepModule as TSStepModule } from './modules/step.module';
 export { BtnGroupModule as TSBtnGroupModule } from './modules/btn-group.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
+export { TableModule as TSTableModule } from './modules/table.module';
+
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
 export { MapModule as TSMapModule } from './lib/map/map.module';
 export { PrismCodeModule as TSPrismCodeModule } from './lib/prism-code/prism-code.module';
@@ -39,12 +41,29 @@ export { DefaultStyles as MapStyles } from './lib/map/default.config';
 /*tool interfaces*/
 export { LoopCard } from './interfaces/loop-card.interface';
 export { SelectItem } from './interfaces/select-item.interface';
+export { SmartConfig } from './components/smart-table/smart-table.interface';
 
 /*tool classes*/
 export { Pagination } from './classes/pagination.class';
 export { SearchParams } from './classes/search.class';
 export { TSUploadingProgress, TSUploadResult } from './classes/upload.class';
 export { LoopCardObj, LoopCardArray } from './classes/loopcard.class';
+export { DefaultSmartConfig } from './components/smart-table/smart-table.config';
+export {
+    TdDropDown,
+    TdButton,
+    TdDiyButton,
+    DiyItemConfig,
+    DiyItemsConfig,
+    TextRowConfig,
+    AvatarRowConfig,
+    AvatarTextRowConfig,
+    AvatarDiyRowConfig,
+    TextGroupConfig,
+    ButtonsRowConfig,
+    SpanRowConfig,
+} from './components/smart-table/smart-table.interface';
+
 
 /*tool services*/
 export { ModalService as TSModalService } from './components/modal/modal.service';

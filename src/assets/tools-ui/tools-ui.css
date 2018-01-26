@@ -114,6 +114,10 @@ a:visited {
     background-color: rgb(230, 230, 230) !important;
 }
 
+.btn-sm {
+    font-size: 12.5px !important;
+}
+
 .btn-sm span {
     font-size: 12.5px !important;
 }
@@ -151,4 +155,8 @@ a:visited {
 .required-label::before {
     content: '* ';
     color: red;
+}
+
+.table-responsive>.table-bordered {
+    border: 1px solid #dee2e6;
 }
