@@ -29,7 +29,6 @@ export class SelectComponent implements OnInit {
             { text: 'Cup', value: 4, parentId: 2 },
             { text: 'Paper', value: 5, parentId: 2 },
         ];
-        console.log(this.parentId);
         return childSelects.filter(child => child.parentId === this.parentId);
 
     }
