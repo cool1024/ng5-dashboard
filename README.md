@@ -1,8 +1,8 @@
 # Ng5Dashboard
 
 ## example
-[http://ts.cool1024.com](http://ts.cool1024.com)<br>
-![preview](http://ts.cool1024.com/material/preview.png)
+example usage :[http://ts.cool1024.com](http://ts.cool1024.com)<br>
+![preview](http://ts.cool1024.com/material/preview.jpg)
 
 ## angular version
 `5.0.0`
