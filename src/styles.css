@@ -2,9 +2,11 @@
 
 
 /* 富文本编辑器样式*/
-
+@charset "UTF-8";
 @import "~froala-editor/css/froala_editor.pkgd.min.css";
 @import "~froala-editor/css/froala_style.min.css";
+@import "assets/css/load-css.css";
+
 .fr-sticky {
     z-index: 2 !important;
 }
@@ -21,17 +23,17 @@
 
 .fr-wrapper div p a {
     visibility: visible !important;
-    display: inline !important;
+}
+
+.fr-element a{
+    visibility: visible !important;
+    position: relative !important;
 }
 
 .fr-file {
     visibility: visible !important;
+    position: relative !important;    
 }
-
-
-/*load css*/
-
-@import "./assets/css/load-css.css";
 
 /* 设置滚动条的样式 */
 

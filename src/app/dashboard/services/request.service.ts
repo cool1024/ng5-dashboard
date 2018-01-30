@@ -127,6 +127,11 @@ export class RequestService {
         return request;
     }
 
+    // 启用签名加密
+    openSafeParams(){
+        
+    }
+
     private getHeaders(): HttpHeaders {
         let header = new HttpHeaders();
         if (this.appendHeaders) {
