@@ -63,35 +63,32 @@
                         </ng-template>
                         <ng-template [ngSwitchCase]="'button-group'">
                             <td>
-                                <span>
-                                    <ng-container *ngFor="let btn of col.buttons">
-                                        <ng-container [ngSwitch]="btn.type">
-                                            <ng-template [ngSwitchCase]="'button'">
-                                                <button type="button" (click)="doFunc(item,btn.func)" [ngClass]="btn.btnClass">
-                                                    <i [ngClass]="btn.icon"></i>{{btn.text}}
-                                                </button>
-                                            </ng-template>
-                                            <ng-template [ngSwitchCase]="'dropdown'">
-                                                <div class="btn-group" ts-dropdown>
-                                                    <button type="button" class="dropdown-toggle" [ngClass]="btn.btnClass">
-                                                        {{btn.text}}</button>
-                                                    <div class="dropdown-menu">
-                                                        <button *ngFor="let itemText of btn.itemTexts;index as btnIndex" type="button" (click)="doFunc(item,btn.funcs[btnIndex])"
-                                                            class="dropdown-item">{{itemText}}</button>
-                                                    </div>
+                                <ng-container *ngFor="let btn of col.buttons">
+                                    <ng-container [ngSwitch]="btn.type">
+                                        <ng-template [ngSwitchCase]="'button'">
+                                            <button type="button" (click)="doFunc(item,btn.func)" [ngClass]="btn.btnClass">
+                                                <i *ngIf="btn.icon" [ngClass]="btn.icon"></i>{{btn.text}}
+                                            </button>
+                                        </ng-template>
+                                        <ng-template [ngSwitchCase]="'dropdown'">
+                                            <div class="btn-group" ts-dropdown>
+                                                <button type="button" class="dropdown-toggle" [ngClass]="btn.btnClass">
+                                                    <i *ngIf="btn.icon" [ngClass]="btn.icon"></i>
+                                                    {{btn.text}}</button>
+                                                <div class="dropdown-menu">
+                                                    <button *ngFor="let itemText of btn.itemTexts;index as btnIndex" type="button" (click)="doFunc(item,btn.funcs[btnIndex])"
+                                                        class="dropdown-item">{{itemText}}</button>
                                                 </div>
-                                            </ng-template>
-                                            <ng-template [ngSwitchCase]="'diy-button'">
-                                                <span (click)="doFunc(item,btn.func)" [innerHtml]="toSaveHtml(btn.getString(item))"></span>
-                                            </ng-template>
-                                            <ng-template ngSwitchDefault="'diy-button'">
-                                                按钮配置错误
-                                            </ng-template>
-                                        </ng-container>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngSwitchCase]="'diy-button'">
+                                            <span (click)="doFunc(item,btn.func)" [innerHtml]="toSaveHtml(btn.getString(item))"></span>
+                                        </ng-template>
+                                        <ng-template ngSwitchDefault="'diy-button'">
+                                            按钮配置错误
+                                        </ng-template>
                                     </ng-container>
-                                </span>
-
-                            </td>
+                                </ng-container>
                         </ng-template>
                         <ng-template ngSwitchDefault>
                             错误配置参数

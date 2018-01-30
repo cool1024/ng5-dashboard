@@ -62,7 +62,10 @@ export class GoodsListSmartComponent implements OnInit {
             new TextRowConfig('inventory'),
             new SpanRowConfig('status', [0, 1], ['下架', '上架'], ['badge badge-pill badge-secondary', 'badge badge-pill badge-success']),
             new ButtonsRowConfig([
-                new TdDropDown('状态', ['下架', '上架'], 'btn btn-sm btn-primary', []),
+                new TdDropDown('状态', ['下架', '上架'], 'btn btn-sm btn-primary', [
+                    item => this.changeGoodsStatus(item, 0),
+                    item => this.changeGoodsStatus(item, 1),
+                ], 'fa fa-pencil fa-fw'),
                 new TdButton('详情', 'btn btn-sm btn-info',
                     item => { this.router.navigate(['/goods/list-smart/info/', item.id]); }, 'fa fa-fw fa-credit-card'),
                 new TdButton('删除', 'btn btn-sm btn-danger', item => this.deleteItem(item), 'fa fa-fw fa-remove'),
@@ -90,10 +93,10 @@ export class GoodsListSmartComponent implements OnInit {
     }
 
     //  修改商品状态
-    // changeGoodsStatus(index: number, status: number) {
-    //     this.request.put('/goods/update', { id: this.list[index].id, status }).subscribe(res => {
-    //         this.list[index].status = status;
-    //     });
-    // }
+    changeGoodsStatus(item: any, status: number) {
+        this.request.put('/goods/update', { id: item.id, status }).subscribe(res => {
+            item.status = status;
+        });
+    }
 
 }

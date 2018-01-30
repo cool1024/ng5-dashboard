@@ -3,6 +3,11 @@
     box-shadow: 1px 2px 3px rgb(200, 200, 200);
 }
 
+.ts-box-sm{
+    width: 240px;
+    box-shadow: 1px 2px 3px rgb(200, 200, 200);
+}
+
 .col-4 {
     padding-left: 5px;
     padding-right: 5px;

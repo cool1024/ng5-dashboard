@@ -14,7 +14,7 @@
             <div class="input-group mr-2 mb-1" style="width:20rem;">
                 <input ts-dom-toggle [target]='datepicker2' value="{{date.year+'/'+date.month+'/'+date.day}}" type="text" class="form-control bg-white"
                     placeholder="选择日期" readonly>
-                <span class="input-group-btn">
+                <span class="input-group-append">
                     <button (click)="datepicker2.toggle()" class="btn btn-white" type="button">
                         <i class="fa fa-calendar fa-fw"></i>
                     </button>
@@ -23,7 +23,7 @@
             <div class="input-group mb-1" style="width:20rem;">
                 <input ts-dom-toggle [target]='datepicker3' value="{{dateEmpty?dateEmpty.year+'/'+dateEmpty.month+'/'+dateEmpty.day:''}}"
                     type="text" class="form-control bg-white" placeholder="选择日期" readonly>
-                <span class="input-group-btn">
+                <span class="input-group-append">
                     <button (click)="datepicker3.toggle()" class="btn btn-white" type="button">
                         <i class="fa fa-calendar fa-fw"></i>
                     </button>
@@ -38,27 +38,27 @@
         时间选择
     </div>
     <div class="card-body">
-        <ts-timepicker #timpicker1="timePicker" [(activeTime)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
+        <ts-timepicker #timpicker1="timePicker" [(value)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
             confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
-        <ts-timepicker #timpicker2="timePicker" [(activeTime)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
+        <ts-timepicker #timpicker2="timePicker" [(value)]="time" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
             confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
-        <ts-timepicker #timpicker3="timePicker" [(activeTime)]="timeEmpty" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
-            confirmText="确认" cancelText="取消" title="请选择时间"></ts-timepicker>
+        <ts-timepicker #timpicker3="timePicker" [(value)]="timeEmpty" confirmBtnClass="btn-outline-info border-0" cancelBtnClass="btn-outline-danger border-0"
+            confirmText="确认" cancelText="取消" title="请选择时间" [hiddenSecond]="true"></ts-timepicker>
         <form class="form-inline">
             <button ts-dom-toggle [target]="timpicker1" type="button" class="btn btn-info mr-2 mb-1">选择时间</button>
             <div class="input-group mr-2 mb-1" style="width:20rem;">
                 <input ts-dom-toggle [target]="timpicker2" value="{{time.hour+':'+time.minute+':'+time.second}}" type="text" class="form-control bg-white"
                     placeholder="选择时间" readonly>
-                <span class="input-group-btn">
+                <span class="input-group-append">
                     <button (click)="timpicker2.toggle()" class="btn btn-white" type="button">
                         <i class="fa fa-clock-o fa-fw"></i>
                     </button>
                 </span>
             </div>
             <div class="input-group mb-1" style="width:20rem;">
-                <input ts-dom-toggle [target]="timpicker3" value="{{timeEmpty?timeEmpty.hour+':'+timeEmpty.minute+':'+timeEmpty.second:''}}"
-                    type="text" class="form-control bg-white" placeholder="选择时间" readonly>
-                <span class="input-group-btn">
+                <input ts-dom-toggle [target]="timpicker3" value="{{timeEmpty?timeEmpty.hour+':'+timeEmpty.minute:''}}" type="text" class="form-control bg-white"
+                    placeholder="选择时间" readonly>
+                <span class="input-group-append">
                     <button (click)="timpicker3.toggle()" class="btn btn-white" type="button">
                         <i class="fa fa-clock-o fa-fw"></i>
                     </button>
