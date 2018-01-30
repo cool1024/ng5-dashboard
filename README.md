@@ -34,17 +34,12 @@
 <script type="text/javascript" src="froala_editor.pkgd.min.js"></script>
 <script type="text/javascript" src="zh_cn.js" async></script>
 ```
->1.xlsx.js *Excel File Reader*
-
->2.markdown.js *Markdown Reader*
-
->3.prism.js *Code Reader*
-
->4.Chart.js *Simple yet flexible JavaScript charting for designers & developers*
-
->5.froala_editor *RichEdit*
-
->6.jsencrypt.js&sha1.js *Crypt and Sign*
+1.xlsx.js *Excel File Reader*
+2.markdown.js *Markdown Reader*
+3.prism.js *Code Reader*
+4.Chart.js *Simple yet flexible JavaScript charting for designers & developers*
+5.froala_editor *RichEdit*
+6.jsencrypt.js&sha1.js *Crypt and Sign*
 
 
 
