@@ -1,21 +1,25 @@
 # Ng5Dashboard
 
-### version
+## example
+[http://ts.cool1024.com](http://ts.cool1024.com)<br>
+![preview](http://ts.cool1024.com/material/preview.png)
+
+## angular version
 `5.0.0`
 
-### install
+## install
 `npm install`
 
-### build
+## build
 `ng build -bh /ng/ -d http://ts.cool1024.com/ng/ --prod`
 
-### run
+## run
 `ng serve --aot`
 `ng serve --aot --host 0.0.0.0`
 
-### suport IE10+
+## suport IE10+
 
-### javascript lib
+## javascript lib
 *if not use,remove from index.html*
 ```html
 <script type="text/javascript" src="assets/lib/xlsx.js" async></script>
