@@ -1,4 +1,12 @@
 <div class="card rounded-0">
+    <div class="card-header bg-white">WebSocket</div>
+    <div class="card-body">
+        <button (click)="startWebSocket()" type="button" class="btn btn-white">开启WebSocket</button>
+        <pre>{{message}}</pre>
+    </div>
+</div>
+<br>
+<div class="card rounded-0">
     <div class="card-header bg-white">确认对话框</div>
     <div class="card-body">
         <button (click)="confirm.danger('危险', '您正在进行一个操作，确认这么做？', { okTitle: '确认', cancelTitle: '取消' });

@@ -6,6 +6,7 @@ import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 import { AppConfig } from '../../config/app.config';
 import { StorageService } from './storage.service';
+import { ReconnectingWebSocket } from './../classes/websocket.class';
 
 @Injectable()
 export class RequestService {
@@ -95,6 +96,11 @@ export class RequestService {
         });
     }
 
+    // Websocket
+    websocket(host: string, protocols: string | string[], options = {}): ReconnectingWebSocket {
+        return new ReconnectingWebSocket(host, protocols, options);
+    }
+
     // 重置一个reqeust服务,添加自定义请求头
     withHeader(headers: { [key: string]: string }, cover = false): RequestService {
         const request = new RequestService(this.http, this.storage);
@@ -128,8 +134,8 @@ export class RequestService {
     }
 
     // 启用签名加密
-    openSafeParams(){
-        
+    openSafeParams() {
+
     }
 
     private getHeaders(): HttpHeaders {
