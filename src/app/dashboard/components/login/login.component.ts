@@ -55,16 +55,19 @@ export class LoginComponent {
         }
 
         // 发送登入请求
-        this.request.withConfig({ url: '' }).post(this.loginUrl, params).subscribe(res => {
-            // 保存登入令牌
-            for (const key in this.tokenParams) {
-                if (this.tokenParams.hasOwnProperty(key)) {
-                    this.storageService.set(this.tokenParams[key], res.datas[key] || '');
+        this.request.withConfig({ url: '' })
+            // .openSafeParams(['account', 'password'])
+            .post(this.loginUrl, params)
+            .subscribe(res => {
+                // 保存登入令牌
+                for (const key in this.tokenParams) {
+                    if (this.tokenParams.hasOwnProperty(key)) {
+                        this.storageService.set(this.tokenParams[key], res.datas[key] || '');
+                    }
                 }
-            }
-            this.authService.reCheckLogin().subscribe();
-            this.authService.setIn();
-            this.router.navigateByUrl(this.homePageUrl);
-        });
+                this.authService.reCheckLogin().subscribe();
+                this.authService.setIn();
+                this.router.navigateByUrl(this.homePageUrl);
+            });
     }
 }

@@ -1,8 +1,17 @@
 <div class="card rounded-0">
     <div class="card-header bg-white">WebSocket</div>
     <div class="card-body">
-        <button (click)="startWebSocket()" type="button" class="btn btn-white">开启WebSocket</button>
-        <pre>{{message}}</pre>
+        <div class="row">
+            <div class="col-md-6">
+                <button (click)="startWebSocket()" type="button" class="btn btn-white">开启WebSocket</button>
+                <pre class="mt-2">{{message}}</pre>
+            </div>
+            <div class="col-md-6">
+                <button (click)="sendMessage(websocket_message.value)" type="button" class="btn btn-white">发送消息</button>
+                <textarea ngModel #websocket_message="ngModel" class="form-control mt-2"></textarea>
+            </div>
+        </div>
+
     </div>
 </div>
 <br>

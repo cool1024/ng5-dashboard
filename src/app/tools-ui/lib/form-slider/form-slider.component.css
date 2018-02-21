@@ -1,0 +1,7 @@
+.slider-pad img{
+    width: 70px;
+    position: absolute;
+}
+.slider-pad{
+    position: relative;
+}

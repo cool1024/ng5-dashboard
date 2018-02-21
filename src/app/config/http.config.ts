@@ -2,10 +2,13 @@
 export const HttpConfig = {
 
     // 服务器HTTP请求地址
-    SERVER_URL: 'http://ts.cool1024.com',
+    SERVER_URL: 'http://127.0.0.1',
 
     // 服务器其他资源地址
-    SOURCE_URL: 'http://ts.cool1024.com',
+    SOURCE_URL: 'http://127.0.0.1',
+
+    // WEBSOCKET_URL
+    WEBSOCKET_URL: 'ws://127.0.0.1:9502',
 
     // 请求超时设置:毫秒
     REQUEST_TIMEOUT: 10000,
@@ -15,6 +18,9 @@ export const HttpConfig = {
 
     // 签名关键词
     SIGN_KEY: '000000',
+
+    // 签名请求头
+    SIGN_HEADER_NAME: 'ng-params-four',
 
     // RSA 公钥
     RSA_PUBLIC_KEY: `-----BEGIN PUBLIC KEY-----

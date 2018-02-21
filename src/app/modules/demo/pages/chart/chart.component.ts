@@ -1,12 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormService } from '../../../../dashboard/services/form.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 
 @Component({
     templateUrl: './chart.component.html',
 })
-export class ChartComponent {
+export class ChartComponent implements OnInit {
 
     @ViewChild('chart') bubbleChart: any;
+
+    // 动态数据
+    flashData = {
+        labels: [],
+        datasets: [{
+            label: '测试数据',
+            backgroundColor: 'rgba(255,0,0,0.5)',
+            borderColor: 'rgba(255,0,0,1)',
+            borderWidth: 1,
+            data: []
+        }],
+    };
 
     // line-chart 数据
     lineChartData = {
@@ -137,4 +151,17 @@ export class ChartComponent {
     toBase64Image() {
         console.log(this.bubbleChart.toBase64Image());
     }
+
+    ngOnInit() {
+        Observable.interval(3000).subscribe(res => {
+            this.flashData.datasets[0].data.push(Math.random());
+            this.flashData.labels.push(res.toString());
+            if (this.flashData.labels.length > 100) {
+                this.flashData.labels.shift();
+                this.flashData.datasets[0].data.shift();
+            }
+            this.flashData = <any>this.form.jsonCopy(this.flashData);
+        });
+    }
+
 }

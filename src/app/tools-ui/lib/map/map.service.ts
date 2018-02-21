@@ -39,7 +39,7 @@ export class MapService {
         if (this.ready) {
             func(this.amap);
         } else {
-            this.loadHandle.subscribe(() => func(this.amap));
+            this.loadHandle.subscribe({ complete: () => func(this.amap) });
         }
     }
 

@@ -35,3 +35,28 @@
         </div>
     </div>
 </div>
+<br>
+<div class="card rounded-0">
+    <div class="card-header bg-white">正则实验室</div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label class="required-label">正则表达式</label>
+                <input ngModel #regexp_exp="ngModel" type="text" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="required-label">测试字符串</label>
+                <input ngModel #regexp_str="ngModel" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <input ngModel #regexp_res="ngModel" type="text" class="form-control" placeholder="测试结果">
+            </div>
+            <div class="col-md-6 mb-3">
+                <button (click)="doTest(regexp_exp.value,regexp_str.value,regexp_res)" type="button" class="btn btn-white">test</button>
+            </div>
+        </div>
+        <!-- <ts-form-slider></ts-form-slider> -->
+    </div>
+</div>

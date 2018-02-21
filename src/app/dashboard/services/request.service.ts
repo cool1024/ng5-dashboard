@@ -6,18 +6,33 @@ import { ApiData } from '../classes/api.class';
 import { HttpConfig } from '../../config/http.config';
 import { AppConfig } from '../../config/app.config';
 import { StorageService } from './storage.service';
+import { SignService } from './sign.service';
+import { CryptService } from './crypt.service';
 import { ReconnectingWebSocket } from './../classes/websocket.class';
 
 @Injectable()
 export class RequestService {
 
     private server_url: string;
+    private websocket_url: string;
     private coverHeader: boolean;
     private appendHeaders: { [key: string]: string };
+    private realParams: { [key: string]: number | string };
+    private useSign: boolean;
+    private signKeys: string[];
 
-    constructor(private http: HttpClient, private storage: StorageService) {
+    constructor(
+        private http: HttpClient,
+        private storage: StorageService,
+        private sign: SignService,
+        private crypt: CryptService,
+    ) {
         this.server_url = HttpConfig.SERVER_URL;
+        this.websocket_url = HttpConfig.WEBSOCKET_URL;
         this.coverHeader = false;
+        this.realParams = {};
+        this.useSign = false;
+        this.signKeys = [];
     }
 
     // 发送一个get请求（获取文本文件内容）
@@ -47,6 +62,9 @@ export class RequestService {
             check = <boolean>params;
             params = {};
         }
+        if (this.useSign) {
+            params = this.encryptParams(params);
+        }
         const observable = this.http.post<ApiData>(this.server_url + url, params, { headers: this.getHeaders() });
         return check ? observable.skipWhile(res => res.result === false) : observable;
     }
@@ -56,6 +74,9 @@ export class RequestService {
         if (typeof params === 'boolean') {
             check = <boolean>params;
             params = {};
+        }
+        if (this.useSign) {
+            params = this.encryptParams(params);
         }
         const observable = this.http.put<ApiData>(this.server_url + url, params, { headers: this.getHeaders() });
         return check ? observable.skipWhile(res => res.result === false) : observable;
@@ -97,13 +118,13 @@ export class RequestService {
     }
 
     // Websocket
-    websocket(host: string, protocols: string | string[], options = {}): ReconnectingWebSocket {
-        return new ReconnectingWebSocket(host, protocols, options);
+    websocket(host: string, protocols: string | string[] = [], options = {}): ReconnectingWebSocket {
+        return new ReconnectingWebSocket(this.websocket_url + host, protocols, options);
     }
 
     // 重置一个reqeust服务,添加自定义请求头
     withHeader(headers: { [key: string]: string }, cover = false): RequestService {
-        const request = new RequestService(this.http, this.storage);
+        const request = new RequestService(this.http, this.storage, this.sign, this.crypt);
         request.appendHeaders = headers;
         request.coverHeader = cover;
         return request;
@@ -115,10 +136,18 @@ export class RequestService {
     }
 
     // 重置一个reqeust服务,自定义参数
-    withConfig(config: { url?: string, withoutHeader?: boolean, headers?: { [key: string]: string }, cover?: boolean }): RequestService {
-        const request = new RequestService(this.http, this.storage);
+    withConfig(config: {
+        url?: string, withoutHeader?:
+        boolean, headers?: { [key: string]: string },
+        cover?: boolean,
+        websocket_url?: string
+    }): RequestService {
+        const request = new RequestService(this.http, this.storage, this.sign, this.crypt);
         if (config.url != null || config !== undefined) {
             request.server_url = config.url;
+        }
+        if (config.url != null || config !== undefined) {
+            request.websocket_url = config.websocket_url;
         }
         if (config.headers != null || config !== undefined) {
             request.appendHeaders = config.headers;
@@ -133,9 +162,11 @@ export class RequestService {
         return request;
     }
 
-    // 启用签名加密
-    openSafeParams() {
-
+    // 启用加密&签名--所有参与签名的参数都会加密
+    openSafeParams(signKeys = []) {
+        this.signKeys = signKeys;
+        this.useSign = true;
+        return this;
     }
 
     private getHeaders(): HttpHeaders {
@@ -152,17 +183,57 @@ export class RequestService {
                 header = header.append(key, this.storage.get(key));
             });
         }
+
+        if (this.useSign) {
+            const signParams = {};
+            for (const key in this.realParams) {
+                if (this.realParams.hasOwnProperty(key)) {
+                    if (this.signKeys.length === 0 || this.signKeys.indexOf(key) >= 0) {
+                        // 1 signKeys为空，那么所有的参数都会参与签名
+                        // 2 signKeys不为空，那么只有signKeys里面的参数才会参与签名
+                        signParams[key] = this.realParams[key];
+                    }
+                }
+            }
+            header = header.append(HttpConfig.SIGN_HEADER_NAME, this.sign.signParams(signParams));
+        }
         return header;
     }
 
     private getParams(params: { [key: string]: number | string }): HttpParams {
+        this.realParams = {};
         let httpParams = new HttpParams();
         for (const key in params) {
             if (params.hasOwnProperty(key)) {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
+                this.realParams[key] = params[key];
+                if (this.useSign && (this.signKeys.length === 0 || this.signKeys.indexOf(key) >= 0)) {
+                    // 1 signKeys为空，那么所有的参数都会加密
+                    // 2 signKeys不为空，那么只有signKeys里面的参数才会被加加密
+                    params[key] = this.crypt.encryptParam(params[key]);
+                }
                 httpParams = httpParams.append(key, <string>params[key]);
+            }
+        }
+        return httpParams;
+    }
+    private encryptParams(params: { [key: string]: number | string }) {
+        this.realParams = {};
+        const httpParams = {};
+        for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+                if (typeof params[key] === 'number') {
+                    params[key] = params[key].toString();
+                }
+                this.realParams[key] = params[key];
+                if (this.useSign && (this.signKeys.length === 0 || this.signKeys.indexOf(key) >= 0)) {
+                    // 1 signKeys为空，那么所有的参数都会加密
+                    // 2 signKeys不为空，那么只有signKeys里面的参数才会被加加密
+                    params[key] = this.crypt.encryptParam(params[key]);
+                }
+                httpParams[key] = <string>params[key];
             }
         }
         return httpParams;

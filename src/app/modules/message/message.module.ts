@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SimpleComponent } from './pages/simple/simple.component';
 import {
   TSToastModule,
@@ -14,10 +15,11 @@ import {
 /*路由模块*/
 import { MessageRoutingModule } from './message.routing';
 
+
 @NgModule({
   imports: [
     TSToastModule,
-    // TSConfirmModule,
+    FormsModule,
     TSPopoverModule,
     MessageRoutingModule,
     TSHoverModule,

@@ -23,7 +23,7 @@ export { StepModule as TSStepModule } from './modules/step.module';
 export { BtnGroupModule as TSBtnGroupModule } from './modules/btn-group.module';
 export { SpinnerModule as TSSpinnerModule } from './modules/spinner.module';
 export { TableModule as TSTableModule } from './modules/table.module';
-
+export { FormSliderModule as TSFormSliderModule } from './lib/form-slider/form-slider.module';
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
 export { MapModule as TSMapModule } from './lib/map/map.module';
 export { PrismCodeModule as TSPrismCodeModule } from './lib/prism-code/prism-code.module';

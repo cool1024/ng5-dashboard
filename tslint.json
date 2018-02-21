@@ -129,7 +129,8 @@
       "element",
       [
         "app",
-        "ts"
+        "ts",
+        "dashboard"
       ],
       "kebab-case"
     ],

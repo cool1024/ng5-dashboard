@@ -15,6 +15,7 @@ import {
     TSSwitchModule,
     TSLoopCardModule,
     TSBtnGroupModule,
+    TSFormSliderModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -50,6 +51,7 @@ import { CheckFormComponent } from './pages/checkform/checkform.component';
         TSLoopCardModule,
         SortablejsModule,
         TSBtnGroupModule,
+        TSFormSliderModule,
     ],
     declarations: [
         SimpleComponent,

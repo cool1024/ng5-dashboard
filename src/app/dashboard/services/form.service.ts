@@ -16,6 +16,18 @@ export class FormService {
         return copy;
     }
 
+
+    // json转换为一维数组（去掉键名）
+    jsonToArray(objs: { [key: string]: any }): any[] {
+        const array = <any[]>[];
+        for (const key in objs) {
+            if (objs.hasOwnProperty(key)) {
+                array.push(objs[key]);
+            }
+        }
+        return array;
+    }
+
     // 合并表单数据，如果参数字段相同，第二个参数会覆盖第一个参数内容(通常第一参数是模型数据，第二个是表单数据)
     combineFormDatas(baseParams: { [key: string]: any }, appendParams: { [key: string]: any }) {
         const cb: { [key: string]: any } = {};

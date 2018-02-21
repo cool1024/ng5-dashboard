@@ -26,7 +26,7 @@ export class StorageService {
         localStorage.setItem(key, value.toString());
     }
 
-    // 批量获取本地存储
+    // 获取本地存储
     get(key: string) {
         return localStorage.getItem(key) || '';
     }

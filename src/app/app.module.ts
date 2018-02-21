@@ -11,28 +11,30 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
 
-    /*ts-tools*/
-    AppRoutingModule,
-    TSSpinnerModule,
-    TSConfirmModule,
-    TSToastModule.forRoot(),
-    TSMapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
+        /*路由模块*/
+        AppRoutingModule,
 
-    /*基础应用模块*/
-    DashboardModule.forRoot(),
+        /*ts-tools*/
+        TSSpinnerModule,
+        TSConfirmModule,
+        TSToastModule.forRoot(),
+        TSMapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
 
-    /*富文本编辑器，如不使用请注释*/
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
+        /*基础应用模块*/
+        DashboardModule.forRoot(),
 
-  ],
-  bootstrap: [AppComponent]
+        /*富文本编辑器，如不使用请注释*/
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot(),
+
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
