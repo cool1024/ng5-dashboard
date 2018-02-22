@@ -16,7 +16,7 @@ export class SimpleComponent implements OnInit {
         // 模拟等待2秒（上传中）
         setTimeout(() => {
           obs.next({
-            source: '/assets/image/card/4.jpg',
+            source: 'assets/image/card/4.jpg',
             result: true,
             message: '上传成功'
           });
@@ -36,7 +36,7 @@ export class SimpleComponent implements OnInit {
         // 模拟等待2秒（上传中）
         setTimeout(() => {
           obs.next({
-            source: '/assets/image/card/4.jpg',
+            source: 'assets/image/card/4.jpg',
             result: true,
             message: '上传成功'
           });

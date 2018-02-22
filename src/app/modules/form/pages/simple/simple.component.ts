@@ -12,8 +12,8 @@ export class SimpleComponent implements OnInit {
   formData = {
     title: 'Apple iPhone 8 Plus (A1864) 64GB 金色 移动联通电信4G手机',
     description: '',
-    thumb: '/assets/image/avatar/2.jpg',
-    images: '/assets/image/card/1.jpg,/assets/image/card/2.jpg,/assets/image/card/3.jpg,/assets/image/card/4.jpg',
+    thumb: 'assets/image/avatar/2.jpg',
+    images: 'assets/image/card/1.jpg,assets/image/card/2.jpg,assets/image/card/3.jpg,assets/image/card/4.jpg',
   };
 
 

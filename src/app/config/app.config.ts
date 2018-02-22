@@ -13,7 +13,7 @@ export const AppConfig = {
     title: 'ToolsUI',
 
     // 系统图标
-    icon: '/assets/icon/angular.svg',
+    icon: 'assets/icon/angular.svg',
 
     // 系统描述
     description: '',
@@ -61,8 +61,8 @@ export const AppConfig = {
     menuUserParams: ['thumb', 'rolename', 'account'],
 
     // 左侧菜单默认信息
-    menuUserEmpty: ['/assets/image/avatar/avatar.jpg', 'Admin', 'www.cool1024.com'],
+    menuUserEmpty: ['assets/image/avatar/avatar.jpg', 'Admin', 'www.cool1024.com'],
 
     // 左侧菜单未登入时信息
-    menuUserDefault: ['/assets/image/avatar/avatar.jpg', '未登入', '亲，请先登入'],
+    menuUserDefault: ['assets/image/avatar/avatar.jpg', '未登入', '亲，请先登入'],
 };
