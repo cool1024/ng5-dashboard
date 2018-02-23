@@ -1,8 +1,8 @@
 # Ng5Dashboard
 
 ## example
-example usage :[http://ts.cool1024.com](http://ts.cool1024.com)<br>
-![preview](http://ts.cool1024.com/material/preview.jpg)
+example usage :[https://ts.cool1024.com](https://www.cool1024.com)<br>
+![preview](https://www.cool1024.com/material/preview.jpg)
 
 ## angular version
 `5.0.0`
@@ -11,11 +11,16 @@ example usage :[http://ts.cool1024.com](http://ts.cool1024.com)<br>
 `npm install`
 
 ## build
-`ng build -bh /ng/ -d http://ts.cool1024.com/ng/ --prod`
+`ng build -bh /ng/ -d //www.cool1024.com/ng/ --prod`
 
 ## run
-`ng serve --aot`
-`ng serve --aot --host 0.0.0.0`
+```
+// default
+ng serve --aot
+
+// public
+ng serve --aot --host 0.0.0.0
+```
 
 ## suport IE10+
 

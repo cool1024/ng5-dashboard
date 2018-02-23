@@ -26,7 +26,7 @@ export class MapService {
             const node: any = document.createElement('script');
             node.async = true;
             node.type = 'text/javascript';
-            node.src = `http://webapi.amap.com/maps?v=1.4.3&key=${mapConfig.appKey}&callback=aMapLoadCallBack`;
+            node.src = `https://webapi.amap.com/maps?v=1.4.3&key=${mapConfig.appKey}&callback=aMapLoadCallBack`;
             node.charset = 'utf-8';
             document.getElementsByTagName('head')[0].appendChild(node);
         } else {
