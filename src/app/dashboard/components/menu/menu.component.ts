@@ -103,15 +103,17 @@ export class MenuComponent implements OnInit {
             const temp = { icon: mains.groups[i].icon, mid: mains.groups[i].mid, title: mains.groups[i].title, children: [] };
             const childs = menus.filter(e => e.parentid.toString() === mains.groups[i].id.toString());
             temp.children = childs.length > 0 ? childs[0].groups : [];
-            temps.push(temp);
+            if (temp.children.length > 0) {
+                temps.push(temp);
+            }
         }
         const _menus = [];
         for (let i = 0; i < models.length; i++) {
             const _mains = temps.filter(main => main.mid.toString() === models[i].id.toString());
-            _menus.push({ title: models[i].title, menus: _mains });
+            if (_mains.length > 0) {
+                _menus.push({ title: models[i].title, menus: _mains });
+            }
         }
-
         return _menus;
     }
-
 }
