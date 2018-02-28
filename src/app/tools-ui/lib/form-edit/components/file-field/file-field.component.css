@@ -1,0 +1,17 @@
+/* Form edit pad css*/
+
+.arrow{
+    position: absolute;
+    z-index: 50;
+    width: 16px;
+    height: 28px;
+}
+
+.img-dashbord{
+    border:1px dashed #ccc;   
+}
+
+/* Cover Bootstrap css*/
+.bg-info{
+    background-color:#d1e6fb !important;
+}

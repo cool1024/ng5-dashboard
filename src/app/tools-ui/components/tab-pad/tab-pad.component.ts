@@ -3,7 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'ts-tab',
   templateUrl: './tab-pad.component.html',
-  styleUrls: ['./tab-pad.component.css']
+  styleUrls: ['./tab-pad.component.css'],
+  exportAs: 'tsTab'
 })
 export class TabPadComponent implements OnInit {
 

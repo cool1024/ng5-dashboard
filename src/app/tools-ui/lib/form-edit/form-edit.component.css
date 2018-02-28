@@ -1,0 +1,46 @@
+/* Form edit pad css*/
+
+.form-edit-pad{
+
+}
+.form-edit-pad .control-edit-pad{
+    float: left;
+    min-width: 500px;
+}
+
+.form-edit-pad .control-tool-pad{
+    float: left;
+    width: 400px;
+}
+
+.field-message-pad{
+    border:1px dashed #ccc;
+    
+}
+
+.border-hover:hover{
+    border:1px dashed #ccc;
+}
+
+.arrow{
+    position: absolute;
+    z-index: 50;
+    width: 16px;
+    height: 28px;
+}
+
+.tab-pad{
+    height: 100%;
+    min-height: 600px;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+/* Cover Bootstrap css*/
+.bg-info{
+    background-color:#d1e6fb !important;
+}
+
+.ts-hidden{
+    opacity: 0;
+}

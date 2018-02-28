@@ -1,0 +1,30 @@
+/* Form edit pad css*/
+
+.control-edit-pad{
+    min-width: 500px;
+}
+
+.control-tool-pad{
+    width: 400px;
+}
+
+.border-hover:hover{
+    border:1px dashed #ccc;
+}
+
+.arrow{
+    position: absolute;
+    z-index: 50;
+    width: 16px;
+    height: 28px;
+}
+
+
+/* Cover Bootstrap css*/
+.bg-info{
+    background-color:#d1e6fb !important;
+}
+
+textarea{
+    height: 200px;
+}

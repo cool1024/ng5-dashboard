@@ -8,6 +8,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { LoopCardComponent } from './pages/loop-card/loop-card.component';
 import { MutiComponent } from './pages/muti/muti.component';
 import { CheckFormComponent } from './pages/checkform/checkform.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'checkform', component: CheckFormComponent,
     data: { breadcrumbs: new Breadcrumbs([['表单', 'list-alt'], ['表单校验', 'filter']]) }
+  },
+  {
+    path: 'edit', component: EditComponent,
+    data: { breadcrumbs: new Breadcrumbs([['表单', 'list-alt'], ['表单构造', 'filter']]) }
   },
 ];
 

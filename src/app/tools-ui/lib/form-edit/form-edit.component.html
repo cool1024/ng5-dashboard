@@ -1,0 +1,93 @@
+<div class="form-edit-pad">
+    <div class="control-tool-pad">
+        <ts-tab #toolTab="tsTab" [tabs]="['组件列表','组件编辑','表单编辑']" activeClass="tab-border-info text-info" activeTab="组件列表" [pads]="[tabPadFirst,tabPadSecond,tabPadThird]"></ts-tab>
+        <div class="card card-body border-0 rounded-top-0 tab-pad">
+            <div #tabPadFirst tab="组件列表" class="h-100">
+                <p>标准</p>
+                <hr>
+                <button *ngFor="let btn of controlTypes.baseControls" (click)="addFiled(btn.controlType,btn.type)" type="button" class="btn btn-white m-1">
+                    <i class="fa fa-fw fa-{{btn.icon}}"></i>{{btn.text}}</button>
+                <p class="mt-3">参考模板</p>
+                <hr>
+                <button *ngFor="let btn of controlTypes.toolControls" (click)="addFiled(btn.controlType,btn.type)" type="button" class="btn btn-white m-1">
+                    <i class="fa fa-fw fa-{{btn.icon}}"></i>{{btn.text}}</button>
+            </div>
+            <div #tabPadSecond tab="组件编辑" class="h-100">
+                <div *ngIf="activeField; else fieldMessagePad">
+                    <ng-container [ngSwitch]="activeField.type">
+                        <ng-container *ngSwitchCase="controlType.DEFAULT_INPUT">
+                            <ts-form-edit-input [(field)]="activeField"></ts-form-edit-input>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.TEXTAREA">
+                            <ts-form-edit-textarea [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-textarea>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.SELECT">
+                            <ts-form-edit-select [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-select>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.RADIO">
+                            <ts-form-edit-radio [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-radio>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.TEXT">
+                            <ts-form-edit-text [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-text>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.DATE">
+                            <ts-form-edit-date [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-date>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.FILE">
+                            <ts-form-edit-file [(field)]="activeField" (activeChange)="setFieldActive($event)"></ts-form-edit-file>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <ng-template #fieldMessagePad>
+                    <div class="field-message-pad text-center text-danger p-5 border-danger">请选择要编辑的表单</div>
+                </ng-template>
+            </div>
+            <div #tabPadThird tab="表单编辑" class="h-100">
+                <div class="form-group">
+                    <label for="form-title-input">表单标题</label>
+                    <input [(ngModel)]="formConfig.title" type="text" class="form-control" id="form-title-input">
+                </div>
+                <div class="form-group">
+                    <label for="form-title-subject">表单描述信息</label>
+                    <input [(ngModel)]="formConfig.subject" type="text" class="form-control" id="form-title-subject">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="control-edit-pad pointer">
+        <div class="card card-body rounded-top-0 ml-2 tab-pad">
+            <div class="p-2 border-hover" (click)="setFormEditActive()">
+                <h3>{{formConfig.title}}</h3>
+                <small>{{formConfig.subject}}</small>
+            </div>
+            <hr>
+            <div [sortablejs]="controls">
+                <div class="control-field" *ngFor="let field of controls;index as i">
+                    <ng-container [ngSwitch]="field.type">
+                        <ng-container *ngSwitchCase="controlType.DEFAULT_INPUT">
+                            <ts-form-input [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-input>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.TEXTAREA">
+                            <ts-form-textarea [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-textarea>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.SELECT">
+                            <ts-form-select [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-select>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.RADIO">
+                            <ts-form-radio [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-radio>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.TEXT">
+                            <ts-form-text [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-text>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.DATE">
+                            <ts-form-date [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-date>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="controlType.FILE">
+                            <ts-form-file [(field)]="controls[i]" (activeChange)="setFieldActive($event)" (deleteHandle)="removeField($event)"></ts-form-file>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,9 +11,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
     imports: [
         BrowserModule,
         HttpClientModule,
@@ -35,6 +32,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         FroalaViewModule.forRoot(),
 
     ],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

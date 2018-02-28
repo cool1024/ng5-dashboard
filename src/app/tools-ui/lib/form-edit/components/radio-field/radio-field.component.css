@@ -1,0 +1,14 @@
+/* Form edit pad css*/
+
+.arrow{
+    position: absolute;
+    z-index: 50;
+    width: 16px;
+    height: 28px;
+}
+
+
+/* Cover Bootstrap css*/
+.bg-info{
+    background-color:#d1e6fb !important;
+}

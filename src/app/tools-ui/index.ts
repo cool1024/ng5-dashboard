@@ -27,6 +27,7 @@ export { FormSliderModule as TSFormSliderModule } from './lib/form-slider/form-s
 export { ChartModule as TSChartModule } from './lib/chart-pad/chart.module';
 export { MapModule as TSMapModule } from './lib/map/map.module';
 export { PrismCodeModule as TSPrismCodeModule } from './lib/prism-code/prism-code.module';
+export { FormEditModule as TSFormEditModule } from './lib/form-edit/form-edit.module';
 
 /*tool components*/
 export { BtnGroupModalComponent } from './modals/btn-group-modal.component';

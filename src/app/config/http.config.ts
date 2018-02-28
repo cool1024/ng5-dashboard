@@ -2,10 +2,10 @@
 export const HttpConfig = {
 
     // 服务器HTTP请求地址
-    SERVER_URL: '//www.cool1024.com',
+    SERVER_URL: '//127.0.0.1',
 
     // 服务器其他资源地址
-    SOURCE_URL: '//www.cool1024.com',
+    SOURCE_URL: '//127.0.0.1',
 
     // WEBSOCKET_URL
     WEBSOCKET_URL: 'wss://www.cool1024.com:9502',

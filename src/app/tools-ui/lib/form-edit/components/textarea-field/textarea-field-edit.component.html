@@ -1,0 +1,35 @@
+<div class="form-group">
+    <label for="form-title" class="required-label">表单标题</label>
+    <input [(ngModel)]="field.title" type="text" class="form-control" id="form-title" placeholder="请输入表单的标题">
+</div>
+<div class="form-group">
+    <label for="form-desc">说明内容</label>
+    <input [(ngModel)]="field.placeholder" type="text" class="form-control" id="form-desc" placeholder="请输入表单的说明内容">
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="form-type" class="required-label">类型</label>
+        <select [(ngModel)]="field.textAreaType" class="custom-select" id="form-type">
+            <option *ngFor="let type of textareaTypes;" [ngValue]="type.value">{{type.text}}</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="form-required" class="required-label">是否必填</label>
+        <select [(ngModel)]="field.required" class="custom-select" id="form-required">
+            <option [ngValue]="true">必填</option>
+            <option [ngValue]="false">选填</option>
+        </select>
+    </div>
+</div>
+<label>文字个数</label>
+<div class="input-group mb-3">
+    <input [(ngModel)]="field.ranges[0]" type="text" class="form-control" placeholder="0">
+    <div class="input-group-prepend input-group-append">
+        <span class="input-group-text bg-white">到</span>
+    </div>
+    <input [(ngModel)]="field.ranges[1]" type="text" class="form-control" placeholder="100">
+</div>
+<div class="form-group">
+    <label for="form-value">默认值</label>
+    <input [(ngModel)]="field.defaultValue" type="text" class="form-control" id="form-value" placeholder="请输入表单的默认值">
+</div>

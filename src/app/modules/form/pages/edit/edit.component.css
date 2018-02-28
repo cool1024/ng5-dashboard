@@ -1,0 +1,33 @@
+/* Form edit pad css*/
+
+.form-edit-pad{
+
+}
+.form-edit-pad .control-edit-pad{
+    min-width: 500px;
+}
+
+.form-edit-pad .control-tool-pad{
+    width: 400px;
+}
+
+.form-edit-pad .control-edit-pad .control-field{
+
+}
+
+.border-hover:hover{
+    border:1px dashed #ccc;
+}
+
+.arrow{
+    position: absolute;
+    z-index: 50;
+    width: 16px;
+    height: 28px;
+}
+
+
+/* Cover Bootstrap css*/
+.bg-info{
+    background-color:#d1e6fb !important;
+}

@@ -1,0 +1,6 @@
+<ts-form-edit #form="tsFormEdit"></ts-form-edit>
+<button (click)="form.fromFormJson(formJson)" class="btn btn-info" type="button">载入模板</button>
+<code>
+    <!--使用getFormJson载入表单-->
+    {{form.getFormJson()|json}}
+</code>

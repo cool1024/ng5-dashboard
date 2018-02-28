@@ -1,0 +1,18 @@
+<div class="form-group">
+    <label for="form-title">表单标题</label>
+    <input [(ngModel)]="field.title" type="text" class="form-control" id="form-title" placeholder="请输入表单的标题">
+</div>
+<div class="form-group">
+    <label for="form-required" class="required-label">是否必填</label>
+    <select [(ngModel)]="field.required" class="custom-select" id="form-required">
+        <option [ngValue]="true">必填</option>
+        <option [ngValue]="false">选填</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="form-image-type" class="required-label">允许多文件</label>
+    <select [(ngModel)]="field.multiple" class="custom-select" id="form-image-type">
+        <option [ngValue]="false">否</option>
+        <option [ngValue]="true">是</option>
+    </select>
+</div>

@@ -1,53 +1,80 @@
-import { Directive, Input, Output, EventEmitter, QueryList, ContentChildren, forwardRef, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+    Directive,
+    Input,
+    Output,
+    EventEmitter,
+    HostListener,
+    QueryList,
+    ContentChildren,
+    forwardRef,
+    AfterContentInit,
+    OnChanges,
+    SimpleChanges,
+    ChangeDetectorRef
+} from '@angular/core';
 import { RadioComponent } from './radio.component';
+
 @Directive({
-  selector: 'ts-radio-group',
+    selector: 'ts-radio-group',
+    exportAs: 'tsRadioGroup',
 })
 export class RadioDirective implements AfterContentInit, OnChanges {
 
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
-  @ContentChildren(forwardRef(() => RadioComponent)) radioList: QueryList<RadioComponent>;
+    @Input() value: any;
+    @Output() valueChange = new EventEmitter<any>(false);
+    @ContentChildren(forwardRef(() => RadioComponent)) radioList: QueryList<RadioComponent>;
 
-  constructor() { }
+    constructor(private cdRef: ChangeDetectorRef) { }
 
-  ngAfterContentInit() {
-    this.replyValue();
-    const radioList = this.radioList.toArray();
-    for (let i = 0; i < this.radioList.length; i++) {
-      radioList[i].checkedChange.subscribe(status => this.setRadiosStatus(i, status));
+    /**
+     * 控件内容加载完成时的钩子方法
+     */
+    ngAfterContentInit() {
+        this.replyValue();
     }
-  }
 
-  ngOnChanges(simpleChanges: SimpleChanges) {
-    if (!simpleChanges.value.isFirstChange() && !!simpleChanges.value) {
-      this.replyValue();
-    }
-  }
-
-  replyValue() {
-    const radioList = this.radioList.toArray();
-    setTimeout(() => {
-      for (let i = 0; i < this.radioList.length; i++) {
-        if (radioList[i].value === this.value) {
-          radioList[i].checked = true;
-        } else {
-          radioList[i].checked = false;
+    /**
+     * 控件值发生变化时的钩子方法
+     */
+    ngOnChanges(simpleChanges: SimpleChanges) {
+        if (simpleChanges.hasOwnProperty('value') && !simpleChanges.value.isFirstChange()) {
+            this.replyValue();
         }
-      }
-    });
-  }
-
-  setRadiosStatus(i: number, status: boolean) {
-    const radioList = this.radioList.toArray();
-    if (status === false) {
-      this.valueChange.emit();
-    } else {
-      radioList.forEach((radio, index) => {
-        if (index !== i) { radio.checked = false; }
-      });
-      this.valueChange.emit(radioList[i].value);
     }
-  }
+
+    /**
+     * 当value变化时（不是radio修改的，而是外部修改value），重置radio的状态
+     */
+    replyValue() {
+        const radioList = this.radioList.toArray();
+        for (let i = 0; i < this.radioList.length; i++) {
+            if (radioList[i].value === this.value) {
+                radioList[i].checked = true;
+            } else {
+                radioList[i].checked = false;
+            }
+        }
+        this.cdRef.detectChanges();
+    }
+
+    /**
+     * 根据radio的数值变更，设置其他的radio为未选中状态
+     */
+    applyRadioValue() {
+        const radioList = this.radioList.toArray();
+        radioList.forEach(radio => {
+            if (this.value !== radio.value) { radio.checked = false; }
+        });
+    }
+
+    /**
+     * 设置radio group的值
+     * @param radio RadioComponent,触发变更的Radio
+     */
+    applyRadioChange(radio: RadioComponent) {
+        this.value = radio.checked === true ? radio.value : null;
+        this.valueChange.emit(this.value);
+        this.applyRadioValue();
+    }
 
 }

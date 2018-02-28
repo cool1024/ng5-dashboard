@@ -16,6 +16,7 @@ import {
     TSLoopCardModule,
     TSBtnGroupModule,
     TSFormSliderModule,
+    TSFormEditModule,
 } from './../../tools-ui';
 
 /*路由模块*/
@@ -32,6 +33,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { LoopCardComponent } from './pages/loop-card/loop-card.component';
 import { MutiComponent } from './pages/muti/muti.component';
 import { CheckFormComponent } from './pages/checkform/checkform.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
     imports: [
@@ -52,6 +54,7 @@ import { CheckFormComponent } from './pages/checkform/checkform.component';
         SortablejsModule,
         TSBtnGroupModule,
         TSFormSliderModule,
+        TSFormEditModule,
     ],
     declarations: [
         SimpleComponent,
@@ -62,6 +65,7 @@ import { CheckFormComponent } from './pages/checkform/checkform.component';
         MutiComponent,
         LoopCardComponent,
         CheckFormComponent,
+        EditComponent,
     ],
     entryComponents: [
         SimpleModalComponent,
