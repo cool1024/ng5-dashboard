@@ -16,6 +16,9 @@ export const HttpConfig = {
     // 错误弹窗显示时间
     TOAST_ERROR_TIME: 3000,
 
+    // 是否启用加密&签名
+    SIGN_CHECK: true,
+
     // 签名关键词
     SIGN_KEY: '000000',
 

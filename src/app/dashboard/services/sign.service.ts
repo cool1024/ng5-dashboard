@@ -9,19 +9,21 @@ export class SignService {
 
     constructor() {
         if (window.jsSHA !== undefined && window.jsSHA !== null) {
-            this.sha = new window.jsSHA('SHA-1', 'TEXT');
+            console.error('jsSHA undefined,please import sha1.js');
         }
     }
 
     signParams(params: { [key: string]: number | string } | any[]): string {
+        this.sha = new window.jsSHA('SHA-1', 'TEXT');
         const signParams = [HttpConfig.SIGN_KEY];
         for (const key in params) {
             if (params.hasOwnProperty(key)) {
-                signParams.push(key);
+                signParams.push(params[key]);
             }
         }
         signParams.sort();
         this.sha.update(signParams.join());
-        return this.sha.getHash('HEX');
+        const sign = this.sha.getHash('HEX');
+        return sign;
     }
 }

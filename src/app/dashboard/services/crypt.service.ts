@@ -9,7 +9,6 @@ export class CryptService {
 
     constructor() {
         if (window.JSEncrypt !== undefined && window.JSEncrypt !== null) {
-            console.log(111);
             this.crypt = new window.JSEncrypt();
             this.crypt.setKey(HttpConfig.RSA_PUBLIC_KEY);
         }

@@ -55,16 +55,17 @@ export class AuthService {
             this.router.navigateByUrl('/login');
             return false;
         } else {
-            return this.request.withoutHeader().post(AppConfig.tokenCheckUrl, this.getToken(), false).map<ApiData, boolean>(res => {
-                if (res.result !== true) {
-                    this.router.navigateByUrl('/login');
-                } else {
-                    this.setIn();
-                    this.user = res.datas;
-                }
-                this.global.setValue('checkStatus', true);
-                return res.result;
-            });
+            return this.request.withoutHeader().openSafeParams().
+                post(AppConfig.tokenCheckUrl, this.getToken(), false).map<ApiData, boolean>(res => {
+                    if (res.result !== true) {
+                        this.router.navigateByUrl('/login');
+                    } else {
+                        this.setIn();
+                        this.user = res.datas;
+                    }
+                    this.global.setValue('checkStatus', true);
+                    return res.result;
+                });
         }
     }
 

@@ -165,7 +165,7 @@ export class RequestService {
     // 启用加密&签名--所有参与签名的参数都会加密
     openSafeParams(signKeys = []) {
         this.signKeys = signKeys;
-        this.useSign = true;
+        this.useSign = HttpConfig.SIGN_CHECK;
         return this;
     }
 
