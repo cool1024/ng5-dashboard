@@ -164,9 +164,10 @@ export class RequestService {
 
     // 启用加密&签名--所有参与签名的参数都会加密
     openSafeParams(signKeys = []) {
-        this.signKeys = signKeys;
-        this.useSign = HttpConfig.SIGN_CHECK;
-        return this;
+        const request = new RequestService(this.http, this.storage, this.sign, this.crypt);
+        request.useSign = HttpConfig.SIGN_CHECK;
+        request.signKeys = signKeys;
+        return request;
     }
 
     private getHeaders(): HttpHeaders {
@@ -201,10 +202,11 @@ export class RequestService {
     }
 
     private getParams(params: { [key: string]: number | string }): HttpParams {
+        params = this.jsonCopy(params);
         this.realParams = {};
         let httpParams = new HttpParams();
         for (const key in params) {
-            if (params.hasOwnProperty(key)) {
+            if (params.hasOwnProperty(key) && params[key] !== null && params[key] !== undefined && params[key] !== '') {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
@@ -220,10 +222,11 @@ export class RequestService {
         return httpParams;
     }
     private encryptParams(params: { [key: string]: number | string }) {
+        params = this.jsonCopy(params);
         this.realParams = {};
         const httpParams = {};
         for (const key in params) {
-            if (params.hasOwnProperty(key)) {
+            if (params.hasOwnProperty(key) && params[key] !== null && params[key] !== undefined && params[key] !== '') {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
@@ -231,6 +234,7 @@ export class RequestService {
                 if (this.useSign && (this.signKeys.length === 0 || this.signKeys.indexOf(key) >= 0)) {
                     // 1 signKeys为空，那么所有的参数都会加密
                     // 2 signKeys不为空，那么只有signKeys里面的参数才会被加加密
+
                     params[key] = this.crypt.encryptParam(params[key]);
                 }
                 httpParams[key] = <string>params[key];
@@ -258,5 +262,15 @@ export class RequestService {
             }
         }
         return formdata;
+    }
+
+    private jsonCopy(json: { [key: string]: any }): { [key: string]: any } {
+        const copy: { [key: string]: any } = {};
+        for (const key in json) {
+            if (json.hasOwnProperty(key)) {
+                copy[key] = json[key];
+            }
+        }
+        return copy;
     }
 }
