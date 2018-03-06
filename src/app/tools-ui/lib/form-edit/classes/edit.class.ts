@@ -51,7 +51,7 @@ export class EditControlField implements ControlField {
     protected active: boolean;
 
     // 控件是否是必须的
-    protected required: boolean;
+    required: boolean;
 
     /**
      * 构造方法

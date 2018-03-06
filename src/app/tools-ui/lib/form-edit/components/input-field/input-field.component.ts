@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { EditControlField, ControlType } from './../../classes/edit.class';
+import { InputControlField } from './input.class';
 
 @Component({
     selector: 'ts-form-input',
@@ -16,10 +16,10 @@ import { EditControlField, ControlType } from './../../classes/edit.class';
 })
 export class InputFieldComponent implements OnInit {
 
-    @Input() field: EditControlField;
-    @Output() fieldChange = new EventEmitter<EditControlField>();
-    @Output() activeChange = new EventEmitter<EditControlField>();
-    @Output() deleteHandle = new EventEmitter<EditControlField>();
+    @Input() field: InputControlField;
+    @Output() fieldChange = new EventEmitter<InputControlField>();
+    @Output() activeChange = new EventEmitter<InputControlField>();
+    @Output() deleteHandle = new EventEmitter<InputControlField>();
 
     constructor() {
     }
