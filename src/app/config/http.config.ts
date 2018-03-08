@@ -2,10 +2,10 @@
 export const HttpConfig = {
 
     // 服务器HTTP请求地址
-    SERVER_URL: '//127.0.0.1',
+    SERVER_URL: 'https://www.cool1024.com',
 
     // 服务器其他资源地址
-    SOURCE_URL: '//127.0.0.1',
+    SOURCE_URL: 'https://www.cool1024.com',
 
     // WEBSOCKET_URL
     WEBSOCKET_URL: 'wss://www.cool1024.com:9502',
@@ -17,7 +17,7 @@ export const HttpConfig = {
     TOAST_ERROR_TIME: 3000,
 
     // 是否启用加密&签名
-    SIGN_CHECK: true,
+    SIGN_CHECK: false,
 
     // 签名关键词
     SIGN_KEY: '000000',

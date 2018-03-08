@@ -8,7 +8,7 @@ export class SignService {
     private sha: any;
 
     constructor() {
-        if (window.jsSHA !== undefined && window.jsSHA !== null) {
+        if (window.jsSHA === undefined || window.jsSHA === null) {
             console.error('jsSHA undefined,please import sha1.js');
         }
     }

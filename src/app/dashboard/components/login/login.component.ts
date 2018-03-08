@@ -55,8 +55,9 @@ export class LoginComponent {
         }
 
         // 发送登入请求
-        this.request.withConfig({ url: '' })
+        this.request
             .openSafeParams()
+            .withConfig({ url: '' })
             .post(this.loginUrl, params)
             .subscribe(res => {
                 // 保存登入令牌

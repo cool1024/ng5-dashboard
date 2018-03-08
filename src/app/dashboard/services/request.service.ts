@@ -127,6 +127,8 @@ export class RequestService {
         const request = new RequestService(this.http, this.storage, this.sign, this.crypt);
         request.appendHeaders = headers;
         request.coverHeader = cover;
+        request.useSign = this.useSign;
+        request.signKeys = this.signKeys.concat();
         return request;
     }
 
@@ -137,8 +139,9 @@ export class RequestService {
 
     // 重置一个reqeust服务,自定义参数
     withConfig(config: {
-        url?: string, withoutHeader?:
-        boolean, headers?: { [key: string]: string },
+        url?: string,
+        withoutHeader?: boolean,
+        headers?: { [key: string]: string },
         cover?: boolean,
         websocket_url?: string
     }): RequestService {
@@ -146,7 +149,7 @@ export class RequestService {
         if (config.url != null || config !== undefined) {
             request.server_url = config.url;
         }
-        if (config.url != null || config !== undefined) {
+        if (config.websocket_url != null || config !== undefined) {
             request.websocket_url = config.websocket_url;
         }
         if (config.headers != null || config !== undefined) {
@@ -159,6 +162,8 @@ export class RequestService {
             request.appendHeaders = {};
             request.coverHeader = true;
         }
+        request.useSign = this.useSign;
+        request.signKeys = this.signKeys.concat();
         return request;
     }
 
