@@ -1,7 +1,7 @@
 # Ng5Dashboard
 
 ## example
-example usage :[https://ts.cool1024.com](https://www.cool1024.com)<br>
+example usage :[https://cool1024.com](https://www.cool1024.com)<br>
 ![preview](https://www.cool1024.com/material/preview.jpg)
 
 ## angular version
@@ -11,7 +11,7 @@ example usage :[https://ts.cool1024.com](https://www.cool1024.com)<br>
 `npm install`
 
 ## build
-`ng build -bh /ng/ -d //www.cool1024.com/ng/ --prod`
+`ng build -bh /ng/ -d //cool1024.com/ng/ --prod`
 
 ## run
 ```

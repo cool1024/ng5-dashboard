@@ -2,13 +2,13 @@
 export const HttpConfig = {
 
     // 服务器HTTP请求地址
-    SERVER_URL: 'https://www.cool1024.com',
+    SERVER_URL: '//cool1024.com',
 
     // 服务器其他资源地址
-    SOURCE_URL: 'https://www.cool1024.com',
+    SOURCE_URL: '//cool1024.com',
 
     // WEBSOCKET_URL
-    WEBSOCKET_URL: 'wss://www.cool1024.com:9502',
+    WEBSOCKET_URL: 'wss://cool1024.com:9502',
 
     // 请求超时设置:毫秒
     REQUEST_TIMEOUT: 10000,
